@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Master Thesis in Mathematics
+% "Immersions and Stiefel-Whitney classes of Manifolds"
+% -- Definitions --
+% 
+% Author: Gesina Schwalbe
+% Supervisor: Georgios Raptis
+% University of Regensburg 2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\KOMAoptions{parskip=half}
+
+% LANGUAGE
+\usepackage[ngerman, main=english]{babel}
+%\hyphenation{}
+\usepackage[autostyle=try]{csquotes}
+
+% INDICES
+\usepackage[style=alphabetic, backend=biber]{biblatex}
+\bibliography{thesis.bib}
+
+% \usepackage{makeidx}
+%\makeindex
+
+% Nomenclature
+% Add entry via
+%   \nomenclature[<prefix for sorting>]{<symbol>}{<description>}
+% !! no newlines within the command; all around need to be commented out !!
+% Output via:
+%   \printnomenclature
+% Creates .nlo file with command:
+%   makeindex thesis.nlo -s nomencl.ist -o thesis.nls
+\usepackage[intoc, refpage]{nomencl}
+\setlength{\nomitemsep}{0pt}
+\makenomenclature
+
+
+% MATHS PACKAGES
+\usepackage{mathtools,amsthm,dsfont}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+
+% MATHS-FONT
+% \usepackage{mathastext} % uses text font; bad arrows -> NO
+% \usepackage{euler} % for egyptienne
+% \usepackage{sfmath}\usepackage{sansmathaccent} % sans serif
+% \usepackage[math]{anttor} % letters look slightly crippled in comparison
+% \usepackage[math]{kurier}
+% \usepackage{mathpazo}
+%
+% \usepackage[charter]{mathdesign} % ugly longmapsto
+% Fix the \logmapsto for this font
+%\renewcommand*{\longmapsto}{%
+%  \kern-.35pt\mapstochar\kern0.35pt\longrightarrow}
+
+% FONT
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+%
+% \setmainfont{Charis SIL}
+%\setsansfont{Source Sans Pro}
+%
+%\setsansfont{Fira Sans}
+%\setsansfont{Bitstream Vera Sans} % too wide
+
+% OTHER PACKAGES
+\usepackage{enumitem}
+\setlist[description]{font=\normalfont\itshape, leftmargin=1.3em}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+% PROTOTYPING
+
+% LANGUAGE
+\newcommand{\idest}{i.e.\ } % i.e. with correct spacing
+
+% MATHS DEFINITIONS
+\newtheorem{Thm}{Theorem}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{LemDef}[Thm]{Lemma/Definition}
+\theoremstyle{remark}
+\newtheorem{Ex}[Thm]{Example}
+\newtheorem{Rem}[Thm]{Remark}
+
+% Numbers
+\newcommand*{\N}{\mathds{N}} % natural numbers
+\newcommand*{\Z}{\mathds{Z}} % integers
+\newcommand*{\Q}{\mathds{Q}} % rational numbers
+\newcommand*{\R}{\mathds{R}} % real numbers
+\newcommand*{\C}{\mathds{C}} % complex numbers
+
+% Symbol shortenings
+\renewcommand*{\epsilon}{\varepsilon}
+\newcommand*{\longto}{\longrightarrow}
+\newcommand*{\longfrom}{\longleftarrow}
+\DeclareMathOperator{\im}{im} % image
+
+% Other
+\renewcommand*{\Im}{\text{im}} % image
+\newcommand*{\Id}[1][]{\mathrm{id}_{#1}} % identity map
+\newcommand*{\pb}[1]{{#1}^*} % pullback by a map
+\newcommand*{\pf}[1]{{#1}_*} % pushforward by a map
+\newcommand*{\proj}{\text{proj}} % projection
+\newcommand*{\CP}[1][\infty]{\text{$\C{}$P}^{#1}} % complex projective space
+\newcommand*{\RP}[1][\infty]{\text{$\R{}$P}^{#1}} % real projektive space
+\DeclareMathOperator{\rk}{rk} % Rang (einer Matrix)
+\newcommand*{\BG}{\text{BG}} % classifying space of principal G-bundles
+\newcommand*{\Orth}{O} % orthogonal matrices
+\newcommand*{\BO}{\text{B$\Orth$}} % classifying space of O-bundles
+\newcommand*{\Top}{\text{Top}} % category of topological spaces
+\newcommand*{\Vect}{\text{Vect}} % category of vector bundles
+\newcommand*{\cl}{\text{cl}} % general name of a characteristic class
+\newcommand*{\w}{w} % Stiefel-Whitney class
+\newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:

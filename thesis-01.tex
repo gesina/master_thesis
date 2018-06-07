@@ -1,0 +1,83 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Master Thesis in Mathematics
+% "Immersions and Stiefel-Whitney classes of Manifolds"
+% -- Chapter 2: Preliminaries --
+% 
+% Author: Gesina Schwalbe
+% Supervisor: Georgios Raptis
+% University of Regensburg 2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Preliminaries}
+\section{Definitions}
+\subsection{Steenrod Squares}
+% TODO: Steenrod Squares definition
+
+\subsection{Stiefel-Whitney Classes}
+\begin{Def}[Classifying Spaces] % TODO
+  There is a natural equivalence between the category of vector
+  bundles $\Vect$ and that of principal $\Orth$-bundles.
+\end{Def}
+
+\begin{Def}[Characteristic Class]
+  A characteristic class
+  \begin{itemize}
+  \item of degree $i$
+  \item with coefficients in a ring $R$
+  \item for principal $G$-bundles for a group $G$
+  \end{itemize}
+  is a natural transformation
+  \begin{gather*}
+    \cl\colon [-, \BG] \Longleftarrow H^i(-; R)\;.
+  \end{gather*}
+  By Brown's representation theorem % TODO: cite
+  there is a natural equivalence $H^i(-;R)$ is represantable by
+  $K(i,R)$. Thus, by the Yoneda lemma, a characteristic number is
+  represented by a morphism
+  \begin{gather*}
+    \BG \longto K(i, R)
+  \end{gather*}
+  in $\Top$, i.e. by a cohomology class of $\BG$.
+  The application of $\cl$ to a principal $G$-bundle over a
+  space $X$ represented by a morphism $\eta\colon X\to\BG$ % TODO: cite
+  can then also be described as the pullback of this cohomology class
+  by $\eta$:
+  \begin{gather*}
+    \cl(X) = \pb{\eta} \cl \in H^i(X;R)
+  \end{gather*}
+\end{Def}
+
+\begin{Rem}
+  % TODO: Why are char classes nice idea?
+\end{Rem}
+
+\begin{Def}[Stiefel-Whitney Classes]
+  The $i$th Stiefel-Whitney class $\w_i$ is a generator of
+  $H^i(\BO; \Z/2\Z)$, \idest a characteristic class for principal
+  $\Orth$-bundles respectively vector bundles, fulfilling
+  \begin{enumerate}
+  \item $\w_i(\trivbdl)=\delta_{i,0}$
+  \item $\w_i(\eta) = 0$
+    for any vector bundle $\eta$ with $\rk\eta < i$
+  \item $\w_1(\gamma_1) = x$
+    where $\gamma_1$ is the universal line bundle $\RP\to\BO$,
+    and $x$ is the generator of $H^*(\RP;\Z/2\Z)\cong\Z/2\Z[x]$
+    % TODO: How is THE generator of H^*(\RP) defined?
+  \item $\w_i(\xi\times\eta)=\w_i(\xi)\times\w_i(\eta)
+    \coloneqq \pb{\proj_X}\w_i(\xi) \cup \pb{\proj_Y}\w_i(\eta)
+    \in H^i(X\times Y; \Z/2\Z)$
+    for vector bundles $\xi\colon X\to\BO$, $\eta\colon Y\to\BO$
+  \end{enumerate}
+\end{Def}
+
+\begin{Rem}[Uniqueness of Stiefel-Whitney Classes] % TODO
+The Stiefel-Whitney classes can be constructed using the splitting
+theorem.
+\end{Rem}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:
