@@ -9,6 +9,7 @@ supervised by Dr. Georgios Raptis.
 - `thesis.tex`: Main file for compilation
 - `thesis-def.tex`: Definitions, package includes
 - `thesis.bib`: Bibliography
+- `thesis-*.tex`: Chapter content files
 
 
 ## Compilation
