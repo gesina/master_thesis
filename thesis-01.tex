@@ -11,12 +11,40 @@
 \chapter{Preliminaries}
 \section{Definitions}
 \subsection{Steenrod Squares}
-% TODO: Steenrod Squares definition
+\begin{Def}[Cohomology Operations] % TODO
+\end{Def}
+\begin{Def}[Steenrod Squares] % TODO
+\end{Def}
+
 
 \subsection{Stiefel-Whitney Classes}
+\begin{Def}[Universal Bundle] % TODO
+  Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1) \overset\incl\to \BO$
+\end{Def}
+
 \begin{Def}[Classifying Spaces] % TODO
-  There is a natural equivalence between the category of vector
-  bundles $\Vect$ and that of principal $\Orth$-bundles.
+  \begin{itemize}
+  \item Any topological group $G$ admits a contractible space $\EG$ with a
+    free $G$-action, and a corresponding principal $G$-bundle
+    $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$ called the
+    \emph{universal $G$-bundle}
+    all unique up to homotopy.
+    $\BG$ is called the \emph{classifying space} for principal
+    $G$-bundles.
+  \item $\gamma^G$ fulfills the following universal property:
+    For any space $X$ admitting the homotopy type of a CW-complex
+    there is a bijection beetween $[X,\BG]$ and the isomorphism classes of
+    principal $G$-bundles over $X$, given by
+    \begin{gather*}
+      \left(f\colon X\to\BG \right) \longmapsto \pb f \gamma^G
+      \;
+      \text{\optcite[Theorem 1.4]{immersionconj}}.
+    \end{gather*}
+    This correspondence is natural in $X$.
+  \item There is a natural equivalence between the category of
+    $n$-dimensional vector bundles $\Vect$ and that of principal
+    $\Orth(n)$- respectively $\GL n$-bundles.
+  \end{itemize}
 \end{Def}
 
 \begin{Def}[Characteristic Class]
@@ -28,53 +56,128 @@
   \end{itemize}
   is a natural transformation
   \begin{gather*}
-    \cl\colon [-, \BG] \Longleftarrow H^i(-; R)\;.
-  \end{gather*}
-  By Brown's representation theorem % TODO: cite
-  there is a natural equivalence $H^i(-;R)$ is represantable by
-  $K(i,R)$. Thus, by the Yoneda lemma, a characteristic number is
-  represented by a morphism
-  \begin{gather*}
-    \BG \longto K(i, R)
-  \end{gather*}
-  in $\Top$, i.e. by a cohomology class of $\BG$.
-  The application of $\cl$ to a principal $G$-bundle over a
-  space $X$ represented by a morphism $\eta\colon X\to\BG$ % TODO: cite
-  can then also be described as the pullback of this cohomology class
-  by $\eta$:
-  \begin{gather*}
-    \cl(X) = \pb{\eta} \cl \in H^i(X;R)
+    \Cl\colon [-, \BG] \Longrightarrow H^i(-; R)\;.
   \end{gather*}
 \end{Def}
+  
+\begin{Rem}
+  By Brown's representation theorem % TODO: cite
+  $H^i(-;R)$ is a represantable functor represented by $K(i,R)$.
+  Thus, by the Yoneda lemma, a characteristic class is
+  represented by a morphism
+  \begin{gather*}
+    \cl\colon \BG \longto K(i, R)
+  \end{gather*}
+  in $\Top$, i.e. by a cohomology class $\cl$ of $\BG$.
+  Thus, application of $\Cl$ to a principal $G$-bundle over a
+  space $X$ which is represented by a morphism $\eta\colon X\to\BG$ % TODO: cite
+  is
+  \begin{gather*}
+    \Cl(X) = \pb{\eta} \cl \in H^i(X;R)
+    \;.
+  \end{gather*}
+  This describes a one-to-one correspondence between
+  characteristic classes as above and cohomology classes in
+  $H^i(BG;R)$, and in the following any characteristic class will be
+  identified with its corresponding cohomology class.
+\end{Rem}
 
 \begin{Rem}
   % TODO: Why are char classes nice idea?
 \end{Rem}
 
 \begin{Def}[Stiefel-Whitney Classes]
-  The $i$th Stiefel-Whitney class $\w_i$ is a generator of
-  $H^i(\BO; \Z/2\Z)$, \idest a characteristic class for principal
-  $\Orth$-bundles respectively vector bundles, fulfilling
+  The Stiefel-Whitney classes are cohomology classes
+  $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
+  \idest characteristic classes for principal $\Orth$-bundles
+  respectively vector bundles, fulfilling
+  for any vector bundles $\xi$ and $\eta$ over a space $X$
   \begin{enumerate}
-  \item $\w_i(\trivbdl)=\delta_{i,0}$
-  \item $\w_i(\eta) = 0$
-    for any vector bundle $\eta$ with $\rk\eta < i$
-  \item $\w_1(\gamma_1) = x$
-    where $\gamma_1$ is the universal line bundle $\RP\to\BO$,
-    and $x$ is the generator of $H^*(\RP;\Z/2\Z)\cong\Z/2\Z[x]$
-    % TODO: How is THE generator of H^*(\RP) defined?
-  \item $\w_i(\xi\times\eta)=\w_i(\xi)\times\w_i(\eta)
-    \coloneqq \pb{\proj_X}\w_i(\xi) \cup \pb{\proj_Y}\w_i(\eta)
-    \in H^i(X\times Y; \Z/2\Z)$
-    for vector bundles $\xi\colon X\to\BO$, $\eta\colon Y\to\BO$
+  \item $\w_0%(\xi)
+    = 1$,
+  \item $\w(\gamma_1) = 1 + x$,
+    % \item (naturality) $\w(\pb f \xi) = \pf \w(\xi)$
+  \item (additivity) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
+    \\\idest in degree $n$ we have
+    $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
   \end{enumerate}
+  where
+  $\w\coloneqq\sum_{i\geq 0}\w_i$ is the formal sum of all
+  Stiefel-Whitney classes,
+  $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
+  and $x$ is the%
+  \footnote{
+    % TODO: maybe shorten reasoning about x well-defined
+    This is well-defined, as a ring $R$ of the form $\Zmod2[x]$
+    with $x$ of degree 1 only admits two elements, $0$ and a
+    generator, in degree 1. Therefore there exists exactly one ring
+    isomorphism, and that is defined by sending the unique generator in
+    degree 1 to $x$.
+  }
+  generator of $H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
 \end{Def}
 
-\begin{Rem}[Uniqueness of Stiefel-Whitney Classes] % TODO
-The Stiefel-Whitney classes can be constructed using the splitting
-theorem.
+\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
+Stiefel-Whitney classes exist and are uniquely defined by the above
+properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
+\begin{proof}[proof (existence)]
+  Construction utilizes the Euler class.
+\end{proof}
+\begin{proof}[proof (uniqueness)]
+  Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
+\end{proof}
+\begin{proof}[proof (generators)]
+  Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
+\end{proof}
+\end{Thm}
+
+\begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
+  \label{propswclasses}
+  Let $\xi$, $\eta$ be vector bundles over a space $X$.
+  \begin{enumerate} 
+  \item $\w_i(\eta) = 0$
+    for any vector bundle $\eta$ with $\rk\eta < i$.
+    This follows directly from the construction for the existence of
+    the Stiefel-Whitney classes.
+    Therefore, the total Stiefel-Whitney class $\w(\xi)$ is
+    well-defined (\idest the sum is finite)
+    for any vector bundle $\xi$ of finite rank.
+  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes:
+    \begin{enumerate}
+    \item The Stiefel-Whitney classes are stable, \idest
+      $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
+    \item If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
+      Especially, for any choice of embedding with normal bundle $\N M$
+      of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
+      therefore $1 = \w(\T M) \cup \w(\N M)$.
+    \end{enumerate}
+    \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
+      This follows from the naturality of the Stiefel-Whitney classes
+      and the definition of the trivial rank $n$ bundle:
+      $\w(\trivbdl) = \pb\pi \w(\trivbdl)$ where $\pi\colon X\to\pt$
+      and $H^i(\pt;\Zmod2) = 0$ for $i>0$.
+    \end{proof}
+  \end{enumerate}
 \end{Rem}
 
+\begin{Def}
+  For any space $X$ define the \emph{dual Stiefel-Whitney classes}
+  $\dualw_i$ in degree $i$ of $X$ inductively by
+  \begin{align*}
+    1 &= \dualw_0\cup\w_0 = \dualw_0    &&\text{in degree 0}\\
+    0 &= \sum_{i+j=n} \dualw_i\cup\w_j  &&\text{in degree n>0}
+  \end{align*}
+  With the notation $\dualw\coloneqq \sum_{i\geq0} \dualw_i$ as above
+  for the formal sum this can be reformulated as
+  \begin{gather*}
+    1 = \w\cup\dualw
+  \end{gather*}
+  For a manifold $M$ define
+  $\w(M) \coloneqq \w(\T M)$ and
+  $\dualw(M) \coloneqq \dualw(\T M) = \w(\N M)$
+  where the last equality is the one from
+  Proposition~\ref{propswclasses} above.
+\end{Def}
 
 
 %%% Local Variables:

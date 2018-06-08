@@ -75,9 +75,11 @@
 \usepackage{tabularx}
 
 % PROTOTYPING
+\newcommand*{\optcite}[2][]{\cite[][#1]{#2}}
 
 % LANGUAGE
 \newcommand{\idest}{i.e.\ } % i.e. with correct spacing
+\newcommand{\Idest}{I.e.\ } % i.e. with correct spacing
 
 % MATHS DEFINITIONS
 \newtheorem{Thm}{Theorem}
@@ -92,8 +94,9 @@
 \newtheorem{Rem}[Thm]{Remark}
 
 % Numbers
-\newcommand*{\N}{\mathds{N}} % natural numbers
+\newcommand*{\Nat}{\mathds{N}} % natural numbers
 \newcommand*{\Z}{\mathds{Z}} % integers
+\newcommand*{\Zmod}[1]{\Z_{#1}} % residual class rings
 \newcommand*{\Q}{\mathds{Q}} % rational numbers
 \newcommand*{\R}{\mathds{R}} % real numbers
 \newcommand*{\C}{\mathds{C}} % complex numbers
@@ -107,6 +110,7 @@
 % Other
 \renewcommand*{\Im}{\text{im}} % image
 \newcommand*{\Id}[1][]{\mathrm{id}_{#1}} % identity map
+\newcommand*{\incl}{\text{incl}} % inclusion
 \newcommand*{\pb}[1]{{#1}^*} % pullback by a map
 \newcommand*{\pf}[1]{{#1}_*} % pushforward by a map
 \newcommand*{\proj}{\text{proj}} % projection
@@ -114,13 +118,20 @@
 \newcommand*{\RP}[1][\infty]{\text{$\R{}$P}^{#1}} % real projektive space
 \DeclareMathOperator{\rk}{rk} % Rang (einer Matrix)
 \newcommand*{\BG}{\text{BG}} % classifying space of principal G-bundles
+\newcommand*{\EG}{\text{EG}} % total space of the universal bundle of principal G-bundles
 \newcommand*{\Orth}{O} % orthogonal matrices
-\newcommand*{\BO}{\text{B$\Orth$}} % classifying space of O-bundles
+\newcommand*{\GL}[1]{\text{GL}_{#1}(\R)} % general linear group over \R
+\newcommand*{\BO}{\text{BO}} % classifying space of O-bundles
+\newcommand*{\pt}{*} % single point space
 \newcommand*{\Top}{\text{Top}} % category of topological spaces
 \newcommand*{\Vect}{\text{Vect}} % category of vector bundles
 \newcommand*{\cl}{\text{cl}} % general name of a characteristic class
+\newcommand*{\Cl}{\text{Cl}} % general name of a characteristic class
 \newcommand*{\w}{w} % Stiefel-Whitney class
+\newcommand*{\dualw}{\overline{\w}} % dual Stiefel-Whitney class
 \newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
+\newcommand*{\T}[1]{\mathrm{T}#1} % tangent bundle
+\newcommand*{\N}[1]{\nu_{#1}} % (stable) normal bundle
 
 %%% Local Variables:
 %%% mode: latex
