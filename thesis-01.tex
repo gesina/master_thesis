@@ -11,9 +11,57 @@
 \chapter{Preliminaries}
 \section{Definitions}
 \subsection{Steenrod Squares}
-\begin{Def}[Cohomology Operations] % TODO
-\end{Def}
-\begin{Def}[Steenrod Squares] % TODO
+
+\begin{Def}[Steenrod Squares] % TODO: Check
+  The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
+  cohomology operations of the form
+  \begin{gather*}
+    \left(
+      \Sq i\colon H^n(X;\Zmod2) \to H^{n+i}(X;\Zmod2)
+      \;\middle|\;
+      n\in\Nat
+    \right)
+  \end{gather*}
+  that satisfy the following relations for any space $X$:
+  \begin{description}
+  \item[(Naturality)] $\pb f\circ\Sq i = \Sq i\circ\pb f$
+  \item[(Stability)] $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
+  \item[(Cartan formula)] 
+    \begin{align}\label{cartan}\tag{Cartan formula}
+      \Sq i(x\cup y) &= \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)\\
+      \intertext{respectively}
+      \nonumber
+      \Sq{}(x\cup y) &= \Sq{}(x)\cup\Sq{}(y)
+    \end{align}
+  \item[(Adem relations)] for $\alpha<2\beta$ holds
+    \begin{gather}\label{adem}\tag{Adem formula}
+      \Sq\alpha \circ \Sq\beta =
+      \sum_{j=0}^{\lfloor \frac \alpha 2 \rfloor}
+      \binom{\beta-j-1}{\alpha-2j}
+      \Sq{\alpha+\beta+j}\Sq{j}
+    \end{gather}
+  \item the following values are fixed for $x\in H^n(X)$:
+    \begin{gather}\label{sqlowerbound}
+      \Sq i(x) = \begin{cases}
+        0 & n<i \\
+        x^2 & n=i
+      \end{cases}
+    \end{gather}
+    and
+    \begin{gather}\label{sq0}
+      \Sq i = \begin{cases}
+        \Id & i=0\\
+        \beta & i=1
+      \end{cases}
+    \end{gather}
+     where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
+  \end{description}
+  where $i$ $X$ is any space, $f\colon X\to Y$ any map of spaces,
+  and $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ the formal sum of all
+  Steenrod squares called the \emph{the total Steenrod square}
+  Note that for any degree $n\in\Nat$ the total Steenrod square
+  $\Sq{}\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
+  finite by \eqref{sqlowerbound}.
 \end{Def}
 
 
@@ -28,7 +76,8 @@
     free $G$-action, and a corresponding principal $G$-bundle
     $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$ called the
     \emph{universal $G$-bundle}
-    all unique up to homotopy.
+    where $\gamma_G$, $\EG$, and $\BG$ are all unique up to
+    homotopy. % TODO: Uniqueness of universal bundle up to htpy
     $\BG$ is called the \emph{classifying space} for principal
     $G$-bundles.
   \item $\gamma^G$ fulfills the following universal property:
