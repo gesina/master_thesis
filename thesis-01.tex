@@ -22,33 +22,29 @@
       n\in\Nat
     \right)
   \end{gather*}
-  that satisfy the following relations for any space $X$:
+  that satisfy the following relations for any space $X$, and any map of
+  spaces $f\colon X\to Y$:
   \begin{description}
   \item[(Naturality)] $\pb f\circ\Sq i = \Sq i\circ\pb f$
   \item[(Stability)] $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
-  \item[(Cartan formula)] 
-    \begin{align}\label{cartan}\tag{Cartan formula}
-      \Sq i(x\cup y) &= \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)\\
-      \intertext{respectively}
-      \nonumber
-      \Sq{}(x\cup y) &= \Sq{}(x)\cup\Sq{}(y)
-    \end{align}
-  \item[(Adem relations)] for $\alpha<2\beta$ holds
-    \begin{gather}\label{adem}\tag{Adem formula}
+  \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in H^n(X)$ holds
+    \begin{gather}\label{cartan}\tag{Cartan's formula}
+      \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
+    \end{gather}
+  \item[(Adem relations)] For $\alpha<2\beta$ holds
+    \begin{gather}\label{adem}\tag{Adem's formula}
       \Sq\alpha \circ \Sq\beta =
       \sum_{j=0}^{\lfloor \frac \alpha 2 \rfloor}
       \binom{\beta-j-1}{\alpha-2j}
       \Sq{\alpha+\beta+j}\Sq{j}
     \end{gather}
-  \item the following values are fixed for $x\in H^n(X)$:
+  \item[(Fixed values)] The following values are fixed for $x\in H^n(X)$:
     \begin{gather}\label{sqlowerbound}
       \Sq i(x) = \begin{cases}
         0 & n<i \\
         x^2 & n=i
       \end{cases}
-    \end{gather}
-    and
-    \begin{gather}\label{sq0}
+      \qquad\text{and}\qquad
       \Sq i = \begin{cases}
         \Id & i=0\\
         \beta & i=1
@@ -56,13 +52,23 @@
     \end{gather}
      where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \end{description}
-  where $i$ $X$ is any space, $f\colon X\to Y$ any map of spaces,
-  and $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ the formal sum of all
-  Steenrod squares called the \emph{the total Steenrod square}
+  $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ the formal sum of all
+  Steenrod squares called the \emph{the total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
   $\Sq{}\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
   finite by \eqref{sqlowerbound}.
+  Also \ref{cartan} can be reformulated to
+  $\Sq{}(x\cup y) = \Sq{}(x)\cup\Sq{}(y)$.
 \end{Def}
+
+\begin{Thm}
+  The Steenrod squares exist and are uniquely determined by the above
+  properties.
+  \begin{proof} % TODO: Do proof of existence&uniqueness of Steenrod sq?
+    Existence: \cite[Chapter 2]{mosher};
+    Uniqueness: \cite[VIII §3]{steenrodepstein}
+  \end{proof}
+\end{Thm}
 
 
 \subsection{Stiefel-Whitney Classes}
@@ -70,7 +76,8 @@
   Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1) \overset\incl\to \BO$
 \end{Def}
 
-\begin{Def}[Classifying Spaces] % TODO
+\begin{Def}[Classifying Spaces] 
+  \optcite[Chapter~14.4]{tomdieck} % TODO: correct def. classifying spaces
   \begin{itemize}
   \item Any topological group $G$ admits a contractible space $\EG$ with a
     free $G$-action, and a corresponding principal $G$-bundle
@@ -227,6 +234,112 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
   where the last equality is the one from
   Proposition~\ref{propswclasses} above.
 \end{Def}
+
+
+\subsection{Thom Classes}
+Let $B$ be a paracompact space, \forexample a manifold,
+$\xi\colon E\overset{p}\longto B$ a vector bundle over $B$ of rank $n>0$,
+and $R$ be a unital ring.
+\begin{Def}
+  A \emph{Thom class} of $\xi$ in $R$-coefficients is a
+  cohomology class $\u(\xi)\in H^n(E,E\setminus\zerosec{E}; R)$,
+  such that for all points $b\in B$ and fiber inclusions
+  $i_b\colon (E_b, E_b\setminus\{0\}) \to (E, E\setminus\zerosec{E})$
+  the restriction $\u(\xi)|_{E_b} = \pb i_b (\u(\xi))$ is a generator,
+  \idest a unit, % TODO: any generator is unit?
+  of $H^n(E_b, E_b\setminus\{0\};R)
+  \cong H^n(\R, \R\setminus\{0\}; R)
+  \cong R$.
+\end{Def}
+\begin{Thm}
+  Every vector bundle $\xi$ has a unique Thom class $\u(\xi)$ in
+  $\Zmod2$-coefficients.
+  \begin{proof}
+    \begin{description}
+    \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
+      \cite[Proposition~17.9.3]{tomdieck}.
+    \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
+      Using a suitable Mayer-Vietoris sequence for glueing, and an
+      inductive argument starting with the trivial bundle case, one can show:
+      Any two classes in $H^n(E,E\setminus\zerosec{E};R)$ whose
+      restrictions coincide on all fibers will coincide.
+      However, for $R=\Zmod2$ there is exactly one possible choice for
+      a unit $\u(\xi)|_{E_b}\in
+      H^n(E_b,E_b\setminus\{0\})^\times\cong\Zmod2^\times=\{1\}$
+      over each point $b$.
+    \end{description}
+  \end{proof}
+\end{Thm}
+
+\begin{Rem}
+  Using paracompactness of $B$ and
+  \cite[Proposition~17.9.6]{tomdieck}, one concludes that
+  $\u(\xi)\in H^n(E,E\setminus\zerosec{E};R)$ has to be a unit.
+\end{Rem}
+
+\begin{Thm}[Thom isomorphism]
+  For any Thom class $\u(\xi)$ of $\xi$ and any degree $k$ there are
+  isomorphisms
+  \begin{align*}
+    \thomiso\colon
+    H^k(B;R) &\longrightarrow H^{k+n}(E, E\setminus\zerosec{E}; R)
+    & \thomiso\colon
+      H_{k+n}(E, E\setminus\zerosec{E}; R) &\longrightarrow H^k(B;R)
+    \\
+    x &\longrightarrow \pb p (x) \cup \u(\xi)
+    & \alpha &\longrightarrow \pf p (\u(\xi) \cap \alpha)
+  \end{align*}
+  called the \emph{Thom isomorphisms}.
+  \begin{proof}
+    The cohomology part is a direct application of Leray's Theorem
+    \cite[Theorem~4D.8]{hatcher}.
+    For the homology part see \forexample \cite[Theorem~14.6]{switzer}.
+  \end{proof}
+\end{Thm}
+
+\begin{Lem}
+  The Thom isomorphisms fulfill for $k\in\Nat$, $x\in H^k(B)$, and $\alpha\in H_k(E)$
+  \begin{gather*}
+    \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
+  \end{gather*}
+  \begin{proof}
+    First recall the following properties of the cap product
+    $\capped{-}{-}$:
+    \begin{align}
+      \label{capprod1}
+      \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
+      \in H_0(X,X'')\\
+      \label{capprod2}
+      \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
+      \in H_0(X,X'')
+    \end{align}
+    for
+    triples of spaces $(X, X'', X')$, $(Y, Y'', Y')$,
+    $f\colon (Y,Y'',Y')\to (X,X'',X')$,
+    $a\in H^i(X,X')$, $b\in H^j(X,X')$,
+    $\gamma\in H_{i+j}(X, X'\cup X'')$,
+    and
+    $\beta\in H_j(Y, Y'\cup Y'')$.
+    Also note
+    \begin{gather}
+      \label{capprod3}
+      \pf p = \Id \colon
+      \Zmod2\cong H_0(E,E\setminus\zerosec{E})\to H_0(B)\cong\Zmod2
+    \end{gather}
+    Then with $\u\coloneqq\u(\xi)$
+    \begin{align*}
+      \capped{t(x)}{\alpha}
+      &= \capped{\pb p x \cup \u}{\alpha} \\
+      &\overset{\mathllap{\eqref{capprod1}}}=
+        \capped{\pb p x}{\u\cap\alpha} \\
+      &\overset{\mathllap{\eqref{capprod3}}}=
+        \pf p\capped{\pb p x}{\u\cap\alpha} \\
+      &\overset{\mathllap{\eqref{capprod2}}}=
+        \capped{x}{\pf p(u\cap\alpha)}
+        = \capped{x}{\thomiso (\alpha)} \in\Zmod2
+    \end{align*}
+  \end{proof}
+\end{Lem}
 
 
 %%% Local Variables:

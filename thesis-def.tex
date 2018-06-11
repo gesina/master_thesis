@@ -78,10 +78,13 @@
 \newcommand*{\optcite}[2][]{\cite[][#1]{#2}}
 
 % LANGUAGE
-\newcommand{\idest}{i.e.\ } % i.e. with correct spacing
-\newcommand{\Idest}{I.e.\ } % i.e. with correct spacing
+% Shorthands with correct spacing
+\newcommand*{\idest}{i.e.\ } % i.e.
+\newcommand*{\Idest}{I.e.\ } % I.e.
+\newcommand*{\forexample}{e.g.\ } % e.g.
+\newcommand*{\Forexample}{E.g.\ } % E.g.
 
-% MATHS DEFINITIONS
+% THEOREMS
 \newtheorem{Thm}{Theorem}
 \newtheorem{Prop}[Thm]{Proposition}
 \newtheorem{Lem}[Thm]{Lemma}
@@ -93,6 +96,7 @@
 \newtheorem{Ex}[Thm]{Example}
 \newtheorem{Rem}[Thm]{Remark}
 
+% MATHS DEFINITIONS
 % Numbers
 \newcommand*{\Nat}{\mathds{N}} % natural numbers
 \newcommand*{\Z}{\mathds{Z}} % integers
@@ -107,7 +111,7 @@
 \newcommand*{\longfrom}{\longleftarrow}
 \DeclareMathOperator{\im}{im} % image
 
-% Other
+% maps
 \renewcommand*{\Im}{\text{im}} % image
 \newcommand*{\Id}[1][]{\mathrm{id}_{#1}} % identity map
 \newcommand*{\incl}{\text{incl}} % inclusion
@@ -115,6 +119,8 @@
 \newcommand*{\pb}[1]{{#1}^*} % pullback by a map
 \newcommand*{\pf}[1]{{#1}_*} % pushforward by a map
 \newcommand*{\susp}{\Sigma} % suspension map
+
+% spaces
 \newcommand*{\CP}[1][\infty]{\text{$\C{}$P}^{#1}} % complex projective space
 \newcommand*{\RP}[1][\infty]{\text{$\R{}$P}^{#1}} % real projektive space
 \DeclareMathOperator{\rk}{rk} % Rang (einer Matrix)
@@ -124,13 +130,25 @@
 \newcommand*{\GL}[1]{\text{GL}_{#1}(\R)} % general linear group over \R
 \newcommand*{\BO}{\text{BO}} % classifying space of O-bundles
 \newcommand*{\pt}{*} % single point space
+
+% categories
 \newcommand*{\Top}{\text{Top}} % category of topological spaces
 \newcommand*{\Vect}{\text{Vect}} % category of vector bundles
+
+% cohomology classes/maps
+\newcommand*{\capped}[2]{\left\langle #1, #2 \right\rangle} % cap prod
+\newcommand*{\Sq}[1]{\text{Sq}^{#1}}  % Steenrod Squares
 \newcommand*{\cl}{\text{cl}} % general name of a characteristic class
 \newcommand*{\Cl}{\text{Cl}} % general name of a characteristic class
-\newcommand*{\Sq}[1]{\text{Sq}^{#1}}  % Steenrod Squares
 \newcommand*{\w}{w} % Stiefel-Whitney class
 \newcommand*{\dualw}{\overline{\w}} % dual Stiefel-Whitney class
+\renewcommand*{\u}{u} % Thom class (overwrites cup over letter)
+\newcommand*{\thomiso}{t} % Thom isomorphism
+\renewcommand*{\v}{v} % Wu class (overwrites check over letter)
+
+
+% bundles
+\newcommand*{\zerosec}[1]{0_{#1}}
 \newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
 \newcommand*{\T}[1]{\mathrm{T}#1} % tangent bundle
 \newcommand*{\N}[1]{\nu_{#1}} % (stable) normal bundle
