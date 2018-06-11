@@ -9,8 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Preliminaries}
-\section{Definitions}
-\subsection{Steenrod Squares}
+\section{Steenrod Squares}
 
 \begin{Def}[Steenrod Squares] % TODO: Check
   The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
@@ -59,6 +58,8 @@
   finite by \eqref{sqlowerbound}.
   Also \ref{cartan} can be reformulated to
   $\Sq{}(x\cup y) = \Sq{}(x)\cup\Sq{}(y)$.
+
+  Analoguesly define Steenrod squares for a pair of spaces $(X,A)$.
 \end{Def}
 
 \begin{Thm}
@@ -70,8 +71,7 @@
   \end{proof}
 \end{Thm}
 
-
-\subsection{Stiefel-Whitney Classes}
+\section{Characteristic Classes}
 \begin{Def}[Universal Bundle] % TODO
   Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1) \overset\incl\to \BO$
 \end{Def}
@@ -141,100 +141,6 @@
 \begin{Rem}
   % TODO: Why are char classes nice idea?
 \end{Rem}
-
-\begin{Def}[Stiefel-Whitney Classes]
-  The Stiefel-Whitney classes are cohomology classes
-  $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
-  \idest characteristic classes for principal $\Orth$-bundles
-  respectively vector bundles, fulfilling
-  for any vector bundles $\xi$ and $\eta$ over a space $X$
-  \begin{enumerate}
-  \item $\w_0%(\xi)
-    = 1$,
-  \item $\w(\gamma_1) = 1 + x$,
-    % \item (naturality) $\w(\pb f \xi) = \pf \w(\xi)$
-  \item (additivity) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
-    \\\idest in degree $n$ we have
-    $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
-  \end{enumerate}
-  where
-  $\w\coloneqq\sum_{i\geq 0}\w_i$ is the formal sum of all
-  Stiefel-Whitney classes,
-  $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
-  and $x$ is the%
-  \footnote{
-    % TODO: maybe shorten reasoning about x well-defined
-    This is well-defined, as a ring $R$ of the form $\Zmod2[x]$
-    with $x$ of degree 1 only admits two elements, $0$ and a
-    generator, in degree 1. Therefore there exists exactly one ring
-    isomorphism, and that is defined by sending the unique generator in
-    degree 1 to $x$.
-  }
-  generator of $H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
-\end{Def}
-
-\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
-Stiefel-Whitney classes exist and are uniquely defined by the above
-properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
-\begin{proof}[proof (existence)]
-  Construction utilizes the Euler class.
-\end{proof}
-\begin{proof}[proof (uniqueness)]
-  Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
-\end{proof}
-\begin{proof}[proof (generators)]
-  Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
-\end{proof}
-\end{Thm}
-
-\begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
-  \label{propswclasses}
-  Let $\xi$, $\eta$ be vector bundles over a space $X$.
-  \begin{enumerate} 
-  \item $\w_i(\eta) = 0$
-    for any vector bundle $\eta$ with $\rk\eta < i$.
-    This follows directly from the construction for the existence of
-    the Stiefel-Whitney classes.
-    Therefore, the total Stiefel-Whitney class $\w(\xi)$ is
-    well-defined (\idest the sum is finite)
-    for any vector bundle $\xi$ of finite rank.
-  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes:
-    \begin{enumerate}
-    \item The Stiefel-Whitney classes are stable, \idest
-      $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
-    \item If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
-      Especially, for any choice of embedding with normal bundle $\N M$
-      of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
-      therefore $1 = \w(\T M) \cup \w(\N M)$.
-    \end{enumerate}
-    \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
-      This follows from the naturality of the Stiefel-Whitney classes
-      and the definition of the trivial rank $n$ bundle:
-      $\w(\trivbdl) = \pb\pi \w(\trivbdl)$ where $\pi\colon X\to\pt$
-      and $H^i(\pt;\Zmod2) = 0$ for $i>0$.
-    \end{proof}
-  \end{enumerate}
-\end{Rem}
-
-\begin{Def}
-  For any space $X$ define the \emph{dual Stiefel-Whitney classes}
-  $\dualw_i$ in degree $i$ of $X$ inductively by
-  \begin{align*}
-    1 &= \dualw_0\cup\w_0 = \dualw_0    &&\text{in degree 0}\\
-    0 &= \sum_{i+j=n} \dualw_i\cup\w_j  &&\text{in degree n>0}
-  \end{align*}
-  With the notation $\dualw\coloneqq \sum_{i\geq0} \dualw_i$ as above
-  for the formal sum this can be reformulated as
-  \begin{gather*}
-    1 = \w\cup\dualw
-  \end{gather*}
-  For a manifold $M$ define
-  $\w(M) \coloneqq \w(\T M)$ and
-  $\dualw(M) \coloneqq \dualw(\T M) = \w(\N M)$
-  where the last equality is the one from
-  Proposition~\ref{propswclasses} above.
-\end{Def}
-
 
 \subsection{Thom Classes}
 Let $B$ be a paracompact space, \forexample a manifold,
@@ -340,6 +246,101 @@ and $R$ be a unital ring.
     \end{align*}
   \end{proof}
 \end{Lem}
+
+
+\subsection{Stiefel-Whitney Classes}
+\begin{Def}[Stiefel-Whitney Classes]
+  The Stiefel-Whitney classes are cohomology classes
+  $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
+  \idest characteristic classes for principal $\Orth$-bundles
+  respectively vector bundles, fulfilling
+  for any vector bundles $\xi$ and $\eta$ over a space $X$
+  \begin{enumerate}
+  \item $\w_0%(\xi)
+    = 1$,
+  \item $\w(\gamma_1) = 1 + x$,
+    % \item (naturality) $\w(\pb f \xi) = \pf \w(\xi)$
+  \item (additivity) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
+    \\\idest in degree $n$ we have
+    $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
+  \end{enumerate}
+  where
+  $\w\coloneqq\sum_{i\geq 0}\w_i$ is the formal sum of all
+  Stiefel-Whitney classes,
+  $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
+  and $x$ is the%
+  \footnote{
+    % TODO: maybe shorten reasoning about x well-defined
+    This is well-defined, as a ring $R$ of the form $\Zmod2[x]$
+    with $x$ of degree 1 only admits two elements, $0$ and a
+    generator, in degree 1. Therefore there exists exactly one ring
+    isomorphism, and that is defined by sending the unique generator in
+    degree 1 to $x$.
+  }
+  generator of $H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
+\end{Def}
+
+\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
+Stiefel-Whitney classes exist and are uniquely defined by the above
+properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
+\begin{proof}[proof (existence)]
+  Construction utilizes the Euler class.
+\end{proof}
+\begin{proof}[proof (uniqueness)]
+  Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
+\end{proof}
+\begin{proof}[proof (generators)]
+  Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
+\end{proof}
+\end{Thm}
+
+\begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
+  \label{propswclasses}
+  Let $\xi$, $\eta$ be vector bundles over a space $X$.
+  \begin{enumerate} 
+  \item $\w_i(\eta) = 0$
+    for any vector bundle $\eta$ with $\rk\eta < i$.
+    This follows directly from the construction for the existence of
+    the Stiefel-Whitney classes.
+    Therefore, the total Stiefel-Whitney class $\w(\xi)$ is
+    well-defined (\idest the sum is finite)
+    for any vector bundle $\xi$ of finite rank.
+  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes:
+    \begin{enumerate}
+    \item The Stiefel-Whitney classes are stable, \idest
+      $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
+    \item If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
+      Especially, for any choice of embedding with normal bundle $\N M$
+      of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
+      therefore $1 = \w(\T M) \cup \w(\N M)$.
+    \end{enumerate}
+    \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
+      This follows from the naturality of the Stiefel-Whitney classes
+      and the definition of the trivial rank $n$ bundle:
+      $\w(\trivbdl) = \pb\pi \w(\trivbdl)$ where $\pi\colon X\to\pt$
+      and $H^i(\pt;\Zmod2) = 0$ for $i>0$.
+    \end{proof}
+  \end{enumerate}
+\end{Rem}
+
+\begin{Def}
+  For any space $X$ define the \emph{dual Stiefel-Whitney classes}
+  $\dualw_i$ in degree $i$ of $X$ inductively by
+  \begin{align*}
+    1 &= \dualw_0\cup\w_0 = \dualw_0    &&\text{in degree 0}\\
+    0 &= \sum_{i+j=n} \dualw_i\cup\w_j  &&\text{in degree n>0}
+  \end{align*}
+  With the notation $\dualw\coloneqq \sum_{i\geq0} \dualw_i$ as above
+  for the formal sum this can be reformulated as
+  \begin{gather*}
+    1 = \w\cup\dualw
+  \end{gather*}
+  For a manifold $M$ define
+  $\w(M) \coloneqq \w(\T M)$ and
+  $\dualw(M) \coloneqq \dualw(\T M) = \w(\N M)$
+  where the last equality is the one from
+  Proposition~\ref{propswclasses} above.
+\end{Def}
 
 
 %%% Local Variables:
