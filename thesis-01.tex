@@ -157,9 +157,44 @@ and $R$ be a unital ring.
   \cong H^n(\R, \R\setminus\{0\}; R)
   \cong R$.
 \end{Def}
+
+\begin{Cor}
+  The Thom class construction is natural with respect to the pullback
+  of vector bundles over paracompact spaces.
+  \Idest given any map of paracompact spaces $f\colon A\to B$, and a
+  vector bundle $\xi\colon E\to B$,
+  the pullback $\pb f \u$ of a Thom class $\u$ of $\xi$ will
+  be a Thom class of $\pb f \xi$.
+  \begin{proof}
+    For a Thom class $\u$ and any point $a\in A$ consider the
+    restriction $\pb i_a(\pb f \u)$ to the fiber over $a$ of the
+    pullback of $\u$. To show that this is a generator of its
+    cohomology group first use that pullbacks commute with restriction
+    to a fiber:
+    \begin{gather*}
+      \pb i_a(\pb f \u)
+      = \pb {(f\circ i_a)} \u
+      = \pb {(i_{f(a)}\circ f)} \u
+      = \pb f (\pb i_{f(a)} \u)
+    \end{gather*}
+    $\pb i_{f(a)} \u$ is a generator by definition of $\u$.
+    Now the restriction
+    \begin{gather*}
+      f\colon ((\pb f E)_a, (\pb f E)_a\setminus\{0\})
+      \to (E_{f(a)}, E_{f(a)}\setminus\{0\})
+    \end{gather*}
+    is an isomorphism, and thus
+    $\pb f\colon H^k((E_{f(a)}, E_{f(a)}\setminus\{0\}))
+    \cong H^k((\pb f E)_a, (\pb f E)_a\setminus\{0\})$
+    sends generators to generators for all $k\in\Nat$.
+  \end{proof}
+\end{Cor}
+
 \begin{Thm}
   Every vector bundle $\xi$ has a unique Thom class $\u(\xi)$ in
   $\Zmod2$-coefficients.
+  Furthermore, for any map of paracompact spaces $f\colon A\to B$ and
+  vector bundle $\xi\colon E\to B$ holds $\u(\pb f \xi) = \pb f \u(\xi)$.
   \begin{proof}
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
@@ -173,6 +208,7 @@ and $R$ be a unital ring.
       a unit $\u(\xi)|_{E_b}\in
       H^n(E_b,E_b\setminus\{0\})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
+    \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
     \end{description}
   \end{proof}
 \end{Thm}
@@ -184,8 +220,9 @@ and $R$ be a unital ring.
 \end{Rem}
 
 \begin{Thm}[Thom isomorphism]
-  For any Thom class $\u(\xi)$ of $\xi$ and any degree $k$ there are
-  isomorphisms
+  For any Thom class $\u(\xi)$ of $\xi$, and any degree $k$ there are
+  isomorphisms natural with respect to pullback of vector bundles
+  % TODO: Ref/proof naturality Thom iso
   \begin{align*}
     \thomiso\colon
     H^k(B;R) &\longrightarrow H^{k+n}(E, E\setminus\zerosec{E}; R)
@@ -197,7 +234,9 @@ and $R$ be a unital ring.
   \end{align*}
   called the \emph{Thom isomorphisms}.
   \begin{proof}
-    The cohomology part is a direct application of Leray's Theorem
+    Naturality directly follows from the naturality of the Thom class,
+    of pullbacks, and of the cup- respectively cap-product.
+    The cohomology part then is a direct application of Leray's Theorem
     \cite[Theorem~4D.8]{hatcher}.
     For the homology part see \forexample \cite[Theorem~14.6]{switzer}.
   \end{proof}
@@ -249,7 +288,7 @@ and $R$ be a unital ring.
 
 
 \subsection{Stiefel-Whitney Classes}
-\begin{Def}[Stiefel-Whitney Classes]
+\begin{Def}[Stiefel-Whitney Classes]\label{def:swclasses}
   The Stiefel-Whitney classes are cohomology classes
   $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
   \idest characteristic classes for principal $\Orth$-bundles
@@ -341,6 +380,32 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
   where the last equality is the one from
   Proposition~\ref{propswclasses} above.
 \end{Def}
+
+\begin{Thm}
+  The Stiefel-Whitney classes fulfill
+  \begin{gather*}
+    \Sq i(\u(\xi)) = t(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
+  \end{gather*}
+  for any vector bundle $\xi\colon E\to B$ over a paracompact space
+  $X$.
+  More precisely, this can serve as a construction of the $\w_i$ using
+  $\w_i=\w_i(\gamma_n)\in\BO(n)\subset\BO$ for $n\geq i$.
+  \begin{proof}
+    One has to check naturality of the expression and all further
+    definining properties from \ref{def:swclasses}.
+    \begin{description}
+    \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
+      are natural.
+    \item[$\w_0=1$:]
+      $H^0(\E{\gamma_0}, \E{\gamma_0}\setminus\zerosec{\E{\gamma_0}})
+      = \Zmod2$, thus 1 is the only candidate for a Thom class,
+      $\Sq0(1) = \Id(1) = 1$, and the Thom isomorphism sends 1 to 1
+      in this degree.
+    \item[$\w(\gamma_1)=1+x$:] % TODO: alt def SW-classes
+    \item[Additivity:] % TODO: additivity alt def SW-classes
+    \end{description}
+  \end{proof}
+\end{Thm}
 
 
 %%% Local Variables:
