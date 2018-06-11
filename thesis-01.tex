@@ -190,6 +190,44 @@ and $R$ be a unital ring.
   \end{proof}
 \end{Cor}
 
+\begin{Cor}\label{thomclassadditivity} % TODO: Lemma instead? Join with above Cor?
+  The Thom class construction is additive, \idest
+  for vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
+  of rank $i$ respectively $j$ over a paracompact space $X$, and Thom
+  classes
+  $\u(\xi)\in H^i(\E\xi, \E\xi\setminus\zerosec{\E\xi}; R)$,
+  $\u(\eta)\in H^i(\E\eta, \E\eta\setminus\zerosec{\E\eta}; R)$
+  the class
+  \begin{gather*}
+    \u(\xi)\times\u(\eta)=\pb \pi_\xi\u(\xi) \cup \pb \pi_\eta\u(\eta)
+    \in H^{i+j}(\E{(\xi\oplus\eta)},
+    \E{(\xi\oplus\eta)}\setminus\zerosec{\E{(\xi\oplus\eta)}})
+  \end{gather*}
+  is a Thom class of $\xi\oplus\eta$.
+  For this representation the canonical isomorphism
+  $\E{(\xi\oplus\eta)}\cong\E\xi\oplus\E\eta$
+  and the corresponding Künneth isomorphism % TODO: Ref
+  \begin{align*}
+    H^i(\E\xi, \E\xi\setminus\zerosec{\E\xi})
+      \otimes
+      H^j(\E\eta, \E\eta\setminus\zerosec{\E\eta})
+    &\overset{\sim}\longto
+      H^{i+j}(\E{(\xi\oplus\eta)},
+      \E{(\xi\oplus\eta)}\setminus\zerosec{\E{(\xi\oplus\eta)}})\\
+    x\otimes y
+    &\longmapsto
+      \pb \pi_\xi x \cup \pb \pi_\eta y
+  \end{align*}
+  with the canonical projections
+  $\pi_\xi\colon \E{(\xi\oplus\eta)}\to \E\xi$
+  and
+  $\pi_\eta\colon\E{(\xi\oplus\eta)}\to \E\eta$
+  was used.
+  \begin{proof}
+    % TODO: proof additivity Thom class
+  \end{proof}
+\end{Cor}
+
 \begin{Thm}
   Every vector bundle $\xi$ has a unique Thom class $\u(\xi)$ in
   $\Zmod2$-coefficients.
@@ -384,7 +422,7 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
 \begin{Thm}
   The Stiefel-Whitney classes fulfill
   \begin{gather*}
-    \Sq i(\u(\xi)) = t(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
+    \Sq i(\u(\xi)) = \thomiso(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
   \end{gather*}
   for any vector bundle $\xi\colon E\to B$ over a paracompact space
   $X$.
@@ -403,6 +441,22 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
       in this degree.
     \item[$\w(\gamma_1)=1+x$:] % TODO: alt def SW-classes
     \item[Additivity:] % TODO: additivity alt def SW-classes
+      Consicer vector bundles $\xi$, $\eta$ over a paracompact space
+      $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ get
+      \begin{align*} % TODO: CHECK
+        \thomiso(\w_i(\xi\oplus\eta))
+        &= \Sq i(\u(\xi\oplus\eta)) \\
+        &\overset{\mathllap{\text{\autoref{thomclassadditivity}}}}=
+        \Sq i(\u(\xi)\times\u(\eta)) \\
+        &\overset{\mathllap{\text{\ref{cartan}, Naturality}}}=
+          \sum_{r+s=i}\Sq r(\u(\xi)) \times \Sq s(\u(\eta)) \\
+        &= \sum_{r+s=i}\thomiso(\w_r(\xi)) \times \thomiso(\w_s(\eta)) \\
+        &\overset{\mathllap{\text{Naturality, group homomorphism}}}=
+          ...
+          % TODO: Intermediate steps
+          \thomiso\left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
+      \end{align*}
+      Applying $\thomiso^{-1}$ yields the result.
     \end{description}
   \end{proof}
 \end{Thm}
