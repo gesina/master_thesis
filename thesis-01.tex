@@ -145,17 +145,18 @@
 \subsection{Thom Classes}
 Let $B$ be a paracompact space, \forexample a manifold,
 $\xi\colon E\overset{p}\longto B$ a vector bundle over $B$ of rank $n>0$,
-and $R$ be a unital ring.
+and $R$ be a unital commutative ring.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
-  cohomology class $\u(\xi)\in H^n(E,E\setminus\zerosec{E}; R)$,
+  cohomology class $\u(\xi)\in H^n(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
-  $i_b\colon (E_b, E_b\setminus\{0\}) \to (E, E\setminus\zerosec{E})$
-  the restriction $\u(\xi)|_{E_b} = \pb i_b (\u(\xi))$ is a generator,
+  $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
+  the restriction $\u(\xi)|_{E_b} = \pb i_b (\u(\xi))$ is a
+  multiplicative generator,
   \idest a unit, % TODO: any generator is unit?
-  of $H^n(E_b, E_b\setminus\{0\};R)
-  \cong H^n(\R, \R\setminus\{0\}; R)
-  \cong R$.
+  of the ring
+  $H^n(\spherepair{E_b};R)\cong H^n(\spherepair{\R}; R)\cong R$.
+  \optcite[p.~441]{hatcher}
 \end{Def}
 
 \begin{Cor}
@@ -166,11 +167,11 @@ and $R$ be a unital ring.
   the pullback $\pb f \u$ of a Thom class $\u$ of $\xi$ will
   be a Thom class of $\pb f \xi$.
   \begin{proof}
-    For a Thom class $\u$ and any point $a\in A$ consider the
-    restriction $\pb i_a(\pb f \u)$ to the fiber over $a$ of the
-    pullback of $\u$. To show that this is a generator of its
-    cohomology group first use that pullbacks commute with restriction
-    to a fiber:
+    Let $\u$ be a Thom class of $\xi$ and $a\in A$ any point.
+    Consider the restriction $\pb i_a(\pb f \u)$
+    of the pullback of $\u$ to the fiber over $a$. To show that this
+    is a generator of $H^n(\spherepair{E_a};R)$ first use that
+    pullbacks commute with restriction:
     \begin{gather*}
       \pb i_a(\pb f \u)
       = \pb {(f\circ i_a)} \u
@@ -178,53 +179,143 @@ and $R$ be a unital ring.
       = \pb f (\pb i_{f(a)} \u)
     \end{gather*}
     $\pb i_{f(a)} \u$ is a generator by definition of $\u$.
-    Now the restriction
+    Now the restriction of $f$
     \begin{gather*}
-      f\colon ((\pb f E)_a, (\pb f E)_a\setminus\{0\})
-      \to (E_{f(a)}, E_{f(a)}\setminus\{0\})
+      f\colon (\spherepair{(\pb f E)_a}) \to (\spherepair{E_{f(a)}})
     \end{gather*}
     is an isomorphism, and thus
-    $\pb f\colon H^k((E_{f(a)}, E_{f(a)}\setminus\{0\}))
-    \cong H^k((\pb f E)_a, (\pb f E)_a\setminus\{0\})$
+    $\pb f\colon H^k(\spherepair{E_{f(a)}})
+    \cong H^k(\spherepair{(\pb f E)_a})$
     sends generators to generators for all $k\in\Nat$.
   \end{proof}
 \end{Cor}
 
-\begin{Cor}\label{thomclassadditivity} % TODO: Lemma instead? Join with above Cor?
-  The Thom class construction is additive, \idest
-  for vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
-  of rank $i$ respectively $j$ over a paracompact space $X$, and Thom
-  classes
-  $\u(\xi)\in H^i(\E\xi, \E\xi\setminus\zerosec{\E\xi}; R)$,
-  $\u(\eta)\in H^i(\E\eta, \E\eta\setminus\zerosec{\E\eta}; R)$
-  the class
-  \begin{gather*}
-    \u(\xi)\times\u(\eta)=\pb \pi_\xi\u(\xi) \cup \pb \pi_\eta\u(\eta)
-    \in H^{i+j}(\E{(\xi\oplus\eta)},
-    \E{(\xi\oplus\eta)}\setminus\zerosec{\E{(\xi\oplus\eta)}})
-  \end{gather*}
-  is a Thom class of $\xi\oplus\eta$.
-  For this representation the canonical isomorphism
-  $\E{(\xi\oplus\eta)}\cong\E\xi\oplus\E\eta$
-  and the corresponding Künneth isomorphism % TODO: Ref
+\begin{Rem}
+  Let $\xi$, $\eta$ be vector bundles over a space $B$
+  of rank $i$ and $j$.
+  \begin{itemize}
+  \item There is a canonical isomorphism
+    $\E{(\xi\oplus\eta)}\cong\E\xi\oplus\E\eta$
+    with the canonical projections
+    $\pi_\xi\colon \E{(\xi\oplus\eta)}\to \E\xi$
+    and
+    $\pi_\eta\colon\E{(\xi\oplus\eta)}\to \E\eta$.
+  \item There is a corresponding Künneth isomorphism
+    defining the \emph{cross-product} \optcite[p.~214]{hatcher}
   \begin{align*}
-    H^i(\E\xi, \E\xi\setminus\zerosec{\E\xi})
+    H^*(\thomspacepair{\E\xi})
       \otimes
-      H^j(\E\eta, \E\eta\setminus\zerosec{\E\eta})
+      H^*(\thomspacepair{\E\eta})
     &\overset{\sim}\longto
-      H^{i+j}(\E{(\xi\oplus\eta)},
-      \E{(\xi\oplus\eta)}\setminus\zerosec{\E{(\xi\oplus\eta)}})\\
+      H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
     x\otimes y
     &\longmapsto
       \pb \pi_\xi x \cup \pb \pi_\eta y
+      \eqqcolon x\times y
+      \;.
   \end{align*}
-  with the canonical projections
-  $\pi_\xi\colon \E{(\xi\oplus\eta)}\to \E\xi$
-  and
-  $\pi_\eta\colon\E{(\xi\oplus\eta)}\to \E\eta$
-  was used.
+  \cite[Theorem~3.18]{hatcher}
+  \end{itemize}
+\end{Rem}
+\begin{Cor}\label{thomclassmultiplicative} % TODO: Lemma instead? Join with above Cor?
+  The Thom class construction for coefficients in a field $R$ is
+  multiplicative in the following sense:
+  For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
+  of rank $i$ respectively $j$ over a paracompact space $B$, and Thom
+  classes
+  $\u(\xi)\in H^i(\thomspacepair{\E\xi}; R)$,
+  $\u(\eta)\in H^i(\thomspacepair{\E\eta}; R)$
+  the class
+  \begin{gather*}
+    \u(\xi)\times\u(\eta)
+    \coloneqq \pb \pi_\xi\u(\xi) \cup \pb \pi_\eta\u(\eta)
+    \in H^{i+j}(\thomspacepair{\E{(\xi\oplus\eta)}})
+  \end{gather*}
+  is a Thom class of $\xi\oplus\eta$.
   \begin{proof}
-    % TODO: proof additivity Thom class
+    Consider a fiber $b\in B$. As cup product and pullback commute
+    with restriction, the cross-product also commutes with
+    restriction, \idest one has to show that
+    \begin{gather*}
+      \pb i_a(\u(\xi)\times\u(\eta))
+      = \left(\pb i_a\u(\xi)\right)
+      \times \left(\pb i_a\u(\eta)\right)
+    \end{gather*}
+    is a generator of
+    $H^{i+j}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
+    % There are homotopies making the following diagram commute
+    % \begin{center}
+    %   \begin{tikzcd}
+    %     (\spherepair{\E{(\xi)}_b})
+    %     \ar[d, dash, "\sim"{above,rotate=90}]
+    %     &(\spherepair{\E{(\xi\oplus\eta)}_b})
+    %     \ar[l,"\pi_\xi"above] \ar[r,"\pi_\eta"]
+    %     \ar[d, dash, "\sim"{above,rotate=90}]
+    %     &(\spherepair{\E{(\eta)}_b})
+    %     \ar[d, dash, "\sim"{above,rotate=90}]\\
+    %     (\spherepair{\R^i})
+    %     &(\spherepair{\R^{i+j}})
+    %     \ar[l,"\proj"above] \ar[r,"\proj"]
+    %     &(\spherepair{\R^{j}})
+    %   \end{tikzcd}
+    % \end{center}
+    By the naturality of the Künneth isomorphism there is the
+    following commutative diagram that translates this problem to one
+    on the cohomology of spheres:
+    \begin{center}
+      \begin{tikzcd}
+        H^*(\spherepair{\E\xi_b};R)
+        \otimes H^*(\spherepair{\E\eta_b};R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        H^*(\spherepair{\R^i}; R)\otimes H^*(\spherepair{\R^j}; R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & H^*(\spherepair{\R^{i+j}}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        H^*(I^i,\Boundary{I^i}; R)\otimes H^*(I^j, \Boundary{I^j}; R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & H^*(I^{i+j}, \Boundary{I^{i+j}}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        H^*(\Sphere{i}; R)\otimes H^*(\Sphere{j}; R)
+        \ar[r, "\cong"]
+        & H^*(\Sphere{i+j}; R)
+      \end{tikzcd}
+    \end{center}
+    Furthermore, the simple structure of the cohomology of spheres
+    yields for the Künneth isomorphism in the desired degree
+    \begin{align*}
+      H^{i+j}(\Sphere{i+j};R)
+      &\cong
+        \left(H^*(\Sphere{i}; R)\otimes H^*(\Sphere{j}; R)\right)_{i+j}\\
+      &\coloneqq
+        \bigoplus_{\mathclap{r+s=i+j}}
+        H^r(\Sphere{i};R)\otimes H^s(\Sphere{j};R)
+        =
+        H^i(\Sphere{i};R)\otimes H^j(\Sphere{j};R)
+    \end{align*}
+    by leaving out zero-summands for the last equality.
+    Thus, a generator of
+    $H^i(\Sphere{i}; R)\otimes H^j(\Sphere{j}; R)$,
+    which is the tensor product $\iota_i\otimes\iota_j$ of a generator
+    in each factor,
+    is mapped to a generator $\iota_{i+j}=\iota_i\times\iota_j$ of
+    $H^{i+j}(\Sphere{i+j}; R)$.
+    Using the isomorphisms above prooves the claim.
+    \optcite[compare proof of Thm~3.19, p.~221]{hatcher}
+    % TODO: Maybe put into separate Lemma:
+    % Now one can use the fact, that for any two generators
+    % $\iota_i$ of $H^i(\spherepair{\R^i})$ and
+    % $\iota_j$ of $H^i(\spherepair{\R^j})$,
+    % the cross-product
+    % $\iota_i\times\iota_j$ is a generator of
+    % $H^{i+j}(\spherepair{\R^{i+j}})$.
   \end{proof}
 \end{Cor}
 
@@ -240,11 +331,11 @@ and $R$ be a unital ring.
     \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
       Using a suitable Mayer-Vietoris sequence for glueing, and an
       inductive argument starting with the trivial bundle case, one can show:
-      Any two classes in $H^n(E,E\setminus\zerosec{E};R)$ whose
+      Any two classes in $H^n(\thomspacepair{E};R)$ whose
       restrictions coincide on all fibers will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
       a unit $\u(\xi)|_{E_b}\in
-      H^n(E_b,E_b\setminus\{0\})^\times\cong\Zmod2^\times=\{1\}$
+      H^n(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
     \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
     \end{description}
@@ -254,7 +345,7 @@ and $R$ be a unital ring.
 \begin{Rem}
   Using paracompactness of $B$ and
   \cite[Proposition~17.9.6]{tomdieck}, one concludes that
-  $\u(\xi)\in H^n(E,E\setminus\zerosec{E};R)$ has to be a unit.
+  $\u(\xi)\in H^n(\thomspacepair{E};R)$ has to be a unit.
 \end{Rem}
 
 \begin{Thm}[Thom isomorphism]
@@ -263,9 +354,9 @@ and $R$ be a unital ring.
   % TODO: Ref/proof naturality Thom iso
   \begin{align*}
     \thomiso\colon
-    H^k(B;R) &\longrightarrow H^{k+n}(E, E\setminus\zerosec{E}; R)
+    H^k(B;R) &\longrightarrow H^{k+n}(\thomspacepair{E}; R)
     & \thomiso\colon
-      H_{k+n}(E, E\setminus\zerosec{E}; R) &\longrightarrow H^k(B;R)
+      H_{k+n}(\thomspacepair{E}; R) &\longrightarrow H^k(B;R)
     \\
     x &\longrightarrow \pb p (x) \cup \u(\xi)
     & \alpha &\longrightarrow \pf p (\u(\xi) \cap \alpha)
@@ -307,7 +398,7 @@ and $R$ be a unital ring.
     \begin{gather}
       \label{capprod3}
       \pf p = \Id \colon
-      \Zmod2\cong H_0(E,E\setminus\zerosec{E})\to H_0(B)\cong\Zmod2
+      \Zmod2\cong H_0(\thomspacepair{E})\to H_0(B)\cong\Zmod2
     \end{gather}
     Then with $\u\coloneqq\u(\xi)$
     \begin{align*}
@@ -337,7 +428,7 @@ and $R$ be a unital ring.
     = 1$,
   \item $\w(\gamma_1) = 1 + x$,
     % \item (naturality) $\w(\pb f \xi) = \pf \w(\xi)$
-  \item (additivity) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
+  \item (multiplicative) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
     \\\idest in degree $n$ we have
     $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
   \end{enumerate}
@@ -435,18 +526,17 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
     \item[$\w_0=1$:]
-      $H^0(\E{\gamma_0}, \E{\gamma_0}\setminus\zerosec{\E{\gamma_0}})
-      = \Zmod2$, thus 1 is the only candidate for a Thom class,
-      $\Sq0(1) = \Id(1) = 1$, and the Thom isomorphism sends 1 to 1
-      in this degree.
+      $H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
+      candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
+      isomorphism sends 1 to 1 in this degree.
     \item[$\w(\gamma_1)=1+x$:] % TODO: alt def SW-classes
-    \item[Additivity:] % TODO: additivity alt def SW-classes
-      Consicer vector bundles $\xi$, $\eta$ over a paracompact space
+    \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
+      Consider vector bundles $\xi$, $\eta$ over a paracompact space
       $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ get
       \begin{align*} % TODO: CHECK
         \thomiso(\w_i(\xi\oplus\eta))
         &= \Sq i(\u(\xi\oplus\eta)) \\
-        &\overset{\mathllap{\text{\autoref{thomclassadditivity}}}}=
+        &\overset{\mathllap{\text{\autoref{thomclassmultiplicative}}}}=
         \Sq i(\u(\xi)\times\u(\eta)) \\
         &\overset{\mathllap{\text{\ref{cartan}, Naturality}}}=
           \sum_{r+s=i}\Sq r(\u(\xi)) \times \Sq s(\u(\eta)) \\

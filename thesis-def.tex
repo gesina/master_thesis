@@ -121,17 +121,20 @@
 \newcommand*{\susp}{\Sigma} % suspension map
 
 % spaces
+\newcommand*{\Sphere}[1]{S^{#1}} % sphere
 \newcommand*{\CP}[1][\infty]{\text{$\C{}$P}^{#1}} % complex projective space
 \newcommand*{\RP}[1][\infty]{\text{$\R{}$P}^{#1}} % real projektive space
 \DeclareMathOperator{\rk}{rk} % Rang (einer Matrix)
-\newcommand*{\E}[1]{\text{E}#1} % total space of universal bundle
+\newcommand*{\E}[1]{\text{E}#1} % total space of a bundle
+\newcommand*{\B}[1]{\text{B}#1} % base space of a bundle
 \newcommand*{\BG}{\text{BG}} % classifying space of principal G-bundles
-\newcommand*{\EG}{\E{\text{G}}} % total space of the universal bundle of principal G-bundles
+\newcommand*{\EG}{\E{\text{G}}} % total space of the universal bundle
 \newcommand*{\GL}[1]{\text{GL}_{#1}(\R)} % general linear group over \R
 \newcommand*{\Orth}{O} % orthogonal matrices
 \newcommand*{\BO}{\text{BO}} % classifying space of O-bundles
 \newcommand*{\pt}{*} % single point space
 \newcommand*{\zeroset}{\{0\}} % set containing only 0
+\newcommand*{\Boundary}[1]{\partial{#1}} % boundary of a space
 
 % categories
 \newcommand*{\Top}{\text{Top}} % category of topological spaces
@@ -150,7 +153,13 @@
 
 
 % bundles
-\newcommand*{\zerosec}[1]{0_{#1}}
+\newcommand*{\zerosec}[1]{0_{#1}} % zero section of a vector bundle
+\newcommand*{\minuszerosec}[1]{{#1}^0} % total space minus zero section
+\newcommand*{\minuszero}[1]{{#1}\setminus\{0\}} % space without 0
+% pair (E, E^0) for total space E (homology is reduced thom space hom.)
+\newcommand*{\thomspacepair}[1]{#1, \minuszerosec{#1}}
+% pair (E_b, E_b\{0}) for fiber E_b (homology is mostly that of a sphere)
+\newcommand*{\spherepair}[1]{#1, \minuszero{#1}}
 \newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
 \newcommand*{\T}[1]{\mathrm{T}#1} % tangent bundle
 \newcommand*{\N}[1]{\nu_{#1}} % (stable) normal bundle
