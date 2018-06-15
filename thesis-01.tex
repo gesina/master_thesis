@@ -73,7 +73,7 @@
 
 \section{Characteristic Classes}
 \begin{Def}[Universal Bundle] % TODO
-  Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1) \overset\incl\to \BO$
+  Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1)\xrightarrow{\incl} \BO$
 \end{Def}
 
 \begin{Def}[Classifying Spaces] 
@@ -144,7 +144,7 @@
 
 \subsection{Thom Classes}
 Let $B$ be a paracompact space, \forexample a manifold,
-$\xi\colon E\overset{p}\longto B$ a vector bundle over $B$ of rank $n>0$,
+$\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $n>0$,
 and $R$ be a unital commutative ring.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
@@ -418,21 +418,22 @@ and $R$ be a unital commutative ring.
 
 \subsection{Stiefel-Whitney Classes}
 \begin{Def}[Stiefel-Whitney Classes]\label{def:swclasses}
-  The Stiefel-Whitney classes are cohomology classes
+  The Stiefel-Whitney classes are
+  characteristic classes for principal $\Orth$-bundles
+  respectively vector bundles,
+  \idest cohomology classes
   $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
-  \idest characteristic classes for principal $\Orth$-bundles
-  respectively vector bundles, fulfilling
-  for any vector bundles $\xi$ and $\eta$ over a space $X$
+  fulfilling the following properties for any vector bundles $\xi$ and
+  $\eta$ over a space $B$, and any map $f\colon A\to B$ of spaces:
   \begin{enumerate}
-  \item $\w_0%(\xi)
-    = 1$,
+  \item \emph{(Naturality)} $\pb f\w_i(\xi) = \w_i(\pb f \xi)$,
+  \item $\w_0(\xi)=1$,
   \item $\w(\gamma_1) = 1 + x$,
-    % \item (naturality) $\w(\pb f \xi) = \pf \w(\xi)$
-  \item (multiplicative) $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
+  \item \emph{(Multiplicativity)} $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
     \\\idest in degree $n$ we have
     $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
   \end{enumerate}
-  where
+  where the \emph{total Stiefel-Whitney class}
   $\w\coloneqq\sum_{i\geq 0}\w_i$ is the formal sum of all
   Stiefel-Whitney classes,
   $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
@@ -446,6 +447,7 @@ and $R$ be a unital commutative ring.
     degree 1 to $x$.
   }
   generator of $H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
+  \optcite[compare §4, p.~37]{milnor}
 \end{Def}
 
 \begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
@@ -511,16 +513,18 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
 \end{Def}
 
 \begin{Thm}
-  The Stiefel-Whitney classes fulfill
+  The Stiefel-Whitney classes can be given as
   \begin{gather*}
     \Sq i(\u(\xi)) = \thomiso(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
   \end{gather*}
   for any vector bundle $\xi\colon E\to B$ over a paracompact space
   $X$.
-  More precisely, this can serve as a construction of the $\w_i$ using
-  $\w_i=\w_i(\gamma_n)\in\BO(n)\subset\BO$ for $n\geq i$.
+  The representing cohomology classes can be constructed using the
+  embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
+  $\w_i=\pb\incl\w_i(\gamma_n)\in H^i(\BO)$ % TODO: ref
+  .
   \begin{proof}
-    One has to check naturality of the expression and all further
+    Check naturality of the expression and all further
     definining properties from \ref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
@@ -533,20 +537,53 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
     \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
       $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ get
-      \begin{align*} % TODO: CHECK
+      \begin{align*} % TODO: shorten
         \thomiso(\w_i(\xi\oplus\eta))
         &= \Sq i(\u(\xi\oplus\eta)) \\
         &\overset{\mathllap{\text{\autoref{thomclassmultiplicative}}}}=
-        \Sq i(\u(\xi)\times\u(\eta)) \\
-        &\overset{\mathllap{\text{\ref{cartan}, Naturality}}}=
-          \sum_{r+s=i}\Sq r(\u(\xi)) \times \Sq s(\u(\eta)) \\
-        &= \sum_{r+s=i}\thomiso(\w_r(\xi)) \times \thomiso(\w_s(\eta)) \\
-        &\overset{\mathllap{\text{Naturality, group homomorphism}}}=
-          ...
+          \Sq i(\pb\pi_\xi\u(\xi) \cup \pb\pi_\eta\u(\eta))\\
+        &\overset{\mathllap{\text{\ref{cartan}}}}=
+          \sum_{r+s=i}
+          \Sq r(\pb\pi_\xi\u(\xi)) \cup \Sq s(\pb \pi_\eta\u(\eta)) \\
+        &\overset{\mathllap{\text{Naturality}}}=
+          \sum_{r+s=i}
+          \pb\pi_\xi\Sq r(\u(\xi)) \cup \pb \pi_\eta\Sq s(\u(\eta)) \\
+        &\overset{\mathllap{\text{Definition}}}=
+          \sum_{r+s=i}
+          \pb\pi_\xi\thomiso(\w_r(\xi))
+          \cup \pb\pi_\eta\thomiso(\w_s(\eta)) \\
+        &\overset{\mathllap{\text{Definition}}}=
+          \sum_{r+s=i}
+          \pb\pi_\xi \left(\pb p_\xi  \w_r(\xi)  \cup \u(\xi) \right)
+          \cup
+          \pb\pi_\eta\left(\pb p_\eta \w_s(\eta) \cup \u(\eta)\right) \\
+        &= \sum_{r+s=i}
+          \left(
+          \pb\pi_\xi \pb p_\xi \w_r(\xi) \cup
+          \pb\pi_\eta\pb p_\eta\w_s(\eta)\right)
+          \cup
+          \left(\pb\pi_\xi\u(\xi) \cup \pb\pi_\eta\u(\eta)\right) \\
+        &\overset{\mathllap{\eqref{projectionscommute}}} =
+          \left(\sum_{r+s=i}
+          \pb p_{\xi\oplus\eta} \w_r(\xi) \cup \pb p_{\xi\oplus\eta} \w_s(\eta)
+          \right)
+          \cup
+          \u(\xi) \times \u(\eta) \\
+        &\overset{\mathllap{\text{Group Hom./Definition}}}=
+          \pb p_{\xi\oplus\eta}
+          \left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
+          \cup
+          \u(\xi\oplus\eta)\\
+        &\overset{\mathllap{\text{Definition}}}=
           % TODO: Intermediate steps
           \thomiso\left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
       \end{align*}
+      where it is used that
+      \begin{gather}\label{projectionscommute}
+        p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
+      \end{gather}
       Applying $\thomiso^{-1}$ yields the result.
+      \qedhere
     \end{description}
   \end{proof}
 \end{Thm}
