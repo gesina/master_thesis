@@ -72,6 +72,19 @@
   \end{proof}
 \end{Thm}
 
+\begin{Def}[Steenrod Algebra]% TODO
+\end{Def}
+
+\begin{Def}
+  The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is
+  inductively defined by the relation
+  \begin{gather*}
+    1 = \Sq 0
+    = \Sq{} \Sqcup \antipode(\Sq{})
+    = \sum_{k\geq0}\sum_{r+s=k} \Sq r \Sqcup \antipode(\Sq s)
+  \end{gather*}
+\end{Def}
+
 \section{Characteristic Classes}
 \begin{Def}[Universal Bundle] % TODO
   Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1)\xrightarrow{\incl} \BO$
@@ -593,7 +606,7 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
 % TODO: What is interesting about Wu classes? -> Conn. to SW cl.
 Let $M$ be a compact, $n$-dimensinoal manifold.
 
-\begin{Def}
+\begin{Def}\label{def:wuclasses}
   The $i$th \emph{Wu class} $\v_i(M)$ of $M$ for $0\leq i\leq n$ is defined
   as the cohomology class in $H^i(M)$ that is uniquely determined by
   \begin{center}
@@ -645,6 +658,12 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
     0 &= \sum_{r+s=i}\v_r(M)\cup\dualv_s(M)
     &&\text{in degree $0\leq i\leq n$}
   \end{align*}
+\end{Def}
+
+The following alternative definition of the Wu classes of a manifold
+will be shown to be equivalent to the one above in \ref{def:wuclasses}
+\begin{Def}
+% TODO: Alternative definition Wu class  
 \end{Def}
 
 %%% Local Variables:
