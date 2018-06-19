@@ -10,9 +10,10 @@
 
 \chapter*{Introduction}
 
+\section*{Notation}
 \begin{itemize}
-\item space means topological space
-\item all maps between spaces are continuous
+\item \enquote{Space} always means topological space, and all maps
+  between spaces are continuous if not stated otherwise.
   % \item $\Zmod2 \coloneqq \Z/2\Z$
 \item For $X$, $Y$ spaces $[X,Y]$ denotes the set of homotopy classes
   of basepoint preserving maps $X\to Y$.
@@ -29,6 +30,29 @@
   \item $\minuszerosec{E}\coloneqq E\setminus\Im\zerosec{\xi}$
     is the total space without the zero section.
   \end{itemize}
+\item The following notation for cup-~and cap-product will be used,
+  where $(X,A)$, $(X,B)$ are pairs of spaces, $R$ a unital commutative
+  ring, and $i,j\in\Nat$:
+  \begin{itemize}
+  \item The (relative) cup-product is denoted as
+    \begin{align*}
+      -\cup-\colon
+      H^i(X,A;R)\times H^j(X,B;R) &\longto H^{i+j}(X,A\cup B;R)\\
+      (x, y) &\longmapsto x\cup y
+    \end{align*}
+  \item The (relative) cap-product is denoted as
+    \begin{align*}
+      -\cap-\colon
+      H^i(X,A;R)\times H_{i+j}(X,A\cup B;R) &\longto H_j(X,B;R)\\
+      (x, \alpha) &\longmapsto x\cap \alpha
+    \end{align*}
+  \item If $X$ is an $n$-dimensional, $R$-orientable manifold define
+    \begin{align*}
+      \capped - -\colon
+      H^i(X,A;R)\times H_{n-i}(X,A;R) &\longto H_n(X) \cong \Zmod2\\
+      (x, \alpha) &\longmapsto \capped x \alpha \coloneqq x\cap \alpha
+    \end{align*}
+  \end{itemize}
 \end{itemize}
 
 % Nomenclature:
@@ -41,7 +65,8 @@
 \nomenclature{$\Sigma$}{Suspension of a space $X$
   respectively suspension morphism on cohomology: %TODO}
 \nomenclature{$\zerosec\xi$}{Zero section of a vector bundle $\xi$}
-  
+\nomenclature{$\cap$}{cap-product $H^i(X;R)\times H_j(X;R) \to H_{j-i}(X;R)$}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"

@@ -51,13 +51,14 @@
     \end{gather}
      where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \end{description}
-  $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ the formal sum of all
+  $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
   Steenrod squares called the \emph{the total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
   $\Sq{}\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
   finite by \eqref{sqlowerbound}.
   Also \ref{cartan} can be reformulated to
-  $\Sq{}(x\cup y) = \Sq{}(x)\cup\Sq{}(y)$.
+  $\Sq{}(x\cup y) = \Sq{}(x)\cup\Sq{}(y)$, \idest $\Sq{}$ is a group
+  homomorphism with respect to the cup-product.
 
   Analoguesly define Steenrod squares for a pair of spaces $(X,A)$.
 \end{Def}
@@ -588,6 +589,63 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
   \end{proof}
 \end{Thm}
 
+\subsection{Wu Classes}
+% TODO: What is interesting about Wu classes? -> Conn. to SW cl.
+Let $M$ be a compact, $n$-dimensinoal manifold.
+
+\begin{Def}
+  The $i$th \emph{Wu class} $\v_i(M)$ of $M$ for $0\leq i\leq n$ is defined
+  as the cohomology class in $H^i(M)$ that is uniquely determined by
+  \begin{center}
+    \begin{tikzcd}[row sep=0pt, column sep=small]
+      H^i(M) \ar[r, equal, "\sim"]
+      & H_{n-1}(M) \ar[r, equal, "\sim"]
+      &\Hom{\Zmod2}(H^{n-i}(M), \Zmod2) \ar[r, equal, "\sim"]
+      &\Zmod2
+      \\
+      y \ar[rr, mapsto] &&\capped{ x\cup y }{ \fundcl M }\\
+      \v_i(M) \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
+    \end{tikzcd}
+  \end{center}
+  where the first isomorphism from the left is Poincaré duality % TODO: ref
+  and the second is the universal coefficient theorem % TODO: ref
+  for the field $\Zmod2$.
+  Equivalently, for any cohomology class $x\in H^{n-i}(M)$ of fixed
+  degree $n-i$ holds
+  \begin{gather*}
+    x\cup \v_i = \Sq i(x) \in H^n(M) \cong \Zmod2
+  \end{gather*}
+  Mind the fixed degree of $x$---the above will not be true for other
+  degree cohomology classes in general!
+\end{Def}
+
+\begin{Rem}
+  Some immediate consequences of the definitions of the Wu classes of
+  $M$ are
+  \begin{itemize}
+  \item $\v_0 = 1$
+  \item $\v_i = 0$ for $i>\frac n 2$, because $\Sq i(x) = 0$ if the
+    degree of x is lower than $i$.
+  \end{itemize}
+\end{Rem}
+
+
+\begin{Def}
+  The \emph{total Wu class} of $M$ is defined as the sum
+  $\sum_{i\geq0}\v_i(M)$. The \emph{total dual Wu class}
+  $\dualv(M)\eqqcolon \sum_{i\geq 0}\dualv_i(M)$
+  and the dual Wu classes $\dualv_i$
+  of $M$ are defined by
+  \begin{gather*}
+    \v(M) \cup \dualv(M) = 1
+  \end{gather*}
+  or equivalently
+  \begin{align*}
+    1 &= \dualv_0(M) \cup \v_0(M) = \dualv_0(M) \\
+    0 &= \sum_{r+s=i}\v_r(M)\cup\dualv_s(M)
+    &&\text{in degree $0\leq i\leq n$}
+  \end{align*}
+\end{Def}
 
 %%% Local Variables:
 %%% mode: latex

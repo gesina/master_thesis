@@ -136,21 +136,24 @@
 \newcommand*{\zeroset}{\{0\}} % set containing only 0
 \newcommand*{\Boundary}[1]{\partial{#1}} % boundary of a space
 
-% categories
+% category stuff
 \newcommand*{\Top}{\mathrm{Top}} % category of topological spaces
 \newcommand*{\Vect}{\mathrm{Vect}} % category of vector bundles
+\newcommand*{\Hom}[1]{\mathrm{Hom}_{#1}} % #1-module homomorphisms
 
-% cohomology classes/maps
+% (co)homology classes/maps
 \newcommand*{\capped}[2]{\left\langle #1, #2 \right\rangle} % cap prod
 \newcommand*{\Sq}[1]{\mathrm{Sq}^{#1}}  % Steenrod Squares
 \newcommand*{\cl}{\mathrm{cl}} % general name of a characteristic class
 \newcommand*{\Cl}{\mathrm{Cl}} % general name of a characteristic class
+\newcommand*{\dual}[1]{\overline{#1}} % dual characteristic class
 \newcommand*{\w}{w} % Stiefel-Whitney class
-\newcommand*{\dualw}{\overline{\w}} % dual Stiefel-Whitney class
+\newcommand*{\dualw}{\dual{\w}} % dual Stiefel-Whitney class
 \renewcommand*{\u}{u} % Thom class (overwrites cup over letter)
 \newcommand*{\thomiso}{t} % Thom isomorphism
 \renewcommand*{\v}{v} % Wu class (overwrites check over letter)
-
+\newcommand*{\dualv}{\dual{v}} % dual Wu class
+\newcommand*{\fundcl}[1]{[#1]} % fundamental class of a manifold
 
 % bundles
 \newcommand*{\zerosec}[1]{0_{#1}} % zero section of a vector bundle
