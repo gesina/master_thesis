@@ -1,12 +1,12 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Master Thesis in Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
 % -- Chapter 2: Preliminaries --
 % 
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Preliminaries}
 \section{Steenrod Squares}
@@ -49,7 +49,7 @@
         \beta & i=1
       \end{cases}
     \end{gather}
-     where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
+    where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \end{description}
   $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
   Steenrod squares called the \emph{the total Steenrod square}.
@@ -129,7 +129,7 @@
     \Cl\colon [-, \BG] \Longrightarrow H^i(-; R)\;.
   \end{gather*}
 \end{Def}
-  
+
 \begin{Rem}
   By Brown's representation theorem % TODO: cite
   $H^i(-;R)$ is a represantable functor represented by $K(i,R)$.
@@ -158,18 +158,18 @@
 
 \subsection{Thom Classes}
 Let $B$ be a paracompact space, \forexample a manifold,
-$\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $n>0$,
+$\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
 and $R$ be a unital commutative ring.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
-  cohomology class $\u(\xi)\in H^n(\spherepair{E}; R)$,
+  cohomology class $\u(\xi)\in H^{\rkk}(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
   $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
   the restriction $\u(\xi)|_{E_b} = \pb i_b (\u(\xi))$ is a
   multiplicative generator,
   \idest a unit, % TODO: any generator is unit?
   of the ring
-  $H^n(\spherepair{E_b};R)\cong H^n(\spherepair{\R}; R)\cong R$.
+  $H^{\rkk}(\spherepair{E_b};R)\cong H^{\rkk}(\spherepair{\R}; R)\cong R$.
   \optcite[p.~441]{hatcher}
 \end{Def}
 
@@ -184,7 +184,7 @@ and $R$ be a unital commutative ring.
     Let $\u$ be a Thom class of $\xi$ and $a\in A$ any point.
     Consider the restriction $\pb i_a(\pb f \u)$
     of the pullback of $\u$ to the fiber over $a$. To show that this
-    is a generator of $H^n(\spherepair{E_a};R)$ first use that
+    is a generator of $H^{\rkk}(\spherepair{E_a};R)$ first use that
     pullbacks commute with restriction:
     \begin{gather*}
       \pb i_a(\pb f \u)
@@ -198,15 +198,14 @@ and $R$ be a unital commutative ring.
       f\colon (\spherepair{(\pb f E)_a}) \to (\spherepair{E_{f(a)}})
     \end{gather*}
     is an isomorphism, and thus
-    $\pb f\colon H^k(\spherepair{E_{f(a)}})
-    \cong H^k(\spherepair{(\pb f E)_a})$
-    sends generators to generators for all $k\in\Nat$.
+    $\pb f\colon H^r(\spherepair{E_{f(a)}})
+    \cong H^r(\spherepair{(\pb f E)_a})$
+    sends generators to generators for all $r\in\Nat$.
   \end{proof}
 \end{Cor}
 
 \begin{Rem}
-  Let $\xi$, $\eta$ be vector bundles over a space $B$
-  of rank $i$ and $j$.
+  Let $\xi$, $\eta$ be vector bundles over a space $B$.
   \begin{itemize}
   \item There is a canonical isomorphism
     $\E{(\xi\oplus\eta)}\cong\E\xi\oplus\E\eta$
@@ -216,34 +215,34 @@ and $R$ be a unital commutative ring.
     $\pi_\eta\colon\E{(\xi\oplus\eta)}\to \E\eta$.
   \item There is a corresponding Künneth isomorphism
     defining the \emph{cross-product} \optcite[p.~214]{hatcher}
-  \begin{align*}
-    H^*(\thomspacepair{\E\xi})
+    \begin{align*}
+      H^*(\thomspacepair{\E\xi})
       \otimes
       H^*(\thomspacepair{\E\eta})
-    &\overset{\sim}\longto
-      H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
-    x\otimes y
-    &\longmapsto
-      \pb \pi_\xi x \cup \pb \pi_\eta y
-      \eqqcolon x\times y
-      \;.
-  \end{align*}
-  \cite[Theorem~3.18]{hatcher}
+      &\overset{\sim}\longto
+        H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
+      x\otimes y
+      &\longmapsto
+        \pb \pi_\xi x \cup \pb \pi_\eta y
+        \eqqcolon x\times y
+        \;.
+    \end{align*}
+    \cite[Theorem~3.18]{hatcher}
   \end{itemize}
 \end{Rem}
 \begin{Cor}\label{thomclassmultiplicative} % TODO: Lemma instead? Join with above Cor?
   The Thom class construction for coefficients in a field $R$ is
   multiplicative in the following sense:
   For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
-  of rank $i$ respectively $j$ over a paracompact space $B$, and Thom
+  of rank $\rkk$ respectively $\rkl$ over a paracompact space $B$, and Thom
   classes
-  $\u(\xi)\in H^i(\thomspacepair{\E\xi}; R)$,
-  $\u(\eta)\in H^i(\thomspacepair{\E\eta}; R)$
+  $\u(\xi)\in H^{\rkk}(\thomspacepair{\E\xi}; R)$,
+  $\u(\eta)\in H^{\rkl}(\thomspacepair{\E\eta}; R)$
   the class
   \begin{gather*}
     \u(\xi)\times\u(\eta)
     \coloneqq \pb \pi_\xi\u(\xi) \cup \pb \pi_\eta\u(\eta)
-    \in H^{i+j}(\thomspacepair{\E{(\xi\oplus\eta)}})
+    \in H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}})
   \end{gather*}
   is a Thom class of $\xi\oplus\eta$.
   \begin{proof}
@@ -256,7 +255,7 @@ and $R$ be a unital commutative ring.
       \times \left(\pb i_a\u(\eta)\right)
     \end{gather*}
     is a generator of
-    $H^{i+j}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
+    $H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
     % There are homotopies making the following diagram commute
     % \begin{center}
     %   \begin{tikzcd}
@@ -285,51 +284,51 @@ and $R$ be a unital commutative ring.
         & H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(\spherepair{\R^i}; R)\otimes H^*(\spherepair{\R^j}; R)
+        H^*(\spherepair{\R^{\rkk}}; R)\otimes H^*(\spherepair{\R^{\rkl}}; R)
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & H^*(\spherepair{\R^{i+j}}; R)
+        & H^*(\spherepair{\R^{\rkk+\rkl}}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(I^i,\Boundary{I^i}; R)\otimes H^*(I^j, \Boundary{I^j}; R)
+        H^*(I^{\rkk},\Boundary{I^{\rkk}}; R)\otimes H^*(I^{\rkl}, \Boundary{I^{\rkl}}; R)
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & H^*(I^{i+j}, \Boundary{I^{i+j}}; R)
+        & H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(\Sphere{i}; R)\otimes H^*(\Sphere{j}; R)
+        H^*(\Sphere{\rkk}; R)\otimes H^*(\Sphere{\rkl}; R)
         \ar[r, "\cong"]
-        & H^*(\Sphere{i+j}; R)
+        & H^*(\Sphere{\rkk+\rkl}; R)
       \end{tikzcd}
     \end{center}
     Furthermore, the simple structure of the cohomology of spheres
     yields for the Künneth isomorphism in the desired degree
     \begin{align*}
-      H^{i+j}(\Sphere{i+j};R)
+      H^{\rkk+\rkl}(\Sphere{\rkk+\rkl};R)
       &\cong
-        \left(H^*(\Sphere{i}; R)\otimes H^*(\Sphere{j}; R)\right)_{i+j}\\
+        \left(H^*(\Sphere{\rkk}; R)\otimes H^*(\Sphere{\rkl}; R)\right)_{\rkk+\rkl}\\
       &\coloneqq
-        \bigoplus_{\mathclap{r+s=i+j}}
-        H^r(\Sphere{i};R)\otimes H^s(\Sphere{j};R)
+        \bigoplus_{\mathclap{r+s=\rkk+\rkl}}
+        H^r(\Sphere{\rkk};R)\otimes H^s(\Sphere{\rkl};R)
         =
-        H^i(\Sphere{i};R)\otimes H^j(\Sphere{j};R)
+        H^{\rkk}(\Sphere{\rkk};R)\otimes H^{\rkl}(\Sphere{\rkl};R)
     \end{align*}
     by leaving out zero-summands for the last equality.
     Thus, a generator of
-    $H^i(\Sphere{i}; R)\otimes H^j(\Sphere{j}; R)$,
-    which is the tensor product $\iota_i\otimes\iota_j$ of a generator
+    $H^{\rkk}(\Sphere{\rkk}; R)\otimes H^{\rkl}(\Sphere{\rkl}; R)$,
+    which is the tensor product $\iota_{\rkk}\otimes\iota_{\rkl}$ of a generator
     in each factor,
-    is mapped to a generator $\iota_{i+j}=\iota_i\times\iota_j$ of
-    $H^{i+j}(\Sphere{i+j}; R)$.
+    is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
+    $H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
     Using the isomorphisms above prooves the claim.
     \optcite[compare proof of Thm~3.19, p.~221]{hatcher}
     % TODO: Maybe put into separate Lemma:
     % Now one can use the fact, that for any two generators
-    % $\iota_i$ of $H^i(\spherepair{\R^i})$ and
-    % $\iota_j$ of $H^i(\spherepair{\R^j})$,
+    % $\iota_{\rkk}$ of $H^{\rkk}(\spherepair{\R^{\rkk}})$ and
+    % $\iota_{\rkl}$ of $H^{\rkl}(\spherepair{\R^{\rkl}})$,
     % the cross-product
-    % $\iota_i\times\iota_j$ is a generator of
-    % $H^{i+j}(\spherepair{\R^{i+j}})$.
+    % $\iota_{\rkk}\times\iota_{\rkl}$ is a generator of
+    % $H^{\rkk+\rkl}(\spherepair{\R^{\rkk+\rkl}})$.
   \end{proof}
 \end{Cor}
 
@@ -345,11 +344,11 @@ and $R$ be a unital commutative ring.
     \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
       Using a suitable Mayer-Vietoris sequence for glueing, and an
       inductive argument starting with the trivial bundle case, one can show:
-      Any two classes in $H^n(\thomspacepair{E};R)$ whose
+      Any two classes in $H^{\rkk}(\thomspacepair{E};R)$ whose
       restrictions coincide on all fibers will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
       a unit $\u(\xi)|_{E_b}\in
-      H^n(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
+      H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
     \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
     \end{description}
@@ -359,18 +358,18 @@ and $R$ be a unital commutative ring.
 \begin{Rem}
   Using paracompactness of $B$ and
   \cite[Proposition~17.9.6]{tomdieck}, one concludes that
-  $\u(\xi)\in H^n(\thomspacepair{E};R)$ has to be a unit.
+  $\u(\xi)\in H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
 \end{Rem}
 
 \begin{Thm}[Thom isomorphism]
-  For any Thom class $\u(\xi)$ of $\xi$, and any degree $k$ there are
+  For any Thom class $\u(\xi)$ of $\xi$, and any degree $r$ there are
   isomorphisms natural with respect to pullback of vector bundles
   % TODO: Ref/proof naturality Thom iso
   \begin{align*}
     \thomiso\colon
-    H^k(B;R) &\longrightarrow H^{k+n}(\thomspacepair{E}; R)
+    H^r(B;R) &\longrightarrow H^{r+\rkk}(\thomspacepair{E}; R)
     & \thomiso\colon
-      H_{k+n}(\thomspacepair{E}; R) &\longrightarrow H^k(B;R)
+      H_{r+\rkk}(\thomspacepair{E}; R) &\longrightarrow H^r(B;R)
     \\
     x &\longrightarrow \pb p (x) \cup \u(\xi)
     & \alpha &\longrightarrow \pf p (\u(\xi) \cap \alpha)
@@ -385,8 +384,11 @@ and $R$ be a unital commutative ring.
   \end{proof}
 \end{Thm}
 
-\begin{Lem}
-  The Thom isomorphisms fulfill for $k\in\Nat$, $x\in H^k(B)$, and $\alpha\in H_k(E)$
+\begin{Lem}\label{thomisoself-adjoint}
+  If $B$ is connected, the Thom isomorphisms are adjoint in the
+  following sense:
+  For $r\in\Nat$, $x\in H^r(B)$,
+  and $\alpha\in H_{r+\rkk}(\thomspacepair{E})$  holds 
   \begin{gather*}
     \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
   \end{gather*}
@@ -396,12 +398,13 @@ and $R$ be a unital commutative ring.
     \begin{align}
       \label{capprod1}
       \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
-      \in H_0(X,X'')\\
+                                \in H_0(X,X'')\\
       \label{capprod2}
       \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
-      \in H_0(X,X'')
+                                \in H_0(X,X'')
     \end{align}
     for
+    % TODO: Nicify preliminaries
     triples of spaces $(X, X'', X')$, $(Y, Y'', Y')$,
     $f\colon (Y,Y'',Y')\to (X,X'',X')$,
     $a\in H^i(X,X')$, $b\in H^j(X,X')$,
@@ -426,6 +429,36 @@ and $R$ be a unital commutative ring.
         \capped{x}{\pf p(u\cap\alpha)}
         = \capped{x}{\thomiso (\alpha)} \in\Zmod2
     \end{align*}
+  \end{proof}
+\end{Lem}
+
+% TODO: Better motivation for relationship thom iso <-> fundamental cl
+Normal bundles give an interesting, geometrically motivated
+description of the fundamental class of a manifold:
+\begin{Lem}\label{thomisofundcl}
+  Let $M$ be an $n$-dimensional compact manifold, and
+  $i\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
+  normal bundle $\N M$ of rank $\rkk$.
+  The normal bundle gives rise to an embedding
+  $e\colon \E{\N M}\to\Sphere{n+\rkk}$ of its total space
+  as a tubular neighbourhood $e(\E{\N M})$ of $i(M)$ into the
+  $(n+\rkk)$-sphere.
+  The quotient map
+  \begin{gather*}
+    \collapse\colon
+    \Sphere{n+\rkk}
+    \to \Sphere{n+\rkk}/\left( \Sphere{n+\rkk}\setminus e(\E{\N M}) \right)
+    \cong \Discbdl{\N M} / \Spherebdl{\N M}
+    \cong \Thomspace{\N M}
+  \end{gather*}
+  that collapses every point outside of $e(\E{\N M})$ to the infinity
+  point fulfills
+  \begin{gather*}
+    \thomiso(\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
+  \end{gather*}
+  This holds for any choice of embeddings $i$ and $e$.
+  \begin{proof}
+    % TODO: proof relationship thom iso <-> fundamental cl
   \end{proof}
 \end{Lem}
 
@@ -465,17 +498,17 @@ and $R$ be a unital commutative ring.
 \end{Def}
 
 \begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
-Stiefel-Whitney classes exist and are uniquely defined by the above
-properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
-\begin{proof}[proof (existence)]
-  Construction utilizes the Euler class.
-\end{proof}
-\begin{proof}[proof (uniqueness)]
-  Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
-\end{proof}
-\begin{proof}[proof (generators)]
-  Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
-\end{proof}
+  Stiefel-Whitney classes exist and are uniquely defined by the above
+  properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
+  \begin{proof}[proof (existence)]
+    Construction utilizes the Euler class.
+  \end{proof}
+  \begin{proof}[proof (uniqueness)]
+    Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
+  \end{proof}
+  \begin{proof}[proof (generators)]
+    Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
+  \end{proof}
 \end{Thm}
 
 \begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
@@ -526,7 +559,7 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
   Proposition~\ref{propswclasses} above.
 \end{Def}
 
-\begin{Thm}
+\begin{Thm}\label{altdefswclasses}
   The Stiefel-Whitney classes can be given as
   \begin{gather*}
     \Sq i(\u(\xi)) = \thomiso(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
@@ -589,7 +622,7 @@ properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]
           \cup
           \u(\xi\oplus\eta)\\
         &\overset{\mathllap{\text{Definition}}}=
-          % TODO: Intermediate steps
+        % TODO: Intermediate steps
           \thomiso\left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
       \end{align*}
       where it is used that
@@ -656,15 +689,66 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
   \begin{align*}
     1 &= \dualv_0(M) \cup \v_0(M) = \dualv_0(M) \\
     0 &= \sum_{r+s=i}\v_r(M)\cup\dualv_s(M)
-    &&\text{in degree $0\leq i\leq n$}
+      &&\text{in degree $0\leq i\leq n$}
   \end{align*}
 \end{Def}
 
-The following alternative definition of the Wu classes of a manifold
+The following more general definition of Wu classes
 will be shown to be equivalent to the one above in \ref{def:wuclasses}
 \begin{Def}
-% TODO: Alternative definition Wu class  
+  Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
+  paracompact space $B$.
+  The $i$th \emph{Wu class} $\v_i(\xi)$ of $\xi$ for $0\leq i\leq n$
+  is defined as the cohomology class in $H^i(B)$ that is uniquely
+  determined by
+  \begin{gather*}
+    \antipode(\Sq i)(\u(\xi)) = \thomiso(\v_i(\xi)) = \pb p v_i(\xi) \cup \u(\xi)
+  \end{gather*}
+  The \emph{total Wu class} of $\xi$ is defined as usual as
+  $\v(\xi)\coloneqq\sum_{i\geq0}\v_i(\xi)$.
 \end{Def}
+\begin{Rem}
+  Compare this to the possible definition of the Stiefel-Whitney
+  classes in \autoref{altdefswclasses}.
+\end{Rem}
+
+\begin{Thm}\label{altdefwuclasses}
+  Let $M$ be a compact manifold of dimension $n$, and let $\N M$ be
+  any normal bundle of rank $k$ of an embedding of $M$ into
+  $\R^{n+k}$. Then
+  \begin{gather*}
+    \v_i(M) = \v_i(\N M)\in H^i(M)
+  \end{gather*}
+  \begin{proof}
+    To proof \nameref{altdefwuclasses} the defining property of
+    $\v_i(M)$ will be checked on $\v_i(\N M)$, \idest one has to show
+    that for any $x\in H^{n-i}(M)$ holds
+    \begin{gather*}
+      \capped{x\cup \v_i(\N M)}{\fundcl M}
+      = \capped{\Sq i(x)}{\fundcl M}
+    \end{gather*}
+    Thus, fix some $i\geq0$, and some arbitrary $x\in H^{n-i}(M)$.
+    One first needs to recall the following properties of Thom classes
+    and of the cohomology of spheres:
+    \begin{description}
+    \item[By \autoref{thomisoself-adjoint}:]
+      $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
+      for $r\in\Nat$, $z\in H^r(M)$,
+      $\alpha\in H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
+    \item[By \autoref{thomisofundcl}:]
+      $\thomiso(\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
+      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
+      the collapse map of a tubular embedding of the normal bundle $\N M$.
+    \item[By \autoref{sqlowerbound}:]
+      The total Steenrod square
+      $\Sq{}\colon H^m(\Sphere m)
+      \to H^*(\Sphere m)$
+      is the identity on $H^m(\Sphere m)$, \idest
+      $\Sq i\colon H^m(\Sphere{m})\to H^{m+i}(\Sphere{m})$ is zero for $i\neq0$.
+    \end{description}
+    % TODO: proof alt def Wu classes
+  \end{proof}
+\end{Thm}
 
 %%% Local Variables:
 %%% mode: latex

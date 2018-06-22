@@ -1,12 +1,12 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Master Thesis in Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
 % -- Chapter 1: Introduction --
 % 
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter*{Introduction}
 
@@ -41,19 +41,16 @@
       (x, y) &\longmapsto x\cup y
     \end{align*}
   \item The (relative) cap-product is denoted as
+    % TODO: cap-product vs. Kronecker pairing?
     \begin{align*}
       -\cap-\colon
       H^i(X,A;R)\times H_{i+j}(X,A\cup B;R) &\longto H_j(X,B;R)\\
-      (x, \alpha) &\longmapsto x\cap \alpha
-    \end{align*}
-  \item If $X$ is an $n$-dimensional, $R$-orientable manifold define
-    \begin{align*}
-      \capped - -\colon
-      H^i(X,A;R)\times H_{n-i}(X,A;R) &\longto H_n(X) \cong \Zmod2\\
-      (x, \alpha) &\longmapsto \capped x \alpha \coloneqq x\cap \alpha
+      (x, \alpha) &\longmapsto x\cap \alpha \eqqcolon \capped x \alpha
     \end{align*}
   \end{itemize}
 \end{itemize}
+
+
 
 % Nomenclature:
 \nomenclature{$H^i(-; R)$}{Singular cohomology of degree $i$ with coefficients
@@ -63,7 +60,8 @@
 \nomenclature{$\Orth(n)$}{Group of $n$-dimensional orthogonal matrices over $\R$}
 \nomenclature{$\Orth$}{Group of orthogonal matrices over $\R$}
 \nomenclature{$\Sigma$}{Suspension of a space $X$
-  respectively suspension morphism on cohomology: %TODO}
+  respectively suspension morphism on cohomology: %TODO
+}
 \nomenclature{$\zerosec\xi$}{Zero section of a vector bundle $\xi$}
 \nomenclature{$\cap$}{cap-product $H^i(X;R)\times H_j(X;R) \to H_{j-i}(X;R)$}
 
@@ -71,3 +69,4 @@
 %%% mode: latex
 %%% TeX-master: "thesis"
 %%% End:
+  
