@@ -433,12 +433,12 @@ and $R$ be a unital commutative ring.
 \end{Lem}
 
 % TODO: Better motivation for relationship thom iso <-> fundamental cl
-Normal bundles give an interesting, geometrically motivated
+Normal bundles give an interesting, more geometrical
 description of the fundamental class of a manifold:
 \begin{Lem}\label{thomisofundcl}
   Let $M$ be an $n$-dimensional compact manifold, and
   $i\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
-  normal bundle $\N M$ of rank $\rkk$.
+  normal bundle $\N M$ of rank $\rkk>0$.
   The normal bundle gives rise to an embedding
   $e\colon \E{\N M}\to\Sphere{n+\rkk}$ of its total space
   as a tubular neighbourhood $e(\E{\N M})$ of $i(M)$ into the
@@ -453,12 +453,102 @@ description of the fundamental class of a manifold:
   \end{gather*}
   that collapses every point outside of $e(\E{\N M})$ to the infinity
   point fulfills
-  \begin{gather*}
-    \thomiso(\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
-  \end{gather*}
+  \begin{center}
+    \begin{tikzcd}[row sep=0pt]
+      H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
+      & H_{n+\rkk}(\Thomspace{\N M}) \ar [r, "\pf \incl"]
+      & \relH_{n+\rkk}(\Thomspace{\N M})
+      %\coloneqq H_{n+\rkk}(\Thomspace{\N M}, \infty)
+      \ar [r, "\pf t"{above}, "\cong"{below}]
+      & H_{n}(M)% \cong \Zmod2
+      \\
+      \fundcl{\Sphere{n+\rkk}} \ar[rrr, mapsto]
+      &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
+    \end{tikzcd}
+  \end{center}
+  where $\incl\colon(\Thomspace,\emptyset)\to(\Thomspace, \{\infty\})$ is the
+  canonical inclusion of pairs of spaces.
   This holds for any choice of embeddings $i$ and $e$.
   \begin{proof}
-    % TODO: proof relationship thom iso <-> fundamental cl
+    First note that by the long exact sequence of the pair 
+     $(\Thomspace{\N M}, \{\infty\})$ the map
+     $\pf \incl\colon H_r(\Thomspace{\N M})\to \relH(\Thomspace{\N M})$
+    is an isomorphism in every degree $r>0$. The proof will be
+    conducted in two steps, first proving the connected case, then
+    the general one.
+    
+    \begin{description}
+    \item[Connected case:]
+      Assume that $M$ is connected.
+      Then
+      $H_{n+k}(\Thomspace{\N M})
+      \cong\relH_r(\Thomspace{\N M})
+      \cong H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
+      the Thom isomorphism, and by connectedness of $M$.
+      Thus, one only has to show that
+      $\pf\collapse\fundcl{\Sphere{n+\rkk}}$
+      is non-zero.    
+      The trick now is to reduce once again to the homology of the
+      sphere:
+      Locally around any point $p\in\Thomspace{\N M}\setminus\{\infty\}$ the
+      collapse map $\collapse$ is by definition a
+      homeomorphism. Therefore, on homology there is the following 
+      commutative diagram
+      \begin{center}
+        \begin{tikzcd}
+          \fundcl{\Sphere{n+\rkk}}
+          \ar[d,mapsto]\ar[r,phantom,"\in"{near start}]
+          &H_{n+\rkk}(\Sphere{n+\rkk})
+          \ar[r, "\pf\incl\pf\collapse"]\ar[d,"\pf\incl"]
+          &\relH_{n+\rkk}(\Thomspace{\N M})
+          \ar[d,"\pf\incl"]\\
+          \left.\fundcl{\Sphere{n+\rkk}}\right|_{\collapse^{-1}(p)}
+          \ar[r,phantom,"\in"{near start}]
+          &H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
+          \ar[r,"\pf\collapse"{above},"\cong"{below}]
+          &H_{n+\rkk}(\Thomspace{\N M}, \Thomspace{\N M}\setminus p)
+        \end{tikzcd}
+      \end{center}
+      By definition of the fundamental class $\fundcl{\Sphere{n+\rkk}}$,
+      the class $\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}$ in the
+      diagram is a generator, and thus also is
+      $\pf\collapse\left(\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}\right)
+      = \left(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\right)|_p$.
+      However, then $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\in
+      H_{n+\rkk}(\Thomspace{\N M})$
+      cannot be zero as was to be shown.
+
+    \item[General case] In case $M=\coprod_i M_i$ is the disjoint sum of its connected
+      components $M_i$, $i\in I$ for some index set $I$, note the following:
+      \begin{itemize}
+      \item $\E{\N M} = \coprod_i\E{\N{M_i}}$,
+        where $\N{M_i}\coloneqq\N M|_{M_i}$.
+      \item Thus, $\Thomspace{\N M} = \bigvee_i\Thomspace{\N{M_i}}$ using the
+        collapse maps
+        \begin{gather*}
+          \collapse_i\colon
+          \Sphere{n+\rkk}
+          \overset{\collapse}\longto
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{M}})\right)
+          \overset{\proj}\longto
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{M_i}})\right)
+        \end{gather*}
+        for the disjoint parts,
+        and $\collapse=\bigvee_i\collapse_i$.
+      \item Thus, $H_r(\Thomspace{\N M}) = \prod_i H_r(\Thomspace{\N{M_i}})$ for
+        all degrees $r$, $\fundcl M = (\fundcl{M_i})_i$, and
+        $\pf\collapse = \prod_i\pf{\collapse_i}$.
+        % \item Thus, $H_{n+\rkk}(\Thomspace{\N M})
+        %   \cong H_{n+\rkk}(M)\cong\prod_i \Zmod2$, and $\fundcl{M} = (1)_i$.
+      \end{itemize}
+      With this one sees directly from the definition of the fundamental
+      class of a manifold that
+      $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}} = \fundcl M$
+      if and only if for all connected component manifolds $M_i$ holds
+      $\pf\incl\pf{\collapse_i}\fundcl{\Sphere{n+\rkk}} = \fundcl M_i$
+      which is true by the first case.
+      \qedhere
+    \end{description}
   \end{proof}
 \end{Lem}
 
@@ -736,9 +826,10 @@ will be shown to be equivalent to the one above in \ref{def:wuclasses}
       for $r\in\Nat$, $z\in H^r(M)$,
       $\alpha\in H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
     \item[By \autoref{thomisofundcl}:]
-      $\thomiso(\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
+      $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
       where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
-      the collapse map of a tubular embedding of the normal bundle $\N M$.
+      the collapse map of a tubular embedding of the normal bundle $\N
+      M$. Write $\tilde\collapse$ for $\incl\circ\collapse$.
     \item[By \autoref{sqlowerbound}:]
       The total Steenrod square
       $\Sq{}\colon H^m(\Sphere m)
