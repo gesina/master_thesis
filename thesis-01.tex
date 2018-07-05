@@ -364,7 +364,6 @@ and $R$ be a unital commutative ring.
 \begin{Thm}[Thom isomorphism]
   For any Thom class $\u(\xi)$ of $\xi$, and any degree $r$ there are
   isomorphisms natural with respect to pullback of vector bundles
-  % TODO: Ref/proof naturality Thom iso
   \begin{align*}
     \thomiso\colon
     H^r(B;R) &\longrightarrow H^{r+\rkk}(\thomspacepair{E}; R)
@@ -375,7 +374,7 @@ and $R$ be a unital commutative ring.
     & \alpha &\longrightarrow \pf p (\u(\xi) \cap \alpha)
   \end{align*}
   called the \emph{Thom isomorphisms}.
-  \begin{proof}
+  \begin{proof} % TODO: Ref/proof naturality Thom iso
     Naturality directly follows from the naturality of the Thom class,
     of pullbacks, and of the cup- respectively cap-product.
     The cohomology part then is a direct application of Leray's Theorem
@@ -607,12 +606,15 @@ description of the fundamental class of a manifold:
   \begin{enumerate} 
   \item $\w_i(\eta) = 0$
     for any vector bundle $\eta$ with $\rk\eta < i$.
-    This follows directly from the construction for the existence of
-    the Stiefel-Whitney classes.
     Therefore, the total Stiefel-Whitney class $\w(\xi)$ is
     well-defined (\idest the sum is finite)
     for any vector bundle $\xi$ of finite rank.
-  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes:
+    \begin{proof}
+      This follows directly from the construction for the existence of
+      the Stiefel-Whitney classes.
+    \end{proof}
+  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes
+    from multiplicativity:
     \begin{enumerate}
     \item The Stiefel-Whitney classes are stable, \idest
       $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
@@ -622,10 +624,13 @@ description of the fundamental class of a manifold:
       therefore $1 = \w(\T M) \cup \w(\N M)$.
     \end{enumerate}
     \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
-      This follows from the naturality of the Stiefel-Whitney classes
-      and the definition of the trivial rank $n$ bundle:
-      $\w(\trivbdl) = \pb\pi \w(\trivbdl)$ where $\pi\colon X\to\pt$
-      and $H^i(\pt;\Zmod2) = 0$ for $i>0$.
+      The trivial rank $n$ bundle over $X$ is defined as the pullback
+      $\pb \pi \trivbdl$ of the rank $n$ bundle
+      $\trivbdl\colon \R^n\to\pt$ over the point by the trivial map
+      $\pi\colon X\to\pt$. The naturality of the Stiefel-Whitney
+      classes gives $\w(\trivbdl) = \pb\pi \w(\trivbdl)
+      \in\pb\pi \left(H^i(\pt;\Zmod2)\right)$,
+      and the result follows from $H^i(\pt;\Zmod2) = 0$ for $i>0$.
     \end{proof}
   \end{enumerate}
 \end{Rem}
@@ -673,8 +678,12 @@ description of the fundamental class of a manifold:
     \item[$\w(\gamma_1)=1+x$:] % TODO: alt def SW-classes
     \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
-      $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ get
-      \begin{align*} % TODO: shorten
+      $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ and the fact
+      \begin{gather}\label{projectionscommute}
+        p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
+      \end{gather}
+      get
+      \begin{align*}
         \thomiso(\w_i(\xi\oplus\eta))
         &= \Sq i(\u(\xi\oplus\eta)) \\
         &\overset{\mathllap{\text{\autoref{thomclassmultiplicative}}}}=
@@ -694,19 +703,20 @@ description of the fundamental class of a manifold:
           \pb\pi_\xi \left(\pb p_\xi  \w_r(\xi)  \cup \u(\xi) \right)
           \cup
           \pb\pi_\eta\left(\pb p_\eta \w_s(\eta) \cup \u(\eta)\right) \\
-        &= \sum_{r+s=i}
-          \left(
+        &= \left(
+          \sum_{r+s=i}
           \pb\pi_\xi \pb p_\xi \w_r(\xi) \cup
-          \pb\pi_\eta\pb p_\eta\w_s(\eta)\right)
+          \pb\pi_\eta\pb p_\eta\w_s(\eta)
+          \right)
           \cup
           \left(\pb\pi_\xi\u(\xi) \cup \pb\pi_\eta\u(\eta)\right) \\
-        &\overset{\mathllap{\eqref{projectionscommute}}} =
+        &\overset{\mathllap{\text{\eqref{projectionscommute}, Definition}}}=
           \left(\sum_{r+s=i}
           \pb p_{\xi\oplus\eta} \w_r(\xi) \cup \pb p_{\xi\oplus\eta} \w_s(\eta)
           \right)
           \cup
           \u(\xi) \times \u(\eta) \\
-        &\overset{\mathllap{\text{Group Hom./Definition}}}=
+        &\overset{\mathllap{\text{Group Hom., \ref{thomclassmultiplicative}}}}=
           \pb p_{\xi\oplus\eta}
           \left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
           \cup
@@ -714,11 +724,8 @@ description of the fundamental class of a manifold:
         &\overset{\mathllap{\text{Definition}}}=
         % TODO: Intermediate steps
           \thomiso\left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
+          \;.
       \end{align*}
-      where it is used that
-      \begin{gather}\label{projectionscommute}
-        p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
-      \end{gather}
       Applying $\thomiso^{-1}$ yields the result.
       \qedhere
     \end{description}
