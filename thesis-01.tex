@@ -619,7 +619,8 @@ description of the fundamental class of a manifold:
     \begin{enumerate}
     \item The Stiefel-Whitney classes are stable, \idest
       $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
-    \item If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
+    \item\label{wuclassmfdinverse}
+      If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
       Especially, for any choice of embedding with normal bundle $\N M$
       of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
       therefore $1 = \w(\T M) \cup \w(\N M)$.
@@ -661,11 +662,14 @@ description of the fundamental class of a manifold:
     \Sq i(\u(\xi)) = \thomiso(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
   \end{gather*}
   for any vector bundle $\xi\colon E\to B$ over a paracompact space
-  $X$.
+  $X$. As the Thom isomorphism is a group homomorphism, one can
+  formulate the above as
+  \begin{gather*}
+    \Sq{}(\u(\xi)) = \thomiso(\w(\xi)) = \pb p w(\xi) \cup \u(\xi)
+  \end{gather*}
   The representing cohomology classes can be constructed using the
   embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
-  $\w_i=\pb\incl\w_i(\gamma_n)\in H^i(\BO)$ % TODO: ref
-  .
+  $\w_i=\pb\incl\w_i(\gamma_n)\in H^i(\BO)$. % TODO: ref
   \begin{proof}
     Check naturality of the expression and all further
     definining properties from \ref{def:swclasses}.
@@ -795,7 +799,7 @@ The following more general definition of Wu classes
 will be shown to be equivalent to the one above in
 \ref{def:wuclasses}.
 It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
-\begin{Def}
+\begin{Def}\label{def:altwuclasses}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
   The $i$th \emph{Wu class} $\v_i(\xi)$ of $\xi$ for $0\leq i\leq n$
@@ -965,6 +969,116 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \end{align*}
   \end{proof}
 \end{Thm}
+
+
+\section[Wu's Theorem]{Wu's Theorem}
+This section is meant to show a direct connection between the
+Stiefel-Whitney classes and the Wu classes, which can be shown using
+the alternative definition of the Wu classes from
+\autoref{altdefwuclasses}.
+
+\begin{Thm}[Wu]\label{wu}
+  A closed manifold gives rise to the following two equalities
+  \begin{align}\notag
+    \dualw(M) &= \Sq{}\left(\dualv(M)\right)
+    &\text{respectively}&
+    &\dualw_k &= \sum_{i\geq0} \Sq i\left(\dualv_{k-i}(M)\right)
+    &\text{and}
+    \\
+    \w(M) &= \Sq{}\left(\v(M)\right)
+    &\text{respectively}&
+    &\w_k &= \sum_{i\geq0} \Sq i\left(\v_{k-i}(M)\right)
+    \label{wuformula}\tag{Wu's formula}
+  \end{align}
+  that are equivalent using
+  $\dualw(M)\cup\w(M) = 1$ and
+  \begin{gather*}
+    \Sq{}(\dualv(M))\cup\Sq{}(\v(M))
+    = \Sq{}(\dualv(M)\cup\v(M))
+    = \Sq{}(1)
+    = 1
+    \;.
+  \end{gather*}
+\end{Thm}
+% \begin{Rem}
+%   The following is equivalent to Wu's formula
+%   \begin{gather*}
+%     \dualw(M) = \Sq{}\left(\dualv(M)\right)
+%     \qquad\text{respectively}\qquad
+%     \dualw_k = \sum_{i\geq0} \Sq i\left(\dualv_{k-i}(M)\right)
+%   \end{gather*}
+%   using the inverses $\dualw(M)\cup\w(M) = 1$ and
+%   \begin{gather*}
+%     \Sq{}(\dualv(M))\cup\Sq{}(\v(M))
+%     = \Sq{}(\dualv(M)\cup\v(M))
+%     = \Sq{}(1)
+%     = 1
+%     \;.
+%   \end{gather*}
+% \end{Rem}
+The proof uses the alternative characterization
+\begin{gather*}
+  \antipode(\Sq{})(\u(\N M)) = \thomiso(\v(\N M))
+\end{gather*}
+of the Wu classes from \autoref{altdefwuclasses}, and quite directly
+follows from the following Lemma:
+\begin{Lem}\label{wulemma}
+  For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
+  paracompact space holds
+  \begin{gather*}
+    \Sq{}(\v(\xi)) \cup \w(\xi)= 1
+    \;.
+  \end{gather*}
+\end{Lem}
+\begin{proof}[proof of \ref{wuformula}]
+  Lemma \autoref{wulemma} states for a closed manifold $M$
+  \begin{gather*}
+    \Sq{}(\v(M)) \cup \w(\N M)
+    = \Sq{}(\v(\N M)) \cup \w(\xi)
+    \overset{\autoref{wulemma}}= 1
+    \;.
+  \end{gather*}
+  Cupping with $\w(M)=\w(\T M)$ on both sides yields the claim
+  as $\w(\T M) \cup \w(\N M) = 1$ by
+  \autoref{propswclasses}~\ref{wuclassmfdinverse}.
+\end{proof}
+\begin{proof}[proof of Lemma~\autoref{wulemma}]
+  For simplicity use the shortenings
+  $\u\coloneqq \u(\xi)$,
+  $\v\coloneqq \v(\xi)$, and
+  $\w\coloneqq \w(\xi)$.
+  Then calculate
+  \begin{align*}
+    \thomiso(1)
+    &= \u
+    \\
+    &\equalsby{Def.~\autoref{def:antipode}}
+      \Sq{}\left(\antipode(\Sq{})(\u)\right)
+    \\
+    &\equalsby{Def.~\autoref{def:altwuclasses}}
+      \Sq{}\left(\thomiso(\v)\right)
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \Sq{}\left(\pb p\v \cup u\right)
+    \\
+    &\equalsby{\ref{cartan}, Naturality}
+      \pb p\Sq{}(\v) \cup \Sq{}(u)
+    \\
+    &\equalsby{\autoref{altdefswclasses}}
+      \pb p\Sq{}(\v) \cup \thomiso(\w)
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \pb p\Sq{}(\v) \cup \left(\pb p \w \cup \u\right)
+    \\
+    &=
+      \pb p\left(\Sq{}(\v) \cup \w\right) \cup \u
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \thomiso\left(\Sq{}(\v) \cup \w\right)
+  \end{align*}
+  Applying the inverse of the Thom isomorphism on both sides
+  yields the equality which was to be shown.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
