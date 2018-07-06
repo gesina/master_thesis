@@ -11,7 +11,7 @@
 \chapter{Preliminaries}
 \section{Steenrod Squares}
 
-\begin{Def}[Steenrod Squares] % TODO: Check
+\begin{Def}[Steenrod Squares]\label{def:sq} % TODO: Check
   The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
   cohomology operations of the form
   \begin{gather*}
@@ -75,9 +75,9 @@
 \begin{Def}[Steenrod Algebra]% TODO
 \end{Def}
 
-\begin{Def}
-  The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is
-  inductively defined by the relation
+\begin{Def}\label{def:antipode}
+  The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is a
+  graded homomorphism inductively defined by the relation
   \begin{gather*}
     1 = \Sq 0
     = \Sq{} \Sqcup \antipode(\Sq{})
@@ -401,6 +401,7 @@ and $R$ be a unital commutative ring.
       \label{capprod2}
       \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
                                 \in H_0(X,X'')
+                                &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}
     \end{align}
     for
     % TODO: Nicify preliminaries
@@ -791,7 +792,9 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
 \end{Def}
 
 The following more general definition of Wu classes
-will be shown to be equivalent to the one above in \ref{def:wuclasses}
+will be shown to be equivalent to the one above in
+\ref{def:wuclasses}.
+It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
 \begin{Def}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
@@ -802,7 +805,8 @@ will be shown to be equivalent to the one above in \ref{def:wuclasses}
     \antipode(\Sq i)(\u(\xi)) = \thomiso(\v_i(\xi)) = \pb p v_i(\xi) \cup \u(\xi)
   \end{gather*}
   The \emph{total Wu class} of $\xi$ is defined as usual as
-  $\v(\xi)\coloneqq\sum_{i\geq0}\v_i(\xi)$.
+  $\v(\xi)\coloneqq\sum_{i\geq0}\v_i(\xi)$ and satisfies accordingly 
+  $\antipode(\Sq{})(\u(\xi))=\v(\xi)$.
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
@@ -810,23 +814,28 @@ will be shown to be equivalent to the one above in \ref{def:wuclasses}
 \end{Rem}
 
 \begin{Thm}\label{altdefwuclasses}
-  Let $M$ be a compact manifold of dimension $n$, and let $\N M$ be
+  Let $M$ be a compact manifold of dimension $n$, and let
+  $\N M\colon \E{\N M} \xrightarrow{p} M$ be
   any normal bundle of rank $k$ of an embedding of $M$ into
   $\R^{n+k}$. Then
   \begin{gather*}
     \v_i(M) = \v_i(\N M)\in H^i(M)
   \end{gather*}
   \begin{proof}
-    To proof \nameref{altdefwuclasses} the defining property of
+    To proof \ref{altdefwuclasses}, the defining property of
     $\v_i(M)$ will be checked on $\v_i(\N M)$, \idest one has to show
     that for any $x\in H^{n-i}(M)$ holds
     \begin{gather*}
       \capped{x\cup \v_i(\N M)}{\fundcl M}
       = \capped{\Sq i(x)}{\fundcl M}
     \end{gather*}
-    Thus, fix some $i\geq0$, and some arbitrary $x\in H^{n-i}(M)$.
-    One first needs to recall the following properties of Thom classes
-    and of the cohomology of spheres:
+    Note, that this is simply the $i$th degree of the equation
+    \begin{gather}\label{proofaltdefwuclasses:claim}
+      \capped{x\cup \v(\N M)}{\fundcl M}
+      = \capped{\Sq{}(x)}{\fundcl M}
+    \end{gather}
+    which will be proven below.
+    Beforehands, recall the following:
     \begin{description}
     \item[By \autoref{thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
@@ -836,15 +845,124 @@ will be shown to be equivalent to the one above in \ref{def:wuclasses}
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
       where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
       the collapse map of a tubular embedding of the normal bundle $\N
-      M$. Write $\tilde\collapse$ for $\incl\circ\collapse$.
+      M$.
     \item[By \autoref{sqlowerbound}:]
       The total Steenrod square
       $\Sq{}\colon H^m(\Sphere m)
       \to H^*(\Sphere m)$
       is the identity on $H^m(\Sphere m)$, \idest
-      $\Sq i\colon H^m(\Sphere{m})\to H^{m+i}(\Sphere{m})$ is zero for $i\neq0$.
+      $\Sq i\colon H^m(\Sphere{m})\to H^{m+i}(\Sphere{m})$ is zero for
+      $i\neq0$.
+    \item[By Definition \autoref{def:sq}:] The total Steenrod Square
+      $\Sq{}$ is natural and a ring homomorphism.
+    \item[By {\cite[Chap.~3.3.2, p.~241]{hatcher}}
+      (compare \autoref{capprod2}):]
+      For any map of spaces $f\colon X\to Y$ and co-/homology classes
+      $a$ and $\beta$ in the corresponding co-/homology groups holds
+      \begin{gather}\label{capprod2copy}
+        \capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}
+      \end{gather}
     \end{description}
-    % TODO: proof alt def Wu classes
+    For the proof fix some $i\leq n$, some arbitrary $x\in
+    H^{n-i}(M)$, as well as a collapse map
+    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
+    \autoref{thomisofundcl}.
+    For simplicity, denote
+    $\v\coloneqq \v(\N M)$,
+    $\Sphere{}\coloneqq \Sphere{n+\rkk}$,
+    $\u\coloneqq \u(\N M)$ and
+    $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
+    respectively
+    $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
+    
+    
+    In a first calculation reformulate
+    $\capped{x\cup \v(\N M)}{\fundcl M}$ using the cohomology of the
+    $(n+k)$-sphere:
+    \begin{align}\notag
+      \capped{x\cup \v}{\fundcl M}
+      &\equalsby{\autoref{thomisofundcl}}
+        \capped
+        {x\cup\v}
+        {\thomiso\left(\pf\collapse\fundcl{\Sphere{}}\right)}
+      \\\notag
+      &\equalsby{\autoref{thomisoself-adjoint}}
+        \capped
+        {\thomiso\left(x\cup\v\right)}
+        {\pf\collapse\fundcl{\Sphere{}}}
+      \\\notag
+      &\equalsby{\autoref{capprod2copy}}
+        \pf\collapse\capped
+        {\pb\collapse\thomiso\left(x\cup\v\right)}
+        {\fundcl{\Sphere{}}}
+      \\\notag
+      &\equalsby{\autoref{sqlowerbound}}
+        \pf\collapse\capped
+        {\Sq{}\left(\pb\collapse\thomiso\left(x\cup\v\right)\right)}
+        {\fundcl{\Sphere{}}}
+      \\\notag
+      &\equalsby{Naturality}
+        \pf\collapse\capped
+        {\pb\collapse\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
+        {\fundcl{\Sphere{}}}
+      \\\label{proofaltdefwuclasses:eq1}
+      &\equalsby{\autoref{capprod2copy}}
+        \capped
+        {\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
+        {\pf\collapse\fundcl{\Sphere{}}}
+    \end{align}
+    Having introduced $\Sq{}$ on the left hand side, one observes a
+    certain commutativity of the Thom isomorphism, and the total
+    Steenrod square:
+    \begin{align}\notag
+      \Sq{}\left(\thomiso\left(x\cup\v\right)\right)
+      &=
+        \Sq{}\left(\left(\pb p x\cup \pb p\v\right) \cup \u\right)
+      \\\notag
+      &=
+        \Sq{}\left(\pb p x\cup \left(\pb p\v \cup \u\right)\right)
+      \\\notag
+      &\equalsby{Def. $\thomiso$}
+       \Sq{}\left(\pb p x\cup \thomiso(\v)\right)
+      \\\notag
+      &\equalsby{Naturality, Ring Hom.}
+        \pb p\Sq{}(x) \cup \Sq{}(\thomiso(\v))
+      \\\notag
+      &\equalsby{Def. $\v$}
+        \pb p\Sq{}(x) \cup \Sq{}(\antipode(\Sq{})(u))
+      \\\notag
+      &\equalsby{Def. $\antipode$}
+        \pb p\Sq{}(x) \cup u
+      \\\label{proofaltdefwuclasses:eq2}
+      &\equalsby{Def. $\thomiso$}
+        \thomiso(\Sq{}(x))
+    \end{align}
+    Inserting \eqref{proofaltdefwuclasses:eq2} into
+    \eqref{proofaltdefwuclasses:eq1} from above easily yields the
+    claim in \eqref{proofaltdefwuclasses:claim} that proves the theorem:
+    \begin{align*}
+      \capped{x\cup \v}{\fundcl M}
+      &\overset{\mathclap{\eqref{proofaltdefwuclasses:eq1}}}=
+        \capped
+        {\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
+        {\pf\collapse\fundcl{\Sphere{}}}
+      \\
+      &\overset{\mathclap{\eqref{proofaltdefwuclasses:eq2}}}=
+        \capped
+        {\thomiso(\Sq{}(x))}
+        {\pf\collapse\fundcl{\Sphere{}}}
+      \\
+      &\equalsby{\autoref{thomisoself-adjoint}}
+        \capped
+        {\Sq{}(x)}
+        {\thomiso\left(\pf\collapse\fundcl{\Sphere{}}\right)}
+      \\
+      &\equalsby{\autoref{thomisofundcl}}
+        \capped
+        {\Sq{}(x)}
+        {\fundcl M}
+        \qedhere
+    \end{align*}
   \end{proof}
 \end{Thm}
 

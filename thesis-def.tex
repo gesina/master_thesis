@@ -110,6 +110,8 @@
 \newcommand*{\longto}{\longrightarrow}
 \newcommand*{\longfrom}{\longleftarrow}
 \DeclareMathOperator{\im}{im} % image
+\newcommand*{\oversetleft}[2]{\overset{\mathllap{#1}}{#2}}
+\newcommand*{\equalsby}[1]{\oversetleft{\text{#1}}=}
 
 % maps
 \renewcommand*{\Im}{\mathrm{im}} % image
@@ -176,6 +178,8 @@
 \newcommand*{\spherepair}[1]{#1, \minuszero{#1}}
 \newcommand*{\rkk}{k} % arbitrary rank of a vector bundle (overwrites ogonek)
 \newcommand*{\rkl}{l} % arbitrary other rank of a vector bundle (overwrites stroke bar)
+
+% TODO: \totalSq; argument to \v, \w; cleanup for \equalsby
 
 %%% Local Variables:
 %%% mode: latex
