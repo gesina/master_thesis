@@ -16,7 +16,7 @@
   cohomology operations of the form
   \begin{gather*}
     \left(
-      \Sq i\colon H^n(X;\Zmod2) \to H^{n+i}(X;\Zmod2)
+      \Sq i\colon \H^n(X;\Zmod2) \to \H^{n+i}(X;\Zmod2)
       \;\middle|\;
       n\in\Nat
     \right)
@@ -26,7 +26,7 @@
   \begin{description}
   \item[(Naturality)] $\pb f\circ\Sq i = \Sq i\circ\pb f$
   \item[(Stability)] $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
-  \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in H^n(X)$ holds
+  \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in \H^n(X)$ holds
     \begin{gather}\label{cartan}\tag{Cartan's formula}
       \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
     \end{gather}
@@ -37,7 +37,7 @@
       \binom{\beta-j-1}{\alpha-2j}
       \Sq{\alpha+\beta+j}\Sq{j}
     \end{gather}
-  \item[(Fixed values)] The following values are fixed for $x\in H^n(X)$:
+  \item[(Fixed values)] The following values are fixed for $x\in \H^n(X)$:
     \begin{gather}\label{sqlowerbound}
       \Sq i(x) = \begin{cases}
         0 & n<i \\
@@ -54,7 +54,7 @@
   $\SQ\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
   Steenrod squares called the \emph{the total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
-  $\SQ\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
+  $\SQ\colon \H^n(X)\to \H^*(X)$ is well-defined since the sum is
   finite by \eqref{sqlowerbound}.
   Also \ref{cartan} can be reformulated to
   $\SQ(x\cup y) = \SQ(x)\cup\SQ(y)$, \idest $\SQ$ is a group
@@ -126,13 +126,13 @@
   \end{itemize}
   is a natural transformation
   \begin{gather*}
-    \Cl\colon [-, \BG] \Longrightarrow H^i(-; R)\;.
+    \Cl\colon [-, \BG] \Longrightarrow \H^i(-; R)\;.
   \end{gather*}
 \end{Def}
 
 \begin{Rem}
   By Brown's representation theorem % TODO: cite
-  $H^i(-;R)$ is a represantable functor represented by $K(i,R)$.
+  $\H^i(-;R)$ is a represantable functor represented by $K(i,R)$.
   Thus, by the Yoneda lemma, a characteristic class is
   represented by a morphism
   \begin{gather*}
@@ -143,12 +143,12 @@
   space $X$ which is represented by a morphism $\eta\colon X\to\BG$ % TODO: cite
   is
   \begin{gather*}
-    \Cl(X) = \pb{\eta} \cl \in H^i(X;R)
+    \Cl(X) = \pb{\eta} \cl \in \H^i(X;R)
     \;.
   \end{gather*}
   This describes a one-to-one correspondence between
   characteristic classes as above and cohomology classes in
-  $H^i(BG;R)$, and in the following any characteristic class will be
+  $\H^i(BG;R)$, and in the following any characteristic class will be
   identified with its corresponding cohomology class.
 \end{Rem}
 
@@ -162,14 +162,14 @@ $\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
 and $R$ be a unital commutative ring.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
-  cohomology class $\u{\xi}\in H^{\rkk}(\spherepair{E}; R)$,
+  cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
   $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
   the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
   multiplicative generator,
   \idest a unit, % TODO: any generator is unit?
   of the ring
-  $H^{\rkk}(\spherepair{E_b};R)\cong H^{\rkk}(\spherepair{\R}; R)\cong R$.
+  $\H^{\rkk}(\spherepair{E_b};R)\cong \H^{\rkk}(\spherepair{\R}; R)\cong R$.
   \optcite[p.~441]{hatcher}
 \end{Def}
 
@@ -184,7 +184,7 @@ and $R$ be a unital commutative ring.
     Let $\U$ be a Thom class of $\xi$ and $a\in A$ any point.
     Consider the restriction $\pb i_a(\pb f \U)$
     of the pullback of $\U$ to the fiber over $a$. To show that this
-    is a generator of $H^{\rkk}(\spherepair{E_a};R)$ first use that
+    is a generator of $\H^{\rkk}(\spherepair{E_a};R)$ first use that
     pullbacks commute with restriction:
     \begin{gather*}
       \pb i_a(\pb f \U)
@@ -198,8 +198,8 @@ and $R$ be a unital commutative ring.
       f\colon (\spherepair{(\pb f E)_a}) \to (\spherepair{E_{f(a)}})
     \end{gather*}
     is an isomorphism, and thus
-    $\pb f\colon H^r(\spherepair{E_{f(a)}})
-    \cong H^r(\spherepair{(\pb f E)_a})$
+    $\pb f\colon \H^r(\spherepair{E_{f(a)}})
+    \cong \H^r(\spherepair{(\pb f E)_a})$
     sends generators to generators for all $r\in\Nat$.
   \end{proof}
 \end{Cor}
@@ -216,11 +216,11 @@ and $R$ be a unital commutative ring.
   \item There is a corresponding Künneth isomorphism
     defining the \emph{cross-product} \optcite[p.~214]{hatcher}
     \begin{align*}
-      H^*(\thomspacepair{\E\xi})
+      \H^*(\thomspacepair{\E\xi})
       \otimes
-      H^*(\thomspacepair{\E\eta})
+      \H^*(\thomspacepair{\E\eta})
       &\longisoto
-        H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
+        \H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
       x\otimes y
       &\longmapsto
         \pb \pi_\xi x \cup \pb \pi_\eta y
@@ -236,13 +236,13 @@ and $R$ be a unital commutative ring.
   For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
   of rank $\rkk$ respectively $\rkl$ over a paracompact space $B$, and Thom
   classes
-  $\u{\xi}\in H^{\rkk}(\thomspacepair{\E\xi}; R)$,
-  $\u{\eta}\in H^{\rkl}(\thomspacepair{\E\eta}; R)$
+  $\u{\xi}\in \H^{\rkk}(\thomspacepair{\E\xi}; R)$,
+  $\u{\eta}\in \H^{\rkl}(\thomspacepair{\E\eta}; R)$
   the class
   \begin{gather*}
     \u{\xi}\times\u{\eta}
     \coloneqq \pb \pi_\xi\u{\xi} \cup \pb \pi_\eta\u{\eta}
-    \in H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}})
+    \in \H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}})
   \end{gather*}
   is a Thom class of $\xi\oplus\eta$.
   \begin{proof}
@@ -255,7 +255,7 @@ and $R$ be a unital commutative ring.
       \times \left(\pb i_a\u{\eta}\right)
     \end{gather*}
     is a generator of
-    $H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
+    $\H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
     % There are homotopies making the following diagram commute
     % \begin{center}
     %   \begin{tikzcd}
@@ -277,58 +277,58 @@ and $R$ be a unital commutative ring.
     on the cohomology of spheres:
     \begin{center}
       \begin{tikzcd}
-        H^*(\spherepair{\E\xi_b};R)
-        \otimes H^*(\spherepair{\E\eta_b};R)
+        \H^*(\spherepair{\E\xi_b};R)
+        \otimes \H^*(\spherepair{\E\eta_b};R)
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
+        & \H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(\spherepair{\R^{\rkk}}; R)\otimes H^*(\spherepair{\R^{\rkl}}; R)
+        \H^*(\spherepair{\R^{\rkk}}; R)\otimes \H^*(\spherepair{\R^{\rkl}}; R)
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & H^*(\spherepair{\R^{\rkk+\rkl}}; R)
+        & \H^*(\spherepair{\R^{\rkk+\rkl}}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(I^{\rkk},\Boundary{I^{\rkk}}; R)\otimes H^*(I^{\rkl}, \Boundary{I^{\rkl}}; R)
+        \H^*(I^{\rkk},\Boundary{I^{\rkk}}; R)\otimes \H^*(I^{\rkl}, \Boundary{I^{\rkl}}; R)
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}}; R)
+        & \H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}}; R)
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        H^*(\Sphere{\rkk}; R)\otimes H^*(\Sphere{\rkl}; R)
+        \H^*(\Sphere{\rkk}; R)\otimes \H^*(\Sphere{\rkl}; R)
         \ar[r, "\cong"]
-        & H^*(\Sphere{\rkk+\rkl}; R)
+        & \H^*(\Sphere{\rkk+\rkl}; R)
       \end{tikzcd}
     \end{center}
     Furthermore, the simple structure of the cohomology of spheres
     yields for the Künneth isomorphism in the desired degree
     \begin{align*}
-      H^{\rkk+\rkl}(\Sphere{\rkk+\rkl};R)
+      \H^{\rkk+\rkl}(\Sphere{\rkk+\rkl};R)
       &\cong
-        \left(H^*(\Sphere{\rkk}; R)\otimes H^*(\Sphere{\rkl}; R)\right)_{\rkk+\rkl}\\
+        \left(\H^*(\Sphere{\rkk}; R)\otimes \H^*(\Sphere{\rkl}; R)\right)_{\rkk+\rkl}\\
       &\coloneqq
         \bigoplus_{\mathclap{r+s=\rkk+\rkl}}
-        H^r(\Sphere{\rkk};R)\otimes H^s(\Sphere{\rkl};R)
+        \H^r(\Sphere{\rkk};R)\otimes \H^s(\Sphere{\rkl};R)
         =
-        H^{\rkk}(\Sphere{\rkk};R)\otimes H^{\rkl}(\Sphere{\rkl};R)
+        \H^{\rkk}(\Sphere{\rkk};R)\otimes \H^{\rkl}(\Sphere{\rkl};R)
     \end{align*}
     by leaving out zero-summands for the last equality.
     Thus, a generator of
-    $H^{\rkk}(\Sphere{\rkk}; R)\otimes H^{\rkl}(\Sphere{\rkl}; R)$,
+    $\H^{\rkk}(\Sphere{\rkk}; R)\otimes \H^{\rkl}(\Sphere{\rkl}; R)$,
     which is the tensor product $\iota_{\rkk}\otimes\iota_{\rkl}$ of a generator
     in each factor,
     is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
-    $H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
+    $\H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
     Using the isomorphisms above prooves the claim.
     \optcite[compare proof of Thm~3.19, p.~221]{hatcher}
     % TODO: Maybe put into separate Lemma:
     % Now one can use the fact, that for any two generators
-    % $\iota_{\rkk}$ of $H^{\rkk}(\spherepair{\R^{\rkk}})$ and
-    % $\iota_{\rkl}$ of $H^{\rkl}(\spherepair{\R^{\rkl}})$,
+    % $\iota_{\rkk}$ of $\H^{\rkk}(\spherepair{\R^{\rkk}})$ and
+    % $\iota_{\rkl}$ of $\H^{\rkl}(\spherepair{\R^{\rkl}})$,
     % the cross-product
     % $\iota_{\rkk}\times\iota_{\rkl}$ is a generator of
-    % $H^{\rkk+\rkl}(\spherepair{\R^{\rkk+\rkl}})$.
+    % $\H^{\rkk+\rkl}(\spherepair{\R^{\rkk+\rkl}})$.
   \end{proof}
 \end{Cor}
 
@@ -344,11 +344,11 @@ and $R$ be a unital commutative ring.
     \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
       Using a suitable Mayer-Vietoris sequence for glueing, and an
       inductive argument starting with the trivial bundle case, one can show:
-      Any two classes in $H^{\rkk}(\thomspacepair{E};R)$ whose
+      Any two classes in $\H^{\rkk}(\thomspacepair{E};R)$ whose
       restrictions coincide on all fibers will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
       a unit $\u{\xi}|_{E_b}\in
-      H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
+      \H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
     \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
     \end{description}
@@ -358,7 +358,7 @@ and $R$ be a unital commutative ring.
 \begin{Rem}
   Using paracompactness of $B$ and
   \cite[Proposition~17.9.6]{tomdieck}, one concludes that
-  $\u{\xi}\in H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
+  $\u{\xi}\in \H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
 \end{Rem}
 
 \begin{Thm}[Thom isomorphism]
@@ -366,9 +366,9 @@ and $R$ be a unital commutative ring.
   isomorphisms natural with respect to pullback of vector bundles
   \begin{align*}
     \thomiso\colon
-    H^r(B;R) &\longrightarrow H^{r+\rkk}(\thomspacepair{E}; R)
+    \H^r(B;R) &\longrightarrow \H^{r+\rkk}(\thomspacepair{E}; R)
     & \thomiso\colon
-      H_{r+\rkk}(\thomspacepair{E}; R) &\longrightarrow H^r(B;R)
+      \H_{r+\rkk}(\thomspacepair{E}; R) &\longrightarrow \H^r(B;R)
     \\
     x &\longrightarrow \pb p (x) \cup \u{\xi}
     & \alpha &\longrightarrow \pf p (\u{\xi} \cap \alpha)
@@ -386,8 +386,8 @@ and $R$ be a unital commutative ring.
 \begin{Lem}\label{thomisoself-adjoint}
   If $B$ is connected, the Thom isomorphisms are adjoint in the
   following sense:
-  For $r\in\Nat$, $x\in H^r(B)$,
-  and $\alpha\in H_{r+\rkk}(\thomspacepair{E})$  holds 
+  For $r\in\Nat$, $x\in \H^r(B)$,
+  and $\alpha\in \H_{r+\rkk}(\thomspacepair{E})$  holds 
   \begin{gather*}
     \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
   \end{gather*}
@@ -397,25 +397,25 @@ and $R$ be a unital commutative ring.
     \begin{align}
       \label{capprod1}
       \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
-                                \in H_0(X,X'')\\
+                                \in \H_0(X,X'')\\
       \label{capprod2}
       \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
-                                \in H_0(X,X'')
+                                \in \H_0(X,X'')
                                 &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}
     \end{align}
     for
     % TODO: Nicify preliminaries
     triples of spaces $(X, X'', X')$, $(Y, Y'', Y')$,
     $f\colon (Y,Y'',Y')\to (X,X'',X')$,
-    $a\in H^i(X,X')$, $b\in H^j(X,X')$,
-    $\gamma\in H_{i+j}(X, X'\cup X'')$,
+    $a\in \H^i(X,X')$, $b\in \H^j(X,X')$,
+    $\gamma\in \H_{i+j}(X, X'\cup X'')$,
     and
-    $\beta\in H_j(Y, Y'\cup Y'')$.
+    $\beta\in \H_j(Y, Y'\cup Y'')$.
     Also note
     \begin{gather}
       \label{capprod3}
       \pf p = \Id \colon
-      \Zmod2\cong H_0(\thomspacepair{E})\to H_0(B)\cong\Zmod2
+      \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
     \end{gather}
     Then with $\U\coloneqq\u{\xi}$
     \begin{align*}
@@ -455,12 +455,12 @@ description of the fundamental class of a manifold:
   point fulfills
   \begin{center}
     \begin{tikzcd}[row sep=0pt]
-      H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
-      & H_{n+\rkk}(\Thomspace{\N M}) \ar [r, "\pf \incl"]
+      \H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
+      & \H_{n+\rkk}(\Thomspace{\N M}) \ar [r, "\pf \incl"]
       & \relH_{n+\rkk}(\Thomspace{\N M})
-      %\coloneqq H_{n+\rkk}(\Thomspace{\N M}, \infty)
+      %\coloneqq \H_{n+\rkk}(\Thomspace{\N M}, \infty)
       \ar [r, "\pf t"{above}, "\cong"{below}]
-      & H_{n}(M)% \cong \Zmod2
+      & \H_{n}(M)% \cong \Zmod2
       \\
       \fundcl{\Sphere{n+\rkk}} \ar[rrr, mapsto]
       &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
@@ -472,7 +472,7 @@ description of the fundamental class of a manifold:
   \begin{proof}
     First note that by the long exact sequence of the pair 
      $(\Thomspace{\N M}, \{\infty\})$ the map
-     $\pf \incl\colon H_r(\Thomspace{\N M})\to \relH(\Thomspace{\N M})$
+     $\pf \incl\colon \H_r(\Thomspace{\N M})\to \relH(\Thomspace{\N M})$
     is an isomorphism in every degree $r>0$. The proof will be
     conducted in two steps, first proving the connected case, then
     the general one.
@@ -481,9 +481,9 @@ description of the fundamental class of a manifold:
     \item[Connected case:]
       Assume that $M$ is connected.
       Then
-      $H_{n+k}(\Thomspace{\N M})
+      $\H_{n+k}(\Thomspace{\N M})
       \cong\relH_r(\Thomspace{\N M})
-      \cong H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
+      \cong \H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
       the Thom isomorphism, and by connectedness of $M$.
       Thus, one only has to show that
       $\pf\collapse\fundcl{\Sphere{n+\rkk}}$
@@ -498,15 +498,15 @@ description of the fundamental class of a manifold:
         \begin{tikzcd}
           \fundcl{\Sphere{n+\rkk}}
           \ar[d,mapsto]\ar[r,phantom,"\in"{near start}]
-          &H_{n+\rkk}(\Sphere{n+\rkk})
+          &\H_{n+\rkk}(\Sphere{n+\rkk})
           \ar[r, "\pf\incl\pf\collapse"]\ar[d,"\pf\incl"]
           &\relH_{n+\rkk}(\Thomspace{\N M})
           \ar[d,"\pf\incl"]\\
           \left.\fundcl{\Sphere{n+\rkk}}\right|_{\collapse^{-1}(p)}
           \ar[r,phantom,"\in"{near start}]
-          &H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
+          &\H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
           \ar[r,"\pf\collapse"{above},"\cong"{below}]
-          &H_{n+\rkk}(\Thomspace{\N M}, \Thomspace{\N M}\setminus p)
+          &\H_{n+\rkk}(\Thomspace{\N M}, \Thomspace{\N M}\setminus p)
         \end{tikzcd}
       \end{center}
       By definition of the fundamental class $\fundcl{\Sphere{n+\rkk}}$,
@@ -515,7 +515,7 @@ description of the fundamental class of a manifold:
       $\pf\collapse\left(\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}\right)
       = \left(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\right)|_p$.
       However, then $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\in
-      H_{n+\rkk}(\Thomspace{\N M})$
+      \H_{n+\rkk}(\Thomspace{\N M})$
       cannot be zero as was to be shown.
 
     \item[General case] In case $M=\coprod_i M_i$ is the disjoint sum of its connected
@@ -535,11 +535,11 @@ description of the fundamental class of a manifold:
         \end{gather*}
         for the disjoint parts,
         and $\collapse=\bigvee_i\collapse_i$.
-      \item Thus, $H_r(\Thomspace{\N M}) = \prod_i H_r(\Thomspace{\N{M_i}})$ for
+      \item Thus, $\H_r(\Thomspace{\N M}) = \prod_i \H_r(\Thomspace{\N{M_i}})$ for
         all degrees $r$, $\fundcl M = (\fundcl{M_i})_i$, and
         $\pf\collapse = \prod_i\pf{\collapse_i}$.
-        % \item Thus, $H_{n+\rkk}(\Thomspace{\N M})
-        %   \cong H_{n+\rkk}(M)\cong\prod_i \Zmod2$, and $\fundcl{M} = (1)_i$.
+        % \item Thus, $\H_{n+\rkk}(\Thomspace{\N M})
+        %   \cong \H_{n+\rkk}(M)\cong\prod_i \Zmod2$, and $\fundcl{M} = (1)_i$.
       \end{itemize}
       With this one sees directly from the definition of the fundamental
       class of a manifold that
@@ -559,7 +559,7 @@ description of the fundamental class of a manifold:
   characteristic classes for principal $\Orth$-bundles
   respectively vector bundles,
   \idest cohomology classes
-  $\ws{i}\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
+  $\ws{i}\in \H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
   fulfilling the following properties for any vector bundles $\xi$ and
   $\eta$ over a space $B$, and any map $f\colon A\to B$ of spaces:
   \begin{enumerate}
@@ -583,13 +583,13 @@ description of the fundamental class of a manifold:
     isomorphism, and that is defined by sending the unique generator in
     degree 1 to $x$.
   }
-  generator of $H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
+  generator of $\H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
   \optcite[compare §4, p.~37]{milnor}
 \end{Def}
 
 \begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
   Stiefel-Whitney classes exist and are uniquely defined by the above
-  properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\ws{i}|i\geq1]$.
+  properties. Furthermore, they generate $\H^*(\BO;\Zmod2)\cong \Zmod2[\ws{i}|i\geq1]$.
   \begin{proof}[proof (existence)]
     Construction utilizes the Euler class.
   \end{proof}
@@ -597,7 +597,7 @@ description of the fundamental class of a manifold:
     Use the splitting theorem and the knowledge about $\W{\gamma_1}$.
   \end{proof}
   \begin{proof}[proof (generators)]
-    Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
+    Inductively show $\H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
   \end{proof}
 \end{Thm}
 
@@ -631,8 +631,8 @@ description of the fundamental class of a manifold:
       $\trivbdl\colon \R^n\to\pt$ over the point by the trivial map
       $\pi\colon X\to\pt$. The naturality of the Stiefel-Whitney
       classes gives $\W{\trivbdl} = \pb\pi \W{\trivbdl}
-      \in\pb\pi \left(H^i(\pt;\Zmod2)\right)$,
-      and the result follows from $H^i(\pt;\Zmod2) = 0$ for $i>0$.
+      \in\pb\pi \left(\H^i(\pt;\Zmod2)\right)$,
+      and the result follows from $\H^i(\pt;\Zmod2) = 0$ for $i>0$.
     \end{proof}
   \end{enumerate}
 \end{Rem}
@@ -649,7 +649,7 @@ description of the fundamental class of a manifold:
   \begin{gather*}
     1 = \Ws\cup\dualWs
   \end{gather*}
-  in the completion of the polynomial ring $H^*(\BO)\cong\Zmod2[\ws{i}|i\in\Nat]$.
+  in the completion of the polynomial ring $\H^*(\BO)\cong\Zmod2[\ws{i}|i\in\Nat]$.
   For a manifold $M$ define
   $\W{M} \coloneqq \W{\T M}$ and
   $\dualW{M} \coloneqq \dualW{\T M} = \W{\N M}$
@@ -670,7 +670,7 @@ description of the fundamental class of a manifold:
   \end{gather*}
   The representing cohomology classes can be constructed using the
   embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
-  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in H^i(\BO)$. % TODO: ref
+  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$. % TODO: ref
   \begin{proof}
     Check naturality of the expression and all further
     definining properties from \ref{def:swclasses}.
@@ -678,7 +678,7 @@ description of the fundamental class of a manifold:
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
     \item[$\ws{0}=1$:]
-      $H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
+      $\H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
       candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
       isomorphism sends 1 to 1 in this degree.
     \item[$\W{\gamma_1}=1+x$:] % TODO: alt def SW-classes
@@ -744,12 +744,12 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
 
 \begin{Def}\label{def:wuclasses}
   The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
-  as the cohomology class in $H^i(M)$ that is uniquely determined by
+  as the cohomology class in $\H^i(M)$ that is uniquely determined by
   \begin{center}
     \begin{tikzcd}[row sep=0pt, column sep=small]
-      H^i(M) \ar[r, equal, "\isosymb"]
-      & H_{n-1}(M) \ar[r, equal, "\isosymb"]
-      &\Hom{\Zmod2}(H^{n-i}(M), \Zmod2) \ar[r, equal, "\isosymb"]
+      \H^i(M) \ar[r, equal, "\isosymb"]
+      & \H_{n-1}(M) \ar[r, equal, "\isosymb"]
+      &\Hom{\Zmod2}(\H^{n-i}(M), \Zmod2) \ar[r, equal, "\isosymb"]
       &\Zmod2
       \\
       y \ar[rr, mapsto] &&\capped{ x\cup y }{ \fundcl M }\\
@@ -759,10 +759,10 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
   where the first isomorphism from the left is Poincaré duality % TODO: ref
   and the second is the universal coefficient theorem % TODO: ref
   for the field $\Zmod2$.
-  Equivalently, for any cohomology class $x\in H^{n-i}(M)$ of fixed
+  Equivalently, for any cohomology class $x\in \H^{n-i}(M)$ of fixed
   degree $n-i$ holds
   \begin{gather*}
-    x\cup \v{i}{M} = \Sq i(x) \in H^n(M) \cong \Zmod2
+    x\cup \v{i}{M} = \Sq i(x) \in \H^n(M) \cong \Zmod2
   \end{gather*}
   Mind the fixed degree of $x$---the above will not be true for other
   degree cohomology classes in general!
@@ -804,7 +804,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
   The $i$th \emph{Wu class} $\v{i}{\xi}$ of $\xi$ for $0\leq i\leq n$
-  is defined as the cohomology class in $H^i(B)$ that is uniquely
+  is defined as the cohomology class in $\H^i(B)$ that is uniquely
   determined by
   \begin{gather*}
     \antipode(\Sq i)(\u{\xi}) = \thomiso(\v{i}{\xi}) = \pb p \v{i}{\xi} \cup \u{\xi}
@@ -824,12 +824,12 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
   any normal bundle of rank $k$ of an embedding of $M$ into
   $\R^{n+k}$. Then
   \begin{gather*}
-    \v{i}{M} = \v{i}{\N M}\in H^i(M)
+    \v{i}{M} = \v{i}{\N M}\in \H^i(M)
   \end{gather*}
   \begin{proof}
     To proof \ref{altdefwuclasses}, the defining property of
     $\v{i}{M}$ will be checked on $\v{i}{\N M}$, \idest one has to show
-    that for any $x\in H^{n-i}(M)$ holds
+    that for any $x\in \H^{n-i}(M)$ holds
     \begin{gather*}
       \capped{x\cup \v{i}{\N M}}{\fundcl M}
       = \capped{\Sq i(x)}{\fundcl M}
@@ -844,8 +844,8 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \begin{description}
     \item[By \autoref{thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
-      for $r\in\Nat$, $z\in H^r(M)$,
-      $\alpha\in H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
+      for $r\in\Nat$, $z\in \H^r(M)$,
+      $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
     \item[By \autoref{thomisofundcl}:]
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
       where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
@@ -853,10 +853,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       M$.
     \item[By \autoref{sqlowerbound}:]
       The total Steenrod square
-      $\SQ\colon H^m(\Sphere m)
-      \to H^*(\Sphere m)$
-      is the identity on $H^m(\Sphere m)$, \idest
-      $\Sq i\colon H^m(\Sphere{m})\to H^{m+i}(\Sphere{m})$ is zero for
+      $\SQ\colon \H^m(\Sphere m)
+      \to \H^*(\Sphere m)$
+      is the identity on $\H^m(\Sphere m)$, \idest
+      $\Sq i\colon \H^m(\Sphere{m})\to \H^{m+i}(\Sphere{m})$ is zero for
       $i\neq0$.
     \item[By Definition \autoref{def:sq}:] The total Steenrod Square
       $\SQ$ is natural and a ring homomorphism.
@@ -869,7 +869,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       \end{gather}
     \end{description}
     For the proof fix some $i\leq n$, some arbitrary $x\in
-    H^{n-i}(M)$, as well as a collapse map
+    \H^{n-i}(M)$, as well as a collapse map
     $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
     \autoref{thomisofundcl}.
     For simplicity, denote
@@ -1077,7 +1077,7 @@ follows from the following Lemma:
     &\equalsby{Def.~$\thomiso$}
       \thomiso\left(\SQ(\vu) \cup \Ws\right)
   \end{align*}
-  Applying the inverse of the Thom isomorphism on both sides
+  Applying the inverse of the Thom isomorphism to both sides
   yields the equality which was to be shown.
 \end{proof}
 

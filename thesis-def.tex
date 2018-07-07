@@ -150,7 +150,8 @@
 \newcommand*{\Hom}[1]{\mathrm{Hom}_{#1}} % #1-module homomorphisms
 
 % (co)homology classes/maps
-\newcommand*{\relH}{\widetilde H} % relative homology
+\renewcommand*{\H}{H} % co-/homology (overrides 'double accute')
+\newcommand*{\relH}{\widetilde\H} % relative co-/homology
 \newcommand*{\capped}[2]{\left\langle #1,\, #2 \right\rangle} % cap prod
 \newcommand*{\SQ}{\mathrm{Sq}} % total Steenrod Square
 \newcommand*{\Sq}[1]{\SQ^{#1}}  % Steenrod Squares
@@ -169,7 +170,7 @@
 \renewcommand*{\u}[1]{\charcl{\U}{#1}} % Thom class (overwrites 'cup over letter')
 
 \newcommand*{\Ws}{w} % Stiefel-Whitney class symbol
-\newcommand*{\dualWs}{\dual{\mathrm{w}}} % dual Stiefel-Whitney class symbol
+\newcommand*{\dualWs}{\dual{\Ws}} % dual Stiefel-Whitney class symbol
 \newcommand*{\ws}[1]{\Ws_{#1}} % {#1}th Stiefel-Whitney class (in H(BO))
 \newcommand*{\dualws}[1]{\dualWs_{#1}} % {#1}th dual Stiefel-Whitney class (in H(BO))
 \newcommand*{\w}[2]{\charcl{\ws{#1}}{#2}} % {#1}th Stiefel-Whitney class of bdl
@@ -203,7 +204,6 @@
 \newcommand*{\rkk}{k} % arbitrary rank of a vector bundle (overwrites ogonek)
 \newcommand*{\rkl}{l} % arbitrary other rank of a vector bundle (overwrites stroke bar)
 
-% TODO: argument to \w
 
 %%% Local Variables:
 %%% mode: latex
