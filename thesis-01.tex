@@ -51,13 +51,13 @@
     \end{gather}
     where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \end{description}
-  $\Sq{}\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
+  $\SQ\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
   Steenrod squares called the \emph{the total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
-  $\Sq{}\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
+  $\SQ\colon H^n(X)\to H^*(X)$ is well-defined since the sum is
   finite by \eqref{sqlowerbound}.
   Also \ref{cartan} can be reformulated to
-  $\Sq{}(x\cup y) = \Sq{}(x)\cup\Sq{}(y)$, \idest $\Sq{}$ is a group
+  $\SQ(x\cup y) = \SQ(x)\cup\SQ(y)$, \idest $\SQ$ is a group
   homomorphism with respect to the cup-product.
 
   Analoguesly define Steenrod squares for a pair of spaces $(X,A)$.
@@ -80,7 +80,7 @@
   graded homomorphism inductively defined by the relation
   \begin{gather*}
     1 = \Sq 0
-    = \Sq{} \Sqcup \antipode(\Sq{})
+    = \SQ \Sqcup \antipode(\SQ)
     = \sum_{k\geq0}\sum_{r+s=k} \Sq r \Sqcup \antipode(\Sq s)
   \end{gather*}
 \end{Def}
@@ -162,10 +162,10 @@ $\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
 and $R$ be a unital commutative ring.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
-  cohomology class $\u(\xi)\in H^{\rkk}(\spherepair{E}; R)$,
+  cohomology class $\u{\xi}\in H^{\rkk}(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
   $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
-  the restriction $\u(\xi)|_{E_b} = \pb i_b (\u(\xi))$ is a
+  the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
   multiplicative generator,
   \idest a unit, % TODO: any generator is unit?
   of the ring
@@ -178,21 +178,21 @@ and $R$ be a unital commutative ring.
   of vector bundles over paracompact spaces.
   \Idest given any map of paracompact spaces $f\colon A\to B$, and a
   vector bundle $\xi\colon E\to B$,
-  the pullback $\pb f \u$ of a Thom class $\u$ of $\xi$ will
+  the pullback $\pb f \U$ of a Thom class $\U$ of $\xi$ will
   be a Thom class of $\pb f \xi$.
   \begin{proof}
-    Let $\u$ be a Thom class of $\xi$ and $a\in A$ any point.
-    Consider the restriction $\pb i_a(\pb f \u)$
-    of the pullback of $\u$ to the fiber over $a$. To show that this
+    Let $\U$ be a Thom class of $\xi$ and $a\in A$ any point.
+    Consider the restriction $\pb i_a(\pb f \U)$
+    of the pullback of $\U$ to the fiber over $a$. To show that this
     is a generator of $H^{\rkk}(\spherepair{E_a};R)$ first use that
     pullbacks commute with restriction:
     \begin{gather*}
-      \pb i_a(\pb f \u)
-      = \pb {(f\circ i_a)} \u
-      = \pb {(i_{f(a)}\circ f)} \u
-      = \pb f (\pb i_{f(a)} \u)
+      \pb i_a(\pb f \U)
+      = \pb {(f\circ i_a)} \U
+      = \pb {(i_{f(a)}\circ f)} \U
+      = \pb f (\pb i_{f(a)} \U)
     \end{gather*}
-    $\pb i_{f(a)} \u$ is a generator by definition of $\u$.
+    $\pb i_{f(a)} \U$ is a generator by definition of $\U$.
     Now the restriction of $f$
     \begin{gather*}
       f\colon (\spherepair{(\pb f E)_a}) \to (\spherepair{E_{f(a)}})
@@ -219,7 +219,7 @@ and $R$ be a unital commutative ring.
       H^*(\thomspacepair{\E\xi})
       \otimes
       H^*(\thomspacepair{\E\eta})
-      &\overset{\sim}\longto
+      &\longisoto
         H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
       x\otimes y
       &\longmapsto
@@ -236,12 +236,12 @@ and $R$ be a unital commutative ring.
   For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
   of rank $\rkk$ respectively $\rkl$ over a paracompact space $B$, and Thom
   classes
-  $\u(\xi)\in H^{\rkk}(\thomspacepair{\E\xi}; R)$,
-  $\u(\eta)\in H^{\rkl}(\thomspacepair{\E\eta}; R)$
+  $\u{\xi}\in H^{\rkk}(\thomspacepair{\E\xi}; R)$,
+  $\u{\eta}\in H^{\rkl}(\thomspacepair{\E\eta}; R)$
   the class
   \begin{gather*}
-    \u(\xi)\times\u(\eta)
-    \coloneqq \pb \pi_\xi\u(\xi) \cup \pb \pi_\eta\u(\eta)
+    \u{\xi}\times\u{\eta}
+    \coloneqq \pb \pi_\xi\u{\xi} \cup \pb \pi_\eta\u{\eta}
     \in H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}})
   \end{gather*}
   is a Thom class of $\xi\oplus\eta$.
@@ -250,9 +250,9 @@ and $R$ be a unital commutative ring.
     with restriction, the cross-product also commutes with
     restriction, \idest one has to show that
     \begin{gather*}
-      \pb i_a(\u(\xi)\times\u(\eta))
-      = \left(\pb i_a\u(\xi)\right)
-      \times \left(\pb i_a\u(\eta)\right)
+      \pb i_a(\u{\xi}\times\u{\eta})
+      = \left(\pb i_a\u{\xi}\right)
+      \times \left(\pb i_a\u{\eta}\right)
     \end{gather*}
     is a generator of
     $H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
@@ -260,12 +260,12 @@ and $R$ be a unital commutative ring.
     % \begin{center}
     %   \begin{tikzcd}
     %     (\spherepair{\E{(\xi)}_b})
-    %     \ar[d, dash, "\sim"{above,rotate=90}]
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]
     %     &(\spherepair{\E{(\xi\oplus\eta)}_b})
     %     \ar[l,"\pi_\xi"above] \ar[r,"\pi_\eta"]
-    %     \ar[d, dash, "\sim"{above,rotate=90}]
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]
     %     &(\spherepair{\E{(\eta)}_b})
-    %     \ar[d, dash, "\sim"{above,rotate=90}]\\
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]\\
     %     (\spherepair{\R^i})
     %     &(\spherepair{\R^{i+j}})
     %     \ar[l,"\proj"above] \ar[r,"\proj"]
@@ -333,10 +333,10 @@ and $R$ be a unital commutative ring.
 \end{Cor}
 
 \begin{Thm}
-  Every vector bundle $\xi$ has a unique Thom class $\u(\xi)$ in
+  Every vector bundle $\xi$ has a unique Thom class $\u{\xi}$ in
   $\Zmod2$-coefficients.
   Furthermore, for any map of paracompact spaces $f\colon A\to B$ and
-  vector bundle $\xi\colon E\to B$ holds $\u(\pb f \xi) = \pb f \u(\xi)$.
+  vector bundle $\xi\colon E\to B$ holds $\u{\pb f \xi} = \pb f \u{\xi}$.
   \begin{proof}
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
@@ -347,7 +347,7 @@ and $R$ be a unital commutative ring.
       Any two classes in $H^{\rkk}(\thomspacepair{E};R)$ whose
       restrictions coincide on all fibers will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
-      a unit $\u(\xi)|_{E_b}\in
+      a unit $\u{\xi}|_{E_b}\in
       H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
     \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
@@ -358,11 +358,11 @@ and $R$ be a unital commutative ring.
 \begin{Rem}
   Using paracompactness of $B$ and
   \cite[Proposition~17.9.6]{tomdieck}, one concludes that
-  $\u(\xi)\in H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
+  $\u{\xi}\in H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
 \end{Rem}
 
 \begin{Thm}[Thom isomorphism]
-  For any Thom class $\u(\xi)$ of $\xi$, and any degree $r$ there are
+  For any Thom class $\u{\xi}$ of $\xi$, and any degree $r$ there are
   isomorphisms natural with respect to pullback of vector bundles
   \begin{align*}
     \thomiso\colon
@@ -370,8 +370,8 @@ and $R$ be a unital commutative ring.
     & \thomiso\colon
       H_{r+\rkk}(\thomspacepair{E}; R) &\longrightarrow H^r(B;R)
     \\
-    x &\longrightarrow \pb p (x) \cup \u(\xi)
-    & \alpha &\longrightarrow \pf p (\u(\xi) \cap \alpha)
+    x &\longrightarrow \pb p (x) \cup \u{\xi}
+    & \alpha &\longrightarrow \pf p (\u{\xi} \cap \alpha)
   \end{align*}
   called the \emph{Thom isomorphisms}.
   \begin{proof} % TODO: Ref/proof naturality Thom iso
@@ -417,15 +417,15 @@ and $R$ be a unital commutative ring.
       \pf p = \Id \colon
       \Zmod2\cong H_0(\thomspacepair{E})\to H_0(B)\cong\Zmod2
     \end{gather}
-    Then with $\u\coloneqq\u(\xi)$
+    Then with $\U\coloneqq\u{\xi}$
     \begin{align*}
       \capped{t(x)}{\alpha}
-      &= \capped{\pb p x \cup \u}{\alpha} \\
-      &\overset{\mathllap{\eqref{capprod1}}}=
-        \capped{\pb p x}{\u\cap\alpha} \\
-      &\overset{\mathllap{\eqref{capprod3}}}=
-        \pf p\capped{\pb p x}{\u\cap\alpha} \\
-      &\overset{\mathllap{\eqref{capprod2}}}=
+      &= \capped{\pb p x \cup \U}{\alpha} \\
+      &\equalsby{\eqref{capprod1}}
+        \capped{\pb p x}{\U\cap\alpha} \\
+      &\equalsby{\eqref{capprod3}}
+        \pf p\capped{\pb p x}{\U\cap\alpha} \\
+      &\equalsby{\eqref{capprod2}}
         \capped{x}{\pf p(u\cap\alpha)}
         = \capped{x}{\thomiso (\alpha)} \in\Zmod2
     \end{align*}
@@ -559,19 +559,19 @@ description of the fundamental class of a manifold:
   characteristic classes for principal $\Orth$-bundles
   respectively vector bundles,
   \idest cohomology classes
-  $w_i\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
+  $\ws{i}\in H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
   fulfilling the following properties for any vector bundles $\xi$ and
   $\eta$ over a space $B$, and any map $f\colon A\to B$ of spaces:
   \begin{enumerate}
-  \item \emph{(Naturality)} $\pb f\w_i(\xi) = \w_i(\pb f \xi)$,
-  \item $\w_0(\xi)=1$,
-  \item $\w(\gamma_1) = 1 + x$,
-  \item \emph{(Multiplicativity)} $\w(\xi \oplus \eta) = \w(\xi)\cup \w(\eta)$
+  \item \emph{(Naturality)} $\pb f\w{i}{\xi} = \w{i}{\pb f \xi}$,
+  \item $\w{0}{\xi}=1$,
+  \item $\W{\gamma_1} = 1 + x$,
+  \item \emph{(Multiplicativity)} $\W{\xi \oplus \eta} = \W{\xi}\cup \W{\eta}$
     \\\idest in degree $n$ we have
-    $\w_n(\xi\oplus\eta) = \sum_{i+j=n}\w_i(\xi) \cup \w_j(\eta)$,
+    $\w{n}{\xi\oplus\eta} = \sum_{i+j=n}\w{i}{\xi} \cup \w{j}{\eta}$,
   \end{enumerate}
   where the \emph{total Stiefel-Whitney class}
-  $\w\coloneqq\sum_{i\geq 0}\w_i$ is the formal sum of all
+  $\Ws\coloneqq\sum_{i\geq 0}\ws{i}$ is the formal sum of all
   Stiefel-Whitney classes,
   $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
   and $x$ is the%
@@ -589,15 +589,15 @@ description of the fundamental class of a manifold:
 
 \begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
   Stiefel-Whitney classes exist and are uniquely defined by the above
-  properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\w_i|i\geq1]$.
+  properties. Furthermore, they generate $H^*(\BO;\Zmod2)\cong \Zmod2[\ws{i}|i\geq1]$.
   \begin{proof}[proof (existence)]
     Construction utilizes the Euler class.
   \end{proof}
   \begin{proof}[proof (uniqueness)]
-    Use the splitting theorem and the knowledge about $\w(\gamma_1)$.
+    Use the splitting theorem and the knowledge about $\W{\gamma_1}$.
   \end{proof}
   \begin{proof}[proof (generators)]
-    Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\w_i|n\geq i\geq1]$
+    Inductively show $H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
   \end{proof}
 \end{Thm}
 
@@ -605,32 +605,32 @@ description of the fundamental class of a manifold:
   \label{propswclasses}
   Let $\xi$, $\eta$ be vector bundles over a space $X$.
   \begin{enumerate} 
-  \item $\w_i(\eta) = 0$
+  \item $\w{i}{\eta} = 0$
     for any vector bundle $\eta$ with $\rk\eta < i$.
-    Therefore, the total Stiefel-Whitney class $\w(\xi)$ is
+    Therefore, the total Stiefel-Whitney class $\W{\xi}$ is
     well-defined (\idest the sum is finite)
     for any vector bundle $\xi$ of finite rank.
     \begin{proof}
       This follows directly from the construction for the existence of
       the Stiefel-Whitney classes.
     \end{proof}
-  \item $\w_i(\trivbdl)=0$ for $i>0$, and one immediately concludes
+  \item $\w{i}{\trivbdl}=0$ for $i>0$, and one immediately concludes
     from multiplicativity:
     \begin{enumerate}
     \item The Stiefel-Whitney classes are stable, \idest
-      $\w_i(\xi\oplus\trivbdl) = \w_i(\xi)$.
+      $\w{i}{\xi\oplus\trivbdl} = \w{i}{\xi}$.
     \item\label{wuclassmfdinverse}
-      If $\xi\oplus\eta = \trivbdl$, $\w_i(\xi)\cup\w_i(\eta)=1$.
+      If $\xi\oplus\eta = \trivbdl$, $\w{i}{\xi}\cup\w{i}{\eta}=1$.
       Especially, for any choice of embedding with normal bundle $\N M$
       of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
-      therefore $1 = \w(\T M) \cup \w(\N M)$.
+      therefore $1 = \W{\T M} \cup \W{\N M}$.
     \end{enumerate}
     \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
       The trivial rank $n$ bundle over $X$ is defined as the pullback
       $\pb \pi \trivbdl$ of the rank $n$ bundle
       $\trivbdl\colon \R^n\to\pt$ over the point by the trivial map
       $\pi\colon X\to\pt$. The naturality of the Stiefel-Whitney
-      classes gives $\w(\trivbdl) = \pb\pi \w(\trivbdl)
+      classes gives $\W{\trivbdl} = \pb\pi \W{\trivbdl}
       \in\pb\pi \left(H^i(\pt;\Zmod2)\right)$,
       and the result follows from $H^i(\pt;\Zmod2) = 0$ for $i>0$.
     \end{proof}
@@ -638,20 +638,21 @@ description of the fundamental class of a manifold:
 \end{Rem}
 
 \begin{Def}
-  For any space $X$ define the \emph{dual Stiefel-Whitney classes}
-  $\dualw_i$ in degree $i$ of $X$ inductively by
+  Define the \emph{dual Stiefel-Whitney (characteristic) classes}
+  $\dualws{i}$ in degree $i$ inductively by
   \begin{align*}
-    1 &= \dualw_0\cup\w_0 = \dualw_0    &&\text{in degree 0}\\
-    0 &= \sum_{i+j=n} \dualw_i\cup\w_j  &&\text{in degree n>0}
+    1 &= \dualws{0}\cup\ws{0} = \dualws{0}    &&\text{in degree 0}\\
+    0 &= \sum_{i+j=n} \dualws{i}\cup\ws{j}  &&\text{in degree n>0}
   \end{align*}
-  With the notation $\dualw\coloneqq \sum_{i\geq0} \dualw_i$ as above
+  With the notation $\dualWs\coloneqq \sum_{i\geq0} \dualws{i}$ as above
   for the formal sum this can be reformulated as
   \begin{gather*}
-    1 = \w\cup\dualw
+    1 = \Ws\cup\dualWs
   \end{gather*}
+  in the completion of the polynomial ring $H^*(\BO)\cong\Zmod2[\ws{i}|i\in\Nat]$.
   For a manifold $M$ define
-  $\w(M) \coloneqq \w(\T M)$ and
-  $\dualw(M) \coloneqq \dualw(\T M) = \w(\N M)$
+  $\W{M} \coloneqq \W{\T M}$ and
+  $\dualW{M} \coloneqq \dualW{\T M} = \W{\N M}$
   where the last equality is the one from
   Proposition~\ref{propswclasses} above.
 \end{Def}
@@ -659,76 +660,76 @@ description of the fundamental class of a manifold:
 \begin{Thm}\label{altdefswclasses}
   The Stiefel-Whitney classes can be given as
   \begin{gather*}
-    \Sq i(\u(\xi)) = \thomiso(\w_i(\xi)) = \pb p w_i(\xi) \cup \u(\xi)
+    \Sq i(\u{\xi}) = \thomiso(\w{i}{\xi}) = \pb p \w{i}{\xi} \cup \u{\xi}
   \end{gather*}
   for any vector bundle $\xi\colon E\to B$ over a paracompact space
   $X$. As the Thom isomorphism is a group homomorphism, one can
   formulate the above as
   \begin{gather*}
-    \Sq{}(\u(\xi)) = \thomiso(\w(\xi)) = \pb p w(\xi) \cup \u(\xi)
+    \SQ(\u{\xi}) = \thomiso(\W{\xi}) = \pb p \W{\xi} \cup \u{\xi}
   \end{gather*}
   The representing cohomology classes can be constructed using the
   embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
-  $\w_i=\pb\incl\w_i(\gamma_n)\in H^i(\BO)$. % TODO: ref
+  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in H^i(\BO)$. % TODO: ref
   \begin{proof}
     Check naturality of the expression and all further
     definining properties from \ref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
-    \item[$\w_0=1$:]
+    \item[$\ws{0}=1$:]
       $H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
       candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
       isomorphism sends 1 to 1 in this degree.
-    \item[$\w(\gamma_1)=1+x$:] % TODO: alt def SW-classes
+    \item[$\W{\gamma_1}=1+x$:] % TODO: alt def SW-classes
     \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
-      $B$. With $\u(\xi\oplus\eta)=\u(\xi)\cup\u(\eta)$ and the fact
+      $B$. With $\u{\xi\oplus\eta}=\u{\xi}\cup\u{\eta}$ and the fact
       \begin{gather}\label{projectionscommute}
         p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
       \end{gather}
       get
       \begin{align*}
-        \thomiso(\w_i(\xi\oplus\eta))
-        &= \Sq i(\u(\xi\oplus\eta)) \\
-        &\overset{\mathllap{\text{\autoref{thomclassmultiplicative}}}}=
-          \Sq i(\pb\pi_\xi\u(\xi) \cup \pb\pi_\eta\u(\eta))\\
-        &\overset{\mathllap{\text{\ref{cartan}}}}=
+        \thomiso(\w{i}{\xi\oplus\eta})
+        &= \Sq i(\u{\xi\oplus\eta}) \\
+        &\equalsby{\autoref{thomclassmultiplicative}}
+          \Sq i(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta})\\
+        &\equalsby{\ref{cartan}}
           \sum_{r+s=i}
-          \Sq r(\pb\pi_\xi\u(\xi)) \cup \Sq s(\pb \pi_\eta\u(\eta)) \\
-        &\overset{\mathllap{\text{Naturality}}}=
+          \Sq r(\pb\pi_\xi\u{\xi}) \cup \Sq s(\pb \pi_\eta\u{\eta}) \\
+        &\equalsby{Naturality}
           \sum_{r+s=i}
-          \pb\pi_\xi\Sq r(\u(\xi)) \cup \pb \pi_\eta\Sq s(\u(\eta)) \\
-        &\overset{\mathllap{\text{Definition}}}=
+          \pb\pi_\xi\Sq r(\u{\xi}) \cup \pb \pi_\eta\Sq s(\u{\eta}) \\
+        &\equalsby{Definition}
           \sum_{r+s=i}
-          \pb\pi_\xi\thomiso(\w_r(\xi))
-          \cup \pb\pi_\eta\thomiso(\w_s(\eta)) \\
-        &\overset{\mathllap{\text{Definition}}}=
+          \pb\pi_\xi\thomiso(\w{r}{\xi})
+          \cup \pb\pi_\eta\thomiso(\w{s}{\eta}) \\
+        &\equalsby{Definition}
           \sum_{r+s=i}
-          \pb\pi_\xi \left(\pb p_\xi  \w_r(\xi)  \cup \u(\xi) \right)
+          \pb\pi_\xi \left(\pb p_\xi  \w{r}{\xi}  \cup \u{\xi} \right)
           \cup
-          \pb\pi_\eta\left(\pb p_\eta \w_s(\eta) \cup \u(\eta)\right) \\
+          \pb\pi_\eta\left(\pb p_\eta \w{s}{\eta} \cup \u{\eta}\right) \\
         &= \left(
           \sum_{r+s=i}
-          \pb\pi_\xi \pb p_\xi \w_r(\xi) \cup
-          \pb\pi_\eta\pb p_\eta\w_s(\eta)
+          \pb\pi_\xi \pb p_\xi \w{r}{\xi} \cup
+          \pb\pi_\eta\pb p_\eta\w{s}{\eta}
           \right)
           \cup
-          \left(\pb\pi_\xi\u(\xi) \cup \pb\pi_\eta\u(\eta)\right) \\
-        &\overset{\mathllap{\text{\eqref{projectionscommute}, Definition}}}=
+          \left(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta}\right) \\
+        &\equalsby{\eqref{projectionscommute}, Definition}
           \left(\sum_{r+s=i}
-          \pb p_{\xi\oplus\eta} \w_r(\xi) \cup \pb p_{\xi\oplus\eta} \w_s(\eta)
+          \pb p_{\xi\oplus\eta} \w{r}{\xi} \cup \pb p_{\xi\oplus\eta} \w{s}{\eta}
           \right)
           \cup
-          \u(\xi) \times \u(\eta) \\
-        &\overset{\mathllap{\text{Group Hom., \ref{thomclassmultiplicative}}}}=
+          \u{\xi} \times \u{\eta} \\
+        &\equalsby{Group Hom., \ref{thomclassmultiplicative}}
           \pb p_{\xi\oplus\eta}
-          \left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
+          \left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
           \cup
-          \u(\xi\oplus\eta)\\
-        &\overset{\mathllap{\text{Definition}}}=
+          \u{\xi\oplus\eta}\\
+        &\equalsby{Definition}
         % TODO: Intermediate steps
-          \thomiso\left(\sum_{r+s=i}\w_r(\xi)\cup\w_s(\eta)\right)
+          \thomiso\left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
           \;.
       \end{align*}
       Applying $\thomiso^{-1}$ yields the result.
@@ -742,17 +743,17 @@ description of the fundamental class of a manifold:
 Let $M$ be a compact, $n$-dimensinoal manifold.
 
 \begin{Def}\label{def:wuclasses}
-  The $i$th \emph{Wu class} $\v_i(M)$ of $M$ for $0\leq i\leq n$ is defined
+  The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
   as the cohomology class in $H^i(M)$ that is uniquely determined by
   \begin{center}
     \begin{tikzcd}[row sep=0pt, column sep=small]
-      H^i(M) \ar[r, equal, "\sim"]
-      & H_{n-1}(M) \ar[r, equal, "\sim"]
-      &\Hom{\Zmod2}(H^{n-i}(M), \Zmod2) \ar[r, equal, "\sim"]
+      H^i(M) \ar[r, equal, "\isosymb"]
+      & H_{n-1}(M) \ar[r, equal, "\isosymb"]
+      &\Hom{\Zmod2}(H^{n-i}(M), \Zmod2) \ar[r, equal, "\isosymb"]
       &\Zmod2
       \\
       y \ar[rr, mapsto] &&\capped{ x\cup y }{ \fundcl M }\\
-      \v_i(M) \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
+      \v{i}{M} \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
     \end{tikzcd}
   \end{center}
   where the first isomorphism from the left is Poincaré duality % TODO: ref
@@ -761,7 +762,7 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
   Equivalently, for any cohomology class $x\in H^{n-i}(M)$ of fixed
   degree $n-i$ holds
   \begin{gather*}
-    x\cup \v_i = \Sq i(x) \in H^n(M) \cong \Zmod2
+    x\cup \v{i}{M} = \Sq i(x) \in H^n(M) \cong \Zmod2
   \end{gather*}
   Mind the fixed degree of $x$---the above will not be true for other
   degree cohomology classes in general!
@@ -771,8 +772,8 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
   Some immediate consequences of the definitions of the Wu classes of
   $M$ are
   \begin{itemize}
-  \item $\v_0 = 1$
-  \item $\v_i = 0$ for $i>\frac n 2$, because $\Sq i(x) = 0$ if the
+  \item $\v{0}{M} = 1$
+  \item $\v{i}{M} = 0$ for $i>\frac n 2$, because $\Sq i(x) = 0$ if the
     degree of x is lower than $i$.
   \end{itemize}
 \end{Rem}
@@ -780,17 +781,17 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
 
 \begin{Def}
   The \emph{total Wu class} of $M$ is defined as the sum
-  $\sum_{i\geq0}\v_i(M)$. The \emph{total dual Wu class}
-  $\dualv(M)\eqqcolon \sum_{i\geq 0}\dualv_i(M)$
-  and the dual Wu classes $\dualv_i$
+  $\sum_{i\geq0}\v{i}{M}$. The \emph{total dual Wu class}
+  $\dualV{M}\eqqcolon \sum_{i\geq 0}\dualv{i}{M}$
+  and the dual Wu classes $\dualv{i}{M}$
   of $M$ are defined by
   \begin{gather*}
-    \v(M) \cup \dualv(M) = 1
+    \V{M} \cup \dualV{M} = 1
   \end{gather*}
   or equivalently
   \begin{align*}
-    1 &= \dualv_0(M) \cup \v_0(M) = \dualv_0(M) \\
-    0 &= \sum_{r+s=i}\v_r(M)\cup\dualv_s(M)
+    1 &= \dualv{0}{M} \cup \v{0}{M} = \dualv{0}{M} \\
+    0 &= \sum_{r+s=i}\v{r}{M}\cup\dualv{s}{M}
       &&\text{in degree $0\leq i\leq n$}
   \end{align*}
 \end{Def}
@@ -802,15 +803,15 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 \begin{Def}\label{def:altwuclasses}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
-  The $i$th \emph{Wu class} $\v_i(\xi)$ of $\xi$ for $0\leq i\leq n$
+  The $i$th \emph{Wu class} $\v{i}{\xi}$ of $\xi$ for $0\leq i\leq n$
   is defined as the cohomology class in $H^i(B)$ that is uniquely
   determined by
   \begin{gather*}
-    \antipode(\Sq i)(\u(\xi)) = \thomiso(\v_i(\xi)) = \pb p v_i(\xi) \cup \u(\xi)
+    \antipode(\Sq i)(\u{\xi}) = \thomiso(\v{i}{\xi}) = \pb p \v{i}{\xi} \cup \u{\xi}
   \end{gather*}
   The \emph{total Wu class} of $\xi$ is defined as usual as
-  $\v(\xi)\coloneqq\sum_{i\geq0}\v_i(\xi)$ and satisfies accordingly 
-  $\antipode(\Sq{})(\u(\xi))=\v(\xi)$.
+  $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$ and satisfies accordingly 
+  $\antipode(\SQ)(\u{\xi})=\V{\xi}$.
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
@@ -823,20 +824,20 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
   any normal bundle of rank $k$ of an embedding of $M$ into
   $\R^{n+k}$. Then
   \begin{gather*}
-    \v_i(M) = \v_i(\N M)\in H^i(M)
+    \v{i}{M} = \v{i}{\N M}\in H^i(M)
   \end{gather*}
   \begin{proof}
     To proof \ref{altdefwuclasses}, the defining property of
-    $\v_i(M)$ will be checked on $\v_i(\N M)$, \idest one has to show
+    $\v{i}{M}$ will be checked on $\v{i}{\N M}$, \idest one has to show
     that for any $x\in H^{n-i}(M)$ holds
     \begin{gather*}
-      \capped{x\cup \v_i(\N M)}{\fundcl M}
+      \capped{x\cup \v{i}{\N M}}{\fundcl M}
       = \capped{\Sq i(x)}{\fundcl M}
     \end{gather*}
     Note, that this is simply the $i$th degree of the equation
     \begin{gather}\label{proofaltdefwuclasses:claim}
-      \capped{x\cup \v(\N M)}{\fundcl M}
-      = \capped{\Sq{}(x)}{\fundcl M}
+      \capped{x\cup \V{\N M}}{\fundcl M}
+      = \capped{\SQ(x)}{\fundcl M}
     \end{gather}
     which will be proven below.
     Beforehands, recall the following:
@@ -852,13 +853,13 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       M$.
     \item[By \autoref{sqlowerbound}:]
       The total Steenrod square
-      $\Sq{}\colon H^m(\Sphere m)
+      $\SQ\colon H^m(\Sphere m)
       \to H^*(\Sphere m)$
       is the identity on $H^m(\Sphere m)$, \idest
       $\Sq i\colon H^m(\Sphere{m})\to H^{m+i}(\Sphere{m})$ is zero for
       $i\neq0$.
     \item[By Definition \autoref{def:sq}:] The total Steenrod Square
-      $\Sq{}$ is natural and a ring homomorphism.
+      $\SQ$ is natural and a ring homomorphism.
     \item[By {\cite[Chap.~3.3.2, p.~241]{hatcher}}
       (compare \autoref{capprod2}):]
       For any map of spaces $f\colon X\to Y$ and co-/homology classes
@@ -872,98 +873,98 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
     \autoref{thomisofundcl}.
     For simplicity, denote
-    $\v\coloneqq \v(\N M)$,
-    $\Sphere{}\coloneqq \Sphere{n+\rkk}$,
-    $\u\coloneqq \u(\N M)$ and
+    $\vu\coloneqq \V{\N M}$,
+    $\Sph\coloneqq \Sphere{n+\rkk}$,
+    $\U\coloneqq \u{\N M}$ and
     $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
     respectively
     $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
     
     
     In a first calculation reformulate
-    $\capped{x\cup \v(\N M)}{\fundcl M}$ using the cohomology of the
+    $\capped{x\cup \V{\N M}}{\fundcl M}$ using the cohomology of the
     $(n+k)$-sphere:
     \begin{align}\notag
-      \capped{x\cup \v}{\fundcl M}
+      \capped{x\cup \vu}{\fundcl M}
       &\equalsby{\autoref{thomisofundcl}}
         \capped
-        {x\cup\v}
-        {\thomiso\left(\pf\collapse\fundcl{\Sphere{}}\right)}
+        {x\cup\vu}
+        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\\notag
       &\equalsby{\autoref{thomisoself-adjoint}}
         \capped
-        {\thomiso\left(x\cup\v\right)}
-        {\pf\collapse\fundcl{\Sphere{}}}
+        {\thomiso\left(x\cup\vu\right)}
+        {\pf\collapse\fundcl{\Sph}}
       \\\notag
       &\equalsby{\autoref{capprod2copy}}
         \pf\collapse\capped
-        {\pb\collapse\thomiso\left(x\cup\v\right)}
-        {\fundcl{\Sphere{}}}
+        {\pb\collapse\thomiso\left(x\cup\vu\right)}
+        {\fundcl{\Sph}}
       \\\notag
       &\equalsby{\autoref{sqlowerbound}}
         \pf\collapse\capped
-        {\Sq{}\left(\pb\collapse\thomiso\left(x\cup\v\right)\right)}
-        {\fundcl{\Sphere{}}}
+        {\SQ\left(\pb\collapse\thomiso\left(x\cup\vu\right)\right)}
+        {\fundcl{\Sph}}
       \\\notag
       &\equalsby{Naturality}
         \pf\collapse\capped
-        {\pb\collapse\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
-        {\fundcl{\Sphere{}}}
+        {\pb\collapse\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\fundcl{\Sph}}
       \\\label{proofaltdefwuclasses:eq1}
       &\equalsby{\autoref{capprod2copy}}
         \capped
-        {\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
-        {\pf\collapse\fundcl{\Sphere{}}}
+        {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\pf\collapse\fundcl{\Sph}}
     \end{align}
-    Having introduced $\Sq{}$ on the left hand side, one observes a
+    Having introduced $\SQ$ on the left hand side, one observes a
     certain commutativity of the Thom isomorphism, and the total
     Steenrod square:
     \begin{align}\notag
-      \Sq{}\left(\thomiso\left(x\cup\v\right)\right)
+      \SQ\left(\thomiso\left(x\cup\vu\right)\right)
       &=
-        \Sq{}\left(\left(\pb p x\cup \pb p\v\right) \cup \u\right)
+        \SQ\left(\left(\pb p x\cup \pb p\vu\right) \cup \U\right)
       \\\notag
       &=
-        \Sq{}\left(\pb p x\cup \left(\pb p\v \cup \u\right)\right)
+        \SQ\left(\pb p x\cup \left(\pb p\vu \cup \U\right)\right)
       \\\notag
       &\equalsby{Def. $\thomiso$}
-       \Sq{}\left(\pb p x\cup \thomiso(\v)\right)
+       \SQ\left(\pb p x\cup \thomiso(\vu)\right)
       \\\notag
       &\equalsby{Naturality, Ring Hom.}
-        \pb p\Sq{}(x) \cup \Sq{}(\thomiso(\v))
+        \pb p\SQ(x) \cup \SQ(\thomiso(\vu))
       \\\notag
-      &\equalsby{Def. $\v$}
-        \pb p\Sq{}(x) \cup \Sq{}(\antipode(\Sq{})(u))
+      &\equalsby{Def. $\V{M}$}
+        \pb p\SQ(x) \cup \SQ(\antipode(\SQ)(u))
       \\\notag
       &\equalsby{Def. $\antipode$}
-        \pb p\Sq{}(x) \cup u
+        \pb p\SQ(x) \cup u
       \\\label{proofaltdefwuclasses:eq2}
       &\equalsby{Def. $\thomiso$}
-        \thomiso(\Sq{}(x))
+        \thomiso(\SQ(x))
     \end{align}
     Inserting \eqref{proofaltdefwuclasses:eq2} into
     \eqref{proofaltdefwuclasses:eq1} from above easily yields the
     claim in \eqref{proofaltdefwuclasses:claim} that proves the theorem:
     \begin{align*}
-      \capped{x\cup \v}{\fundcl M}
-      &\overset{\mathclap{\eqref{proofaltdefwuclasses:eq1}}}=
+      \capped{x\cup \vu}{\fundcl M}
+      &\cequalsby{\eqref{proofaltdefwuclasses:eq1}}
         \capped
-        {\Sq{}\left(\thomiso\left(x\cup\v\right)\right)}
-        {\pf\collapse\fundcl{\Sphere{}}}
+        {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\pf\collapse\fundcl{\Sph}}
       \\
-      &\overset{\mathclap{\eqref{proofaltdefwuclasses:eq2}}}=
+      &\cequalsby{\eqref{proofaltdefwuclasses:eq2}}
         \capped
-        {\thomiso(\Sq{}(x))}
-        {\pf\collapse\fundcl{\Sphere{}}}
+        {\thomiso(\SQ(x))}
+        {\pf\collapse\fundcl{\Sph}}
       \\
       &\equalsby{\autoref{thomisoself-adjoint}}
         \capped
-        {\Sq{}(x)}
-        {\thomiso\left(\pf\collapse\fundcl{\Sphere{}}\right)}
+        {\SQ(x)}
+        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\
       &\equalsby{\autoref{thomisofundcl}}
         \capped
-        {\Sq{}(x)}
+        {\SQ(x)}
         {\fundcl M}
         \qedhere
     \end{align*}
@@ -980,22 +981,22 @@ the alternative definition of the Wu classes from
 \begin{Thm}[Wu]\label{wu}
   A closed manifold gives rise to the following two equalities
   \begin{align}\notag
-    \dualw(M) &= \Sq{}\left(\dualv(M)\right)
+    \dualW{M} &= \SQ\left(\dualV{M}\right)
     &\text{respectively}&
-    &\dualw_k &= \sum_{i\geq0} \Sq i\left(\dualv_{k-i}(M)\right)
+    &\dualw{k}{M} &= \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
     &\text{and}
     \\
-    \w(M) &= \Sq{}\left(\v(M)\right)
+    \W{M} &= \SQ\left(\V{M}\right)
     &\text{respectively}&
-    &\w_k &= \sum_{i\geq0} \Sq i\left(\v_{k-i}(M)\right)
+    &\w{k}{M} &= \sum_{i\geq0} \Sq i\left(\v{k-i}{M}\right)
     \label{wuformula}\tag{Wu's formula}
   \end{align}
   that are equivalent using
-  $\dualw(M)\cup\w(M) = 1$ and
+  $\dualW{M}\cup\W{M} = 1$ and
   \begin{gather*}
-    \Sq{}(\dualv(M))\cup\Sq{}(\v(M))
-    = \Sq{}(\dualv(M)\cup\v(M))
-    = \Sq{}(1)
+    \SQ(\dualV{M})\cup\SQ(\V{M})
+    = \SQ(\dualV{M}\cup\V{M})
+    = \SQ(1)
     = 1
     \;.
   \end{gather*}
@@ -1003,22 +1004,22 @@ the alternative definition of the Wu classes from
 % \begin{Rem}
 %   The following is equivalent to Wu's formula
 %   \begin{gather*}
-%     \dualw(M) = \Sq{}\left(\dualv(M)\right)
+%     \dualW{M} = \SQ\left(\dualV{M}\right)
 %     \qquad\text{respectively}\qquad
-%     \dualw_k = \sum_{i\geq0} \Sq i\left(\dualv_{k-i}(M)\right)
+%     \dualw{k}{M} = \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
 %   \end{gather*}
-%   using the inverses $\dualw(M)\cup\w(M) = 1$ and
+%   using the inverses $\dualW{M}\cup\W{M} = 1$ and
 %   \begin{gather*}
-%     \Sq{}(\dualv(M))\cup\Sq{}(\v(M))
-%     = \Sq{}(\dualv(M)\cup\v(M))
-%     = \Sq{}(1)
+%     \SQ(\dualV{M})\cup\SQ(\V{M})
+%     = \SQ(\dualV{M}\cup\V{M})
+%     = \SQ(1)
 %     = 1
 %     \;.
 %   \end{gather*}
 % \end{Rem}
 The proof uses the alternative characterization
 \begin{gather*}
-  \antipode(\Sq{})(\u(\N M)) = \thomiso(\v(\N M))
+  \antipode(\SQ)(\u{\N M}) = \thomiso(\V{\N M})
 \end{gather*}
 of the Wu classes from \autoref{altdefwuclasses}, and quite directly
 follows from the following Lemma:
@@ -1026,55 +1027,55 @@ follows from the following Lemma:
   For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
   paracompact space holds
   \begin{gather*}
-    \Sq{}(\v(\xi)) \cup \w(\xi)= 1
+    \SQ(\V{\xi}) \cup \W{\xi}= 1
     \;.
   \end{gather*}
 \end{Lem}
 \begin{proof}[proof of \ref{wuformula}]
   Lemma \autoref{wulemma} states for a closed manifold $M$
   \begin{gather*}
-    \Sq{}(\v(M)) \cup \w(\N M)
-    = \Sq{}(\v(\N M)) \cup \w(\xi)
-    \overset{\autoref{wulemma}}= 1
+    \SQ(\V{M}) \cup \W{\N M}
+    = \SQ(\V{\N M}) \cup \W{\xi}
+    \cequalsby{\autoref{wulemma}} 1
     \;.
   \end{gather*}
-  Cupping with $\w(M)=\w(\T M)$ on both sides yields the claim
-  as $\w(\T M) \cup \w(\N M) = 1$ by
+  Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
+  as $\W{\T M} \cup \W{\N M} = 1$ by
   \autoref{propswclasses}~\ref{wuclassmfdinverse}.
 \end{proof}
 \begin{proof}[proof of Lemma~\autoref{wulemma}]
   For simplicity use the shortenings
-  $\u\coloneqq \u(\xi)$,
-  $\v\coloneqq \v(\xi)$, and
-  $\w\coloneqq \w(\xi)$.
+  $\U\coloneqq \u{\xi}$,
+  $\vu\coloneqq \V{\xi}$, and
+  $\Ws\coloneqq \W{\xi}$.
   Then calculate
   \begin{align*}
     \thomiso(1)
-    &= \u
+    &= \U
     \\
     &\equalsby{Def.~\autoref{def:antipode}}
-      \Sq{}\left(\antipode(\Sq{})(\u)\right)
+      \SQ\left(\antipode(\SQ)(\U)\right)
     \\
     &\equalsby{Def.~\autoref{def:altwuclasses}}
-      \Sq{}\left(\thomiso(\v)\right)
+      \SQ\left(\thomiso(\vu)\right)
     \\
     &\equalsby{Def.~$\thomiso$}
-      \Sq{}\left(\pb p\v \cup u\right)
+      \SQ\left(\pb p\vu \cup \U\right)
     \\
     &\equalsby{\ref{cartan}, Naturality}
-      \pb p\Sq{}(\v) \cup \Sq{}(u)
+      \pb p\SQ(\vu) \cup \SQ(\U)
     \\
     &\equalsby{\autoref{altdefswclasses}}
-      \pb p\Sq{}(\v) \cup \thomiso(\w)
+      \pb p\SQ(\vu) \cup \thomiso(\Ws)
     \\
     &\equalsby{Def.~$\thomiso$}
-      \pb p\Sq{}(\v) \cup \left(\pb p \w \cup \u\right)
+      \pb p\SQ(\vu) \cup \left(\pb p \Ws \cup \U\right)
     \\
     &=
-      \pb p\left(\Sq{}(\v) \cup \w\right) \cup \u
+      \pb p\left(\SQ(\vu) \cup \Ws\right) \cup \U
     \\
     &\equalsby{Def.~$\thomiso$}
-      \thomiso\left(\Sq{}(\v) \cup \w\right)
+      \thomiso\left(\SQ(\vu) \cup \Ws\right)
   \end{align*}
   Applying the inverse of the Thom isomorphism on both sides
   yields the equality which was to be shown.
