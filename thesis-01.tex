@@ -11,64 +11,70 @@
 \chapter{Preliminaries}
 \section{Steenrod Squares}
 
-\begin{Def}[Steenrod Squares]\label{def:sq} % TODO: Check
+The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1]{steenrodepstein}.
+\begin{Def}[Steenrod Squares]\label{def:sq}
   The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
-  cohomology operations of the form
+  cohomology operations, \idest families of homomorphisms, of the form
   \begin{gather*}
     \left(
-      \Sq i\colon \H^n(X;\Zmod2) \to \H^{n+i}(X;\Zmod2)
+      \Sq i\colon \H^n(X, A;\Zmod2) \to \H^{n+i}(X, A;\Zmod2)
       \;\middle|\;
       n\in\Nat
     \right)
   \end{gather*}
-  that satisfy the following relations for any space $X$, and any map of
-  spaces $f\colon X\to Y$:
+  that satisfy the following relations for any pair of spaces $(X,A)$, and any map of
+  pairs of spaces $f\colon (X,A)\to (Y,B)$:
   \begin{description}
-  \item[(Naturality)] $\pb f\circ\Sq i = \Sq i\circ\pb f$
-  \item[(Stability)] $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
+  \item[(Naturality)]\label{item:sqnaturality} $\pb f\circ\Sq i = \Sq i\circ\pb f$
+  \item[(Stability)]\label{item:sqstability} $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
   \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in \H^n(X)$ holds
-    \begin{gather}\label{cartan}\tag{Cartan's formula}
+    \begin{gather}\label{tag:cartan}\tag{Cartan's formula}
       \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
     \end{gather}
+  \item[(Fixed values)] The following values are fixed for $x\in \H^n(X,A)$:
+    % \begin{gather}\label{eq:sqlowerbound}
+    %   \Sq i(x) = \begin{cases}
+    %     0 & n<i \\
+    %     x^2 & n=i
+    %   \end{cases}
+    %   \qquad\text{and}\qquad
+    %   \Sq i = \begin{cases}
+    %     \Id & i=0\\
+    %     \beta & i=1
+    %   \end{cases}
+    % \end{gather}
+    \begin{alignat}{4}
+      \Sq i(x) &= 0     & \qquad\text{for }n<i \label{eq:sqlowerbound}\\
+      \Sq i(x) &= x^2   & \qquad\text{for }n=i \label{eq:sqsquared}\\
+      \Sq i    &= \Id   & \qquad\text{for }i=0 \label{eq:sqidentity}\\\notag
+      \Sq i    &= \beta & \qquad\text{for }i=1 %\label{eq:sqbockstein}
+    \end{alignat}
+    where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \item[(Adem relations)] For $\alpha<2\beta$ holds
-    \begin{gather}\label{adem}\tag{Adem's formula}
+    \begin{gather}\label{tag:adem}\tag{Adem's formula}
       \Sq\alpha \circ \Sq\beta =
-      \sum_{j=0}^{\lfloor \frac \alpha 2 \rfloor}
+      \sum_{j=0}^{\left\lfloor \frac \alpha 2 \right\rfloor}
       \binom{\beta-j-1}{\alpha-2j}
       \Sq{\alpha+\beta+j}\Sq{j}
     \end{gather}
-  \item[(Fixed values)] The following values are fixed for $x\in \H^n(X)$:
-    \begin{gather}\label{sqlowerbound}
-      \Sq i(x) = \begin{cases}
-        0 & n<i \\
-        x^2 & n=i
-      \end{cases}
-      \qquad\text{and}\qquad
-      \Sq i = \begin{cases}
-        \Id & i=0\\
-        \beta & i=1
-      \end{cases}
-    \end{gather}
-    where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
   \end{description}
   $\SQ\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
   Steenrod squares called the \emph{the total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
   $\SQ\colon \H^n(X)\to \H^*(X)$ is well-defined since the sum is
-  finite by \eqref{sqlowerbound}.
-  Also \ref{cartan} can be reformulated to
+  finite by \eqref{eq:sqlowerbound}.
+  Also \ref{tag:cartan} can be reformulated to
   $\SQ(x\cup y) = \SQ(x)\cup\SQ(y)$, \idest $\SQ$ is a group
   homomorphism with respect to the cup-product.
-
-  Analoguesly define Steenrod squares for a pair of spaces $(X,A)$.
 \end{Def}
 
 \begin{Thm}
-  The Steenrod squares exist and are uniquely determined by the above
-  properties.
-  \begin{proof} % TODO: Do proof of existence&uniqueness of Steenrod sq?
-    Existence: \cite[Chapter 2]{mosher};
-    Uniqueness: \cite[VIII §3]{steenrodepstein}
+  The Steenrod squares exist and are uniquely determined by
+  naturality,\ref{tag:cartan}, and the fixed values
+  \eqref{eq:sqlowerbound}, \eqref{eq:sqsquared}, and \eqref{eq:sqidentity}.
+  \begin{proof}
+    For existence see \cite[Chapter 2]{mosher},
+    for uniqueness see \cite[VIII §3]{steenrodepstein}.
   \end{proof}
 \end{Thm}
 
@@ -230,7 +236,7 @@ and $R$ be a unital commutative ring.
     \cite[Theorem~3.18]{hatcher}
   \end{itemize}
 \end{Rem}
-\begin{Cor}\label{thomclassmultiplicative} % TODO: Lemma instead? Join with above Cor?
+\begin{Cor}\label{cor:thomclassmultiplicative} % TODO: Lemma instead? Join with above Cor?
   The Thom class construction for coefficients in a field $R$ is
   multiplicative in the following sense:
   For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
@@ -383,7 +389,7 @@ and $R$ be a unital commutative ring.
   \end{proof}
 \end{Thm}
 
-\begin{Lem}\label{thomisoself-adjoint}
+\begin{Lem}\label{lem:thomisoself-adjoint}
   If $B$ is connected, the Thom isomorphisms are adjoint in the
   following sense:
   For $r\in\Nat$, $x\in \H^r(B)$,
@@ -395,10 +401,10 @@ and $R$ be a unital commutative ring.
     First recall the following properties of the cap product
     $\capped{-}{-}$:
     \begin{align}
-      \label{capprod1}
+      \label{eq:capprod1}
       \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
                                 \in \H_0(X,X'')\\
-      \label{capprod2}
+      \label{eq:capprod2}
       \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
                                 \in \H_0(X,X'')
                                 &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}
@@ -413,7 +419,7 @@ and $R$ be a unital commutative ring.
     $\beta\in \H_j(Y, Y'\cup Y'')$.
     Also note
     \begin{gather}
-      \label{capprod3}
+      \label{eq:capprod3}
       \pf p = \Id \colon
       \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
     \end{gather}
@@ -421,11 +427,11 @@ and $R$ be a unital commutative ring.
     \begin{align*}
       \capped{t(x)}{\alpha}
       &= \capped{\pb p x \cup \U}{\alpha} \\
-      &\equalsby{\eqref{capprod1}}
+      &\equalsby{\eqref{eq:capprod1}}
         \capped{\pb p x}{\U\cap\alpha} \\
-      &\equalsby{\eqref{capprod3}}
+      &\equalsby{\eqref{eq:capprod3}}
         \pf p\capped{\pb p x}{\U\cap\alpha} \\
-      &\equalsby{\eqref{capprod2}}
+      &\equalsby{\eqref{eq:capprod2}}
         \capped{x}{\pf p(u\cap\alpha)}
         = \capped{x}{\thomiso (\alpha)} \in\Zmod2
     \end{align*}
@@ -435,7 +441,7 @@ and $R$ be a unital commutative ring.
 % TODO: Better motivation for relationship thom iso <-> fundamental cl
 Normal bundles give an interesting, more geometrical
 description of the fundamental class of a manifold:
-\begin{Lem}\label{thomisofundcl}
+\begin{Lem}\label{lem:thomisofundcl}
   Let $M$ be an $n$-dimensional compact manifold, and
   $i\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
   normal bundle $\N M$ of rank $\rkk>0$.
@@ -602,7 +608,7 @@ description of the fundamental class of a manifold:
 \end{Thm}
 
 \begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
-  \label{propswclasses}
+  \label{rem:propswclasses}
   Let $\xi$, $\eta$ be vector bundles over a space $X$.
   \begin{enumerate} 
   \item $\w{i}{\eta} = 0$
@@ -619,7 +625,7 @@ description of the fundamental class of a manifold:
     \begin{enumerate}
     \item The Stiefel-Whitney classes are stable, \idest
       $\w{i}{\xi\oplus\trivbdl} = \w{i}{\xi}$.
-    \item\label{wuclassmfdinverse}
+    \item\label{item:wuclassmfdinverse}
       If $\xi\oplus\eta = \trivbdl$, $\w{i}{\xi}\cup\w{i}{\eta}=1$.
       Especially, for any choice of embedding with normal bundle $\N M$
       of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
@@ -654,10 +660,10 @@ description of the fundamental class of a manifold:
   $\W{M} \coloneqq \W{\T M}$ and
   $\dualW{M} \coloneqq \dualW{\T M} = \W{\N M}$
   where the last equality is the one from
-  Proposition~\ref{propswclasses} above.
+  Remark~\autoref{rem:propswclasses} above.
 \end{Def}
 
-\begin{Thm}\label{altdefswclasses}
+\begin{Thm}\label{thm:altdefswclasses}
   The Stiefel-Whitney classes can be given as
   \begin{gather*}
     \Sq i(\u{\xi}) = \thomiso(\w{i}{\xi}) = \pb p \w{i}{\xi} \cup \u{\xi}
@@ -673,7 +679,7 @@ description of the fundamental class of a manifold:
   $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$. % TODO: ref
   \begin{proof}
     Check naturality of the expression and all further
-    definining properties from \ref{def:swclasses}.
+    definining properties from \autoref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
@@ -685,16 +691,16 @@ description of the fundamental class of a manifold:
     \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
       $B$. With $\u{\xi\oplus\eta}=\u{\xi}\cup\u{\eta}$ and the fact
-      \begin{gather}\label{projectionscommute}
+      \begin{gather}\label{eq:projectionscommute}
         p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
       \end{gather}
       get
       \begin{align*}
         \thomiso(\w{i}{\xi\oplus\eta})
         &= \Sq i(\u{\xi\oplus\eta}) \\
-        &\equalsby{\autoref{thomclassmultiplicative}}
+        &\equalsby{\autoref{cor:thomclassmultiplicative}}
           \Sq i(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta})\\
-        &\equalsby{\ref{cartan}}
+        &\equalsby{\ref{tag:cartan}}
           \sum_{r+s=i}
           \Sq r(\pb\pi_\xi\u{\xi}) \cup \Sq s(\pb \pi_\eta\u{\eta}) \\
         &\equalsby{Naturality}
@@ -716,13 +722,13 @@ description of the fundamental class of a manifold:
           \right)
           \cup
           \left(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta}\right) \\
-        &\equalsby{\eqref{projectionscommute}, Definition}
+        &\equalsby{\eqref{eq:projectionscommute}, Definition}
           \left(\sum_{r+s=i}
           \pb p_{\xi\oplus\eta} \w{r}{\xi} \cup \pb p_{\xi\oplus\eta} \w{s}{\eta}
           \right)
           \cup
           \u{\xi} \times \u{\eta} \\
-        &\equalsby{Group Hom., \ref{thomclassmultiplicative}}
+        &\equalsby{Group Hom., \autoref{cor:thomclassmultiplicative}}
           \pb p_{\xi\oplus\eta}
           \left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
           \cup
@@ -798,7 +804,7 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
 
 The following more general definition of Wu classes
 will be shown to be equivalent to the one above in
-\ref{def:wuclasses}.
+Definition~\autoref{def:wuclasses}.
 It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
 \begin{Def}\label{def:altwuclasses}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
@@ -815,10 +821,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
-  classes in \autoref{altdefswclasses}.
+  classes in \autoref{thm:altdefswclasses}.
 \end{Rem}
 
-\begin{Thm}\label{altdefwuclasses}
+\begin{Thm}\label{thm:altdefwuclasses}
   Let $M$ be a compact manifold of dimension $n$, and let
   $\N M\colon \E{\N M} \xrightarrow{p} M$ be
   any normal bundle of rank $k$ of an embedding of $M$ into
@@ -827,7 +833,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \v{i}{M} = \v{i}{\N M}\in \H^i(M)
   \end{gather*}
   \begin{proof}
-    To proof \ref{altdefwuclasses}, the defining property of
+    To proof \autoref{thm:altdefwuclasses}, the defining property of
     $\v{i}{M}$ will be checked on $\v{i}{\N M}$, \idest one has to show
     that for any $x\in \H^{n-i}(M)$ holds
     \begin{gather*}
@@ -835,23 +841,23 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       = \capped{\Sq i(x)}{\fundcl M}
     \end{gather*}
     Note, that this is simply the $i$th degree of the equation
-    \begin{gather}\label{proofaltdefwuclasses:claim}
+    \begin{gather}\label{eq:proofaltdefwuclasses:claim}
       \capped{x\cup \V{\N M}}{\fundcl M}
       = \capped{\SQ(x)}{\fundcl M}
     \end{gather}
     which will be proven below.
     Beforehands, recall the following:
     \begin{description}
-    \item[By \autoref{thomisoself-adjoint}:]
+    \item[By \autoref{lem:thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
       for $r\in\Nat$, $z\in \H^r(M)$,
       $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
-    \item[By \autoref{thomisofundcl}:]
+    \item[By \autoref{lem:thomisofundcl}:]
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
       where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
       the collapse map of a tubular embedding of the normal bundle $\N
       M$.
-    \item[By \autoref{sqlowerbound}:]
+    \item[By \eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}:]
       The total Steenrod square
       $\SQ\colon \H^m(\Sphere m)
       \to \H^*(\Sphere m)$
@@ -861,17 +867,17 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \item[By Definition \autoref{def:sq}:] The total Steenrod Square
       $\SQ$ is natural and a ring homomorphism.
     \item[By {\cite[Chap.~3.3.2, p.~241]{hatcher}}
-      (compare \autoref{capprod2}):]
+      (compare \eqref{eq:capprod2}):] % TODO: join eq:capprod2 equations
       For any map of spaces $f\colon X\to Y$ and co-/homology classes
       $a$ and $\beta$ in the corresponding co-/homology groups holds
-      \begin{gather}\label{capprod2copy}
+      \begin{gather}\label{eq:capprod2copy}
         \capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}
       \end{gather}
     \end{description}
     For the proof fix some $i\leq n$, some arbitrary $x\in
     \H^{n-i}(M)$, as well as a collapse map
     $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
-    \autoref{thomisofundcl}.
+    \autoref{lem:thomisofundcl}.
     For simplicity, denote
     $\vu\coloneqq \V{\N M}$,
     $\Sph\coloneqq \Sphere{n+\rkk}$,
@@ -886,22 +892,22 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     $(n+k)$-sphere:
     \begin{align}\notag
       \capped{x\cup \vu}{\fundcl M}
-      &\equalsby{\autoref{thomisofundcl}}
+      &\equalsby{\autoref{lem:thomisofundcl}}
         \capped
         {x\cup\vu}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\\notag
-      &\equalsby{\autoref{thomisoself-adjoint}}
+      &\equalsby{\autoref{lem:thomisoself-adjoint}}
         \capped
         {\thomiso\left(x\cup\vu\right)}
         {\pf\collapse\fundcl{\Sph}}
       \\\notag
-      &\equalsby{\autoref{capprod2copy}}
+      &\equalsby{\eqref{eq:capprod2copy}}
         \pf\collapse\capped
         {\pb\collapse\thomiso\left(x\cup\vu\right)}
         {\fundcl{\Sph}}
       \\\notag
-      &\equalsby{\autoref{sqlowerbound}}
+      &\equalsby{\eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}}
         \pf\collapse\capped
         {\SQ\left(\pb\collapse\thomiso\left(x\cup\vu\right)\right)}
         {\fundcl{\Sph}}
@@ -910,8 +916,8 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
         \pf\collapse\capped
         {\pb\collapse\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
         {\fundcl{\Sph}}
-      \\\label{proofaltdefwuclasses:eq1}
-      &\equalsby{\autoref{capprod2copy}}
+      \\\label{eq:proofaltdefwuclasses:eq1}
+      &\equalsby{\eqref{eq:capprod2copy}}
         \capped
         {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
@@ -938,31 +944,31 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       \\\notag
       &\equalsby{Def. $\antipode$}
         \pb p\SQ(x) \cup u
-      \\\label{proofaltdefwuclasses:eq2}
+      \\\label{eq:proofaltdefwuclasses:eq2}
       &\equalsby{Def. $\thomiso$}
         \thomiso(\SQ(x))
     \end{align}
-    Inserting \eqref{proofaltdefwuclasses:eq2} into
-    \eqref{proofaltdefwuclasses:eq1} from above easily yields the
-    claim in \eqref{proofaltdefwuclasses:claim} that proves the theorem:
+    Inserting \eqref{eq:proofaltdefwuclasses:eq2} into
+    \eqref{eq:proofaltdefwuclasses:eq1} from above easily yields the
+    claim in \eqref{eq:proofaltdefwuclasses:claim} that proves the theorem:
     \begin{align*}
       \capped{x\cup \vu}{\fundcl M}
-      &\cequalsby{\eqref{proofaltdefwuclasses:eq1}}
+      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
         \capped
         {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
       \\
-      &\cequalsby{\eqref{proofaltdefwuclasses:eq2}}
+      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq2}}
         \capped
         {\thomiso(\SQ(x))}
         {\pf\collapse\fundcl{\Sph}}
       \\
-      &\equalsby{\autoref{thomisoself-adjoint}}
+      &\equalsby{\autoref{lem:thomisoself-adjoint}}
         \capped
         {\SQ(x)}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\
-      &\equalsby{\autoref{thomisofundcl}}
+      &\equalsby{\autoref{lem:thomisofundcl}}
         \capped
         {\SQ(x)}
         {\fundcl M}
@@ -976,9 +982,9 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 This section is meant to show a direct connection between the
 Stiefel-Whitney classes and the Wu classes, which can be shown using
 the alternative definition of the Wu classes from
-\autoref{altdefwuclasses}.
+\autoref{thm:altdefwuclasses}.
 
-\begin{Thm}[Wu]\label{wu}
+\begin{Thm}[Wu]\label{thm:wu}
   A closed manifold gives rise to the following two equalities
   \begin{align}\notag
     \dualW{M} &= \SQ\left(\dualV{M}\right)
@@ -989,7 +995,7 @@ the alternative definition of the Wu classes from
     \W{M} &= \SQ\left(\V{M}\right)
     &\text{respectively}&
     &\w{k}{M} &= \sum_{i\geq0} \Sq i\left(\v{k-i}{M}\right)
-    \label{wuformula}\tag{Wu's formula}
+    \label{tag:wuformula}\tag{Wu's formula}
   \end{align}
   that are equivalent using
   $\dualW{M}\cup\W{M} = 1$ and
@@ -1021,9 +1027,9 @@ The proof uses the alternative characterization
 \begin{gather*}
   \antipode(\SQ)(\u{\N M}) = \thomiso(\V{\N M})
 \end{gather*}
-of the Wu classes from \autoref{altdefwuclasses}, and quite directly
+of the Wu classes from \autoref{thm:altdefwuclasses}, and quite directly
 follows from the following Lemma:
-\begin{Lem}\label{wulemma}
+\begin{Lem}\label{lem:wu}
   For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
   paracompact space holds
   \begin{gather*}
@@ -1031,19 +1037,19 @@ follows from the following Lemma:
     \;.
   \end{gather*}
 \end{Lem}
-\begin{proof}[proof of \ref{wuformula}]
-  Lemma \autoref{wulemma} states for a closed manifold $M$
+\begin{proof}[proof of \ref{tag:wuformula}]
+  Lemma \autoref{lem:wu} states for a closed manifold $M$
   \begin{gather*}
     \SQ(\V{M}) \cup \W{\N M}
-    = \SQ(\V{\N M}) \cup \W{\xi}
-    \cequalsby{\autoref{wulemma}} 1
+    = \SQ(\V{\N M}) \cup \W{\N M}
+    \cequalsby{\autoref{lem:wu}} 1
     \;.
   \end{gather*}
   Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
   as $\W{\T M} \cup \W{\N M} = 1$ by
-  \autoref{propswclasses}~\ref{wuclassmfdinverse}.
+  \autoref{rem:propswclasses}~\ref{item:wuclassmfdinverse}.
 \end{proof}
-\begin{proof}[proof of Lemma~\autoref{wulemma}]
+\begin{proof}[proof of Lemma~\autoref{lem:wu}]
   For simplicity use the shortenings
   $\U\coloneqq \u{\xi}$,
   $\vu\coloneqq \V{\xi}$, and
@@ -1062,10 +1068,10 @@ follows from the following Lemma:
     &\equalsby{Def.~$\thomiso$}
       \SQ\left(\pb p\vu \cup \U\right)
     \\
-    &\equalsby{\ref{cartan}, Naturality}
+    &\equalsby{\ref{tag:cartan}, Naturality}
       \pb p\SQ(\vu) \cup \SQ(\U)
     \\
-    &\equalsby{\autoref{altdefswclasses}}
+    &\equalsby{\autoref{thm:altdefswclasses}}
       \pb p\SQ(\vu) \cup \thomiso(\Ws)
     \\
     &\equalsby{Def.~$\thomiso$}
