@@ -26,7 +26,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   pairs of spaces $f\colon (X,A)\to (Y,B)$:
   \begin{description}
   \item[(Naturality)]\label{item:sqnaturality} $\pb f\circ\Sq i = \Sq i\circ\pb f$
-  \item[(Stability)]\label{item:sqstability} $\susp\circ\Sq i = \Sq i\circ\susp$ % TODO: suspension
+  \item[(Stability)]\label{item:sqstability} $\susp\circ\Sq i = \Sq i\circ\susp$
   \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in \H^n(X)$ holds
     \begin{gather}\label{tag:cartan}\tag{Cartan's formula}
       \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
@@ -46,10 +46,22 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
     \begin{alignat}{4}
       \Sq i(x) &= 0     & \qquad\text{for }n<i \label{eq:sqlowerbound}\\
       \Sq i(x) &= x^2   & \qquad\text{for }n=i \label{eq:sqsquared}\\
-      \Sq i    &= \Id   & \qquad\text{for }i=0 \label{eq:sqidentity}\\\notag
-      \Sq i    &= \beta & \qquad\text{for }i=1 %\label{eq:sqbockstein}
+      \Sq 0    &= \Id   \label{eq:sqidentity}
+      % \\\notag
+      % \Sq 1    &= \beta \label{eq:sqbockstein}
     \end{alignat}
-    where $\beta$ denotes the Bockstein homomorphism. % TODO: ref
+    % where $\beta$ denotes the Bockstein homomorphism
+    % \cite[see \forexample][Chap.~3.E]{hatcher} of the exact
+    % coefficient sequence
+    % \begin{center}
+    %   \begin{tikzcd}
+    %     0 \ar[r]
+    %     &\Zmod2 \ar[r,"\incl"]
+    %     &\Zmod4 \ar[r,"\proj"]
+    %     &\Zmod2 \ar[r]
+    %     &0
+    %   \end{tikzcd}
+    % \end{center}
   \item[(Adem relations)] For $\alpha<2\beta$ holds
     \begin{gather}\label{tag:adem}\tag{Adem's formula}
       \Sq\alpha \circ \Sq\beta =
@@ -70,8 +82,10 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 
 \begin{Thm}
   The Steenrod squares exist and are uniquely determined by
-  naturality,\ref{tag:cartan}, and the fixed values
-  \eqref{eq:sqlowerbound}, \eqref{eq:sqsquared}, and \eqref{eq:sqidentity}.
+  naturality, \ref{tag:cartan}, and the fixed values
+  %\eqref{eq:sqlowerbound}, \eqref{eq:sqsquared}, and
+  %\eqref{eq:sqidentity}
+  from Definition~\autoref{def:sq}.
   \begin{proof}
     For existence see \cite[Chapter 2]{mosher},
     for uniqueness see \cite[VIII §3]{steenrodepstein}.
@@ -79,7 +93,62 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Thm}
 
 \begin{Def}[Steenrod Algebra]% TODO
+  The Steenrod algebra $\A$ is the quotient
+  of the graded $\Zmod2$-polynomial algebra
+  $\Zmod2[\Sq i|i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
+  by the two-sided relations of both \ref{tag:adem} and $\Sq 0=1$.
+  With the induced grading it is an associative, connected,
+  non-commutative graded Hopf algebra over $\Zmod2$
+  \cite[Chap.~6]{mosher}.
 \end{Def}
+\begin{Not}
+  In the following, iterated Steenrod squares
+  $\Sq{i_1}\cdot\Sq{i_2}\dotsm\Sq{i_r}$ will have the short form
+  $\Sq{(i_1,i_2,\dotsc,i_r)}$,
+  and will be evaluated on an element $x$ of a cohomology ring as
+  $\Sq{i_1}\circ\dotsb\circ\Sq{i_r}(x)$ respecting the
+  properties from \autoref{def:sq}.
+  Furthermore, for a sequence $I=(i_1,\dotsc,i_r)$,
+  respectively $\Sq I$, denote by
+  \begin{description}
+  \item[$\l(I)\coloneqq r$] the \emph{length} of $I$,
+  \item[$\d(I)\coloneqq \sum_{j=0}^{r} i_j$] the \emph{degree} of $I$,
+    and by
+  \item[$\e(I)\coloneqq 2i_1-\d(I)=\sum_{j=1}^{r-1}(i_j-2i_{j+1})$]
+    the \emph{excess} of $I$.
+  \end{description}
+  The sequence $I$, respectively $\Sq I$, is called \emph{admissible},
+  if $\l(I)=1$ or $i_j\geq 2i_{j+1}$ for $0\leq j<\l(I)$.
+\end{Not}
+
+\begin{Rem}
+  The following properties will be needed for Massey's Theorem:
+  \begin{enumerate}
+  \item The set of iterated Steenrod squares $\Sq I$ of admissible
+    sequences $I$ forms a basis for $A$ as $\Zmod2$-vector space
+    \cite[Chap.~6, Theorem~1]{mosher}.
+  \end{enumerate}
+  Let $I=(i_1,\dotsc,i_r)$ be a sequence in $\Nat$.
+  \begin{enumerate}[resume]
+  \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
+  \item $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
+    \begin{proof}
+      This follows by induction over $\l(I)$ using
+      \eqref{eq:sqlowerbound}. The case $\l(I)=1$ follows directly 
+      from \eqref{eq:sqlowerbound}.
+      For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_r)$, the condition
+      $\deg(x) < \e(I)=i_1-\d(J)$
+      implies
+      \begin{gather*}
+        \deg(\Sq J(x))
+        = \deg(x)+\d(J) < \e(J)+\d(J) = 2i_2
+        \overset{\text{adm.}}\leq i_1
+      \end{gather*}
+      So,
+      $\Sq I(x)=\Sq{i_1}(\Sq J(x)) \cequalsby{\eqref{eq:sqlowerbound}} 0$.
+    \end{proof}
+  \end{enumerate}
+\end{Rem}
 
 \begin{Def}\label{def:antipode}
   The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is a

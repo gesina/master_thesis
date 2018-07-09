@@ -110,6 +110,7 @@
 \theoremstyle{remark}
 \newtheorem{Ex}[Thm]{Example}
 \newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Not}[Thm]{Notation}
 
 % MATHS DEFINITIONS
 % Numbers
@@ -168,11 +169,6 @@
 \renewcommand*{\H}{H} % co-/homology (overrides 'double accute')
 \newcommand*{\relH}{\widetilde\H} % relative co-/homology
 \newcommand*{\capped}[2]{\left\langle #1,\, #2 \right\rangle} % cap prod
-\newcommand*{\SQ}{\mathrm{Sq}} % total Steenrod Square
-\newcommand*{\Sq}[1]{\SQ^{#1}}  % Steenrod Squares
-\newcommand*{\A}{\mathcal{A}_2} % Steenrod algebra
-\newcommand*{\Sqcup}{\circ} % multiplication of the Steenrod algebra
-\newcommand*{\antipode}{\chi} % antipode of the Steenrod algebra
 \newcommand*{\thomiso}{t} % Thom isomorphism
 \newcommand*{\fundcl}[1]{[#1]} % fundamental class of a manifold
 
@@ -200,6 +196,15 @@
 \newcommand*{\V}[1]{\v{}{#1}} % total Wu class of a mfd/bdl
 \newcommand*{\dualV}[1]{\dualv{}{#1}} % dual total Wu class of mfd/bdl
 
+% Steenrod algebra stuff
+\newcommand*{\SQ}{\mathrm{Sq}} % total Steenrod Square
+\newcommand*{\Sq}[1]{\SQ^{#1}}  % Steenrod Squares
+\newcommand*{\A}{\mathcal{A}_2} % Steenrod algebra
+\newcommand*{\Sqcup}{\circ} % multiplication of the Steenrod algebra
+\newcommand*{\antipode}{\chi} % antipode of the Steenrod algebra
+\renewcommand*{\l}{l} % length of a sequence (overrides l with stroke)
+\renewcommand*{\d}{d} % degree of a sequence (overrides dot under letter)
+\newcommand*{\e}{e} % excess of a sequence
 
 % bundles
 \newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
