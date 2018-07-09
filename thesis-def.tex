@@ -90,7 +90,7 @@
 \usepackage{tabularx}
 
 % PROTOTYPING
-\newcommand*{\optcite}[2][]{\cite[][#1]{#2}}
+\newcommand*{\optcite}[2][]{{\color{red}\cite[][#1]{#2}}}
 
 % LANGUAGE
 % Shorthands with correct spacing
@@ -98,6 +98,7 @@
 \newcommand*{\Idest}{I.e.\ } % I.e.
 \newcommand*{\forexample}{e.g.\ } % e.g.
 \newcommand*{\Forexample}{E.g.\ } % E.g.
+\newcommand*{\itemref}[2]{\autoref{#1}.\ref{#2}} % ref to item in thm
 
 % THEOREMS
 \newtheorem{Thm}{Theorem}

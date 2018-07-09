@@ -92,7 +92,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \end{proof}
 \end{Thm}
 
-\begin{Def}[Steenrod Algebra]% TODO
+\begin{Def}[Steenrod Algebra]
   The Steenrod algebra $\A$ is the quotient
   of the graded $\Zmod2$-polynomial algebra
   $\Zmod2[\Sq i|i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
@@ -161,22 +161,21 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Def}
 
 \section{Characteristic Classes}
-\begin{Def}[Universal Bundle] % TODO
-  Example: Universal line bundle $\gamma_1\colon \RP\cong\BO(1)\xrightarrow{\incl} \BO$
-\end{Def}
-
-\begin{Def}[Classifying Spaces] 
-  \optcite[Chapter~14.4]{tomdieck} % TODO: correct def. classifying spaces
-  \begin{itemize}
+\begin{Def}[Classifying Spaces]\label{def:charcls}
+  \optcite[Chapter~14.4]{tomdieck}
+  \begin{enumerate}
   \item Any topological group $G$ admits a contractible space $\EG$ with a
     free $G$-action, and a corresponding principal $G$-bundle
-    $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$ called the
-    \emph{universal $G$-bundle}
+    $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$, called the
+    \emph{universal $G$-bundle},
     where $\gamma_G$, $\EG$, and $\BG$ are all unique up to
-    homotopy. % TODO: Uniqueness of universal bundle up to htpy
+    homotopy.
     $\BG$ is called the \emph{classifying space} for principal
     $G$-bundles.
-  \item $\gamma^G$ fulfills the following universal property:
+    For construction and uniqueness see \cite[Example~1B.7~ff.]{hatcher},
+    respectively note that universal coverings are unique up to homotopy.
+  \item\label{item:classificationthm}
+    $\gamma^G$ fulfills the following universal property:
     For any space $X$ admitting the homotopy type of a CW-complex
     there is a bijection beetween $[X,\BG]$ and the isomorphism classes of
     principal $G$-bundles over $X$, given by
@@ -185,11 +184,14 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
       \;
       \text{\optcite[Theorem 1.4]{immersionconj}}.
     \end{gather*}
-    This correspondence is natural in $X$.
+    This correspondence is natural in $X$, and is a version of
+    Steenrod's classification theorem
+    \cite[Theorem~14.4.1]{tomdieck}.
+    \optcite[Theorem~1.4, p.~75]{immersionconj}
   \item There is a natural equivalence between the category of
     $n$-dimensional vector bundles $\Vect$ and that of principal
     $\Orth(n)$- respectively $\GL n$-bundles.
-  \end{itemize}
+  \end{enumerate}
 \end{Def}
 
 \begin{Def}[Characteristic Class]
@@ -206,17 +208,19 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Def}
 
 \begin{Rem}
-  By Brown's representation theorem % TODO: cite
-  $\H^i(-;R)$ is a represantable functor represented by $K(i,R)$.
+  By Brown's representation theorem \optcite[Chap.~4.E]{hatcher}
+  $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
   Thus, by the Yoneda lemma, a characteristic class is
   represented by a morphism
   \begin{gather*}
     \cl\colon \BG \longto K(i, R)
   \end{gather*}
-  in $\Top$, i.e. by a cohomology class $\cl$ of $\BG$.
-  Thus, application of $\Cl$ to a principal $G$-bundle over a
-  space $X$ which is represented by a morphism $\eta\colon X\to\BG$ % TODO: cite
-  is
+  in $\Top$, \idest by a cohomology class $\cl$ of $\BG$.
+  Thus, applying $\Cl$ to a principal $G$-bundle over a
+  space $X$, which admits the homotopy type of a CW-complex, that is
+  represented by a morphism $\eta\colon X\to\BG$
+  as in \itemref{def:charcls}{item:classificationthm}
+  yields
   \begin{gather*}
     \Cl(X) = \pb{\eta} \cl \in \H^i(X;R)
     \;.
@@ -234,21 +238,25 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \subsection{Thom Classes}
 Let $B$ be a paracompact space, \forexample a manifold,
 $\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
-and $R$ be a unital commutative ring.
+and $R$ be principal ideal domain.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
   cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
   $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
   the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
-  multiplicative generator,
-  \idest a unit, % TODO: any generator is unit?
+  free generator of the $R$-module $\H^{\rkk}(\spherepair{E_b}; R)$,
+  \idest a unit
   of the ring
   $\H^{\rkk}(\spherepair{E_b};R)\cong \H^{\rkk}(\spherepair{\R}; R)\cong R$.
   \optcite[p.~441]{hatcher}
 \end{Def}
 
-\begin{Cor}
+The following corollaries will quite directly deduce notions of
+naturality, multiplicativity, and uniqueness for Thom classes from
+their above definition.
+
+\begin{Cor}\label{cor:thomclsnatural}
   The Thom class construction is natural with respect to the pullback
   of vector bundles over paracompact spaces.
   \Idest given any map of paracompact spaces $f\colon A\to B$, and a
@@ -305,7 +313,7 @@ and $R$ be a unital commutative ring.
     \cite[Theorem~3.18]{hatcher}
   \end{itemize}
 \end{Rem}
-\begin{Cor}\label{cor:thomclassmultiplicative} % TODO: Lemma instead? Join with above Cor?
+\begin{Cor}\label{cor:thomclassmultiplicative}
   The Thom class construction for coefficients in a field $R$ is
   multiplicative in the following sense:
   For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
@@ -395,9 +403,9 @@ and $R$ be a unital commutative ring.
     in each factor,
     is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
     $\H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
-    Using the isomorphisms above prooves the claim.
+    Using the isomorphisms above proves the claim.
     \optcite[compare proof of Thm~3.19, p.~221]{hatcher}
-    % TODO: Maybe put into separate Lemma:
+    % % Maybe put into separate Lemma:
     % Now one can use the fact, that for any two generators
     % $\iota_{\rkk}$ of $\H^{\rkk}(\spherepair{\R^{\rkk}})$ and
     % $\iota_{\rkl}$ of $\H^{\rkl}(\spherepair{\R^{\rkl}})$,
@@ -407,12 +415,12 @@ and $R$ be a unital commutative ring.
   \end{proof}
 \end{Cor}
 
-\begin{Thm}
+\begin{Cor}
   Every vector bundle $\xi$ has a unique Thom class $\u{\xi}$ in
   $\Zmod2$-coefficients.
   Furthermore, for any map of paracompact spaces $f\colon A\to B$ and
   vector bundle $\xi\colon E\to B$ holds $\u{\pb f \xi} = \pb f \u{\xi}$.
-  \begin{proof}
+  \begin{proof}[proof (scetch)]
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
       \cite[Proposition~17.9.3]{tomdieck}.
@@ -428,7 +436,7 @@ and $R$ be a unital commutative ring.
     \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
     \end{description}
   \end{proof}
-\end{Thm}
+\end{Cor}
 
 \begin{Rem}
   Using paracompactness of $B$ and
@@ -438,7 +446,8 @@ and $R$ be a unital commutative ring.
 
 \begin{Thm}[Thom isomorphism]
   For any Thom class $\u{\xi}$ of $\xi$, and any degree $r$ there are
-  isomorphisms natural with respect to pullback of vector bundles
+  isomorphisms that are natural with respect to pullbacks of vector
+  bundles over paracompact spaces
   \begin{align*}
     \thomiso\colon
     \H^r(B;R) &\longrightarrow \H^{r+\rkk}(\thomspacepair{E}; R)
@@ -449,10 +458,11 @@ and $R$ be a unital commutative ring.
     & \alpha &\longrightarrow \pf p (\u{\xi} \cap \alpha)
   \end{align*}
   called the \emph{Thom isomorphisms}.
-  \begin{proof} % TODO: Ref/proof naturality Thom iso
-    Naturality directly follows from the naturality of the Thom class,
-    of pullbacks, and of the cup- respectively cap-product.
-    The cohomology part then is a direct application of Leray's Theorem
+  \begin{proof}
+    Naturality directly follows from the naturality of the Thom class
+    in \autoref{cor:thomclsnatural}, and naturality of the cup-
+    respectively cap-product.
+    The cohomology part then is a direct application of Leray's theorem
     \cite[Theorem~4D.8]{hatcher}.
     For the homology part see \forexample \cite[Theorem~14.6]{switzer}.
   \end{proof}
@@ -466,46 +476,49 @@ and $R$ be a unital commutative ring.
   \begin{gather*}
     \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
   \end{gather*}
-  \begin{proof}
-    First recall the following properties of the cap product
-    $\capped{-}{-}$:
-    \begin{align}
-      \label{eq:capprod1}
-      \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
-                                \in \H_0(X,X'')\\
-      \label{eq:capprod2}
-      \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
-                                \in \H_0(X,X'')
-                                &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}
-    \end{align}
-    for
-    % TODO: Nicify preliminaries
-    triples of spaces $(X, X'', X')$, $(Y, Y'', Y')$,
-    $f\colon (Y,Y'',Y')\to (X,X'',X')$,
-    $a\in \H^i(X,X')$, $b\in \H^j(X,X')$,
-    $\gamma\in \H_{i+j}(X, X'\cup X'')$,
-    and
-    $\beta\in \H_j(Y, Y'\cup Y'')$.
-    Also note
-    \begin{gather}
-      \label{eq:capprod3}
-      \pf p = \Id \colon
-      \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
-    \end{gather}
-    Then with $\U\coloneqq\u{\xi}$
-    \begin{align*}
-      \capped{t(x)}{\alpha}
-      &= \capped{\pb p x \cup \U}{\alpha} \\
-      &\equalsby{\eqref{eq:capprod1}}
-        \capped{\pb p x}{\U\cap\alpha} \\
-      &\equalsby{\eqref{eq:capprod3}}
-        \pf p\capped{\pb p x}{\U\cap\alpha} \\
-      &\equalsby{\eqref{eq:capprod2}}
-        \capped{x}{\pf p(u\cap\alpha)}
-        = \capped{x}{\thomiso (\alpha)} \in\Zmod2
-    \end{align*}
-  \end{proof}
 \end{Lem}
+In order to proof Lemma~\autoref{lem:thomisoself-adjoint},
+first recall the following properties of the cap product.
+\begin{Rem}
+  For
+  a map of triples of spaces
+  $f\colon (Y,Y'',Y')\to (X,X'',X')$,
+  cohomology classes
+  $a\in \H^i(X,X')$ and $b\in \H^j(X,X')$,
+  homology classes
+  $\gamma\in \H_{i+j}(X, X'\cup X'')$
+  and
+  $\beta\in \H_j(Y, Y'\cup Y'')$,
+  and a vector bundle $E\xrightarrow{p}B$
+  holds
+  \begin{align}
+    \label{eq:capprod1}
+    \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
+                              \in \H_0(X,X'')\\
+    \label{eq:capprod2}
+    \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
+                              \in \H_0(X,X'')
+                            &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}\\
+    \label{eq:capprod3}
+    \pf p &= \Id \colon
+    \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
+  \end{align}
+\end{Rem}
+\begin{proof}[proof of Lemma~\autoref{lem:thomisoself-adjoint}]
+  With $\U\coloneqq\u{\xi}$ one calculates
+  \begin{align*}
+    \capped{t(x)}{\alpha}
+    &= \capped{\pb p x \cup \U}{\alpha} \\
+    &\equalsby{\eqref{eq:capprod1}}
+      \capped{\pb p x}{\U\cap\alpha} \\
+    &\equalsby{\eqref{eq:capprod3}}
+      \pf p\capped{\pb p x}{\U\cap\alpha} \\
+    &\equalsby{\eqref{eq:capprod2}}
+      \capped{x}{\pf p(u\cap\alpha)}
+      = \capped{x}{\thomiso (\alpha)} \in\Zmod2
+      \qedhere
+  \end{align*}
+\end{proof}
 
 % TODO: Better motivation for relationship thom iso <-> fundamental cl
 Normal bundles give an interesting, more geometrical
@@ -651,32 +664,38 @@ description of the fundamental class of a manifold:
   $\gamma_1$ is the universal line bundle $\RP\cong\BO(1)\to\BO$,
   and $x$ is the%
   \footnote{
-    % TODO: maybe shorten reasoning about x well-defined
-    This is well-defined, as a ring $R$ of the form $\Zmod2[x]$
-    with $x$ of degree 1 only admits two elements, $0$ and a
-    generator, in degree 1. Therefore there exists exactly one ring
-    isomorphism, and that is defined by sending the unique generator in
+    This is well-defined: A a ring $R$ of the form $\Zmod2[x]$
+    with $\deg(x)=1$ only admits two elements in degree~1, $0$ and a
+    generator. Therefore, there exists exactly one ring
+    isomorphism, and this sends the unique generator in
     degree 1 to $x$.
   }
   generator of $\H^*(\RP;\Zmod2)\cong\Zmod2[x]$.
   \optcite[compare §4, p.~37]{milnor}
 \end{Def}
 
-\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes] % TODO: proof
+\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes]
   Stiefel-Whitney classes exist and are uniquely defined by the above
   properties. Furthermore, they generate $\H^*(\BO;\Zmod2)\cong \Zmod2[\ws{i}|i\geq1]$.
-  \begin{proof}[proof (existence)]
-    Construction utilizes the Euler class.
-  \end{proof}
-  \begin{proof}[proof (uniqueness)]
-    Use the splitting theorem and the knowledge about $\W{\gamma_1}$.
-  \end{proof}
-  \begin{proof}[proof (generators)]
-    Inductively show $\H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
+  \begin{proof}[proof (scetch)]
+    \begin{description}
+    \item[Existence]
+      A possible concrete construction utilizes the Euler
+      class. Another definition via Steenrod squares can be 
+      found below in \autoref{thm:altdefswclasses}.
+    \item[Uniqueness]
+      Here one can use the splitting principle and the knowledge about
+      $\W{\gamma_1}$
+      \cite[Uniqueness Theorem~7.3]{milnor}.
+    \item[Generators]
+      Inductively show
+      $\H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
+      \cite[Theorem~7.1~ff.]{milnor}.
+    \end{description}
   \end{proof}
 \end{Thm}
 
-\begin{Rem}[Further Properties of the Stiefel-Whitney Classes] % TODO
+\begin{Rem}[Further Properties of the Stiefel-Whitney Classes]
   \label{rem:propswclasses}
   Let $\xi$, $\eta$ be vector bundles over a space $X$.
   \begin{enumerate} 
@@ -700,7 +719,7 @@ description of the fundamental class of a manifold:
       of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
       therefore $1 = \W{\T M} \cup \W{\N M}$.
     \end{enumerate}
-    \begin{proof} % TODO: make proof of w(\trivbdl)=0 nicer
+    \begin{proof}
       The trivial rank $n$ bundle over $X$ is defined as the pullback
       $\pb \pi \trivbdl$ of the rank $n$ bundle
       $\trivbdl\colon \R^n\to\pt$ over the point by the trivial map
@@ -745,7 +764,8 @@ description of the fundamental class of a manifold:
   \end{gather*}
   The representing cohomology classes can be constructed using the
   embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
-  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$. % TODO: ref
+  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$
+  \cite[see \forexample][Theorem~7.1~ff.]{milnor}.
   \begin{proof}
     Check naturality of the expression and all further
     definining properties from \autoref{def:swclasses}.
@@ -756,8 +776,17 @@ description of the fundamental class of a manifold:
       $\H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
       candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
       isomorphism sends 1 to 1 in this degree.
-    \item[$\W{\gamma_1}=1+x$:] % TODO: alt def SW-classes
-    \item[Multiplicativity:] % TODO: Multiplicativity alt def SW-classes
+    \item[$\W{\gamma_1}=1+x$:]
+      $\Sq 0(\u{\gamma_1})\cequalsby{\eqref{eq:sqidentity}}\u{\gamma_1}
+      = \pb p\w{0}{\gamma_1}\cup\u{\gamma_1}$
+      directly gives
+      $\pb p\w{0}{\gamma_1}=1$, and thus $\w{0}{\gamma_1}=1$.
+      With
+      $\Sq 1(\u{\gamma_1})\cequalsby{\eqref{eq:sqsquared}}\u{\gamma_1}^2
+      =\pb p\w{1}{\gamma_1}\cup x$,
+      the class $\pb p\w{1}{\gamma_1}$ cannot be zero, thus also
+      $\w{1}{\gamma_1}$ cannot be zero, but it is the generator $x$.
+    \item[Multiplicativity:]
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
       $B$. With $\u{\xi\oplus\eta}=\u{\xi}\cup\u{\eta}$ and the fact
       \begin{gather}\label{eq:projectionscommute}
@@ -803,7 +832,6 @@ description of the fundamental class of a manifold:
           \cup
           \u{\xi\oplus\eta}\\
         &\equalsby{Definition}
-        % TODO: Intermediate steps
           \thomiso\left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
           \;.
       \end{align*}
@@ -814,8 +842,13 @@ description of the fundamental class of a manifold:
 \end{Thm}
 
 \subsection{Wu Classes}
-% TODO: What is interesting about Wu classes? -> Conn. to SW cl.
-Let $M$ be a compact, $n$-dimensinoal manifold.
+Let $M$ be a compact, $n$-dimensional manifold.
+This section introduces a family of cohomology classes
+of manifolds, together with several possibilities of how to
+define---and eventually work with---them.
+Later then, \autoref{sec:wutheorem} reveals their close relation to
+the Stiefel-Whitney classes which is utilized in the proof of Massey's
+theorem.
 
 \begin{Def}\label{def:wuclasses}
   The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
@@ -831,8 +864,8 @@ Let $M$ be a compact, $n$-dimensinoal manifold.
       \v{i}{M} \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
     \end{tikzcd}
   \end{center}
-  where the first isomorphism from the left is Poincaré duality % TODO: ref
-  and the second is the universal coefficient theorem % TODO: ref
+  where the first isomorphism from the left is Poincaré duality
+  and the second is the universal coefficient theorem
   for the field $\Zmod2$.
   Equivalently, for any cohomology class $x\in \H^{n-i}(M)$ of fixed
   degree $n-i$ holds
@@ -935,13 +968,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       $i\neq0$.
     \item[By Definition \autoref{def:sq}:] The total Steenrod Square
       $\SQ$ is natural and a ring homomorphism.
-    \item[By {\cite[Chap.~3.3.2, p.~241]{hatcher}}
-      (compare \eqref{eq:capprod2}):] % TODO: join eq:capprod2 equations
+    \item[By \eqref{eq:capprod2}:]
       For any map of spaces $f\colon X\to Y$ and co-/homology classes
       $a$ and $\beta$ in the corresponding co-/homology groups holds
-      \begin{gather}\label{eq:capprod2copy}
-        \capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}
-      \end{gather}
+      $\capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}$
     \end{description}
     For the proof fix some $i\leq n$, some arbitrary $x\in
     \H^{n-i}(M)$, as well as a collapse map
@@ -971,7 +1001,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
         {\thomiso\left(x\cup\vu\right)}
         {\pf\collapse\fundcl{\Sph}}
       \\\notag
-      &\equalsby{\eqref{eq:capprod2copy}}
+      &\equalsby{\eqref{eq:capprod2}}
         \pf\collapse\capped
         {\pb\collapse\thomiso\left(x\cup\vu\right)}
         {\fundcl{\Sph}}
@@ -986,7 +1016,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
         {\pb\collapse\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
         {\fundcl{\Sph}}
       \\\label{eq:proofaltdefwuclasses:eq1}
-      &\equalsby{\eqref{eq:capprod2copy}}
+      &\equalsby{\eqref{eq:capprod2}}
         \capped
         {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
@@ -1047,7 +1077,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 \end{Thm}
 
 
-\section[Wu's Theorem]{Wu's Theorem}
+\section[Wu's Theorem]{Wu's Theorem}\label{sec:wutheorem}
 This section is meant to show a direct connection between the
 Stiefel-Whitney classes and the Wu classes, which can be shown using
 the alternative definition of the Wu classes from
@@ -1116,7 +1146,7 @@ follows from the following Lemma:
   \end{gather*}
   Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
   as $\W{\T M} \cup \W{\N M} = 1$ by
-  \autoref{rem:propswclasses}~\ref{item:wuclassmfdinverse}.
+  \itemref{rem:propswclasses}{item:wuclassmfdinverse}.
 \end{proof}
 \begin{proof}[proof of Lemma~\autoref{lem:wu}]
   For simplicity use the shortenings
