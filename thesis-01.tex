@@ -110,7 +110,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   properties from \autoref{def:sq}.
   Furthermore, for a sequence $I=(i_1,\dotsc,i_r)$,
   respectively $\Sq I$, denote by
-  \begin{description}
+  \begin{description}[labelindent=1em]
   \item[$\l(I)\coloneqq r$] the \emph{length} of $I$,
   \item[$\d(I)\coloneqq \sum_{j=0}^{r} i_j$] the \emph{degree} of $I$,
     and by
@@ -129,7 +129,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
     \cite[Chap.~6, Theorem~1]{mosher}.
   \end{enumerate}
   Let $I=(i_1,\dotsc,i_r)$ be a sequence in $\Nat$.
-  \begin{enumerate}[resume]
+  \begin{enumerate}[resume*]
   \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
   \item $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
     \begin{proof}
@@ -650,14 +650,14 @@ description of the fundamental class of a manifold:
   $\ws{i}\in \H^i(\BO;\Zmod2)$, $i\in\Z\geq0$,
   fulfilling the following properties for any vector bundles $\xi$ and
   $\eta$ over a space $B$, and any map $f\colon A\to B$ of spaces:
-  \begin{enumerate}
-  \item \emph{(Naturality)} $\pb f\w{i}{\xi} = \w{i}{\pb f \xi}$,
-  \item $\w{0}{\xi}=1$,
-  \item $\W{\gamma_1} = 1 + x$,
-  \item \emph{(Multiplicativity)} $\W{\xi \oplus \eta} = \W{\xi}\cup \W{\eta}$
+  \begin{axioms}
+  \axiom[Naturality] $\pb f\w{i}{\xi} = \w{i}{\pb f \xi}$,
+  \axiom $\w{0}{\xi}=1$,
+  \axiom $\W{\gamma_1} = 1 + x$,
+  \axiom[Multiplicativity] $\W{\xi \oplus \eta} = \W{\xi}\cup \W{\eta}$
     \\\idest in degree $n$ we have
     $\w{n}{\xi\oplus\eta} = \sum_{i+j=n}\w{i}{\xi} \cup \w{j}{\eta}$,
-  \end{enumerate}
+  \end{axioms}
   where the \emph{total Stiefel-Whitney class}
   $\Ws\coloneqq\sum_{i\geq 0}\ws{i}$ is the formal sum of all
   Stiefel-Whitney classes,
@@ -688,9 +688,12 @@ description of the fundamental class of a manifold:
       $\W{\gamma_1}$
       \cite[Uniqueness Theorem~7.3]{milnor}.
     \item[Generators]
-      Inductively show
+      Either inductively show
       $\H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
       \cite[Theorem~7.1~ff.]{milnor}.
+      Or find generators of $\H^*(\BO)$ that fulfill the axioms for
+      the Stiefel-Whitney classes, then apply uniqueness
+      \cite[Chap.~7.6]{may}.
     \end{description}
   \end{proof}
 \end{Thm}
