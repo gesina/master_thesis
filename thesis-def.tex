@@ -119,6 +119,16 @@
 \setlist[enumerate,2]{label=\alph*)}
 \setlist[enumerate,3]{label=\roman*.}
 
+%
+\newlist{steps}{enumerate}{1}
+\setlist*[steps]{
+  font={\normalfont\bfseries},
+  label={Step~\arabic*},
+  ref={Step~\arabic*},
+  align=left, labelindent=1em, labelwidth=*, itemindent=0pt
+}
+
+
 % Named axioms with \axiom instead of \item
 \newlist{axioms}{enumerate}{1}
 \setlist*[axioms]{

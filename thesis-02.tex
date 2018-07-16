@@ -10,6 +10,57 @@
 
 \chapter{Massey's Theorem}
 
+Massey's main theorem on the Stiefel-Whitney classes of manifolds
+gives a very concrete obstruction on what degrees of the dual
+Stiefel-Whitney classes may be non-zero
+by connecting this condition with the existence of binary
+representations of the manifold's dimension.
+\begin{Thm}[Massey]\label{thm:massey}
+  \optcite[Theorem~I.]{massey}
+  Let $M$ be a compact, $n$-dimensional manifold.
+  Given an integer $q$ with $0<q<n$ such that $\dualw{n-q}{M}\neq0$,
+  there is a sequence of integers $h_1\geq\dotsb\geq h_q\geq0$ of
+  length $q$ that fulfills
+  \begin{gather*}
+    n = \sum_{i=1}^{q} 2^{h_i}
+  \end{gather*}
+\end{Thm}
+
+As an immediate consequence all dual Stiefel-Whitney classes of degree
+greater than $n-\alpha(n)$ of any manifold must be zero, because there
+cannot be any shorter representation of $n$ by powers of two
+than its binary representation of length $\alpha(n)$.
+
+The following sections are dedicated to the proof of Massey's Theorem.
+It consists of several steps:
+\begin{steps}
+\item\label{item:masseystep1}
+  Show that for any $q$, iterated Steenrod square $\Sq I$, and cohomology
+  class $x\in\H^q(M)$ of degree $q$ such that $\Sq I(x)$ is non-trivial there exists
+  some representation of the form
+  \begin{gather*}
+    \deg \Sq I(x)
+    = 2^k\cdot
+    \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
+    \;.
+  \end{gather*}
+\item\label{item:masseystep2}
+  Find some iterated Steenrod square which is non-trivial in degree
+  $\Sq I\colon\H^q(M)\to\H^n(M)$.
+\end{steps}
+Applying \ref{item:masseystep1} to the Steenrod square $\Sq I$ from
+\ref{item:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
+immediately yields the result as
+\begin{gather*}
+  n = \Sq I(x) = \underbrace
+  {2^{k_1+k}+\dotsb+2^{k_{q-1}+k} + 2^{k}}_{\text{$q$ summands}}
+  \;.
+\end{gather*}
+
+
+
+
+  
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
