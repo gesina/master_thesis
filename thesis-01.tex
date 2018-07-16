@@ -103,40 +103,40 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Def}
 \begin{Not}
   In the following, iterated Steenrod squares
-  $\Sq{i_1}\cdot\Sq{i_2}\dotsm\Sq{i_r}$ will have the short form
-  $\Sq{(i_1,i_2,\dotsc,i_r)}$,
+  $\Sq{i_1}\cdot\Sq{i_2}\dotsm\Sq{i_l}$ will have the short form
+  $\Sq{(i_1,i_2,\dotsc,i_l)}$,
   and will be evaluated on an element $x$ of a cohomology ring as
-  $\Sq{i_1}\circ\dotsb\circ\Sq{i_r}(x)$ respecting the
+  $\Sq{i_1}\circ\dotsb\circ\Sq{i_l}(x)$ respecting the
   properties from \autoref{def:sq}.
-  Furthermore, for a sequence $I=(i_1,\dotsc,i_r)$,
+  Furthermore, for a sequence $I=(i_1,\dotsc,i_l)$,
   respectively $\Sq I$, denote by
   \begin{description}[labelindent=1em]
-  \item[$\l(I)\coloneqq r$] the \emph{length} of $I$,
-  \item[$\d(I)\coloneqq \sum_{j=0}^{r} i_j$] the \emph{degree} of $I$,
+  \item[$\l(I)\coloneqq l$] the \emph{length} of $I$,
+  \item[$\d(I)\coloneqq \sum_{j=0}^{l} i_j$] the \emph{degree} of $I$,
     and by
-  \item[$\e(I)\coloneqq 2i_1-\d(I)=\sum_{j=1}^{r-1}(i_j-2i_{j+1})$]
+  \item[$\e(I)\coloneqq 2i_1-\d(I)=\sum_{j=1}^{l-1}(i_j-2i_{j+1})$]
     the \emph{excess} of $I$.
   \end{description}
   The sequence $I$, respectively $\Sq I$, is called \emph{admissible},
   if $\l(I)=1$ or $i_j\geq 2i_{j+1}$ for $0\leq j<\l(I)$.
 \end{Not}
 
-\begin{Rem}
+\begin{Rem}\label{rem:sq}
   The following properties will be needed for Massey's Theorem:
   \begin{enumerate}
   \item The set of iterated Steenrod squares $\Sq I$ of admissible
     sequences $I$ forms a basis for $A$ as $\Zmod2$-vector space
     \cite[Chap.~6, Theorem~1]{mosher}.
   \end{enumerate}
-  Let $I=(i_1,\dotsc,i_r)$ be a sequence in $\Nat$.
+  Let $I=(i_1,\dotsc,i_l)$ be a sequence in $\Nat$.
   \begin{enumerate}[resume*]
   \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
-  \item $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
+  \item\label{item:squpperboundgeneral} $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
     \begin{proof}
       This follows by induction over $\l(I)$ using
       \eqref{eq:sqlowerbound}. The case $\l(I)=1$ follows directly 
       from \eqref{eq:sqlowerbound}.
-      For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_r)$, the condition
+      For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_l)$, the condition
       $\deg(x) < \e(I)=i_1-\d(J)$
       implies
       \begin{gather*}

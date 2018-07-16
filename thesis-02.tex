@@ -32,35 +32,145 @@ cannot be any shorter representation of $n$ by powers of two
 than its binary representation of length $\alpha(n)$.
 
 The following sections are dedicated to the proof of Massey's Theorem.
-It consists of several steps:
+Let $M$ be a compact, $n$-dimensional manifold throughout the proof.
+The latter consists of several steps:
 \begin{steps}
-\item\label{item:masseystep1}
-  Show that for any $q$, iterated Steenrod square $\Sq I$, and cohomology
+\item\label{tag:masseystep1}
+  Show that for any $q$, admissible iterated Steenrod square $\Sq I$, and cohomology
   class $x\in\H^q(M)$ of degree $q$ such that $\Sq I(x)$ is non-trivial there exists
   some representation of the form
   \begin{gather*}
-    \deg \Sq I(x)
+    \deg \left(\Sq I(x)\right)
     = 2^k\cdot
     \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
     \;.
   \end{gather*}
-\item\label{item:masseystep2}
+\item\label{tag:masseystep2}
   Find some iterated Steenrod square which is non-trivial in degree
   $\Sq I\colon\H^q(M)\to\H^n(M)$.
 \end{steps}
-Applying \ref{item:masseystep1} to the Steenrod square $\Sq I$ from
-\ref{item:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
+Applying \ref{tag:masseystep1} to the Steenrod square $\Sq I$ from
+\ref{tag:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
 immediately yields the result as
 \begin{gather*}
-  n = \Sq I(x) = \underbrace
+  n = \deg\left(\Sq I(x)\right) = \underbrace
   {2^{k_1+k}+\dotsb+2^{k_{q-1}+k} + 2^{k}}_{\text{$q$ summands}}
   \;.
 \end{gather*}
 
+\section{Step 1: Disecting Degrees of Iterated Steenrod Squares}% TODO: titel
+\ref{tag:masseystep1} requires to proof the following claim.
+\begin{Lem}[\ref{tag:masseystep1}]\label{lem:masseystep1}
+  Let $q\geq 0$ be an integer,
+  and $I\in\Nat^{\l(I)}$ an admissible sequence of integers.
+  Further, let $x\in\H^q(M)$ be a cohomology class of degree $q$
+  such that $\Sq I(x)$ is non-trivial.
+  Then there exists $k\in\Nat$ and a sequence of integers
+  $k_1\geq\dotsb\geq k_{q-1}\geq0$ of length $q-1$ such that the
+  degree of $\Sq I(x)$ can be represented as
+  \begin{gather*}
+    \deg \Sq I(x)
+    = \deg x + \d(I)
+    = 2^k\cdot
+    \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
+    \;.
+  \end{gather*}
+  % Mind that the maximum length of such a sequence is $\deg\Sq I(x)$.
+\end{Lem}
+
+In order to split the proof into several cases, recall that
+$\Sq I(x) = 0$ for $\e(I)>\deg x$ by
+\itemref{rem:sq}{item:squpperboundgeneral}. This leaves the two cases
+$\e(I)<\deg x$ and $\e(I)=\deg x$ to be considered.
+Applying the following Lemma by Serre inductively, enables one to restrict the
+proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
+\begin{Lem}[Serre] % TODO: check, ref \cite[Lemma~1, p.~204]{serre[3]}, proof 
+  \label{lem:serre}
+  Every admissible sequence $I\in\Nat^{\l(I)}$ admits an admissible
+  sequence $J$ with $\e(J)<\e(I)$,
+  together with a power of two $2^k$
+  such that for any cohomology class $x\in\H^{\e(I)}$ holds
+  \begin{gather*}
+    \Sq I(x) = \left(\Sq J(x)\right) ^{2^k}
+    \qquad\text{respectively}\qquad
+    \deg\left(\Sq I(x)\right) = 2^k\cdot \deg\left(\Sq J(x)\right)
+  \end{gather*}
+\end{Lem}
+
+Before proving \autoref{lem:serre} one can finish the argumentation for
+the case $\e(I)<\deg x$.
+\begin{proof}[proof of \autoref{lem:masseystep1}]
+  Let $q\in\Nat$ and $I=(i_1,\dotsc,i_l)$ be an admissible sequence such that
+  $\e(I)<q$.
+  Assume there is a cohomology class $x\in\H^q(M)$ in degree $q$ such
+  that $\Sq I(x)\neq0$.
+  Set
+  \begin{alignat*}{4}
+    \alpha_0 &= q-1-\e(I) &\qquad&\text{which is greater 0 as $\e(I)<q$,} \\
+    \alpha_r &= i_{r}-2i_{r+1} &&\text{for $1\leq r< \l(I)$, and} \\ 
+    \alpha_{\l(I)} &= i_{\l(I)}
+    \;.
+  \end{alignat*}
+  It is an easy excercise that the excess of $I$ can be rewritten as
+  $\e(I)=\sum_{r=1}^{\l(I)}\alpha_r$, so
+  \begin{gather}\label{eq:alpha0}
+    \sum_{r=0}^{\l(I)}\alpha_r = \alpha_0 + \e(I) \cequalsby{Def.} q-1
+    \;.
+  \end{gather}
+  Just as easily one sees
+  \begin{align}\label{eq:proofmassey:eq1}
+    i_s
+    &= \sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
+  \end{align}
+  This then directly implies the following reformulation of $\d(I)$ in
+  terms of $\alpha_i$ values
+  by recursively applying the definitions from above:
+  \begin{align}\notag
+    \d(I) \coloneqq \sum_{s=1}^{\l(I)}i_s 
+    &\cequalsby{\eqref{eq:proofmassey:eq1}}
+      \sum_{s=1}^{\l(I)}\sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
+    &\equalsby{Reorder} \sum_{j=1}^{\l(I)}
+      \left(\sum_{m=0}^{j-1}2^m\right)\alpha_j
+      = \sum_{j=1}^{\l(I)}(2^j-1)\alpha_j 
+      = \sum_{j=1}^{\l(I)}2^j\alpha_j
+      - \sum_{j=1}^{\l(I)}\alpha_j\\
+    \label{eq:proofmassey:eq2}
+    &= \sum_{j=1}^{\l(I)}2^j\alpha_j
+      - \e(I)
+      \;.
+  \end{align}
+  All put together yields
+  \begin{align*}
+    \deg\left(\Sq I(x)\right)
+    &= \deg(x) + \d(I)\\
+    &= 1 + \deg(x) -1 +\d(I) \\
+    &\equalsby{\eqref{eq:proofmassey:eq2}}
+      1 + q - 1 - \e(I) + \sum_{j=1}^{\l(I)}2^j\alpha_j \\
+    &\equalsby{Def.}
+      1 + \alpha_0 + \sum_{j=1}^{\l(I)}2^j\alpha_j \\
+    &= 1 + \sum_{j=0}^{\l(I)}2^j\alpha_j
+    = 1 + \left(
+      \underbrace{2^0 +\dotsb+ 2^0}_{\text{$\alpha_0$ times}}
+      + \dotsb
+      + \underbrace{2^{\l(I)}+\dotsb+2^{\l(I)}}_{\text{$\alpha_{\l(I)}$ times}}
+      \right)
+  \end{align*}
+  which is one plus a sum of exactly
+  $\sum_{j=0}^{\l(I)}\alpha_j\cequalsby{\eqref{eq:alpha0}} q-1$
+  powers of two as was to be shown.
+  The $k_j$ are in this case
+  \begin{gather*}
+    k_j = \begin{cases}
+      0 & 0< j\leq \alpha_0\\
+      1 & \alpha_0< j\leq \alpha_1\\
+      \vdots\\
+      \l(I) & \alpha_{\l(I)-1}<j\leq \alpha_{\l(I)}
+    \end{cases}
+    \qedhere
+  \end{gather*}
+\end{proof}
 
 
-
-  
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
