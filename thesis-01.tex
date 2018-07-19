@@ -890,7 +890,7 @@ theorem.
 \end{Rem}
 
 
-\begin{Def}
+\begin{Def}\label{def:dualwuclasses}
   The \emph{total Wu class} of $M$ is defined as the sum
   $\sum_{i\geq0}\v{i}{M}$. The \emph{total dual Wu class}
   $\dualV{M}\eqqcolon \sum_{i\geq 0}\dualv{i}{M}$
@@ -981,7 +981,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
     \autoref{lem:thomisofundcl}.
     For simplicity, denote
-    $\vu\coloneqq \V{\N M}$,
+    $\Vu\coloneqq \V{\N M}$,
     $\Sph\coloneqq \Sphere{n+\rkk}$,
     $\U\coloneqq \u{\N M}$ and
     $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
@@ -993,53 +993,53 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     $\capped{x\cup \V{\N M}}{\fundcl M}$ using the cohomology of the
     $(n+k)$-sphere:
     \begin{align}\notag
-      \capped{x\cup \vu}{\fundcl M}
+      \capped{x\cup \Vu}{\fundcl M}
       &\equalsby{\autoref{lem:thomisofundcl}}
         \capped
-        {x\cup\vu}
+        {x\cup\Vu}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\\notag
       &\equalsby{\autoref{lem:thomisoself-adjoint}}
         \capped
-        {\thomiso\left(x\cup\vu\right)}
+        {\thomiso\left(x\cup\Vu\right)}
         {\pf\collapse\fundcl{\Sph}}
       \\\notag
       &\equalsby{\eqref{eq:capprod2}}
         \pf\collapse\capped
-        {\pb\collapse\thomiso\left(x\cup\vu\right)}
+        {\pb\collapse\thomiso\left(x\cup\Vu\right)}
         {\fundcl{\Sph}}
       \\\notag
       &\equalsby{\eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}}
         \pf\collapse\capped
-        {\SQ\left(\pb\collapse\thomiso\left(x\cup\vu\right)\right)}
+        {\SQ\left(\pb\collapse\thomiso\left(x\cup\Vu\right)\right)}
         {\fundcl{\Sph}}
       \\\notag
       &\equalsby{Naturality}
         \pf\collapse\capped
-        {\pb\collapse\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\pb\collapse\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
         {\fundcl{\Sph}}
       \\\label{eq:proofaltdefwuclasses:eq1}
       &\equalsby{\eqref{eq:capprod2}}
         \capped
-        {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
     \end{align}
     Having introduced $\SQ$ on the left hand side, one observes a
     certain commutativity of the Thom isomorphism, and the total
     Steenrod square:
     \begin{align}\notag
-      \SQ\left(\thomiso\left(x\cup\vu\right)\right)
+      \SQ\left(\thomiso\left(x\cup\Vu\right)\right)
       &=
-        \SQ\left(\left(\pb p x\cup \pb p\vu\right) \cup \U\right)
+        \SQ\left(\left(\pb p x\cup \pb p\Vu\right) \cup \U\right)
       \\\notag
       &=
-        \SQ\left(\pb p x\cup \left(\pb p\vu \cup \U\right)\right)
+        \SQ\left(\pb p x\cup \left(\pb p\Vu \cup \U\right)\right)
       \\\notag
       &\equalsby{Def. $\thomiso$}
-       \SQ\left(\pb p x\cup \thomiso(\vu)\right)
+       \SQ\left(\pb p x\cup \thomiso(\Vu)\right)
       \\\notag
       &\equalsby{Naturality, Ring Hom.}
-        \pb p\SQ(x) \cup \SQ(\thomiso(\vu))
+        \pb p\SQ(x) \cup \SQ(\thomiso(\Vu))
       \\\notag
       &\equalsby{Def. $\V{M}$}
         \pb p\SQ(x) \cup \SQ(\antipode(\SQ)(u))
@@ -1054,10 +1054,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \eqref{eq:proofaltdefwuclasses:eq1} from above easily yields the
     claim in \eqref{eq:proofaltdefwuclasses:claim} that proves the theorem:
     \begin{align*}
-      \capped{x\cup \vu}{\fundcl M}
+      \capped{x\cup \Vu}{\fundcl M}
       &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
         \capped
-        {\SQ\left(\thomiso\left(x\cup\vu\right)\right)}
+        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
       \\
       &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq2}}
@@ -1154,7 +1154,7 @@ follows from the following Lemma:
 \begin{proof}[proof of Lemma~\autoref{lem:wu}]
   For simplicity use the shortenings
   $\U\coloneqq \u{\xi}$,
-  $\vu\coloneqq \V{\xi}$, and
+  $\Vu\coloneqq \V{\xi}$, and
   $\Ws\coloneqq \W{\xi}$.
   Then calculate
   \begin{align*}
@@ -1165,25 +1165,25 @@ follows from the following Lemma:
       \SQ\left(\antipode(\SQ)(\U)\right)
     \\
     &\equalsby{Def.~\autoref{def:altwuclasses}}
-      \SQ\left(\thomiso(\vu)\right)
+      \SQ\left(\thomiso(\Vu)\right)
     \\
     &\equalsby{Def.~$\thomiso$}
-      \SQ\left(\pb p\vu \cup \U\right)
+      \SQ\left(\pb p\Vu \cup \U\right)
     \\
     &\equalsby{\ref{tag:cartan}, Naturality}
-      \pb p\SQ(\vu) \cup \SQ(\U)
+      \pb p\SQ(\Vu) \cup \SQ(\U)
     \\
     &\equalsby{\autoref{thm:altdefswclasses}}
-      \pb p\SQ(\vu) \cup \thomiso(\Ws)
+      \pb p\SQ(\Vu) \cup \thomiso(\Ws)
     \\
     &\equalsby{Def.~$\thomiso$}
-      \pb p\SQ(\vu) \cup \left(\pb p \Ws \cup \U\right)
+      \pb p\SQ(\Vu) \cup \left(\pb p \Ws \cup \U\right)
     \\
     &=
-      \pb p\left(\SQ(\vu) \cup \Ws\right) \cup \U
+      \pb p\left(\SQ(\Vu) \cup \Ws\right) \cup \U
     \\
     &\equalsby{Def.~$\thomiso$}
-      \thomiso\left(\SQ(\vu) \cup \Ws\right)
+      \thomiso\left(\SQ(\Vu) \cup \Ws\right)
   \end{align*}
   Applying the inverse of the Thom isomorphism to both sides
   yields the equality which was to be shown.

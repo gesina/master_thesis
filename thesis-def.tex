@@ -124,7 +124,7 @@
 \newlist{steps}{enumerate}{1}
 \setlist*[steps]{
   font={\normalfont\bfseries},
-  label={Step~\arabic*},
+  label={Step~\arabic*:},
   ref={Step~\arabic*},
   align=left, labelindent=1em, labelwidth=*, itemindent=0pt
 }
@@ -222,15 +222,17 @@
 \newcommand*{\dualws}[1]{\dualWs_{#1}} % {#1}th dual Stiefel-Whitney class (in H(BO))
 \newcommand*{\w}[2]{\charcl{\ws{#1}}{#2}} % {#1}th Stiefel-Whitney class of bdl
 \newcommand*{\dualw}[2]{\charcl{\dualws{#1}}{#2}} % {#1}th dual Stiefel-Whitney cls of bdl
-\newcommand*{\W}[1]{\w{}{#1}} % total Stiefel-Whitney class of bdl
-\newcommand*{\dualW}[1]{\dualw{}{#1}} % total dual Stiefel-Whitney class of bdl
+\newcommand*{\W}[1]{\charcl{\Ws}{#1}} % total Stiefel-Whitney class of bdl
+\newcommand*{\dualW}[1]{\charcl{\dualWs}{#1}} % total dual Stiefel-Whitney class of bdl
 
-\newcommand*{\vu}{v} % Wu class symbol
-\newcommand*{\dualvu}{\dual{\vu}} % total Wu class without argument
-\renewcommand*{\v}[2]{\charcl{\vu_{#1}}{#2}} % {#1}th Wu class of mfd/bdl (overwrites check over letter)
-\newcommand*{\dualv}[2]{\charcl{\dualvu_{#1}}{#2}} % {#1}th dual Wu class of mfd/bdl
-\newcommand*{\V}[1]{\v{}{#1}} % total Wu class of a mfd/bdl
-\newcommand*{\dualV}[1]{\dualv{}{#1}} % dual total Wu class of mfd/bdl
+\newcommand*{\Vu}{v} % Wu class symbol
+\newcommand*{\dualVu}{\dual{\Vu}} % dual Wu class symbol
+\newcommand*{\vu}[1]{\Vu_{#1}} % {#1}th Wu class symbol
+\newcommand*{\dualvu}[1]{\dualVu_{#1}} % {#1}th dual Wu class symbol
+\renewcommand*{\v}[2]{\charcl{\vu{#1}}{#2}} % {#1}th Wu class of mfd/bdl (overwrites check over letter)
+\newcommand*{\dualv}[2]{\charcl{\dualvu{#1}}{#2}} % {#1}th dual Wu class of mfd/bdl
+\newcommand*{\V}[1]{\charcl{\Vu}{#1}} % total Wu class of a mfd/bdl
+\newcommand*{\dualV}[1]{\charcl{\dualVu}{#1}} % dual total Wu class of mfd/bdl
 
 % Steenrod algebra stuff
 \newcommand*{\SQ}{\mathrm{Sq}} % total Steenrod Square

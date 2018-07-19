@@ -35,7 +35,7 @@ The following sections are dedicated to the proof of Massey's Theorem.
 Let $M$ be a compact, $n$-dimensional manifold throughout the proof.
 The latter consists of several steps:
 \begin{steps}
-\item\label{tag:masseystep1}
+\item\label{tag:masseystep1} 
   Show that for any $q$, admissible iterated Steenrod square $\Sq I$, and cohomology
   class $x\in\H^q(M)$ of degree $q$ such that $\Sq I(x)$ is non-trivial there exists
   some representation of the form
@@ -58,7 +58,8 @@ immediately yields the result as
   \;.
 \end{gather*}
 
-\section{Step 1: Disecting Degrees of Iterated Steenrod Squares}% TODO: titel
+\section[Degree Disection for Steenrod Squares]
+{Step 1: A Degree Disection for Steenrod Squares}
 \ref{tag:masseystep1} requires to proof the following claim.
 \begin{Lem}[\ref{tag:masseystep1}]\label{lem:masseystep1}
   Let $q\geq 0$ be an integer,
@@ -67,7 +68,7 @@ immediately yields the result as
   such that $\Sq I(x)$ is non-trivial.
   Then there exists $k\in\Nat$ and a sequence of integers
   $k_1\geq\dotsb\geq k_{q-1}\geq0$ of length $q-1$ such that the
-  degree of $\Sq I(x)$ can be represented as
+  degree of $\Sq I(x)$ can be represented as the disection
   \begin{gather*}
     \deg \Sq I(x)
     = \deg x + \d(I)
@@ -218,9 +219,101 @@ the case $\e(I)<\deg x$.
 \end{proof}
 
 
-\section{Step 2: Find Proper Candidate for Iterated Steenrod Square}
+\section[Non-trivial Iterated Steenrod Squares for Manifolds]
+{Step 2: Existence of Non-trivial Iterated Steenrod Squares for Manifolds}
 
+This section is dedicated to finding an iterated Steenrod square
+$\Sq I$ of degree $n-q$ that is non-trivial in degree
+$\Sq I\colon\H^q(M)\to\H^n(M)$ in order to complete
+\ref{tag:masseystep2}
+and thus prove Theorem~\autoref{thm:massey}.
 
+The candidate is the multiplication map
+\begin{gather*}
+  \H^q(M) \longto \H^n(M)
+  \qquad
+  x\longmapsto x\cup\dualw{n-q}{M}
+\end{gather*}
+which is non-trivial as the cup-product is non-degenerated
+by Poincaré duality \cite[Proposition~3.38]{hatcher}.
+It remains to see that this map actually comes from a (sum of)
+iterated Steenrod square(s) which then must be non-trivial.
+But this easily follows from the next main Lemma,
+the proof of which essentially uses Wu's Theorem and the properties of
+the Wu classes.
+
+\begin{Lem}\label{lem:masseystep2}
+  Let $0<k<n$ and $x\in\H^k(M)$ be a cohomology class.
+  Then
+  \begin{gather*}
+    x\cdot\dualw{n-k}{M} = \sum_{i>0}\Sq i(x)\cdot\dualw{n-k-i}{M}
+  \end{gather*}
+\end{Lem}
+Applying this inductively with the induction step
+\begin{gather*}
+  \Sq I(x)\cdot\dualw{n-k-j}
+  = \sum_{i>0}\Sq i\circ\Sq I(x)\cdot\dualw{n-k-(i+j)}{M}
+\end{gather*}
+yields the needed result.
+
+\begin{proof}[proof of \autoref{lem:masseystep2}]
+  As above let $0<k<n$ and $x\in\H^k(M)$.
+  For simplicity write
+  $\ws i\coloneqq\w i M$, $\dualws i\coloneqq\dualw i M$,
+  $\vu i = \v i M$ and $\dualvu i = \dualv i M$.
+  In order to translate from Stiefel-Whitney classes to Steenrod
+  squares and back again recall the following results.
+  \begin{description}
+  \item[By Theorem \autoref{thm:wu} (Wu):]
+    $\sum_{j=0}^{s} \Sq j(\dualvu{s-j}) = \dualws{s-j}$
+    for any $s\leq n$.
+  \item[By Definition~\autoref{def:wuclasses} of $\Vu$:]
+    $\vu i \cdot y = \Sq i(y)$
+    for any $i\leq n$ and $y\in\H^{n-i}(M)$.
+  \item[By Definition~\autoref{def:dualwuclasses} of $\dualVu$:]
+    $\dualvu d = \sum_{i=1}^{d} \vu i\cdot \dualvu{d-i}$ for $d>0$.
+  \end{description}
+  The full calculation is then
+  \begin{align*}
+    x\cdot \dualws{n-k}
+    &\cequalsby{\autoref{thm:wu}}
+      x\cdot \sum_{i=0}^{n-k} \Sq i(\dualvu{n-k-i}) \\
+    &\equalsby{Def. $\Sq 0$}
+      x\cdot\left(
+      \dualvu{n-k} + \sum_{i=1}^{n-k} \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Def. $\dualVu$}
+      x\cdot\left(
+      \left(\sum_{i=1}^{n-k} \vu{i}\cdot\dualvu{n-k-i}\right)
+      + \left(\sum_{i=1}^{n-k} \Sq i(\dualvu{n-k-i})\right)
+      \right) \\
+    &=
+      \sum_{i=1}^{n-k} \left(
+      \vu{i}\cdot x\cdot \dualvu{n-k-i}
+      + x\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Def. $\Vu$}
+      \sum_{i=1}^{n-k} \left(
+      \Sq i (x\cdot \dualvu{n-k-i})
+      + x\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{\ref{tag:cartan}, Def. $\Sq 0$}
+      \sum_{i=1}^{n-k} \left(
+      \left( \sum_{r=0}^{i} \Sq r(x)\cdot \Sq{i-r}(\dualvu{n-k-i}) \right)
+      + \Sq 0(x)\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &=
+      \sum_{i=1}^{n-k} \left(
+      \sum_{r=1}^{i} \Sq r(x)\cdot \Sq{i-r}(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Reorder}
+      \sum_{r=1}^{n-k} \Sq r(x) \cdot
+      \left( \sum_{j=0}^{n-k-r} \Sq j(\dualvu{n-k-(j+r)}) \right) \\
+    &\equalsby{\autoref{thm:wu}}
+      \sum_{r=1}^{n-k} \Sq r(x) \cdot\dualws{n-k-r}
+      \qedhere
+  \end{align*}
+\end{proof}
 
 
 %%% Local Variables:
