@@ -84,7 +84,7 @@ $\Sq I(x) = 0$ for $\e(I)>\deg x$ by
 $\e(I)<\deg x$ and $\e(I)=\deg x$ to be considered.
 Applying the following Lemma by Serre inductively, enables one to restrict the
 proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
-\begin{Lem}[Serre] % TODO: check, ref \cite[Lemma~1, p.~204]{serre[3]}, proof 
+\begin{Lem}[Serre] % TODO: proof 
   \label{lem:serre}
   Every admissible sequence $I\in\Nat^{\l(I)}$ admits an admissible
   sequence $J$ with $\e(J)<\e(I)$,
@@ -170,6 +170,52 @@ the case $\e(I)<\deg x$.
   \end{gather*}
 \end{proof}
 
+\begin{proof}[proof of \autoref{lem:serre}]
+  \optcite[Lemma~1, converse part, p.~159]{serre}
+  First note that any sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
+  of integers can be written as
+  $I=(2^{r-1}i_r,\dotsc,2i_r,i_r,i_{r+1},\dotsc,i_l)$
+  for some $r\geq 1$. If $I$ is admissible, the subsequence
+  $J\coloneqq(i_{r+1},\dotsc,i_l)$ will be admissible as well.
+  Then \autoref{lem:serre} follows directly from
+  \begin{claim}
+    For $I$ and $J$ as above, and $x\in\H^{\e(I)}(X)$ a cohomology
+    class of degree $\e(I)$ of some space $X$, holds
+    \begin{enumerate}
+    \item $\Sq I(x) = \left(\Sq J(x)\right)^{2^r}$, and
+    \item $\e(I)<\e(J)$.
+    \end{enumerate}
+  \end{claim}
+  For the first part one only has to show
+  $\deg(\Sq J(x))=\deg(x)+\d(J)=\e(I)+\d(J)=i_r$
+  as the statement then inductively follows from property
+  \eqref{eq:sqsquared} that $\Sq i(y)=y^2$ for any cohomology class
+  with $i=\deg(y)$.
+  So calculate
+  \begin{align*}
+    \d(J) + \e(I)
+    &= \d(J) 
+      + \left(\sum_{j=1}^{\l(I)-1}(i_j-2i_{j+1})\right)
+      + i_{\l(I)}\\
+    &= \d(J)
+      + \left(\sum_{j=1}^{r-1}\underbrace{(i_j-2i_{j+1})}_{=0}\right)
+      + (i_r-2i_{r+1})
+      +\left(\sum_{j=r+1}^{\l(I)-1}(i_j-2i_{j+1})\right) + i_{\l(I)}\\
+    &= \d(J)
+      + (i_r-2i_{r+1})
+      + \e(J) \\
+    &= \d(J) + i_r - 2i_{r+1} + 2i_{r+1} - \d(J) \\
+    &= i_r
+  \end{align*}
+  Comparing the excesses
+  \begin{gather*}
+    \e(I) - \e(J)
+    = \left(\sum_{j=1}^{r-1}\underbrace{(i_j-2i_{j+1})}_{=0}\right)
+    + \underbrace{(i_r - 2i_{r+1})}_{\text{$>0$ by Def. of r}}
+    > 0
+  \end{gather*}
+  yields the second part.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
