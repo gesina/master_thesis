@@ -81,14 +81,14 @@ immediately yields the result as
 In order to split the proof into several cases, recall that
 $\Sq I(x) = 0$ for $\e(I)>\deg x$ by
 \itemref{rem:sq}{item:squpperboundgeneral}. This leaves the two cases
-$\e(I)<\deg x$ and $\e(I)=\deg x$ to be considered.
-Applying the following Lemma by Serre inductively, enables one to restrict the
+$\e(I)<\deg x$ and $\e(I)=\deg x$.
+Inductively applying the following Lemma by Serre restricts the
 proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
-\begin{Lem}[Serre] % TODO: proof 
+\begin{Lem}[Serre]
   \label{lem:serre}
-  Every admissible sequence $I\in\Nat^{\l(I)}$ admits an admissible
-  sequence $J$ with $\e(J)<\e(I)$,
-  together with a power of two $2^k$
+  Every admissible sequence $I\in\Nat^{\l(I)}$ of excess $\e(I)>0$
+  admits an admissible sequence $J$ with $\e(J)<\e(I)$,
+  together with some $k\in\Nat$
   such that for any cohomology class $x\in\H^{\e(I)}$ holds
   \begin{gather*}
     \Sq I(x) = \left(\Sq J(x)\right) ^{2^k}
@@ -102,12 +102,11 @@ the case $\e(I)<\deg x$.
 \begin{proof}[proof of \autoref{lem:masseystep1}]
   Let $q\in\Nat$ and $I=(i_1,\dotsc,i_l)$ be an admissible sequence such that
   $\e(I)<q$.
-  Assume there is a cohomology class $x\in\H^q(M)$ in degree $q$ such
-  that $\Sq I(x)\neq0$.
+  Assume there is a cohomology class $x\in\H^q(M)$ such that $\Sq I(x)\neq0$.
   Set
   \begin{alignat*}{4}
-    \alpha_0 &= q-1-\e(I) &\qquad&\text{which is greater 0 as $\e(I)<q$,} \\
-    \alpha_r &= i_{r}-2i_{r+1} &&\text{for $1\leq r< \l(I)$, and} \\ 
+    \alpha_0 &= q-1-\e(I)\geq 0 &\qquad&\text{which is positive as $\e(I)<q$,} \\
+    \alpha_r &= i_{r}-2i_{r+1}  &&\text{for $1\leq r< \l(I)$, and} \\ 
     \alpha_{\l(I)} &= i_{\l(I)}
     \;.
   \end{alignat*}
@@ -122,9 +121,8 @@ the case $\e(I)<\deg x$.
     i_s
     &= \sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
   \end{align}
-  This then directly implies the following reformulation of $\d(I)$ in
-  terms of $\alpha_i$ values
-  by recursively applying the definitions from above:
+  The above definitions then directly imply the following reformulation
+  of $\d(I)$ in terms of $\alpha_i$:
   \begin{align}\notag
     \d(I) \coloneqq \sum_{s=1}^{\l(I)}i_s 
     &\cequalsby{\eqref{eq:proofmassey:eq1}}
@@ -172,50 +170,58 @@ the case $\e(I)<\deg x$.
 
 \begin{proof}[proof of \autoref{lem:serre}]
   \optcite[Lemma~1, converse part, p.~159]{serre}
-  First note that any sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
-  of integers can be written as
-  $I=(2^{r-1}i_r,\dotsc,2i_r,i_r,i_{r+1},\dotsc,i_l)$
-  for some $r\geq 1$. If $I$ is admissible, the subsequence
-  $J\coloneqq(i_{r+1},\dotsc,i_l)$ will be admissible as well.
-  Then \autoref{lem:serre} follows directly from
+  First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
+  of excess $\e(I)>0$ can be written as
+  $I=(2^{k-1}i_k,\dotsc,2i_k,i_k,i_{k+1},\dotsc,i_l)$
+  with $l>k\geq 1$ chosen maximal, \idest $i_k>2i_{k+1}$. If $I$ is admissible, the subsequence
+  $J\coloneqq(i_{k+1},\dotsc,i_l)$ will be admissible as well.
+  In order to see that such $J$ and $k$ fulfil the requirements from
+  \autoref{lem:serre} one only needs to show
   \begin{claim}
     For $I$ and $J$ as above, and $x\in\H^{\e(I)}(X)$ a cohomology
-    class of degree $\e(I)$ of some space $X$, holds
+    class of a space $X$ holds
     \begin{enumerate}
-    \item $\Sq I(x) = \left(\Sq J(x)\right)^{2^r}$, and
+    \item $\Sq I(x) = \left(\Sq J(x)\right)^{2^k}$, and
     \item $\e(I)<\e(J)$.
     \end{enumerate}
   \end{claim}
-  For the first part one only has to show
-  $\deg(\Sq J(x))=\deg(x)+\d(J)=\e(I)+\d(J)=i_r$
-  as the statement then inductively follows from property
-  \eqref{eq:sqsquared} that $\Sq i(y)=y^2$ for any cohomology class
-  with $i=\deg(y)$.
+  For the first part one simply has to check that
+  $\deg(\Sq J(x))=i_k$, as the statement then inductively follows from
+  property \eqref{eq:sqsquared} that $\Sq i(y)=y^2$ for any cohomology
+  class with $i=\deg(y)$.
   So calculate
   \begin{align*}
-    \d(J) + \e(I)
+    \deg(\Sq J(x))
+    &= \d(J) + \deg(x)\\
+    &= \d(J) + \e(I)\\
     &= \d(J) 
-      + \left(\sum_{j=1}^{\l(I)-1}(i_j-2i_{j+1})\right)
+      + \left(\sum_{r=1}^{\l(I)-1}(i_r-2i_{r+1})\right)
       + i_{\l(I)}\\
     &= \d(J)
-      + \left(\sum_{j=1}^{r-1}\underbrace{(i_j-2i_{j+1})}_{=0}\right)
-      + (i_r-2i_{r+1})
-      +\left(\sum_{j=r+1}^{\l(I)-1}(i_j-2i_{j+1})\right) + i_{\l(I)}\\
+      + \left(\sum_{r=1}^{k-1}\underbrace{(i_r-2i_{r+1})}_{=0}\right)
+      + (i_k-2i_{k+1})
+      +\left(\sum_{r=k+1}^{\l(I)-1}(i_r-2i_{r+1})\right) + i_{\l(I)}\\
     &= \d(J)
-      + (i_r-2i_{r+1})
+      + (i_k-2i_{k+1})
       + \e(J) \\
-    &= \d(J) + i_r - 2i_{r+1} + 2i_{r+1} - \d(J) \\
-    &= i_r
+    &= \d(J) + i_k - 2i_{k+1} + 2i_{k+1} - \d(J) \\
+    &= i_k
   \end{align*}
-  Comparing the excesses
+  Comparing the excesses yields the second part:
   \begin{gather*}
     \e(I) - \e(J)
-    = \left(\sum_{j=1}^{r-1}\underbrace{(i_j-2i_{j+1})}_{=0}\right)
-    + \underbrace{(i_r - 2i_{r+1})}_{\text{$>0$ by Def. of r}}
+    = \left(\sum_{r=1}^{k-1}\underbrace{(i_r-2i_{r+1})}_{=0}\right)
+    + \underbrace{(i_k - 2i_{k+1})}_{\text{$>0$ by def. of k}}
     > 0
+    \qedhere
   \end{gather*}
-  yields the second part.
 \end{proof}
+
+
+\section{Step 2: Find Proper Candidate for Iterated Steenrod Square}
+
+
+
 
 %%% Local Variables:
 %%% mode: latex
