@@ -51,7 +51,7 @@
 
 
 % MATHS PACKAGES
-\usepackage{mathtools,amsthm,dsfont}
+\usepackage{mathtools,amsthm,dsfont,mathrsfs}
 % \usepackage{amssymb}
 % \usepackage{amsfonts}
 \usepackage{tikz-cd}
@@ -156,6 +156,18 @@
 \newcommand*{\Q}{\mathds{Q}} % rational numbers
 \newcommand*{\R}{\mathds{R}} % real numbers
 \newcommand*{\C}{\mathds{C}} % complex numbers
+
+% Sequences, symmetric polynomials
+\newcommand*{\Part}{\mathscr{P}} % partition of an integer
+\newcommand*{\Emptypart}{()} % empty partition, i.e. partition of 0
+\newcommand*{\PartitionsOf}[1]{\Pi({#1})} % set of partitions of the integer #1
+\newcommand*{\concat}{\oplus} % concatenation of sequences/partitions
+
+\newcommand*{\Symm}[1]{\mathcal{S}^{#1}} % ring of symmetric polynomials in #1 variables
+\newcommand*{\Permutations}[1]{\Sigma_{#1}} % group of permutations of #1 elements
+\newcommand*{\symm}[1]{\Sigma^{#1}} % symmetrisation in #1 variables of a polynomial
+\newcommand*{\el}[2]{\sigma_{#1}^{#2}} % #1th elementary symmetric polynomial in #2 variables
+\newcommand*{\s}[1]{s_{#1}} % partition polynomial of the partition #1
 
 % Symbol shortenings
 \renewcommand*{\epsilon}{\varepsilon}
@@ -263,7 +275,7 @@
 \newcommand*{\rkl}{l} % arbitrary other rank of a vector bundle (overwrites stroke bar)
 
 % cobordism stuff
-\newcommand*{\c}{\eta} % cobordism ring symbol (overwrites cedilla)
+\renewcommand*{\c}{\eta} % cobordism ring symbol (overwrites cedilla)
 
 
 % TODO: necessary checks
