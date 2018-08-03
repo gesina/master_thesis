@@ -25,6 +25,14 @@
 
 
 \section{Indecomposable Elements of the Cobordism Ring}
+In order to find a set of algebraically independent generators of the
+polynomial ring $\c_*$, one needs to find a way to detect
+indecomposable elements. Indecomposable in this context means not
+expressable as a sum of products of lower degree elements.
+In order to do so the subsequent sections will follow an approach of
+Thom
+\cite[Chapters~IV.5 and~IV.6]{thom}.
+
 
 \subsection{Special Properties of Symmetric Polynomials}
 In this section a special kind of polynomials will be examined that
@@ -119,16 +127,18 @@ Also as preparation, recall some properties of symmetric polynomials.
 Now the desired polynomials can be defined.
 \begin{Def}
   \optcite[p.~90]{milnorlectures}
-  Let $k\in\Nat$ and $\Part\in\PartitionsOf k$.
+  Let $k\in\Nat$, $\Part\in\PartitionsOf k$, and let
+  $\Zmod2[\alpha_1,\dotsc,\alpha_k]$ be the polynomial ring in $k$
+  variables where $\alpha_i$ has degree $i$.
   Define the homogenous polynomial
-  $\s{\Part}\in\Zmod2[x_1,\dotsc,x_k]$ of degree $k$ by
+  $\s{\Part}\in\Zmod2[\alpha_1,\dotsc,\alpha_k]$ of degree $k$ by
   \begin{gather*}
     \s{\Part}(\el 1 n,\dotsc, \el k n) = \symm{n} t^{\Part} \in \Symm{n}_k
   \end{gather*}
   for some $n\geq k$. Mind, that this is well-defined as the
   elementary symmetric polynomials are algebraically independent, and
   the definition does not depend on $n$ as long as $k\leq n$.
-
+  
   For a any graded ring $A_*=\bigoplus_{i\geq 0} A_i$ write elements as
   $a=\sum_i a_i \coloneqq (a_0,a_1,\dotsc)$.
   For such an element define the evaluation of $\s{\Part}$ as
@@ -138,13 +148,29 @@ Now the desired polynomials can be defined.
   \end{gather*}
   \idest skip $a_0$ and all higher $a_i$.
 \end{Def}
-
+\begin{Ex}
+  The first such polynomials over $\Zmod2$ are
+  \begin{align*}
+    k&=0:
+    &\s{\Emptypart} &= 1
+    \\ k&=1:
+    &\s{(1)} &= \alpha_1
+    \\ k&=2:
+    &\s{(2)} &= \alpha_1^2
+        &\s{(1,1)} &= \alpha_2
+    \\ k&=3:
+    &\s{(3)} &= \alpha_1^3 + \alpha_1\alpha_2 + \alpha_3
+        &\s{(1,2)} &= \alpha_1\alpha_2 + \alpha_3
+             &\s{(1,1,1)} &= \alpha_3
+  \end{align*}
+  \cite[p.~90]{milnorlectures}
+\end{Ex}
 
 These polynomials that translate the basis $\symm{n}t^{\Part}$ of
 $\Symm{n}_k$ into expressions of the generators $\el i n$
 fulfill as promised the following interesting property concerning
 multiplication of elements.
-\begin{Lem}
+\begin{Lem}\label{lem:productrule:general}
   \optcite[Theorem~33, p.~91f]{milnorlectures}
   Let $k\in\Nat$, and let $A_*=\bigoplus_{i\geq 0} A_i$ be a graded ring.
   For $a,b\in A_*$ with $a_0=1=b_0$, and any partition
@@ -233,21 +259,223 @@ multiplication of elements.
   \end{proof}
 \end{Lem}
 
-
-
-\subsection{Stiefel-Whitney Numbers of Indecomposable Manifolds}
-\begin{Thm}
-  \optcite[Thm.~1.26]{immersionconj};
-  \optcite[p.~195ff]{thom};
-  for non-dyadic decomposition: \optcite[p.~156]{thom};
-  for summation notation: \optcite[p.154, (4)f]{thom};
-  \\
-  A closed $n$-manifold $M$ represents an indecomposable element of
-  $\c_*$, if and only if
+\begin{Ex}
+  The partition of an integer $k$ of most importance will be the trivial
+  partition $(k)\in\PartitionsOf k$. In this case
+  Lemma~\autoref{lem:productrule:general} says
   \begin{gather*}
-    \langle s_m(M), \fundcl M \rangle
+    \s{(k)}(a\cdot b) = \s{(k)}(a) + \s{(k)}(b)
+    \;.
   \end{gather*}
+\end{Ex}
+
+
+\subsection{Stiefel-Whitney Numbers of Product Manifolds}
+In order to apply the special polynomials from the preceeding section
+and their their product property \autoref{lem:productrule:general} to
+the Stiefel-Whitney numbers of (product) manifolds, first start with application
+to Stiefel-Whitney classes.
+
+So, let $M^n=M_1^{n_1}\times M_2^{n_2}$ all be closed manifolds of the
+noted dimension throughout the section.
+
+Recall that
+\begin{enumerate}
+\item the cohomology ring $\H^*(M)$ of a space respectively
+  manifold is a graded ring,
+\item the total Stiefel-Whitney number of a manifold is of the form
+  $\W{M_i} = 1 + \w 1 {M_i} + \dotsb + \w n {M_i}$, and that
+\item by Künneth holds
+  \begin{align*}
+    \H^*(M_1)\otimes \H^*(M_2)
+    &\overset{\cong}\longto \H^*(M)
+    \\
+    c_1 \otimes c_2
+    &\longmapsto c_1\cdot c_2
+      \coloneqq \pb\proj_1 c_1 \cdot \pb\proj_2 c_2
+  \end{align*}
+  and $\W{M} = \W{M_1} \cdot \W{M_2}$ by
+  \ref{tag:swclassesmultiplicativity} of the Stiefel-Whitney classes.
+\end{enumerate}
+Thus, one can apply the multiplication
+Lemma~\autoref{lem:productrule:general} to $\W{M}$, which immediately
+yields:
+\begin{Cor}\label{cor:productrule:swcl}
+  For $M=M_1\times M_2$ manifolds as above one gets for any partition
+  $\Part\in\PartitionsOf n$:
+  \begin{align*}
+    \s{\Part}(\W{M})
+    =
+    \s{\Part}\left(\W{M_1}\cdot \W{M_2}\right)
+    &\cequalsby{\autoref{lem:productrule:general}}
+      \sum_{\mathclap{\Part_1\concat\Part_2=\Part}}
+      \s{\Part_1}(\W{M_1}) \cdot \s{\Part_2}(\W{M_2})
+    \\ &=
+         \sum_{\mathclap{\substack{
+         \Part_1\concat\Part_2=\Part\\
+    \Part_1\in\PartitionsOf{n_1}\\
+    \Part_2\in\PartitionsOf{n_2}\\
+    }}}
+    \s{\Part_1}(\W{M_1}) \cdot \s{\Part_2}(\W{M_2})
+  \end{align*}
+  \begin{proof}
+    The last equality is due to the following dimension reasons.
+    If $\Part$ is a partition of $k$ then $\s{\Part}(\W{W})$ is a
+    cohomology class of degree $k$ for any manifold $W$.
+    This will be zero whenever $k$ exceeds the dimension of $W$.
+    Therefore, for any combination of partitions
+    $\Part_1\in\PartitionsOf{k_1}$,
+    $\Part_2\in\PartitionsOf{k_2}$
+    where $k_1+k_2=n=n_1+n_2$ with $k_i\neq n_i$, the product
+    $\s{\Part_1}(\W{M_1})\cdot\s{\Part_2}(\W{M_2})$ will have a zero
+    factor and can be skipped.
+  \end{proof}
+\end{Cor}
+
+In order to pass to Stiefel-Whitney numbers instead of classes, use
+the following notation.
+\begin{Def}
+  Let $W$ be a closed manifold and $\Part\in\PartitionsOf{\dim W}$.
+  Then write
+  \begin{gather*}
+    \snum{\Part}{W} \coloneqq \capped{\s{\Part}(\W{W})}{\fundcl{W}}
+    \;.
+  \end{gather*}
+\end{Def}
+
+Now the product rule \autoref{lem:productrule:general} translates to
+\begin{Cor}
+  For closed manifolds $M_1$, and $M_2$ with dimensions $n_1$ and
+  $n_2$ one has
+  \begin{align*}
+    \snum{\Part}{M_1\times M_2}
+    &= \sum_{\mathclap{\substack{
+      \Part_1\concat\Part_2=\Part\\
+    \Part_1\in\PartitionsOf{n_1}\\
+    \Part_2\in\PartitionsOf{n_2}\\
+    }}}
+    \snum{\Part_1}{M_1} \cdot \snum{\Part_2}{M_2}
+    \quad \in \quad \Zmod2
+  \end{align*}
+  and as a special case
+  \begin{align}
+    % \notag
+    % \snum{(n_1,n_2)}{M_1\times M_2}
+    % &= \snum{(n_1)}{M_1} \cdot \snum{(n_2)}{M_2}
+    % \\
+    \label{eq:productrule:swnum}
+    \snum{(n_1+n_2)}{M_1\times M_2} &= 0
+                                      \;.
+  \end{align}
+  In particular, if $\snum{(\dim W)}{W}\neq 0$ for a closed manifold
+  $W$, then $W$ is no product manifold.
+  \begin{proof}
+    The statement immediately follows from the previous
+    Corollary~\autoref{cor:productrule:swcl} with the following
+    two facts:
+    \begin{enumerate}
+    \item The generator $\fundcl{M_1\times
+        M_2}\in\H^{n_1+n_2}(M_1\times M_2)$ corresponds to the generator
+      $\fundcl{M_1}\otimes\fundcl{M_2}\in
+      \H^{n_1}(M_1)\otimes\H^{n_2}(M_2)\cong \H^{n_1+n_2}(M_1\times M_2)$
+      under the Künneth isomorphism.
+    \item For cohomology classes $c_1\in\H^{n_1}(M_1)$, $c_2\in\H^{n_2}(M_2)$ holds
+      \begin{gather*}
+        \capped{c_1\otimes c_2}{\fundcl{M_1\times M_2}}
+        = \capped{c_1\otimes c_2}{\fundcl{M_1}\otimes\fundcl{M_2}}
+        = \capped{c_1}{\fundcl{M_1}} \cdot \capped{c_2}{\fundcl{M_2}}
+        \in \Zmod2
+      \end{gather*}
+      by the universal property of the tensor product.
+      \qedhere
+    \end{enumerate}    
+  \end{proof}
+\end{Cor}
+
+\autoref{eq:productrule:swnum} is the desired result that serves as a
+tool for detecting non-product manifolds up to homotopy.
+Using this same statement, the following section will extend this tool
+for detecting manifolds that are not only not cobordant to a product
+manifold but whose cobordism class is indecomposable.
+
+
+\subsection{A Criterion for Indecomposability}
+% TODO: Write into preliminary statement
+
+The ultimate goal of this subsection is to deduce the following
+theorem that is a consequence of Thom's proof of the multiplicative
+structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
+\begin{Thm}\label{thm:indecomposabilitycriterion}
+  A closed $n$-manifold $M$ represents an indecomposable element of
+  the cobordism ring $\c_*$, if and only if
+  \begin{gather*}
+    \snum{(n)}{M} \neq 0 \in \Zmod2
+    \;.
+  \end{gather*}
+  % for non-dyadic decomposition: \optcite[p.~156]{thom};
+  % for summation notation: \optcite[p.154, (4)f]{thom};
 \end{Thm}
+
+For the mentioned proof, which includes the above statement, Thom
+constructs special manifolds that form a basis of the cobordism ring,
+and are uniquely characterized by the below properties.
+For the formulation call a sequence or partition \emph{non-dyadic}, if
+none of its entries is of the form $2^m-1$. 
+\begin{Thm}\label{thm:basiscobordismring} % TODO: Proof
+  There exists a basis of the cobordism ring represented by manifolds
+  $V_\Part$ that is in each degree $k$ indexed by non-dyadic
+  partitions $\Part$ of $k$. Further, the $V_\Part$ are uniquely
+  characterized by
+  \begin{gather*}
+    \s{\Part'}(\W{V_\Part}) = \delta_{\Part,\Part'}
+    \in \H^k(V_{\Part})\cong \Zmod2
+  \end{gather*}
+  for any non-dyadic partitions $\Part,\Part'\in\PartitionsOf{k}$.
+\end{Thm}
+
+Before starting with the proof of the desired result one needs the
+following connection between Stiefel-Whitney classes of a manifold and
+its cobordism class. Thom rather directly deduces this from the
+existence of the above basis.
+% TODO: Proof: SW Nums = 0 <=> null-bordant
+\begin{Thm}[Thom]\label{thm:cobordantiffswnumscoincide}
+  Two closed manifolds are cobordant if and only if all of their
+  Stiefel-Whitney numbers coincide.
+\end{Thm}
+
+\begin{proof}[proof of \autoref{thm:indecomposabilitycriterion}]
+  Using Theorems~\autoref{thm:basiscobordismring} and
+  \autoref{thm:cobordantiffswnumscoincide} enables to proof the
+  desired result using the following intermediate conclusions.
+  \begin{enumerate}
+  \item Any manifold $W$ of dimension $k$ is
+    cobordant to
+    \begin{gather*}
+      \coprod_{\mathclap{\substack{
+            \Part\in\PartitionsOf k \text{ non-dyadic}\\
+            \s{\Part}(\W{W})\neq 0
+          }}} V_\Part
+      \;,
+    \end{gather*}
+  \item\label{item:manifoldbasisrepr}
+    $V_{\Part_1}\times V_{\Part_2}$ is cobordant to
+    $V_{\Part_1\concat\Part_2}$ since
+    $\s{\Part'}(\W{V_{\Part_1}\times V_{\Part_2}})
+    = \delta_{\Part', \Part_1\concat\Part_2}$
+    by \ref{cor:productrule:swcl}.
+  \item\label{item:generatorscobordimsring}
+    By conclusion \ref{item:manifoldbasisrepr},
+    the basis elements represented by $V_{(k)}\in\c_k$ for
+    $k\neq 2^m-1$ are generators of the cobordism ring.
+  \item By conclusion \ref{item:generatorscobordimsring}, a manifold
+    $W$ of dimension $k$ is an indecomposable element of $\c_*$ if and
+    only if its representation by basis elements $V_\Part$ contains
+    $V_{(k)}$ as summand,
+    \idest if and only if $\snum{(k)}{W}\neq 0$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
 
 
 %%% Local Variables:
