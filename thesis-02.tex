@@ -9,6 +9,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Massey's Theorem}
+% Review the theory of Stiefel-Whitney classes and the properties of the
+% Steenrod algebra (as needed). Give a careful and detailed exposition of
+% the proof of Massey’s theorem. Explain that the estimate in Massey’s the-
+% orem is the best possible in general.
+% [massey], [immersionconj]
+
 
 Massey's main theorem on the Stiefel-Whitney classes of manifolds
 gives a very concrete obstruction on what degrees of the dual
@@ -314,6 +320,84 @@ yields the needed result.
       \qedhere
   \end{align*}
 \end{proof}
+
+\section{Best possible Result}
+Recall that a closed $n$-manifold can only immerse into
+$\R^{2n-a}$ if all Stiefel-Whitney classes $\dualw{i}{\N M}$ of its
+normal bundle are zero in degrees greater than $n-a$.
+Massey's Theorem now states that this condition is met for
+$a=\alpha(n)$, and thus suggests the conjecture that every
+manifold immerses into $\R^{2n-\alpha(n)}$.
+
+Naturally, there occurs the question whether Massey's $\alpha(n)$ is
+the best possible (\idest largest) result for arbitrary closed
+$n$-manifolds.
+The answer is yes, proved by the following counterexamples of manifolds
+not immersing into $\R^{2n-(\alpha(n)+1)}$.
+
+\begin{Thm}
+  \optcite[p.~87]{immersionconj}
+  Denote by $\RP{i}$ the $i$th real projective space.
+  \begin{enumerate}
+  \item For $n=2^i$, the Stiefel-Whitney class
+    $\dualw{n-\alpha(n)}{\RP{2^i}}$ is not zero.
+  \item For $n\in\Nat$ with binary expansion
+    $n=\sum_{r=1}^{q}2^{i_r}$, $i_1>\dotsb>i_q$, the Stiefel-Whitney class
+    $\dualw{n-\alpha(n)}{\prod_{r=1}^{q}\RP{2^r}}$ is not zero.
+  \end{enumerate}
+  \begin{proof}
+    The total Stiefel-Whitney class of $\RP{n}$ for arbitrary
+    $n\in\Nat$ is
+    \begin{gather*}
+      \W{\RP n} = (1+x)^{n+1}\in\H^*(\RP n)\cong \Zmod2[x]/(x^{n+1})
+    \end{gather*}
+    (see \forexample \cite[Example~(19.4.1)]{tomdieck}).
+    For $n=2^i$ this takes the form
+    \begin{align*}
+      \W{\RP{2^i}}
+      &= (x+1)^{2^i+1}
+      = 1 + x + x^{2^i}
+        \text{ , thus} \\
+      \dualW{\RP{2^i}}
+      &= \sum_{r=0}^{2^i-1} x^r
+        \text{ , especially with $\alpha(2^i)=1$} \\
+      \dualw{n-\alpha(n)}{\RP{2^i}}
+      &= x^{2^i-1}\neq 0
+      %   \quad\text{, as} \\
+      % \W{\RP{2^i}}\cdot\dualW{\RP{2^i}}
+      % &= \sum_{r=0}^{2^i-1}x^r
+      % + \sum_{r=1}^{2^i}x^r
+      % + \sum_{r=0}^{2^i-1}x^{2^i}\cdot x^r \\
+      % &= \left( 1 + \sum_{r=1}^{2^i-1}x^r \right)
+      %   + \left( \sum_{r=1}^{2^i-1}x^r + x^{2^i} \right)
+      %   + x^{2^i}
+      %   = 1
+    \end{align*}
+    which proves the first statement.
+    For the second statement where $n=\sum_{r=1}^q 2^{i_q}$ note that
+    \begin{gather}\label{eq:bestresultproof1}
+      n-\alpha(n)
+      = \left( \sum_{r=1}^q 2^{i_r} \right) - q
+      = \sum_{r=1}^q \left( 2^{i_r} - 1 \right)
+      \;.
+    \end{gather}
+    Using multiplicativity %(\ref{tag:swclassesmultiplicativity})
+    of the Stiefel-Whitney classes one gets
+    \begin{align*}
+      \dualW{\prod_{r=1}^q \RP{i_r}}
+      &= \prod_{r=1}^q \dualW{\RP{i_r}}
+        \text{ , and especially by \eqref{eq:bestresultproof1}} \\
+      \dualw{n-\alpha(n)}{\prod_{r=1}^{q}\RP{i_r}}
+      &= \prod_{r=1}^q x^{2^r-1}
+        = x^{n-\alpha(n)} \neq 0
+        \qedhere
+    \end{align*}
+  \end{proof}
+\end{Thm}
+
+
+\section{Generalization of Massey's Theorem} % TODO
+\optcite[Section~II.1]{immersionconj}
 
 
 %%% Local Variables:
