@@ -51,8 +51,7 @@
 
 
 % MATHS PACKAGES
-\usepackage{mathtools,amsthm,dsfont,mathrsfs}
-% \usepackage{amssymb}
+\usepackage{mathtools,amsthm,amssymb,dsfont,mathrsfs}
 % \usepackage{amsfonts}
 \usepackage{tikz-cd}
 \usetikzlibrary{babel}
@@ -278,7 +277,10 @@
 
 % cobordism stuff
 \renewcommand*{\c}{\eta} % cobordism ring symbol (overwrites cedilla)
-
+\newcommand*{\disjointsum}{\amalg} % disjoint sum
+\newcommand*{\leftgroupaction}{\curvearrowright} % group action symbol
+\newcommand*{\Twistedprod}[2]{D_{#1}({#2})} % twisted product of #2 by the #1-sphere
+\newcommand*{\Twistedprodcovspace}[2]{(#2\times #2)\times \Sphere{#1}} % twisted product of #2 by the #1-sphere
 
 % TODO: necessary checks
 % fulfil instead of fulfill

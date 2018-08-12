@@ -6,7 +6,7 @@
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Brown's Theorem}
 % Review the necessary results about the structure of the unoriented cobor-
@@ -27,7 +27,7 @@
 \end{Thm}
 
 
-\section{Indecomposable Elements of the Cobordism Ring}
+\section{Detecting Indecomposable Elements of the Cobordism Ring}
 In order to find representatives for a set of algebraically
 independent generators of the polynomial ring $\c_*$, one needs to
 find a way to detect indecomposable elements. Indecomposable in this
@@ -459,7 +459,7 @@ existence of the above basis.
 \begin{Thm}[Thom]\label{thm:cobordantiffswnumscoincide}
   Two closed manifolds are cobordant if and only if all of their
   Stiefel-Whitney numbers coincide.
-% TODO: Proof/ref: SW Nums = 0 <=> null-bordant
+  % TODO: Proof/ref: SW Nums = 0 <=> null-bordant
 \end{Thm}
 
 \begin{proof}[proof of \autoref{thm:indecomposabilitycriterion}]
@@ -500,6 +500,149 @@ existence of the above basis.
   \end{enumerate}
 \end{proof}
 
+\section{Proof of Brown's Theorem}
+Remember that the goal of this chapter was to prove R.~L.~Brown's
+theorem that the conjecture's statement is true up to cobordism:
+\begin{Thm}[Brown]\label{thm:brown}
+  Every closed $n$-manifold is cobordant to an $n$-manifold that immerses
+  into $\R^{2n-\alpha(n)}$.
+\end{Thm}
+
+If one can show that the conjecture's statement is stable
+under the ring operations of the cobordism ring, it will suffice for
+the proof to find a generating set of $\c_*$ which fulfills the conjecture.
+The latter will heavily rely on the indecomposability criterion found
+in \autoref{thm:indecomposabilitycriterion} and the structure of the
+cobordism ring.
+
+The stability properties needed are the following.
+\begin{Lem}
+  Let $M_i^{n_i}$ be a closed manifold immersing into
+  $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
+  Then both manifolds
+  \begin{enumerate}
+  \item $M_1\disjointsum M_2$ for $n_1=n_2=n$, and
+  \item $M_1\times M_2$ for $n_1$, $n_2$ arbitrary
+  \end{enumerate}
+  immerse into $\R^{2(n_1+n_2)-\alpha(n_1+n_2)}$.
+  \begin{proof}
+    $M_1\times M_2$ immerses into the real space of dimension
+    \begin{align*}
+      \left( 2n_1-\alpha(n_1) \right)
+      + \left( 2n_2-\alpha(n_2) \right)
+      &= 2(n_1+n_2) - \left(\alpha(n_1)+\alpha(n_2)\right)\\
+      &\leq 2(n_1+n_2) - \left(\alpha(n_1 + n_2)\right)
+    \end{align*}
+    where the inequality is due to the number theoretic fact
+    $\alpha(n_1+n_2) \leq \alpha(n_1)+\alpha(n_2)$.
+
+    For $n_1=n=n_2$ the images of the immersions
+    \begin{gather*}
+      \iota_1\colon M_1\to\R^{2n-\alpha(n)}
+      \qquad \text{and} \qquad
+      \iota_2\colon M_2\to\R^{2n-\alpha(n)}
+    \end{gather*}
+    are compact. So by
+    concatenation with translation they can be assumed to be disjoint,
+    wherefore the disjoint union
+    $\iota_1\disjointsum\iota_2\colon M_1\disjointsum M_2\to\R^{2n-\alpha(n)}$
+    is again an immersion.
+  \end{proof}
+\end{Lem}
+
+Thus only the generating set of $\c_*$ fulfilling the immersion
+conjecture is needed.
+Our candidates are constructed using the following twisted product
+construction.
+
+\begin{Def}
+  \optcite[p.~83]{immersionconj}
+  \optcite[compare §4, Def.~of~$P(m;X)$]{brown}
+  Let $M^n$ be a closed manifold and $k\in\Nat$ an integer.
+  Define the \emph{twisted product of $M$ by $\Sphere k$}, denoted by
+  $\Twistedprod{k}{M}$, to be the orbit space of the properly
+  discontinuous $\Zmod2$-action on $\Twistedprodcovspace{k}{M}$
+  \begin{align*}
+    \Zmod2 &\leftgroupaction \Twistedprodcovspace{k}{M}
+             \;,
+    &[1] \cdot (s, (m_1,m_2)) &\coloneqq (-s, (m_2, m_1))
+                                \;,
+  \end{align*}
+  which combines the antipodal action $[1]\cdot s\coloneqq -s$ on
+  $\Sphere k$ and twisting on $M\times M$.
+\end{Def}
+
+\begin{Rem}\label{rem:twistedprodpreservesimmersions}
+  The proper discontinuity comes from the antipodal action, and makes
+  the projection
+  \begin{gather*}
+    \Twistedprodcovspace{k}{M}
+    \xrightarrow{\proj}
+    \Twistedprod{k}{M}
+    \coloneqq
+    \left( \Twistedprodcovspace{k}{M} \right)/\sim
+  \end{gather*}
+  a covering space. Thus $\Twistedprod{k}{M}$ is a
+  $(2m+k)$-dimensional manifold.
+  This construction is especially interesting, as it preserves
+  immersions:
+  If $\iota\colon M\to N$ is an immersion of closed manifolds,
+  the immersion $1\times\iota\times\iota\colon
+  \Twistedprodcovspace{k}{M} \to \Twistedprodcovspace{k}{N}$
+  is a map of $\Zmod2$-sets which makes
+  \begin{gather*}
+    1\times\iota\times\iota\colon
+    \Twistedprod{k}{M}\longto\Twistedprod{k}{N}
+    \quad [(s,(m_1,m_2))] \longmapsto [(s,(\iota(m_1), \iota(m_2)))]
+  \end{gather*}
+  a well-defined immersion.
+\end{Rem}
+
+\begin{Ex}
+  \begin{itemize}
+  \item $\Twistedprod k {\pt} = \RP k$
+  \item $\Twistedprod 0 {M} = M\times M$
+  \end{itemize}
+\end{Ex}
+
+Now one can define candidates for the desired basis in order to prove
+Brown's theorem~\autoref{thm:brown}.
+For this note, that any integer $m$ with binary representation
+\begin{gather*}
+  m=2^{i_1}+\dotsb+2^{i_l}
+  \;,\qquad
+  0 \leq i_1<\dotsb<i_r
+\end{gather*}
+can be written as $m=2^{i_1}+2n$, where:
+\begin{itemize}
+\item $n=0$ for $l=1$, else $n=2^{i_2-1}+\dotsb+2^{i_l-1}$
+\item $\alpha(m)=\alpha(n)+1$.
+\item For $m$ not of the form $2^s-1$, $n$ will also not be of the
+  form $2^s-1$.
+\end{itemize}
+\begin{Thm}
+  Consider the manifolds $B^m$ for $m\neq 2^s-1\in\Nat$ that are
+  defined by
+  \begin{align*}
+    B^0 &\coloneqq \pt \;, \\
+    B^m &\coloneqq \Twistedprod{2^{i_1}}{B^n}
+        &\text{
+          where
+          $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
+          with $0\leq i_1<\dotsb<i_l$.
+          }
+  \end{align*}
+  \begin{enumerate}
+  \item $B^m$ immerses into $\R^{2m-\alpha(m)}$.
+  \item The cobordism classes of the $B^m$, $m\neq 2^s-1$, are
+    indecomposable, and thus % TODO: ref
+    \begin{gather*}
+      \c_*\cong \left( [B^m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
+      = \Zmod2\left[[B^m] \,\big|\, m\neq 2^s-1\right]
+    \end{gather*}
+  \end{enumerate}
+\end{Thm}
+% TODO: proof
 
 
 %%% Local Variables:
