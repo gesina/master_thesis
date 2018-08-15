@@ -500,7 +500,8 @@ existence of the above basis.
   \end{enumerate}
 \end{proof}
 
-\section{Proof of Brown's Theorem}
+\section
+{Proof of Brown's Theorem: Finding a Convenient Generating Set}
 Remember that the goal of this chapter was to prove R.~L.~Brown's
 theorem that the conjecture's statement is true up to cobordism:
 \begin{Thm}[Brown]\label{thm:brown}
@@ -572,30 +573,49 @@ construction.
   $\Sphere k$ and twisting on $M\times M$.
 \end{Def}
 
-\begin{Rem}\label{rem:twistedprodpreservesimmersions}
-  The proper discontinuity comes from the antipodal action, and makes
-  the projection
-  \begin{gather*}
-    \Twistedprodcovspace{k}{M}
-    \xrightarrow{\proj}
-    \Twistedprod{k}{M}
-    \coloneqq
-    \left( \Twistedprodcovspace{k}{M} \right)/\sim
-  \end{gather*}
-  a covering space. Thus $\Twistedprod{k}{M}$ is a
-  $(2m+k)$-dimensional manifold.
-  This construction is especially interesting, as it preserves
-  immersions:
-  If $\iota\colon M\to N$ is an immersion of closed manifolds,
-  the immersion $1\times\iota\times\iota\colon
-  \Twistedprodcovspace{k}{M} \to \Twistedprodcovspace{k}{N}$
-  is a map of $\Zmod2$-sets which makes
-  \begin{gather*}
-    1\times\iota\times\iota\colon
-    \Twistedprod{k}{M}\longto\Twistedprod{k}{N}
-    \quad [(s,(m_1,m_2))] \longmapsto [(s,(\iota(m_1), \iota(m_2)))]
-  \end{gather*}
-  a well-defined immersion.
+\begin{Rem}\label{rem:twistedprodproperties}
+  \begin{enumerate}
+  \item\label{item:twistedprodmanifold}
+    The proper discontinuity comes from the antipodal
+    $\Zmod2$-action, and makes the projection
+    \begin{gather*}
+      \Twistedprodcovspace{k}{M}
+      \xrightarrow{\proj}
+      \Twistedprod{k}{M}
+      \coloneqq
+      \left( \Twistedprodcovspace{k}{M} \right)/\sim
+    \end{gather*}
+    a two-leaved covering space. Thus, $\Twistedprod{k}{M}$ is a
+    $(2m+k)$-dimensional manifold.
+  \item\label{item:twistedprodpreservesimmersions}
+    This construction is especially interesting, as it preserves
+    immersions:
+    If $\iota\colon M\to N$ is an immersion of closed manifolds,
+    the induced immersion $1\times\iota\times\iota\colon
+    \Twistedprodcovspace{k}{M} \to \Twistedprodcovspace{k}{N}$
+    is a map of $\Zmod2$-sets which then makes
+    \begin{gather*}
+      1\times\iota\times\iota\colon
+      \Twistedprod{k}{M}\longto\Twistedprod{k}{N}
+      \;,\quad
+      [(s,(m_1,m_2))] \longmapsto [(s,(\iota(m_1), \iota(m_2)))]
+    \end{gather*}
+    a well-defined immersion.
+  \item\label{item:twistedprodfibrebdl}
+    Futher, any $k$th twisted product $\Twistedprod{k}{M}$ of a
+    manifold $M^m$ admits a fibre bundle
+    \begin{gather*}
+      M\times M
+      \longto \Twistedprod{k}{M}
+      \longto \RP k = \Sphere k/\sim
+    \end{gather*}
+    with fibre $M\times M$ of dimension $2m$.
+    This comes from the trivial fibre bundle
+    \begin{gather*}
+      M\times M \longto \Twistedprodcovspace{k}{M} \longto \Sphere{k}
+    \end{gather*}
+    where all maps are maps of $\Zmod2$-sets.
+  \end{enumerate}
 \end{Rem}
 
 \begin{Ex}
@@ -620,12 +640,12 @@ can be written as $m=2^{i_1}+2n$, where:
 \item For $m$ not of the form $2^s-1$, $n$ will also not be of the
   form $2^s-1$.
 \end{itemize}
-\begin{Thm}
-  Consider the manifolds $B^m$ for $m\neq 2^s-1\in\Nat$ that are
+\begin{Thm}\label{thm:brown}
+  Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
   defined by
   \begin{align*}
-    B^0 &\coloneqq \pt \;, \\
-    B^m &\coloneqq \Twistedprod{2^{i_1}}{B^n}
+    \G 0 &\coloneqq \pt \;, \\
+    \G m &\coloneqq \Twistedprod{2^{i_1}}{\G n}
         &\text{
           where
           $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
@@ -633,16 +653,86 @@ can be written as $m=2^{i_1}+2n$, where:
           }
   \end{align*}
   \begin{enumerate}
-  \item $B^m$ immerses into $\R^{2m-\alpha(m)}$.
-  \item The cobordism classes of the $B^m$, $m\neq 2^s-1$, are
+  \item\label{item:brownimmersionproperty} $\G m$ immerses into $\R^{2m-\alpha(m)}$.
+  \item The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
     indecomposable, and thus % TODO: ref
     \begin{gather*}
-      \c_*\cong \left( [B^m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
-      = \Zmod2\left[[B^m] \,\big|\, m\neq 2^s-1\right]
+      \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
+      = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
     \end{gather*}
   \end{enumerate}
 \end{Thm}
-% TODO: proof
+The proof of the two parts is splitted into the subsequent sections.
+
+\subsection{Immersion Property}
+
+\begin{proof}[proof of
+  \itemref{thm:brown}{item:brownimmersionproperty}]
+  \optcite[p.~84, proof Thm.~1.30]{immersionconj}
+  In order to proof the immersion prperty of the manifolds $\G m$,
+  conduct an induction over $\alpha(m)$.
+  \begin{description}
+  \item[$\alpha(m)=1$:]
+    As an induction start note that in the case of $m=2^i$ one has
+    \begin{gather*}
+      \G m
+      =\Twistedprod{2^i}{\G 0}
+      =\Twistedprod{2^i}{\pt}
+      =\RP{2^i}
+    \end{gather*}
+    which immerses into $\R^{2m-1}=\R^{2m-\alpha(m)}$ by
+    Whitney's immersion theorem. % TODO: ref
+  \item[$\alpha(m)\geq2$:]
+    For the induction step write $m=2^{i_1}+2n$ as above, and assume
+    there is an immersion
+    \begin{gather*}
+      \iota\colon\G n \immlongto \R^{2n-\alpha(n)}
+      \;.
+    \end{gather*}
+  \end{description}
+  As described in
+  \itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
+  this induces an immersion of twisted products
+  \begin{gather*}
+    1\times\iota\times\iota\colon
+    \G m
+    = \Sphere{2^{i_1}} \times \G n\times \G n/\sim
+    \immlongto
+    \Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim
+    = \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+    \;.
+  \end{gather*}
+  The latter twisted product however is a fibre bundle over
+  $\RP{2^i_1}$ as in
+  \itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl},
+  more precisely a vector bundle of dimension $4n-2\alpha(n)$.
+  The needed immersion will be given by the following Lemma.
+  \begin{Lem}
+    \optcite[compare Prop. 4.3]{brown}
+    The total space of a vector bundle $E\to M^n$ of rank $k$ over a
+    closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
+  \end{Lem}
+  One calculates
+  \begin{align*}
+    2\cdot 2^{i_1} + \left(4n-2\alpha(n)\right)
+    &= 2\cdot (2^{i_1}+2n) - 2\alpha(n) \\
+    &= 2m - 2\alpha(n) \\
+    &= 2m - 2\alpha(m)+2 \\
+    &\leqby{m\geq 2}
+    2m - \alpha(m)
+    \;,
+  \end{align*}
+  so altogether one gets the immersion
+  \begin{gather*}
+    \G m
+    \immlongto \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+    \immlongto \R^{2m - \alpha(m)}
+    \;.
+  \end{gather*}
+  % TODO: proof Lemma
+\end{proof}
+
+\subsection{Generating Property}
 
 
 %%% Local Variables:

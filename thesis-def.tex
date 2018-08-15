@@ -181,6 +181,8 @@
 \newcommand*{\oversetcenter}[2]{\overset{\mathclap{#1}}{#2}} % overset with center lap
 \newcommand*{\equalsby}[1]{\oversetleft{\text{#1}}=}
 \newcommand*{\cequalsby}[1]{\oversetcenter{\text{#1}}=}
+\newcommand*{\leqby}[1]{\oversetleft{\text{#1}}\leq}
+\newcommand*{\cleqby}[1]{\oversetcenter{\text{#1}}\leq}
 
 % maps
 \renewcommand*{\Im}{\mathrm{im}} % image
@@ -190,6 +192,8 @@
 \newcommand*{\pb}[1]{{#1}^*} % pullback by a map
 \newcommand*{\pf}[1]{{#1}_*} % pushforward by a map
 \newcommand*{\susp}{\Sigma} % suspension map
+\newcommand*{\immto}{\hookrightarrow} % immersion arrow
+\newcommand*{\immlongto}{\lhook\joinrel\longrightarrow} % long immersion arrow
 
 % spaces
 \newcommand*{\Sph}{S} % sphere symbol
@@ -281,6 +285,7 @@
 \newcommand*{\leftgroupaction}{\curvearrowright} % group action symbol
 \newcommand*{\Twistedprod}[2]{D_{#1}({#2})} % twisted product of #2 by the #1-sphere
 \newcommand*{\Twistedprodcovspace}[2]{(#2\times #2)\times \Sphere{#1}} % twisted product of #2 by the #1-sphere
+\newcommand*{\G}[1]{G^{#1}} % #1th constructed generator of the cobordism ring
 
 % TODO: necessary checks
 % fulfil instead of fulfill
