@@ -282,9 +282,10 @@
 % cobordism stuff
 \renewcommand*{\c}{\eta} % cobordism ring symbol (overwrites cedilla)
 \newcommand*{\disjointsum}{\amalg} % disjoint sum
-\newcommand*{\leftgroupaction}{\curvearrowright} % group action symbol
+\newcommand*{\leftgroupaction}{\curvearrowright} % group action symbol on spaces
+\newcommand*{\actson}{\ast} % group action on elements
 \newcommand*{\Twistedprod}[2]{D_{#1}({#2})} % twisted product of #2 by the #1-sphere
-\newcommand*{\Twistedprodcovspace}[2]{(#2\times #2)\times \Sphere{#1}} % twisted product of #2 by the #1-sphere
+\newcommand*{\Twistedprodcovspace}[2]{\Sphere{#1}\times(#2\times #2)} % twisted product of #2 by the #1-sphere
 \newcommand*{\G}[1]{G^{#1}} % #1th constructed generator of the cobordism ring
 
 % TODO: necessary checks

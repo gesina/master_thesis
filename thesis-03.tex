@@ -503,15 +503,16 @@ existence of the above basis.
 \section
 {Proof of Brown's Theorem: Finding a Convenient Generating Set}
 Remember that the goal of this chapter was to prove R.~L.~Brown's
-theorem that the conjecture's statement is true up to cobordism:
+theorem which states that the immersion conjecture is true up to
+cobordism:
 \begin{Thm}[Brown]\label{thm:brown}
   Every closed $n$-manifold is cobordant to an $n$-manifold that immerses
   into $\R^{2n-\alpha(n)}$.
 \end{Thm}
 
 If one can show that the conjecture's statement is stable
-under the ring operations of the cobordism ring, it will suffice for
-the proof to find a generating set of $\c_*$ which fulfills the conjecture.
+under the ring operations of the cobordism ring, it will suffice to
+find a generating set of $\c_*$ which fulfills the conjecture.
 The latter will heavily rely on the indecomposability criterion found
 in \autoref{thm:indecomposabilitycriterion} and the structure of the
 cobordism ring.
@@ -551,73 +552,38 @@ The stability properties needed are the following.
   \end{proof}
 \end{Lem}
 
-Thus only the generating set of $\c_*$ fulfilling the immersion
-conjecture is needed.
-Our candidates are constructed using the following twisted product
-construction.
+Thus, for the proof of Brown's theorem only a generating set of $\c_*$
+is needed each member of which fulfills the immersion conjecture.
+
+\subsection{Twisted Products}
+The candidates for a generating set will be recursively constructed
+using the twisted product construction that is introduced and studied
+in the following.
 
 \begin{Def}
   \optcite[p.~83]{immersionconj}
   \optcite[compare §4, Def.~of~$P(m;X)$]{brown}
-  Let $M^n$ be a closed manifold and $k\in\Nat$ an integer.
-  Define the \emph{twisted product of $M$ by $\Sphere k$}, denoted by
-  $\Twistedprod{k}{M}$, to be the orbit space of the properly
-  discontinuous $\Zmod2$-action on $\Twistedprodcovspace{k}{M}$
+  Let $X$ be a space and $k\in\Nat$ an integer.
+  Define the \emph{twisted product of $X$ by $\Sphere k$}, denoted by
+  $\Twistedprod{k}{X}$, to be the orbit space of the properly
+  discontinuous $\Zmod2$-action on $\Twistedprodcovspace{k}{X}$
   \begin{align*}
-    \Zmod2 &\leftgroupaction \Twistedprodcovspace{k}{M}
+    \Zmod2 &\leftgroupaction \Twistedprodcovspace{k}{X}
              \;,
-    &[1] \cdot (s, (m_1,m_2)) &\coloneqq (-s, (m_2, m_1))
+    &[1] \actson (s, (p_1,p_2)) &\coloneqq (-s, (p_2, p_1))
                                 \;,
   \end{align*}
-  which combines the antipodal action $[1]\cdot s\coloneqq -s$ on
-  $\Sphere k$ and twisting on $M\times M$.
+  which combines the antipodal action $[1]\actson s\coloneqq -s$ on
+  $\Sphere k$ and twisting on $X\times X$.
+  For a map $f\colon X\to Y$ of spaces, define
+  \begin{gather*}
+    \Twistedprod{k}{f}\coloneqq \Id\times f\times f/\sim \colon
+    \Twistedprod{k}{X}\longto\Twistedprod{k}{Y}
+    \;,\quad
+    [s,(p_1,p_2)] \longmapsto [s,(f(p_1),f(p_2))]
+    \;.
+  \end{gather*}
 \end{Def}
-
-\begin{Rem}\label{rem:twistedprodproperties}
-  \begin{enumerate}
-  \item\label{item:twistedprodmanifold}
-    The proper discontinuity comes from the antipodal
-    $\Zmod2$-action, and makes the projection
-    \begin{gather*}
-      \Twistedprodcovspace{k}{M}
-      \xrightarrow{\proj}
-      \Twistedprod{k}{M}
-      \coloneqq
-      \left( \Twistedprodcovspace{k}{M} \right)/\sim
-    \end{gather*}
-    a two-leaved covering space. Thus, $\Twistedprod{k}{M}$ is a
-    $(2m+k)$-dimensional manifold.
-  \item\label{item:twistedprodpreservesimmersions}
-    This construction is especially interesting, as it preserves
-    immersions:
-    If $\iota\colon M\to N$ is an immersion of closed manifolds,
-    the induced immersion $1\times\iota\times\iota\colon
-    \Twistedprodcovspace{k}{M} \to \Twistedprodcovspace{k}{N}$
-    is a map of $\Zmod2$-sets which then makes
-    \begin{gather*}
-      1\times\iota\times\iota\colon
-      \Twistedprod{k}{M}\longto\Twistedprod{k}{N}
-      \;,\quad
-      [(s,(m_1,m_2))] \longmapsto [(s,(\iota(m_1), \iota(m_2)))]
-    \end{gather*}
-    a well-defined immersion.
-  \item\label{item:twistedprodfibrebdl}
-    Futher, any $k$th twisted product $\Twistedprod{k}{M}$ of a
-    manifold $M^m$ admits a fibre bundle
-    \begin{gather*}
-      M\times M
-      \longto \Twistedprod{k}{M}
-      \longto \RP k = \Sphere k/\sim
-    \end{gather*}
-    with fibre $M\times M$ of dimension $2m$.
-    This comes from the trivial fibre bundle
-    \begin{gather*}
-      M\times M \longto \Twistedprodcovspace{k}{M} \longto \Sphere{k}
-    \end{gather*}
-    where all maps are maps of $\Zmod2$-sets.
-  \end{enumerate}
-\end{Rem}
-
 \begin{Ex}
   \begin{itemize}
   \item $\Twistedprod k {\pt} = \RP k$
@@ -625,6 +591,225 @@ construction.
   \end{itemize}
 \end{Ex}
 
+As some first, rather immediate, convenient properties. Especially
+noteworthy is how well the twisted product behaves concerning
+manifolds and fibre bundles.
+\begin{Rem}\label{rem:twistedprodproperties}
+  Let $X$ be a space and $k\in\Nat$.
+  \begin{enumerate}
+  \item $\Twistedprod{-}{k}$ is a functor on the category of
+    topological spaces preserving injectivity.
+      \item\label{item:twistedprodfibrebdl}
+    $\Twistedprod{k}{-}$ preserves fibre bundles,
+    \idest for a fibre bundle $\xi\colon\E\xi\to X$ with fibre $F$
+    the twisted product $\Twistedprod{k}{\xi}\colon
+    \Twistedprod{k}{\E\xi}\to \Twistedprod{k}{X}$
+    is again a fibre bundle with fibre $F\times F$.
+    This comes from the fibre bundle
+    \begin{gather*}
+      F\times F
+      \longto \Twistedprodcovspace{k}{\E\xi}
+      \longto \Twistedprodcovspace{k}{X}
+    \end{gather*}
+    where all maps are maps of $\Zmod2$-sets.
+    As a special case, $\Twistedprod{k}{X}$ admits a fibre bundle
+    \begin{gather}\label{eq:twistedprodrpnfibrebdl}
+      X\times X
+      \longto \Twistedprod{k}{X}
+      \longto \RP k = \Sphere k/\sim
+    \end{gather}
+    with fibre $X\times X$ which comes from the trivial fibre bundle
+    $X\to\pt$.
+    Further, let $\eta\colon\E\eta\to X$ be
+    a fibre bundle, and $f\colon X'\to X$ a map.
+    One has:
+    \begin{enumerate}
+    \item $\Twistedprod{k}{-}$ respects sums of fibre bundles, \idest
+      \begin{gather*}
+        \Twistedprod{k}{\xi\oplus\eta\colon \E\xi\oplus\E\eta\to X}
+        = \Twistedprod{k}{\xi}\oplus\Twistedprod{k}{\eta}
+      \end{gather*}
+    \item $\Twistedprod{k}{-}$ respects pullbacks, \idest
+      \begin{gather*}
+        \Twistedprod{k}{\pb f \xi}
+        = \pb{\left(\Twistedprod{k}{f}\right)}
+        \left(\Twistedprod{k}{\xi}\right)
+      \end{gather*}
+    \end{enumerate}
+  \item\label{item:twistedprodmanifold}
+    $\Twistedprod{k}{-}$ preserves closed smooth manifolds, \idest
+    for a closed smooth manifold $M^n$, $\Twistedprod{k}{M}$ is a
+    again a $(2m+k)$-dimensional closed smooth manifold.
+    This is because the proper discontinuity comes from the antipodal
+    $\Zmod2$-action, and makes the projection
+    \begin{gather*}
+      \Twistedprodcovspace{k}{X}
+      \xrightarrow{\pi}
+      \Twistedprod{k}{X}
+      \coloneqq
+      \left( \Twistedprodcovspace{k}{X} \right)/\sim
+    \end{gather*}
+    a two-leaved covering space.
+    Further:
+    \begin{enumerate}
+    \item\label{item:twistedprodpreservesimmersions}
+      $\Twistedprod{k}{-}$ preserves immersions.
+    \item
+      $\T\Twistedprod{k}{M}
+      \cong \pb\proj\T{\RP k} \oplus \Twistedprod{k}{\T M}$,
+      \idest the tangent space of $\Twistedprod{k}{M}$ can be obtained
+      from $\Twistedprod{k}{\T M}$ by adding the missing tangent space
+      part of the sphere:
+      \begin{alignat*}{4}
+        \T{\Twistedprod{k}{M}}
+        &\cong& \T{\left(\Twistedprodcovspace{k}{M}\right)}/\sim \\
+        &\cong& \T \Sphere k\times \T M\times\T M/\sim
+        &\overset{\cong}{\longto}
+        \pb\proj \T{\RP k} \oplus \Twistedprod{k}{\T M}
+        \\
+        &&[(s,v), (m_1,v_1), (m_2,v_2)]
+        &\longmapsto
+          \left( ([s], v), [s, (m_1,v_1), (m_2, v_2)] \right)
+      \end{alignat*}
+      where $\proj\colon\Twistedprod{k}{M}\to\RP k$ is the projection.
+      The first isomorphism is due to the covering space property, and
+      the last is easily seen to be a well-defined isomorphism of
+      vector bundles.
+    \end{enumerate}
+  \end{enumerate}
+\end{Rem}
+
+Besides the above direct properties, there is a fairly easy
+description of the cohomology ring of a twisted product.
+\begin{Thm}
+  \optcite[Thm~7.1, p.~1111]{brown}
+  Let $X$ be a space and $k\in\Nat$.
+  Define
+  \begin{itemize}
+  \item
+    $N\coloneqq
+    \left\{
+        a\otimes b + b\otimes a
+        \in \H^*(X\times X)\cong \H^*(X)\otimes\H^*(X)
+      \right\}$,
+  \item
+    $d\colon \H^*(X)\to\H^*(X\times X)$,
+    $d(a)\coloneqq a\times a$, and
+    $D\coloneqq
+    \left\{ d(a)=a\otimes a \in \H^*(X\times X) \right\}$,
+  \item
+    $s\in\H^k(\Sphere k)\cong\Zmod2$ to be the generator, and
+  \item
+    $c\coloneqq \pb\proj x$ to be the pullback of the generator
+    $x\in\H^*(\RP k)\cong\Zmod2[x]$.
+  \end{itemize}
+  Note that $N+D$ is closed under multiplication and addition.
+  Then the cohomology ring of $\Twistedprod{k}{X}$ has the form
+  \begin{gather*}
+    \H^*(\Twistedprod{k}{X})
+    \cong
+    \left(\H^*(\RP k)\otimes D\right)
+    + \left( 1\otimes N \right)
+    + \left( \H^m(\Sphere m) \otimes N \right)
+  \end{gather*}
+  with the induced grading and multiplication which respects the
+  relation $c\otimes N=0$.
+  For readability skip $1\otimes$ and $\otimes d(1)$ in element
+  notation wherever it is clear to which part the summand belongs.
+  Further it fulfills
+  \begin{enumerate}
+  \item
+    For $\pi\colon \Twistedprodcovspace{k}{X}\to\Twistedprod{k}{X}$
+    holds
+    \begin{align}\label{eq:twistedprodcohom:pi}
+      \pb\pi(c)&=0
+      &\text{and}&
+      &\pb\pi(c^r\otimes d(a_1) + 1\otimes n_1 + s\otimes n_2)
+      &= 1\otimes n_1 + s\otimes n_2
+        \;.
+    \end{align}
+  \item
+    For any section $s_p\colon\RP k\to\Twistedprod{k}{X}$, $q\mapsto[q,p,p]$,
+    of the fibre bundle described in
+    \eqref{eq:twistedprodrpnfibrebdl}, and $n_1,n_2\in N$, $a\in\H^*(X)$ holds
+    \begin{align}\label{eq:twistedprodcohom:section}
+      \pb s_p(c^r\otimes d(a)) &= \delta_{a,1} \cdot x^r
+      &\text{and}&
+      &\pb s_p(1\otimes n_1 + s\otimes n_2) &= 0
+      \;.
+    \end{align}
+    where $\delta_{a,1}$ is the Kronecker delta.
+  \end{enumerate}
+\end{Thm}
+
+This then immediately gives a result on the Stiefel-Whitney classes of
+a twisted product of line bundles.
+\begin{Cor}
+  \optcite[Prop.~7.4, p.~1113]{brown}
+  Let $\xi\colon E\to X$ be a line bundle with total Stiefel-Whitney
+  class $\W{\xi}=1+\alpha$.
+  Define $e\colon\H^*(X)\to N\subset\H^*(X\times X)$,
+  $e(a)\coloneqq 1\otimes a+a\otimes 1$.
+  Then
+  \begin{gather*}
+    \W{\Twistedprod{k}{\xi}} = 1+ (c\otimes d(1)+1\otimes
+    e(\alpha)) + 1\otimes d(\alpha)
+    = 1+c+e(\alpha)+d(\alpha)
+    \;,
+  \end{gather*}
+  respectively $\w1\xi = c+e(\alpha)$, $\w2\xi=d(\alpha)$.
+  \begin{proof}
+    $\Twistedprod{k}{\xi}$ is the quotient of the bundle
+    $\trivbdl\times\xi\times\xi\colon
+    \Twistedprodcovspace{k}{E}\to\Twistedprodcovspace{k}{X}$, where
+    \begin{gather*}
+      \W{\Id\times\xi\times\xi}
+      = 1\cdot \W{\xi}\cdot\W{\xi}
+      = 1 + 1\otimes e(\alpha) + 1\otimes d(\alpha)
+      \;.
+    \end{gather*}
+    But as the projection is the one of a covering,
+    $\pb\pi\Twistedprod{k}{\xi}=\trivbdl\times\xi\times\xi$
+    and thus
+    $\pb\pi\W{\Twistedprod{k}{\xi}}=\W{\Id\times\xi\times\xi}$.
+    As by \eqref{eq:twistedprodcohom:pi} $\pb\pi$ is the identity on
+    elements of this form, this must be a summand of
+    $\W{\Twistedprod{k}{\xi}}$. 
+    For the other summand of the form $c\otimes d(1)$, consider a
+    section $s_p$ of the projection
+    $\Twistedprod{k}{X}\to\Twistedprod{k}{\pt}=\RP k$.
+    The pullback of $\Twistedprod{k}{\xi}$ along this section is
+    \begin{gather*}
+      \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
+      \;,\quad
+      [s, v_1,v_2] \mapsto [s]
+      \;.
+    \end{gather*}
+    In order to simplify this, use the well-defined vector bundle
+    isomorphism
+    \optcite[Prop.~4.3,p~1107]{brown}
+    \begin{align*}
+      \Twistedprod{k}{\R}
+      &\longto
+        (\Twistedprodcovspace{k}{\R}/\approx)
+      \cong \E{(\gamma\oplus\trivbdl)} \\
+      [s, v_1, v_2]
+      &\longmapsto
+        [s, v_1+v_2, v_1-v_2]
+    \end{align*}
+    where $\approx$ is the equivalence relation identifying
+    $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
+    $\gamma$ is the tautological line bundle for $\RP k$.
+    % TODO: Give a fitting description of the tautological line bdl somewhere
+    Therefore, $\pb{s_p}\Twistedprod{k}{\xi} \cong
+    \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
+    \W{\gamma\oplus\trivbdl} = 1+x$ completing the proof.
+  \end{proof}
+\end{Cor}
+
+\subsection
+[A Convenient Generating Set of the Cobordism Ring]
+{A Convenient Generating Set of $\c_*$}
 Now one can define candidates for the desired basis in order to prove
 Brown's theorem~\autoref{thm:brown}.
 For this note, that any integer $m$ with binary representation
@@ -651,7 +836,9 @@ can be written as $m=2^{i_1}+2n$, where:
           $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
           with $0\leq i_1<\dotsb<i_l$.
           }
+          \;.
   \end{align*}
+  Then:
   \begin{enumerate}
   \item\label{item:brownimmersionproperty} $\G m$ immerses into $\R^{2m-\alpha(m)}$.
   \item The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
@@ -664,12 +851,12 @@ can be written as $m=2^{i_1}+2n$, where:
 \end{Thm}
 The proof of the two parts is splitted into the subsequent sections.
 
-\subsection{Immersion Property}
+\subsubsection{Immersion Property}
 
 \begin{proof}[proof of
   \itemref{thm:brown}{item:brownimmersionproperty}]
   \optcite[p.~84, proof Thm.~1.30]{immersionconj}
-  In order to proof the immersion prperty of the manifolds $\G m$,
+  In order to proof the immersion property of the manifolds $\G m$,
   conduct an induction over $\alpha(m)$.
   \begin{description}
   \item[$\alpha(m)=1$:]
@@ -732,8 +919,8 @@ The proof of the two parts is splitted into the subsequent sections.
   % TODO: proof Lemma
 \end{proof}
 
-\subsection{Generating Property}
-
+\subsubsection{Generating Property}
+% TODO
 
 %%% Local Variables:
 %%% mode: latex
