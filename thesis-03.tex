@@ -353,10 +353,11 @@ the following notation.
 \begin{Def}
   Let $W$ be a closed manifold and $\Part\in\PartitionsOf{\dim W}$.
   Then write
-  \begin{gather*}
-    \snum{\Part}{W} \coloneqq \capped{\s{\Part}(\W{W})}{\fundcl{W}}
+  \begin{align*}
+    \s{\Part}(W) &\coloneqq \s{\Part}(\W{W})\\
+    \snum{\Part}{W} &\coloneqq \capped{\s{\Part}(W)}{\fundcl{W}}
     \;.
-  \end{gather*}
+  \end{align*}
 \end{Def}
 
 Now the product rule \autoref{lem:productrule:general} translates to
@@ -556,17 +557,21 @@ Thus, for the proof of Brown's theorem only a generating set of $\c_*$
 is needed each member of which fulfills the immersion conjecture.
 
 \subsection{Twisted Products}
-The candidates for a generating set will be recursively constructed
-using the twisted product construction that is introduced and studied
-in the following.
+The candidates for a generating set will be inductively constructed
+using the so-called twisted product construction explained below.
+The main advantage of this tool is---besides quite a couple of handy
+preservation properties---the fact that a twisted product is
+indecomposable if and only if its factor is and the dimension was
+chosen correctly. The latter will be the main result of this section.
 
 \begin{Def}
   \optcite[p.~83]{immersionconj}
   \optcite[compare §4, Def.~of~$P(m;X)$]{brown}
   Let $X$ be a space and $k\in\Nat$ an integer.
-  Define the \emph{twisted product of $X$ by $\Sphere k$}, denoted by
+  Define the \emph{twisted product of $X$ by $\Sphere k$}, denoted
   $\Twistedprod{k}{X}$, to be the orbit space of the properly
-  discontinuous $\Zmod2$-action on $\Twistedprodcovspace{k}{X}$
+  discontinuous $\Zmod2$-action on $\Twistedprodcovspace{k}{X}$ given
+  by
   \begin{align*}
     \Zmod2 &\leftgroupaction \Twistedprodcovspace{k}{X}
              \;,
@@ -591,15 +596,15 @@ in the following.
   \end{itemize}
 \end{Ex}
 
-As some first, rather immediate, convenient properties. Especially
-noteworthy is how well the twisted product behaves concerning
+First, gather some rather immediate, convenient properties. It is
+especially noteworthy how well the twisted product behaves concerning
 manifolds and fibre bundles.
 \begin{Rem}\label{rem:twistedprodproperties}
   Let $X$ be a space and $k\in\Nat$.
   \begin{enumerate}
   \item $\Twistedprod{-}{k}$ is a functor on the category of
     topological spaces preserving injectivity.
-      \item\label{item:twistedprodfibrebdl}
+  \item\label{item:twistedprodfibrebdl}
     $\Twistedprod{k}{-}$ preserves fibre bundles,
     \idest for a fibre bundle $\xi\colon\E\xi\to X$ with fibre $F$
     the twisted product $\Twistedprod{k}{\xi}\colon
@@ -621,7 +626,7 @@ manifolds and fibre bundles.
     with fibre $X\times X$ which comes from the trivial fibre bundle
     $X\to\pt$.
     Further, let $\eta\colon\E\eta\to X$ be
-    a fibre bundle, and $f\colon X'\to X$ a map.
+    another fibre bundle, and $f\colon X'\to X$ a map.
     One has:
     \begin{enumerate}
     \item $\Twistedprod{k}{-}$ respects sums of fibre bundles, \idest
@@ -629,7 +634,8 @@ manifolds and fibre bundles.
         \Twistedprod{k}{\xi\oplus\eta\colon \E\xi\oplus\E\eta\to X}
         = \Twistedprod{k}{\xi}\oplus\Twistedprod{k}{\eta}
       \end{gather*}
-    \item $\Twistedprod{k}{-}$ respects pullbacks, \idest
+    \item\label{item:twistedprod:preservespb}
+      $\Twistedprod{k}{-}$ respects pullbacks, \idest
       \begin{gather*}
         \Twistedprod{k}{\pb f \xi}
         = \pb{\left(\Twistedprod{k}{f}\right)}
@@ -654,7 +660,7 @@ manifolds and fibre bundles.
     \begin{enumerate}
     \item\label{item:twistedprodpreservesimmersions}
       $\Twistedprod{k}{-}$ preserves immersions.
-    \item
+    \item\label{item:twistedprod:tangentspace}
       $\T\Twistedprod{k}{M}
       \cong \pb\proj\T{\RP k} \oplus \Twistedprod{k}{\T M}$,
       \idest the tangent space of $\Twistedprod{k}{M}$ can be obtained
@@ -675,13 +681,17 @@ manifolds and fibre bundles.
       The first isomorphism is due to the covering space property, and
       the last is easily seen to be a well-defined isomorphism of
       vector bundles.
+      Further note that for a map of manifolds $f\colon M\to N$,
+      the differential map $\mathrm{D}\Twistedprod{k}{f}$ on tangent spaces
+      will be the identity on the first summand.
     \end{enumerate}
   \end{enumerate}
 \end{Rem}
 
 Besides the above direct properties, there is a fairly easy
-description of the cohomology ring of a twisted product.
-\begin{Thm}
+description of the cohomology ring of a twisted product relating it to
+the cohomology ring of its factor.
+\begin{Thm}\label{thm:twistedprod:cohomstructure}
   \optcite[Thm~7.1, p.~1111]{brown}
   Let $X$ be a space and $k\in\Nat$.
   Define
@@ -739,12 +749,15 @@ description of the cohomology ring of a twisted product.
       \;.
     \end{align}
     where $\delta_{a,1}$ is the Kronecker delta.
+  \item\label{item:twistedprod:preservescohominj}
+    $\Twistedprod{k}{-}$ preserves injectivity on cohomology.
   \end{enumerate}
 \end{Thm}
 
 This then immediately gives a result on the Stiefel-Whitney classes of
-a twisted product of line bundles.
-\begin{Cor}
+a twisted product of line bundles that will be used below to simplify
+calculations involving higher dimensional bundles.
+\begin{Cor}\label{cor:twistedprod:swlinebdl}
   \optcite[Prop.~7.4, p.~1113]{brown}
   Let $\xi\colon E\to X$ be a line bundle with total Stiefel-Whitney
   class $\W{\xi}=1+\alpha$.
@@ -759,72 +772,322 @@ a twisted product of line bundles.
   \end{gather*}
   respectively $\w1\xi = c+e(\alpha)$, $\w2\xi=d(\alpha)$.
   \begin{proof}
-    $\Twistedprod{k}{\xi}$ is the quotient of the bundle
-    $\trivbdl\times\xi\times\xi\colon
-    \Twistedprodcovspace{k}{E}\to\Twistedprodcovspace{k}{X}$, where
-    \begin{gather*}
-      \W{\Id\times\xi\times\xi}
-      = 1\cdot \W{\xi}\cdot\W{\xi}
-      = 1 + 1\otimes e(\alpha) + 1\otimes d(\alpha)
-      \;.
-    \end{gather*}
-    But as the projection is the one of a covering,
-    $\pb\pi\Twistedprod{k}{\xi}=\trivbdl\times\xi\times\xi$
-    and thus
-    $\pb\pi\W{\Twistedprod{k}{\xi}}=\W{\Id\times\xi\times\xi}$.
-    As by \eqref{eq:twistedprodcohom:pi} $\pb\pi$ is the identity on
-    elements of this form, this must be a summand of
-    $\W{\Twistedprod{k}{\xi}}$. 
-    For the other summand of the form $c\otimes d(1)$, consider a
-    section $s_p$ of the projection
-    $\Twistedprod{k}{X}\to\Twistedprod{k}{\pt}=\RP k$.
-    The pullback of $\Twistedprod{k}{\xi}$ along this section is
-    \begin{gather*}
-      \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
-      \;,\quad
-      [s, v_1,v_2] \mapsto [s]
-      \;.
-    \end{gather*}
-    In order to simplify this, use the well-defined vector bundle
-    isomorphism
-    \optcite[Prop.~4.3,p~1107]{brown}
+    For $k=0$ this is simply the product rule for the total
+    Stiefel-Whitney class because $\Twistedprod{0}{\xi}=\xi\times\xi$
+    and $c=0$. Thus, assume $k\geq0$.
+    Then by \autoref{thm:twistedprod:cohomstructure} the total
+    Stiefel-Whitney class of the two-dimensional vector bundle
+    $\Twistedprod{k}{\xi}$ must be of the general form
     \begin{align*}
-      \Twistedprod{k}{\R}
-      &\longto
-        (\Twistedprodcovspace{k}{\R}/\approx)
-      \cong \E{(\gamma\oplus\trivbdl)} \\
-      [s, v_1, v_2]
-      &\longmapsto
-        [s, v_1+v_2, v_1-v_2]
+      \W{\Twistedprod{k}{\xi}}
+      &=
+        1 &\quad&&&{(=\ws0)} \\
+      &+ \delta_1\cdot c\otimes d(1) + \delta_2\cdot c^2\otimes d(1)
+          &&\delta_1,\delta_2\in\{0,1\}
+            &&{(\text{check section})}\\
+      &+ 1\otimes d(a)
+          &&a \neq 1
+                &&{(\text{check $\pi$})} \\
+      &+ {\textstyle \sum_{r\in I} c^{i_r}\otimes d(a_r)}
+          &&a_r\neq 1,\; i_r>1
+            &&{(=0\text{ by dim.})} \\
+      &+ 1\otimes n_1 + s\otimes n_2
+          &&n_2, 1\neq n_1\in N
+                &&{(\text{check $\pi$})}
     \end{align*}
-    where $\approx$ is the equivalence relation identifying
-    $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
-    $\gamma$ is the tautological line bundle for $\RP k$.
-    % TODO: Give a fitting description of the tautological line bdl somewhere
-    Therefore, $\pb{s_p}\Twistedprod{k}{\xi} \cong
-    \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
-    \W{\gamma\oplus\trivbdl} = 1+x$ completing the proof.
-  \end{proof}
+    The index set $I$ must be empty as any $c^{i_r}\otimes d(a_r)$
+    would have dimension greater two.
+    So, it remains to check the pullbacks of $\W{\Twistedprod{k}{\xi}}$
+    along a section $s_p\colon\RP k\to\Twistedprod{k}{X}$ and along
+    the projection
+    $\pi\colon\Twistedprodcovspace{k}{X}\to\Twistedprod{k}{X}$
+    in order to identify the other summands.
+    \begin{description}
+    \item[$\pb\pi\W{\Twistedprod k \xi}$:]
+      $\Twistedprod{k}{\xi}$ is the quotient of the bundle
+      $\trivbdl\times\xi\times\xi\colon
+      \Twistedprodcovspace{k}{E}\to\Twistedprodcovspace{k}{X}$, where
+      \begin{gather*}
+        \W{\Id\times\xi\times\xi}
+        = 1\cdot \W{\xi}\cdot\W{\xi}
+        = 1 + 1\otimes e(\alpha) + 1\otimes d(\alpha)
+        \;.
+      \end{gather*}
+      As $\pi$ is a covering map,
+      % TODO: nicify reasoning?
+      $\pb\pi\Twistedprod{k}{\xi}=\trivbdl\times\xi\times\xi$,
+      and thus
+      $\pb\pi\W{\Twistedprod{k}{\xi}}=\W{\Id\times\xi\times\xi}$.
+      By \eqref{eq:twistedprodcohom:pi} $\pb\pi$ is the identity on
+      elements of this form, this must be a summand of
+      $\W{\Twistedprod{k}{\xi}}$.
+    \item[$\pb s_p \W{\Twistedprod{k}{\xi}}$:]
+        The pullback of $\Twistedprod{k}{\xi}$ along this section is
+        \begin{gather*}
+          \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
+          \;,\quad
+          [s, v_1,v_2] \mapsto [s]
+          \;.
+        \end{gather*}
+        In order to simplify this, use the well-defined vector bundle
+        isomorphism
+        \optcite[Prop.~4.3,p~1107]{brown}
+        \begin{align*}
+          \Twistedprod{k}{\R}
+          &\longto
+            (\Twistedprodcovspace{k}{\R}/\approx)
+            \cong \E{(\gamma\oplus\trivbdl)} \\
+          [s, v_1, v_2]
+          &\longmapsto
+            [s, v_1+v_2, v_1-v_2]
+        \end{align*}
+        where $\approx$ is the equivalence relation identifying
+        $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
+        $\gamma$ is the tautological line bundle for $\RP k$.
+        % TODO: Give a fitting description of the tautological line bdl somewhere
+        Then $\pb{s_p}\Twistedprod{k}{\xi} \cong
+        \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
+        \W{\gamma\oplus\trivbdl} = 1+x$ completing the proof.
+      \end{description}
+    \end{proof}
 \end{Cor}
+
+Now that the cohomology ring of a twisted product is well-known, one
+can investigate the Stiefel-Whitney numbers of twisted product manifolds.
+As promised, the following result will be the cornerstone when inductively
+defining the desired basis for the cobordism ring in the subsequent section.
+\begin{Thm}\label{thm:twistedprod:indecompcriterion}
+  Let $M^n$ be a manifold and $k\in\Nat_{\geq1}$.
+  then $\Twistedprod{k}{M}$ represents an indecomposable class of the
+  cobordism ring if and only if $M$ does and $\binom{k+n-1}{n}$ is
+  non-zero modulo two.
+\end{Thm}
+Using Theorem~\autoref{thm:indecomposabilitycriterion}, saying
+a manifold $M^n$ represents an indecomposable element if and only if
+$\snum{(n)}{M}$ is non-zero,
+Theorem~\autoref{thm:twistedprod:indecompcriterion} is a direct
+consequence of the following Lemma.
+\begin{Lem}\label{lem:twistedprod:indecompcriterion}
+  Let $M$, $n$, $k$ be as in
+  \autoref{thm:twistedprod:indecompcriterion} above.
+  Then there is a map $f\colon X\to M$ of spaces which is injective on
+  cohomology and fulfills
+  \begin{gather*}
+    \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
+    = \binom{k+n-1}{n} \cdot c^k
+    \cdot d\left( \pb f \s{(n)}(M) \right)
+    \in \H^{2n+k}(\Twistedprod{k}{M})
+    \;.
+  \end{gather*}
+\end{Lem}
+\begin{proof}[proof of \autoref{lem:twistedprod:indecompcriterion}]
+  As the Stiefel-Whitney classes of twisted products of line bundles
+  are well-known, take $f$ to be a reduction of $\T M$ to line bundles
+  using the splitting principle.
+  \Idest choose a space $X$ and a map $f\colon X\to M$ which is
+  injective on cohomology and fulfills
+  $\pb f \T M = \xi_1\oplus\dotsb\oplus\xi_n$ for line bundles
+  $\xi_i$ over $X$, each with total Stiefel-Whitney class
+  $\W{\xi_i}=1+\alpha_i$.
+  With the fibre bundle properties from
+  \itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}%
+  \ref{item:twistedprod:preservespb}
+  and the tangent space structure from
+  \itemref{rem:twistedprodproperties}{item:twistedprodmanifold}%
+  \ref{item:twistedprod:tangentspace}
+  this yields on vector bundles:
+  \begin{align*}
+    \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
+    &\cequalsby{\autoref{rem:twistedprodproperties}}
+      \Twistedprod{k}{\pb f \T M}
+      = \Twistedprod{k}{\bigoplus_{i\leq n}\xi_i}
+      = \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}
+    \\
+    \pb{\Twistedprod{k}{f}} \T{\Twistedprod{k}{M}}
+    &\cequalsby{\autoref{rem:twistedprodproperties}}
+      \pb{\Twistedprod{k}{f}} \left(
+      \T{\RP k} \oplus \Twistedprod{k}{\T M}
+      \right)\\
+    &= \pb{\Twistedprod{k}{f}} \T{\RP k}
+      \oplus
+      \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
+      = \T{\RP k} \oplus \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}\\
+    \intertext{And on Stiefel-Whitney classes:}
+    \pb{\Twistedprod{k}{f}} \W{\Twistedprod{k}{\T M}}
+    &= \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}}
+      \cequalsby{\autoref{cor:twistedprod:swlinebdl}}
+      \prod_{i\leq n} \left(1 + c + e(\alpha_i) + d(\alpha_i)\right)
+    \\
+    \pb{\Twistedprod{k}{f}} \W{\T\Twistedprod{k}{M}}
+    &= \pb{\Twistedprod{k}{f}}\W{\T{\RP k}}
+      \cdot \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}} \\
+    &= (c+1)^{k+1}
+      \cdot \prod_{i\leq n} \left(1+c+e(\alpha_i)+d(\alpha_i)\right)
+  \end{align*}
+  In order to work with these Stiefel-Whitney class expressions as
+  symmetric polynomials, introduce variables $u_i, v_i$ of degree
+  one such that
+  \begin{align*}
+    \w1{\xi_i} &= c+e(\alpha_i) = \el 1 2(u_i, v_i) = u_i+v_i \\
+    \w2{\xi_i} &= d(\alpha_i)   = \el 2 2(u_i, v_i) = u_iv_i \\
+    \W{\xi_i}  &= 1+c+e(\alpha_i)+d(\alpha_i)
+                 = 1+\sum_{i\leq2}\el i 2(u_i,v_i) = (1+u_i)(1+v_i)
+                 \;.
+  \end{align*}
+  The key point now qualifying $f$ for the proof, is that both $f$ and
+  thus by
+  \itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
+  also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfill
+  \begin{enumerate}
+  \item with $\W{\pb f\T M} = \prod_{i=1}^n (1+\alpha_i)$
+    \begin{gather}\label{eq:lem:twistedprod:indecompcriterion:sM}
+      \pb f \s{(n)}(M)
+      = \s{(n)}(\W{\pb f\T M})
+      = \sum_{i=1}^n \alpha_i^n
+      \;
+    \end{gather}
+  \item and with
+    $\W{\pb f\T{\Twistedprod{k}{M}}}
+    = \prod_{i=1}^{m+1}(1+c) \cdot \prod_{i=1}^n
+    (1+u_i)(1+v_i)$
+    that
+    \begin{align}\notag
+      \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
+      &= \s{(2n+k)}(\W{\pb f\T{\Twistedprod{k}{M}}}) \\
+      \label{eq:lem:twistedprod:indecompcriterion:sDkM}
+      &= (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k})
+        \;.
+    \end{align}
+  \end{enumerate}
+  In order to formulate
+  $\pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})$ 
+  in terms of $c$ and $d(\alpha_i)$,
+  use one of the Newton-Girard formulas % TODO: ref
+  saying:
+  \begin{Lem}[Newton-Girard]
+    For integers $l, m\in\Nat$ holds
+    \begin{align*}
+      \symm{l} t^m
+      &= \sum_{\mathclap{r_1+2r_2+\dotsb+mr_=m}}
+        (-1)^m \frac{m\cdot(r_1+\dotsb+r_m-1)!}{(r_1)!\dotsm(r_m)!}
+        \cdot \prod_{i=1}^m (-\el i l)^{r_i}
+        \;.
+    \end{align*}
+    As a special case for $l=2$ this becomes modulo 2
+    \begin{align*}
+      t_1^m + t_2^m
+      &= \sum_{\mathclap{r_1+2r_2=m}}
+        \frac{m\cdot(r_1+r_2-1)!}{(r_1)!(r_2)!}
+        \cdot (\el 1 2)^{r_1} \cdot (\el 2 2)^{r_2}
+      = \sum_{\mathclap{r_1+2r_2=m}}
+        \altbinom{r_1-1}{r_2} (t_1+t_2)^{r_1}(t_1t_2)^{r_2}
+    \end{align*}
+    where $\frac{(r_1+2r_2)(r_1+r_2-1)!}{(r_1)!(r_2)!}
+    = \binom{r_1+r_2-1}{r_2} + 2\binom{r_1+r_2-1}{r_1}$
+    and the notation $\altbinom{p}{q}\coloneqq \binom{p+q}{q}$
+    was used.
+  \end{Lem}
+  Before applying this to $t_1=u_i$, $t_2=v_i$, $m=2n+k$, and $l=2$,
+  recall the following special properties from
+  \autoref{thm:twistedprod:cohomstructure} of the mentioned symbols in
+  $\H^*(\Twistedprod{k}{X})$:
+  \begin{itemize}
+  \item $c^{k+1}=0$,
+  \item $c\cdot e(\alpha_i)=0$, and
+  \item $e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} = 0$ for $r_1+2r_2>2n$,
+    as $\H^{*>2n}(M\times M)=0$.
+  \end{itemize}
+  Then simplify in terms of $c$, $e(\alpha_i)$, $d(\alpha_i)$:
+  \begin{align}\notag
+    u_i^{2n+k} + v_i^{2n+k}
+    &= \sum_{\mathclap{r_1+2r_2=2n+k}}
+      \altbinom{r_1-1}{r_2} (u_i+v_i)^{r_1}(u_iv_i)^{r_2} \\\notag
+    &\equalsby{Def.} \sum_{\mathclap{r_1+2r_2=2n+k}}
+      \altbinom{r_1-1}{r_2}
+      (c+e(\alpha_i))^{r_1}d(\alpha_i)^{r_2} \\\notag
+    &\equalsby{$c\cdot e(\alpha_i)=0$}
+      \sum_{\mathclap{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
+      \left(c^{r_1}d(\alpha_i)^{r_2}+e(\alpha_i)^{r_1}d(\alpha_i)^{r_2}\right) \\\notag
+    &\equalsby{$c^{k+1}=0$, $d(\alpha_i)^{n+s}=0$}
+      \altbinom{k-1}{n} c^k d(\alpha_i)^n
+      + \sum_{\mathclap{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
+      e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} \\
+    \label{eq:lem:twistedprod:indecompcriterion:1}
+    &= \altbinom{k-1}{n} c^k d(\alpha_i)^n      
+  \end{align}
+  Altogether it turns out that
+  \begin{align*}
+    \pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})
+    &\cequalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sDkM}}
+      (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
+    &\equalsby{$c^{k+1}=0$}
+      \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
+    &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:1}}
+      \sum_{i=1}^n \altbinom{k-1}{n} c^k d(\alpha_i)^n \\
+    &= \altbinom{k-1}{n} c^k d(\sum_{i=1}^n \alpha_i^n) \\
+    &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sM}}
+      \altbinom{k-1}{n} c^k d(\pb f \s{(n)}(M))
+  \end{align*}
+  as was stated.
+\end{proof}
 
 \subsection
 [A Convenient Generating Set of the Cobordism Ring]
 {A Convenient Generating Set of $\c_*$}
-Now one can define candidates for the desired basis in order to prove
-Brown's theorem~\autoref{thm:brown}.
-For this note, that any integer $m$ with binary representation
+Now one can define candidates for the desired basis using the twisted
+product construction to finally prove
+Brown's theorem~\autoref{thm:brown}. 
+
+Beforehands, recall from \autoref{thm:twistedprod:indecompcriterion}
+that one has to both choose the dimension cobination, as well as the
+factor of a twisted product correctly, in order to obtain an
+indecomposable class representative.
+For the correct dimension choice note, that any integer $m$ with
+binary representation
 \begin{gather*}
   m=2^{i_1}+\dotsb+2^{i_l}
   \;,\qquad
   0 \leq i_1<\dotsb<i_r
 \end{gather*}
-can be written as $m=2^{i_1}+2n$, where:
+can be written as $m=2^{i_1}+2n\eqqcolon k+2n$, where:
 \begin{itemize}
 \item $n=0$ for $l=1$, else $n=2^{i_2-1}+\dotsb+2^{i_l-1}$
 \item $\alpha(m)=\alpha(n)+1$.
 \item For $m$ not of the form $2^s-1$, $n$ will also not be of the
   form $2^s-1$.
 \end{itemize}
+This is favourable because the binomial coefficient
+$\binom{k-1}{n}$ will never be zero modulo two by the following Lemma,
+as is required by the indecomposability criterion for twisted products
+in \autoref{thm:twistedprod:indecompcriterion}.
+\begin{Lem}
+  For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
+  if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
+  \begin{proof}
+    This is a direct consequence from Lucas' Theorem % TODO: ref
+    stating
+    \begin{gather*}
+      \binom{a+b}{b} \equiv \prod_{i=0}^s \binom{a_i+b_i}{b_i} \mod 2
+    \end{gather*}
+    where $a=\sum_{i=1}^s a_i2^{i}$, $b=\sum_{i=1}^s b_i2^{i}$ are the
+    binary expansions of $a$ and $b$, and $\binom{0}{1}\coloneqq 0$.
+    But this expression will only be non-zero, if $b_i$ is one for any
+    $i$ where $a_i+b_i$ is one. In other words, if and only if
+    $\alpha(a+b)=\sum_{i=1}^s(a_i+b_i)$.    
+  \end{proof}
+\end{Lem}
+This can be applied to the combination $k-1$, $n$ from above, as one
+simply calculates
+\begin{align*}
+  \alpha(k-1+n)
+  &= \alpha\left((2^{i_1}-1)+ (2^{i_2-1}+\dotsb+2^{i_l-1})\right) \\
+  &= \alpha\left(1+2^1+\dotsb 2^{i_1-1} + 2^{i_2-1}+\dotsb+2^{i_l-1}\right) \\
+  &\equalsby{$i_1<i_2$}
+  \alpha\left(1+2^1+\dotsb 2^{i_1-1}) + \alpha(2^{i_2-1}+\dotsb+2^{i_l-1}\right)\\
+  &= \alpha(k-1) + \alpha(n)
+\end{align*}
+
+Now define the basis representatives as follows.
 \begin{Thm}\label{thm:brown}
   Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
   defined by
