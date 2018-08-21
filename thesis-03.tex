@@ -23,49 +23,26 @@ the cobordism relation.
 
 As one easily sees that this property is stable under
 the ring operations (Lemma~\autoref{lem:brownstableunderringops}),
-the main idea and hard part for the proof is to find manifolds
-fullfilling the conjecture whose cobordism classes form an
-algebraically independent generating set of the cobordism ring. This
-requires
-\begin{enumerate}[1)]
-\item to know the structure of the cobordism ring
-  (\autoref{sec:ringstructure}), in order to see how many
-  indecomposable elements are needed in each degree to make up a
-  generating set, and
-\item a simple criterion when an element of the cobordism ring is
-  indecomposable (\autoref{sec:indecomposabilitycriterion}).
+the main idea for the proof is to find manifolds
+fullfilling the conjecture whose cobordism classes form generating set
+of the cobordism ring.
+As the cobordism ring has the form of a polynomial algebra
+$\Zmod2[\sigma_i|i\neq 2^r-1]$, a set of elements
+$([\G i]|i\neq2^r-1)$ will already be a generating set if all of the
+$\G i$ are indecomposable.
+Thus, when candidates for the generating set are constructed in
+\autoref{sec:proofbrown}, it remains to check (see
+Theorem~\autoref{thm:brownproof}):
+\begin{enumerate}
+\item that they are indecomposable (This is the harder part and
+  requires the preliminary work in
+  \autoref{sec:indecomposabilitycriterion}), and
+\item that they fullfil the immersion conjecture.
 \end{enumerate}
-When these prerequisites are available, the generating set is
-constructed in \autoref{sec:proofbrown}.
 
 For clarity of presentation a couple of results from Thom's paper
-\cite{thom} will merely be referenced without proof.
-
-\section{Review: The Cobordism Ring Structure}
-\label{sec:ringstructure}
-Recall that two closed manifolds of the same dimension $n$ are
-(unoriented) cobordant if their disjoint union is the border of an
-$(n+1)$-dimensional manifold.
-This is an equivalence relation amongst $n$-manifolds, and the
-set of equivalence classes forms an abelian group $\c_n$ of order two
-with the disjoint sum as addition and the $n$-sphere as zero element.
-The cartesian product turns the graded $\Zmod2$-module
-$\c_*\coloneqq \bigoplus_{n\geq 0}\c_n$ into an $\Zmod2$-algebra
-called the (unoriented) cobordism ring.
-
-Most remarkably, the cobordism relation is homotopy invariant, \idest
-homotopic manifolds of the same dimension will be cobordant.
-Further, the structure of this algebra is well-known since Thom's
-research on this topic \cite{thom}:
-
-\begin{Thm} % TODO: cobordism ring thm
-  \optcite[Thm.~1.23]{immersionconj}
-  \optcite[Theorem~IV.9]{thom}
-  \begin{gather*}
-    \c_* \cong \pi_*(\MO)\cong \Zmod2[\sigma_i| i\neq 2^r-1]
-  \end{gather*}
-  \cite[Theorem~IV.12]{thom}
-\end{Thm}
+\cite{thom} will merely be referenced without proof throughout the
+review within \autoref{sec:cobordismringstructure}.
 
 
 \section{Detecting Indecomposable Elements of the Cobordism Ring}
@@ -92,11 +69,11 @@ a manifold to be cobordant to a product of manifolds.
 
 Beforehands, mind the following notation of partitions needed for
 symmetrisation of polynomials.
-\begin{Def}
+\begin{Def}\label{def:partition}
   Let $k,l\in\Nat$ be integers.
   \begin{itemize}
   \item
-    A partition $\Part=(i_1,\dotsc,i_l)$ of $k$ is an unordered sequence
+    A \emph{partition} $\Part=(i_1,\dotsc,i_l)$ of $k$ is an unordered sequence
     of integers such that $k=\sum_{r=0}^{l}i_r$.
     Two partitions only differing by zeros are considered equal.
     In other words, a partition is an equivalence class of sequences in
@@ -110,6 +87,9 @@ symmetrisation of polynomials.
     Denote by $\PartitionsOf{k}$ the set of partitions of $k$.
   \item
     Write $\Emptypart$ for the unique partition of $0$.
+  \item
+    Call a sequence or partition \emph{non-dyadic}, if
+    none of its entries is of the form $2^m-1$.
   \item The concatenation of sequences and analoguesly partitions will
     be denoted by
     \begin{align*}
@@ -329,6 +309,7 @@ multiplication of elements.
 
 
 \subsection{Stiefel-Whitney Numbers of Product Manifolds}
+\label{sec:swnumsofproductmfds}
 In order to apply the special polynomials from the preceeding section
 and their product property \autoref{lem:productrule:general} to
 the Stiefel-Whitney numbers of (product) manifolds, first start with application
@@ -402,7 +383,7 @@ the following notation.
 \end{Def}
 
 Now the product rule \autoref{lem:productrule:general} translates to
-\begin{Cor}
+\begin{Cor}\label{cor:swnumdecompositionmfds}
   For closed manifolds $M_1$, and $M_2$ with dimensions $n_1$ and
   $n_2$ one has
   \begin{align*}
@@ -457,30 +438,47 @@ Finally, this statement will be an invaluable tool for detecting
 manifolds that are not only not cobordant to a product manifold but
 whose cobordism class is indecomposable.
 
+\subsection{Review: The Cobordism Ring Structure}
+\label{sec:cobordismringstructure}
+Recall that two closed manifolds of the same dimension $n$ are
+(unoriented) cobordant if their disjoint union is the border of an
+$(n+1)$-dimensional manifold.
+This is an equivalence relation amongst $n$-manifolds, and the
+set of equivalence classes forms an abelian group $\c_n$ of order two
+with the disjoint sum as addition and the $n$-sphere as zero element.
+The cartesian product turns the graded $\Zmod2$-module
+$\c_*\coloneqq \bigoplus_{n\geq 0}\c_n$ into an $\Zmod2$-algebra
+called the (unoriented) cobordism ring.
+Write the equivalence, respectively cobordism, class of a manifold $M$
+by $[M]$.
 
-\subsection{A Criterion for Indecomposability}
-The ultimate goal of this subsection is to deduce the following
-theorem which is a consequence of Thom's proof of the multiplicative
-structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
-\begin{Thm}\label{thm:indecomposabilitycriterion}
-  A closed $n$-manifold $M$ represents an indecomposable element of
-  the cobordism ring $\c_*$, if and only if
+Most remarkably, the cobordism relation is homotopy invariant, \idest
+homotopic manifolds of the same dimension will be cobordant.
+Further, the structure of this algebra is well-known.
+\begin{Thm}[Thom]\label{thm:cobordismringstructure} % TODO: cobordism ring thm more elaborate?
+  \optcite[Thm.~1.23]{immersionconj}
+  \optcite[Theorem~IV.9]{thom}
   \begin{gather*}
-    \snum{(n)}{M} \neq 0 \in \Zmod2
-    \;.
+    \c_*
+    % \cong \pi_*(\MO)
+    \cong \Zmod2[\sigma_i| i\neq 2^r-1]
   \end{gather*}
-  % for non-dyadic decomposition: \optcite[p.~156]{thom};
-  % for summation notation: \optcite[p.154, (4)f]{thom};
+  \begin{proof}
+    See \cite[Theorem~IV.12]{thom} or
+    \autoref{sec:indecomposabilitycriterion},
+    \ref{item:generatorscobordimsring}, for a proof using
+    Theorem~\autoref{thm:basiscobordismring} below.
+  \end{proof}
 \end{Thm}
 
-For the mentioned proof, which includes the above statement, Thom
-constructs special manifolds that form a basis of the cobordism ring,
+During the proof of the above theorem, Thom constructs special
+manifolds that form a basis of the cobordism ring,
 and are uniquely characterized by the below properties.
-For the formulation call a sequence or partition \emph{non-dyadic}, if
-none of its entries is of the form $2^m-1$. 
-\begin{Thm}\label{thm:basiscobordismring} % TODO: Proof
+For the formulation recall that a sequence or partition is called
+\emph{non-dyadic}, if none of its entries is of the form $2^r-1$.
+\begin{Thm}\label{thm:basiscobordismring}
   There exists a basis of the cobordism ring represented by manifolds
-  $V_\Part$ that is in each degree $k$ indexed by non-dyadic
+  $V_\Part$ that in each degree $k$ is indexed by non-dyadic
   partitions $\Part$ of $k$. Further, the $V_\Part$ are uniquely
   characterized by
   \begin{gather*}
@@ -488,17 +486,18 @@ none of its entries is of the form $2^m-1$.
     \in \H^k(V_{\Part})\cong \Zmod2
   \end{gather*}
   for any non-dyadic partitions $\Part,\Part'\in\PartitionsOf{k}$,
-  where $\delta$ is the usual Kronecker delta
-  \cite[Section~IV.5, p.~194ff]{thom}.
+  where $\delta$ is the usual Kronecker delta.
   \begin{proof}
-    % TODO: proof/construction special basis cobordism ring [Thom]; [Milnor] better source?
+    See \cite[Section~IV.5, proof of Theorem~IV.9]{thom}.
+    % TODO: proof/construction special basis cobordism ring [Thom]? [Milnor] better source?
   \end{proof}
 \end{Thm}
 
-Before starting with the proof of the desired result one needs the
-following connection between Stiefel-Whitney classes of a manifold and
-its cobordism class. Thom rather directly deduces this from the
-existence of the above basis.
+In order to relate the results on the Stiefel-Whitney numbers of
+manifolds---respectively certain linear combinations of them---from
+before with cobordism classes, one needs the following more general
+connection. Thom rather directly deduces this from the existence of
+the above basis.
 \begin{Thm}[Thom]\label{thm:cobordantiffswnumscoincide}
   Two closed manifolds are cobordant if and only if all of their
   Stiefel-Whitney numbers coincide.
@@ -534,104 +533,168 @@ existence of the above basis.
   \end{proof}
 \end{Thm}
 
+\subsection{A Criterion for Indecomposability}
+\label{sec:indecomposabilitycriterion}
+Now, one can focus on the ultimate goal of the current section, which
+is to deduce the following indecomposability criterion. This
+originates as a corollary from Thom's proof of the multiplicative
+structure of the cobordism ring (see \cite[Section~IV.5]{thom}),
+and can be proven using the results from the preceeding subsections.
+\begin{Thm}\label{thm:indecomposabilitycriterion}
+  A closed $n$-manifold $M$ represents an indecomposable element of
+  the cobordism ring $\c_*$, if and only if
+  \begin{gather*}
+    \snum{(n)}{M} \neq 0 \in \Zmod2
+    \;.
+  \end{gather*}
+  % for non-dyadic decomposition: \optcite[p.~156]{thom};
+  % for summation notation: \optcite[p.154, (4)f]{thom};
+\end{Thm}
+
+% TODO: Recall needed results from cobordism ring
 \begin{proof}[proof of \autoref{thm:indecomposabilitycriterion}]
-  Using Theorems~\autoref{thm:basiscobordismring} and
-  \autoref{thm:cobordantiffswnumscoincide} enables to proof the
-  desired result using the following intermediate conclusions.
-  \begin{enumerate}
-  \item Any manifold $W$ of dimension $k$ is
-    cobordant to
+  Using the main theorems \autoref{thm:basiscobordismring} and
+  \autoref{thm:cobordantiffswnumscoincide} from
+  \autoref{sec:cobordismringstructure}, as well as the main
+  corollaries \autoref{cor:productrule:swcl} and
+  \autoref{cor:swnumdecompositionmfds} from
+  \autoref{sec:swnumsofproductmfds}, enables to obtain the
+  desired result in the following steps.
+  \begin{steps}
+  \item\label{item:manifoldbasisrepr}
+    As the classes $[V_\Part]$ form a basis of the cohomology ring by
+    Theorem~\autoref{thm:basiscobordismring}, any manifold $M^n$ is
+    cobordant to a unique linear combination, \idest disjoint sum,
+    \begin{gather*}
+      [M] = \coprod_{\mathclap{\substack{
+            \Part\in\PartitionsOf n \\\text{ non-dyadic}
+        }}} \alpha_\Part [V_\Part]
+        \;,\quad
+        \alpha_\Part \in \Zmod2,
+    \end{gather*}
+    of the classes $[V_\Part]$ for non-dyadic partitions of $n$.
+    Now the Stiefel-Whitney classes and numbers are additive with
+    respect to disjoint sum as well as determined by the cobordism
+    class according to Theorem~\autoref{thm:cobordantiffswnumscoincide}.
+    So, one gets for any Stiefel-Whitney number $\wsnum{I}{M}$ of $M$
+    \begin{align*}
+      \wsnum{I}{M}
+      &= \sum_{\mathclap{\substack{
+        \Part\in\PartitionsOf n \\\text{ non-dyadic}
+      }}} \alpha_\Part \wsnum{I}{V_\Part}
+      \;,
+      &\text{especially}
+      &&\snum{\Part'}{M}
+      &= \sum_{\mathclap{\substack{
+        \Part\in\PartitionsOf n \\\text{ non-dyadic}
+      }}} \alpha_\Part \snum{\Part'}{V_\Part}
+      \cequalsby{Def.} \alpha_{\Part'}
+      \;.
+    \end{align*}
+    Thus, $[V_\Part]$ is a summand of $[M]$ if and only if
+    $\snum{\Part}{M}$ is non-zero. In other words, $M$ is cobordant to
     \begin{gather*}
       \coprod_{\mathclap{\substack{
             \Part\in\PartitionsOf k \text{ non-dyadic}\\
-            \s{\Part}(\W{W})\neq 0
+            \s{\Part}(W)\neq 0
           }}} V_\Part
-      \;,
+      \;.
     \end{gather*}
-    as the Stiefel-Whitney numbers are additive with respect to
-    disjoint union. % TODO: check
-  \item\label{item:manifoldbasisrepr}
-    $V_{\Part_1}\times V_{\Part_2}$ is cobordant to
-    $V_{\Part_1\concat\Part_2}$ since
-    $\s{\Part'}(\W{V_{\Part_1}\times V_{\Part_2}})
-    = \delta_{\Part', \Part_1\concat\Part_2}$
-    by \ref{cor:productrule:swcl}, and thus all their Stiefel-Whitney
-    numbers coincide by definition.
+  \item\label{item:productpartitions}
+    For partitions $\Part_1'$ of $n_1$, and $\Part_2'$ of $n_2$ and
+    any partition $\Part'$ holds
+    \begin{align*}
+      \s{\Part'}(V_{\Part_1'}\times V_{\Part_2'})
+      &\cequalsby{\ref{cor:productrule:swcl}}
+        \sum_{\mathclap{\substack{
+        \Part_1\concat\Part_2=\Part'\\
+      \Part_1\in\PartitionsOf{n_1}\\
+      \Part_2\in\PartitionsOf{n_2}\\
+      }}}
+      \s{\Part_1}(V_{\Part_1'}) \cdot \s{\Part_2}(V_{\Part_2'})
+      \overset{\text{Def.}}=
+        \sum_{\mathclap{\substack{
+        \Part_1\concat\Part_2=\Part'\\
+      \Part_1\in\PartitionsOf{n_1}\\
+      \Part_2\in\PartitionsOf{n_2}\\
+      }}}
+      \delta_{\Part_1,\Part_1'} \cdot \delta_{\Part_2, \Part_2'}
+      = \delta_{\Part', \Part_1'\concat\Part_2'}
+      \\
+      &\equalsby{Def.} \s{\Part'}(V_{\Part_1'\concat\Part_2'})
+        \;.
+    \end{align*}
+    Thus, by \ref{item:manifoldbasisrepr}
+    the basis representations of
+    $[V_{\Part_1'}]\times[V_{\Part_2'}]=[V_{\Part_1'}\times V_{\Part_2'}]$
+    and 
+    $[V_{\Part_1'\concat\Part_2'}]$
+    coincide, wherefore they must be equal. 
   \item\label{item:generatorscobordimsring}
-    By conclusion \ref{item:manifoldbasisrepr},
-    the basis elements represented by a $k$-dimensional manifold
-    $V_{(k)}\in\c_k$ for $k\neq 2^m-1$ are algebraically independent
-    generators of the cobordism ring.
-  \item By conclusion \ref{item:generatorscobordimsring}, the bordism
+    By \ref{item:productpartitions}, all basis elements
+    $[V_\Part]$ can be written as a product of lower degree basis
+    elements, except for those corresponding to a trivial partition
+    $(k)$, $k\in\Nat$.
+    Furthermore, such a basis element $[V_{(k)}]$ cannot be
+    decomposable, as otherwise $\snum{(k)}{V_{(k)}} = 0$
+    by \autoref{eq:productrule:swnum} in
+    Corollary~\autoref{cor:swnumdecompositionmfds},
+    which contradicts the definition in
+    \autoref{thm:basiscobordismring}.
+    
+    Altogether, the basis elements represented by a $k$-dimensional
+    manifold $V_{(k)}\in\c_k$ for $k\neq 2^m-1$ are indecomposable,
+    hence algebraically independent, generators of the cobordism
+    ring.
+    This is a proof of Theorem~\ref{thm:cobordismringstructure} using
+    Theorem~\ref{thm:basiscobordismring}.
+  \item By \ref{item:generatorscobordimsring}, the bordism
     class of a manifold $W$ of dimension $k$ is an indecomposable
-    element of $\c_*$ if and only if its representation by basis
-    elements $[V_\Part]$ contains the unique $k$-dimensional
-    indecomposable basis element $[V_{(k)}]$ as summand,
-    \idest if and only if $\snum{(k)}{W}\neq 0$.
+    element of $\c_*$ if and only if its unique representation by
+    basis elements $[V_\Part]$ contains the unique $k$-dimensional
+    indecomposable basis element $[V_{(k)}]$ as a summand,
+    \idest if and only if $\snum{(k)}{W}\neq 0$ by
+    \ref{item:manifoldbasisrepr}.
     \qedhere
-  \end{enumerate}
+  \end{steps}
 \end{proof}
 
-\section
-{Proof of Brown's Theorem: Finding a Convenient Generating Set}
-\label{sec:proofbrown}
-Remember that the goal of this chapter was to prove R.~L.~Brown's
-theorem \ref{thm:brown} which states that the immersion conjecture is
-true up to cobordism.
-
-If one can show that the conjecture's statement is stable
-under the ring operations of the cobordism ring, it will suffice to
-find a generating set of $\c_*$ which fulfills the conjecture.
-The latter will heavily rely on the indecomposability criterion found
-in \autoref{thm:indecomposabilitycriterion} and the structure of the
-cobordism ring.
-
-The stability properties needed are the following.
-\begin{Lem}\label{lem:brownstableunderringops}
-  Let $M_i^{n_i}$ be a closed manifold immersing into
-  $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
-  Then both manifolds
-  \begin{enumerate}
-  \item $M_1\disjointsum M_2$ for $n_1=n_2=n$, and
-  \item $M_1\times M_2$ for $n_1$, $n_2$ arbitrary
-  \end{enumerate}
-  immerse into $\R^{2(n_1+n_2)-\alpha(n_1+n_2)}$.
+This directly yields the following example which will be a key point
+in constructing a candidate generating set of the cobordism ring.
+\begin{Ex}\label{ex:rpnindecomposable}
+  For $k\in\Nat$ even, the projective space $\RP k$ represents an
+  indecomposable element of the cobordism ring.
   \begin{proof}
-    $M_1\times M_2$ immerses into the real space of dimension
+    $\W{\RP k} = (1+x)^{k+1}=\prod_{i=1}^{k+1}$ where $x$ is the
+    generator in degree one of $\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$,
+    and thus
     \begin{align*}
-      \left( 2n_1-\alpha(n_1) \right)
-      + \left( 2n_2-\alpha(n_2) \right)
-      &= 2(n_1+n_2) - \left(\alpha(n_1)+\alpha(n_2)\right)\\
-      &\leq 2(n_1+n_2) - \left(\alpha(n_1 + n_2)\right)
+      \s{(k)}(\RP k)
+      &\cequalsby{Def.} \sum_{i=1}^{k+1} x^k
+      = (k+1)x^k \\
+      \snum{(k)}{\RP k}
+      &= \capped{(k+1)x^k}{\fundcl{\RP k}}
+      = k+1
+        \equiv 1 \mod2
+        \;.
+        \qedhere
     \end{align*}
-    where the inequality is due to the number theoretic fact
-    $\alpha(n_1+n_2) \leq \alpha(n_1)+\alpha(n_2)$.
-
-    For $n_1=n=n_2$ the images of the immersions
-    \begin{gather*}
-      \iota_1\colon M_1\to\R^{2n-\alpha(n)}
-      \qquad \text{and} \qquad
-      \iota_2\colon M_2\to\R^{2n-\alpha(n)}
-    \end{gather*}
-    are compact. So by
-    concatenation with translation they can be assumed to be disjoint,
-    wherefore the disjoint union
-    $\iota_1\disjointsum\iota_2\colon M_1\disjointsum M_2\to\R^{2n-\alpha(n)}$
-    is again an immersion.
   \end{proof}
-\end{Lem}
+\end{Ex}
 
-Thus, for the proof of Brown's theorem only a generating set of $\c_*$
-is needed each member of which fulfills the immersion conjecture.
-
-\subsection{Twisted Products}
-The candidates for a generating set will be inductively constructed
+\section{Twisted Products}
+The candidates for a generating set needed for the proof of Brown's
+Theorem~\autoref{thm:brown} will be inductively constructed
 using the so-called twisted product construction explained below.
 The main advantage of this tool is---besides quite a couple of handy
 preservation properties---the fact that a twisted product is
 indecomposable if and only if its factor is and the dimension was
-chosen correctly. The latter will be the main result of this section.
+chosen correctly
+(Theorem~\autoref{thm:twistedprod:indecompcriterion}). The latter will
+be the main result of this section, and is discussed in
+\autoref{sec:twistedprod:indecompcriterion}.
 
+\subsection{Definition}
 \begin{Def}
   \optcite[p.~83]{immersionconj}
   \optcite[compare §4, Def.~of~$P(m;X)$]{brown}
@@ -756,11 +819,11 @@ manifolds and fibre bundles.
   \end{enumerate}
 \end{Rem}
 
+\subsection{The Cohomology Ring of Twisted Products}
 Besides the above direct properties, there is a fairly easy
 description of the cohomology ring of a twisted product relating it to
 the cohomology ring of its factor.
 \begin{Thm}\label{thm:twistedprod:cohomstructure}
-  \optcite[Thm~7.1, p.~1111]{brown}
   Let $X$ be a space and $k\in\Nat$.
   Define
   \begin{itemize}
@@ -820,6 +883,10 @@ the cohomology ring of its factor.
   \item\label{item:twistedprod:preservescohominj}
     $\Twistedprod{k}{-}$ preserves injectivity on cohomology.
   \end{enumerate}
+  \begin{proof}
+    See \cite[Theorem~7.1]{brown}.
+    % TODO: Either proof or explicitly say somewhere that the proof is missing
+  \end{proof}
 \end{Thm}
 
 This then immediately gives a result on the Stiefel-Whitney classes of
@@ -920,6 +987,8 @@ calculations involving higher dimensional bundles.
     \end{proof}
 \end{Cor}
 
+\subsection{Indecomposability of Twisted Product Cobordism Classes}
+\label{sec:twistedprod:indecompcriterion}
 Now that the cohomology ring of a twisted product is well-known, one
 can investigate the Stiefel-Whitney numbers of twisted product manifolds.
 As promised, the following result will be the cornerstone when inductively
@@ -1099,17 +1168,14 @@ consequence of the following Lemma.
   as was stated.
 \end{proof}
 
-\subsection
-[A Convenient Generating Set of the Cobordism Ring]
-{A Convenient Generating Set of $\c_*$}
-Now one can define candidates for the desired basis using the twisted
-product construction to finally prove
-Brown's theorem~\autoref{thm:brown}. 
-
-Beforehands, recall from \autoref{thm:twistedprod:indecompcriterion}
-that one has to both choose the dimension cobination, as well as the
-factor of a twisted product correctly, in order to obtain an
-indecomposable class representative.
+By Theorem~\autoref{thm:twistedprod:indecompcriterion}, one has to
+both choose
+\begin{itemize}
+\item the dimension cobination, as well as
+\item the factor (see later)
+\end{itemize}
+of a twisted product correctly, in order to obtain the representative
+of an indecomposable cobordims class.
 For the correct dimension choice note, that any integer $m$ with
 binary representation
 \begin{gather*}
@@ -1132,19 +1198,19 @@ in \autoref{thm:twistedprod:indecompcriterion}.
   For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
   if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
   \begin{proof}
-    This is a direct consequence from Lucas' Theorem % TODO: ref
-    stating
+    This is a direct consequence of Lucas' Theorem % TODO: ref
+    which states
     \begin{gather*}
       \binom{a+b}{b} \equiv \prod_{i=0}^s \binom{a_i+b_i}{b_i} \mod 2
     \end{gather*}
     where $a=\sum_{i=1}^s a_i2^{i}$, $b=\sum_{i=1}^s b_i2^{i}$ are the
     binary expansions of $a$ and $b$, and $\binom{0}{1}\coloneqq 0$.
-    But this expression will only be non-zero, if $b_i$ is one for any
-    $i$ where $a_i+b_i$ is one. In other words, if and only if
+    This expression will be non-zero, if and only if $b_i$ is one for
+    any $i$ where $a_i+b_i$ is one. In other words, if and only if
     $\alpha(a+b)=\sum_{i=1}^s(a_i+b_i)$.    
   \end{proof}
 \end{Lem}
-This can be applied to the combination $k-1$, $n$ from above, as one
+This lemma can be applied to the combination $k-1$, $n$ from above, as one
 simply calculates
 \begin{align*}
   \alpha(k-1+n)
@@ -1155,8 +1221,69 @@ simply calculates
   &= \alpha(k-1) + \alpha(n)
 \end{align*}
 
+Therefore:
+\begin{Cor}\label{cor:twistedprod:indecompcriterion}
+  For $m=2^{i_1}+2n\in\Nat$ as above, the twisted product
+  $\Twistedprod{2^{i_1}}{M}$ of an indecomposable manifold $M^n$ will be
+  indecomposable.
+\end{Cor}
+
+
+\section
+{Proof of Brown's Theorem: Finding a Convenient Generating Set}
+\label{sec:proofbrown}
+Remember that the goal of this chapter was to prove R.~L.~Brown's
+theorem \ref{thm:brown} which states that the immersion conjecture is
+true up to cobordism.
+
+Also recall, that if one can show the conjecture's statement is stable
+under the ring operations of the cobordism ring
+$\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
+generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfills the conjecture.
+Thus, for the proof one needs to construct a set of manifolds
+$(\G i|i\neq2^r-1)$ that both fulfil the conjecture and represent
+indecomposable cobordism classes.
+
+\subsection{Stability Properties of the Conjecture}
+The stability properties needed are the following.
+\begin{Lem}\label{lem:brownstableunderringops}
+  Let $M_i^{n_i}$ be a closed manifold immersing into
+  $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
+  Then both manifolds
+  \begin{enumerate}
+  \item $M_1\disjointsum M_2$ for $n_1=n_2=n$, and
+  \item $M_1\times M_2$ for $n_1$, $n_2$ arbitrary
+  \end{enumerate}
+  immerse into $\R^{2(n_1+n_2)-\alpha(n_1+n_2)}$.
+  \begin{proof}
+    $M_1\times M_2$ immerses into the real space of dimension
+    \begin{align*}
+      \left( 2n_1-\alpha(n_1) \right)
+      + \left( 2n_2-\alpha(n_2) \right)
+      &= 2(n_1+n_2) - \left(\alpha(n_1)+\alpha(n_2)\right)\\
+      &\leq 2(n_1+n_2) - \left(\alpha(n_1 + n_2)\right)
+    \end{align*}
+    where the inequality is due to the number theoretic fact
+    $\alpha(n_1+n_2) \leq \alpha(n_1)+\alpha(n_2)$.
+
+    For $n_1=n=n_2$ the images of the immersions
+    \begin{gather*}
+      \iota_1\colon M_1\to\R^{2n-\alpha(n)}
+      \qquad \text{and} \qquad
+      \iota_2\colon M_2\to\R^{2n-\alpha(n)}
+    \end{gather*}
+    are compact. So by
+    concatenation with translation they can be assumed to be disjoint,
+    wherefore the disjoint union
+    $\iota_1\disjointsum\iota_2\colon M_1\disjointsum M_2\to\R^{2n-\alpha(n)}$
+    is again an immersion.
+  \end{proof}
+\end{Lem}
+
+
+\subsection{Generating Set}
 Now define the basis representatives as follows.
-\begin{Thm}\label{thm:brown}
+\begin{Thm}\label{thm:brownproof}
   Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
   defined by
   \begin{align*}
@@ -1167,12 +1294,11 @@ Now define the basis representatives as follows.
           $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
           with $0\leq i_1<\dotsb<i_l$.
           }
-          \;.
   \end{align*}
   Then:
   \begin{enumerate}
   \item\label{item:brownimmersionproperty} $\G m$ immerses into $\R^{2m-\alpha(m)}$.
-  \item The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
+  \item\label{item:indecomposabilityproperty} The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
     indecomposable, and thus % TODO: ref
     \begin{gather*}
       \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
@@ -1180,12 +1306,31 @@ Now define the basis representatives as follows.
     \end{gather*}
   \end{enumerate}
 \end{Thm}
-The proof of the two parts is splitted into the subsequent sections.
-
-\subsubsection{Immersion Property}
-
 \begin{proof}[proof of
-  \itemref{thm:brown}{item:brownimmersionproperty}]
+  \itemref{thm:brownproof}{item:indecomposabilityproperty}]
+  By definition, all $\G m$ are or arise as iterated twisted products from
+  some $\Twistedprod{2^i}{\pt}$. Or more precisely, for a binary
+  representation
+  \begin{align*}
+    m &= 2^{i_1}+\dotsb + 2^{i_l} \\
+      &= 2^{i_1}+ 2\cdot\big( 2^{i_2-1} + 2\cdot(\dotsc + 2\cdot 2^{i_l-l+1})\big)
+    \\\intertext{one gets}
+    \G m &\coloneqq
+           \Twistedprod{2^{i_1}}{\G{2^{i_2-1} + 2\cdot(2^{i_3-1}+\dotsb)}}\\
+      &= \Twistedprod{2^{i_1}}{
+        \Twistedprod{2^{i_2-1}}{
+        \dotsc
+        \Twistedprod{2^{i_l-l+1}}{\pt}
+        }}
+        \;.
+  \end{align*}
+  But $\Twistedprod{2^{i}}{\pt}=\RP{2^i}$ represents an indecomposable
+  element of the Cobordism ring by Example~\autoref{ex:rpnindecomposable}.
+  Thus, by Corollary~\autoref{cor:twistedprod:indecompcriterion} all
+  $\G m$ also represent indecomposable cobordism classes.
+\end{proof}
+\begin{proof}[proof of
+  \itemref{thm:brownproof}{item:brownimmersionproperty}]
   \optcite[p.~84, proof Thm.~1.30]{immersionconj}
   In order to proof the immersion property of the manifolds $\G m$,
   conduct an induction over $\alpha(m)$.
@@ -1211,15 +1356,20 @@ The proof of the two parts is splitted into the subsequent sections.
   As described in
   \itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
   this induces an immersion of twisted products
-  \begin{gather*}
-    1\times\iota\times\iota\colon
-    \G m
-    = \Sphere{2^{i_1}} \times \G n\times \G n/\sim
-    \immlongto
-    \Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim
-    = \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
-    \;.
-  \end{gather*}
+  \begin{center}
+    \begin{tikzcd}[row sep=small, column sep=large]
+      (\Sphere{2^{i_1}} \times \G n\times \G n/\sim)
+      \ar[d, equals]
+      \ar[r, hookrightarrow, "1\times\iota\times\iota"]
+      &
+      (\Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim)
+      \;.
+      \ar[d, equals]
+      \\
+      \G m
+      &\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+    \end{tikzcd}
+  \end{center}
   The latter twisted product however is a fibre bundle over
   $\RP{2^i_1}$ as in
   \itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl},
@@ -1249,9 +1399,6 @@ The proof of the two parts is splitted into the subsequent sections.
   \end{gather*}
   % TODO: proof Lemma
 \end{proof}
-
-\subsubsection{Generating Property}
-% TODO
 
 %%% Local Variables:
 %%% mode: latex
