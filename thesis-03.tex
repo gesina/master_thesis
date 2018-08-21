@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
 % -- Chapter 4: Brown's Theorem --
@@ -12,29 +12,70 @@
 % Review the necessary results about the structure of the unoriented cobor-
 % dism ring and explain R. L. Brown’s proof of the immersion conjecture up
 % to cobordism. [immersionconj], [brown]
+The overall goal of this chapter is to proof the following theorem of
+R.~L.~Brown first given in his paper \cite{brown},
+which essentially states that the immersion conjecture is true up to
+the cobordism relation.
+\begin{Thm}[Brown]\label{thm:brown}
+  Every closed $n$-manifold is cobordant to an $n$-manifold that immerses
+  into $\R^{2n-\alpha(n)}$.
+\end{Thm}
 
-\section{The Cobordism Ring Structure}
+As one easily sees that this property is stable under
+the ring operations (Lemma~\autoref{lem:brownstableunderringops}),
+the main idea and hard part for the proof is to find manifolds
+fullfilling the conjecture whose cobordism classes form an
+algebraically independent generating set of the cobordism ring. This
+requires
+\begin{enumerate}[1)]
+\item to know the structure of the cobordism ring
+  (\autoref{sec:ringstructure}), in order to see how many
+  indecomposable elements are needed in each degree to make up a
+  generating set, and
+\item a simple criterion when an element of the cobordism ring is
+  indecomposable (\autoref{sec:indecomposabilitycriterion}).
+\end{enumerate}
+When these prerequisites are available, the generating set is
+constructed in \autoref{sec:proofbrown}.
 
-\begin{LemDef}[Cobordism Ring] % TODO
-\end{LemDef}
+For clarity of presentation a couple of results from Thom's paper
+\cite{thom} will merely be referenced without proof.
+
+\section{Review: The Cobordism Ring Structure}
+\label{sec:ringstructure}
+Recall that two closed manifolds of the same dimension $n$ are
+(unoriented) cobordant if their disjoint union is the border of an
+$(n+1)$-dimensional manifold.
+This is an equivalence relation amongst $n$-manifolds, and the
+set of equivalence classes forms an abelian group $\c_n$ of order two
+with the disjoint sum as addition and the $n$-sphere as zero element.
+The cartesian product turns the graded $\Zmod2$-module
+$\c_*\coloneqq \bigoplus_{n\geq 0}\c_n$ into an $\Zmod2$-algebra
+called the (unoriented) cobordism ring.
+
+Most remarkably, the cobordism relation is homotopy invariant, \idest
+homotopic manifolds of the same dimension will be cobordant.
+Further, the structure of this algebra is well-known since Thom's
+research on this topic \cite{thom}:
 
 \begin{Thm} % TODO: cobordism ring thm
   \optcite[Thm.~1.23]{immersionconj}
   \optcite[Theorem~IV.9]{thom}
   \begin{gather*}
-    \c_* \cong \Zmod2[\sigma_i| i\neq 2^r-1]
+    \c_* \cong \pi_*(\MO)\cong \Zmod2[\sigma_i| i\neq 2^r-1]
   \end{gather*}
+  \cite[Theorem~IV.12]{thom}
 \end{Thm}
 
 
 \section{Detecting Indecomposable Elements of the Cobordism Ring}
+\label{sec:indecomposabilitycriterion}
 In order to find representatives for a set of algebraically
-independent generators of the polynomial ring $\c_*$, one needs to
-find a way to detect indecomposable elements. Indecomposable in this
+independent generators of the polynomial ring $\c_*$, one needs a way
+to detect indecomposable elements. Indecomposable in this 
 context means not expressable as a sum of products of lower degree
 elements.
-In order to do so the subsequent sections will follow an approach of
-Thom 
+This section will follow an approach of Thom 
 \cite[Chapters~IV.5 and~IV.6]{thom}.
 
 
@@ -447,9 +488,10 @@ none of its entries is of the form $2^m-1$.
     \in \H^k(V_{\Part})\cong \Zmod2
   \end{gather*}
   for any non-dyadic partitions $\Part,\Part'\in\PartitionsOf{k}$,
-  where $\delta$ is the usual Kronecker delta.
+  where $\delta$ is the usual Kronecker delta
+  \cite[Section~IV.5, p.~194ff]{thom}.
   \begin{proof}
-    % TODO: proof special basis cobordism ring [Thom]; [Milnor] better source?
+    % TODO: proof/construction special basis cobordism ring [Thom]; [Milnor] better source?
   \end{proof}
 \end{Thm}
 
@@ -460,7 +502,36 @@ existence of the above basis.
 \begin{Thm}[Thom]\label{thm:cobordantiffswnumscoincide}
   Two closed manifolds are cobordant if and only if all of their
   Stiefel-Whitney numbers coincide.
-  % TODO: Proof/ref: SW Nums = 0 <=> null-bordant
+  \begin{proof}[proof (sketch)]
+    The proof that manifolds with coinciding Stiefel-Whitney numbers
+    are cobordant was conducted by Thom \cite[Theorem IV.10]{thom}.
+    To see that cobordant manifolds have the same Stiefel-Whitney
+    numbers, let $M^n$ be a null-bordant closed manifold, \idest
+    assume $M^n=\Boundary{W}$ for a closed manifold $W$. Now, consider
+    any Stiefel-Whitney number 
+    $\capped{\w{1}{M}^{i_1}\dotsm\w{l}{M}^{i_l}}{\fundcl{M}}$,
+    of $M$, where $I=(i_1,\dotsc,i_l)$ with $\d(I)=n$.
+    Then this will be zero, as one calculates using the long
+    exact sequence of cohomology respectively homology of the pair
+    $i\colon M\immto W$ (abbreviated les)
+    \begin{align*}
+      \W{M}
+      &= \W{\T M}
+        = \W{\T M\oplus\trivbdl}
+        = \W{\T W|_{M}}
+        \cequalsby{Def.} \W{\pb i \T W} = \pb i \W{W} \\
+      \fundcl M
+      &\cequalsby{les} \partial \fundcl{W} \\
+      \intertext{which yields with the fact
+      $\pf i\circ\partial\overset{\text{les}}= 0$}
+      \capped{\W{M}^I}{\fundcl M}
+      &= \capped{\pb i\W{W}^I}{\partial\fundcl{W}}
+        = \pf i\capped{\W{W}^I}{\pf i\partial \fundcl{W}}
+        = 0
+        \;.
+        \qedhere
+    \end{align*}
+  \end{proof}
 \end{Thm}
 
 \begin{proof}[proof of \autoref{thm:indecomposabilitycriterion}]
@@ -484,7 +555,7 @@ existence of the above basis.
     $V_{\Part_1\concat\Part_2}$ since
     $\s{\Part'}(\W{V_{\Part_1}\times V_{\Part_2}})
     = \delta_{\Part', \Part_1\concat\Part_2}$
-    by \ref{cor:productrule:swcl} and thus all their Stiefel-Whitney
+    by \ref{cor:productrule:swcl}, and thus all their Stiefel-Whitney
     numbers coincide by definition.
   \item\label{item:generatorscobordimsring}
     By conclusion \ref{item:manifoldbasisrepr},
@@ -503,13 +574,10 @@ existence of the above basis.
 
 \section
 {Proof of Brown's Theorem: Finding a Convenient Generating Set}
+\label{sec:proofbrown}
 Remember that the goal of this chapter was to prove R.~L.~Brown's
-theorem which states that the immersion conjecture is true up to
-cobordism:
-\begin{Thm}[Brown]\label{thm:brown}
-  Every closed $n$-manifold is cobordant to an $n$-manifold that immerses
-  into $\R^{2n-\alpha(n)}$.
-\end{Thm}
+theorem \ref{thm:brown} which states that the immersion conjecture is
+true up to cobordism.
 
 If one can show that the conjecture's statement is stable
 under the ring operations of the cobordism ring, it will suffice to
@@ -519,7 +587,7 @@ in \autoref{thm:indecomposabilitycriterion} and the structure of the
 cobordism ring.
 
 The stability properties needed are the following.
-\begin{Lem}
+\begin{Lem}\label{lem:brownstableunderringops}
   Let $M_i^{n_i}$ be a closed manifold immersing into
   $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
   Then both manifolds
