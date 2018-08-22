@@ -175,9 +175,9 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
     For construction and uniqueness see \cite[Example~1B.7~ff.]{hatcher},
     respectively note that universal coverings are unique up to homotopy.
   \item\label{item:classificationthm}
-    $\gamma^G$ fulfills the following universal property:
+    $\gamma^G$ fulfils the following universal property:
     For any space $X$ admitting the homotopy type of a CW-complex
-    there is a bijection beetween $[X,\BG]$ and the isomorphism classes of
+    there is a bijection between $[X,\BG]$ and the isomorphism classes of
     principal $G$-bundles over $X$, given by
     \begin{gather*}
       \left(f\colon X\to\BG \right) \longmapsto \pb f \gamma^G
@@ -242,7 +242,7 @@ and $R$ be principal ideal domain.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
   cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
-  such that for all points $b\in B$ and fiber inclusions
+  such that for all points $b\in B$ and fibre inclusions
   $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
   the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
   free generator of the $R$-module $\H^{\rkk}(\spherepair{E_b}; R)$,
@@ -266,7 +266,7 @@ their above definition.
   \begin{proof}
     Let $\U$ be a Thom class of $\xi$ and $a\in A$ any point.
     Consider the restriction $\pb i_a(\pb f \U)$
-    of the pullback of $\U$ to the fiber over $a$. To show that this
+    of the pullback of $\U$ to the fibre over $a$. To show that this
     is a generator of $\H^{\rkk}(\spherepair{E_a};R)$ first use that
     pullbacks commute with restriction:
     \begin{gather*}
@@ -329,7 +329,7 @@ their above definition.
   \end{gather*}
   is a Thom class of $\xi\oplus\eta$.
   \begin{proof}
-    Consider a fiber $b\in B$. As cup product and pullback commute
+    Consider a fibre $b\in B$. As cup product and pullback commute
     with restriction, the cross-product also commutes with
     restriction, \idest one has to show that
     \begin{gather*}
@@ -404,7 +404,7 @@ their above definition.
     is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
     $\H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
     Using the isomorphisms above proves the claim.
-    \optcite[compare proof of Thm~3.19, p.~221]{hatcher}
+    \optcite[compare proof of Theorem~3.19, p.~221]{hatcher}
     % % Maybe put into separate Lemma:
     % Now one can use the fact, that for any two generators
     % $\iota_{\rkk}$ of $\H^{\rkk}(\spherepair{\R^{\rkk}})$ and
@@ -425,10 +425,10 @@ their above definition.
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
       \cite[Proposition~17.9.3]{tomdieck}.
     \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
-      Using a suitable Mayer-Vietoris sequence for glueing, and an
+      Using a suitable Mayer-Vietoris sequence for gluing, and an
       inductive argument starting with the trivial bundle case, one can show:
       Any two classes in $\H^{\rkk}(\thomspacepair{E};R)$ whose
-      restrictions coincide on all fibers will coincide.
+      restrictions coincide on all fibres will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
       a unit $\u{\xi}|_{E_b}\in
       \H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
@@ -520,7 +520,7 @@ first recall the following properties of the cap product.
   \end{align*}
 \end{proof}
 
-% TODO: Better motivation for relationship thom iso <-> fundamental cl
+% TODO: Better motivation for relationship Thom isomorphism <-> fundamental cl
 Normal bundles give an interesting, more geometrical
 description of the fundamental class of a manifold:
 \begin{Lem}\label{lem:thomisofundcl}
@@ -540,7 +540,7 @@ description of the fundamental class of a manifold:
     \cong \Thomspace{\N M}
   \end{gather*}
   that collapses every point outside of $e(\E{\N M})$ to the infinity
-  point fulfills
+  point fulfils
   \begin{center}
     \begin{tikzcd}[row sep=0pt]
       \H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
@@ -665,7 +665,7 @@ description of the fundamental class of a manifold:
   $\gamma_1$ is the universal line bundle $\RPinf\cong\BO(1)\to\BO$,
   and $x$ is the%
   \footnote{
-    This is well-defined: A a ring $R$ of the form $\Zmod2[x]$
+    This is well-defined: A ring $R$ of the form $\Zmod2[x]$
     with $\deg(x)=1$ only admits two elements in degree~1, $0$ and a
     generator. Therefore, there exists exactly one ring
     isomorphism, and this sends the unique generator in
@@ -681,7 +681,7 @@ description of the fundamental class of a manifold:
   \begin{proof}[proof (sketch)]
     \begin{description}
     \item[Existence]
-      A possible concrete construction utilizes the Euler
+      A possible concrete construction utilises the Euler
       class. Another definition via Steenrod squares can be 
       found below in \autoref{thm:altdefswclasses}.
     \item[Uniqueness]
@@ -692,7 +692,7 @@ description of the fundamental class of a manifold:
       Either inductively show
       $\H^*(\BO(n);\Zmod2)\cong \Zmod2[\ws{i}|n\geq i\geq1]$
       \cite[Theorem~7.1~ff.]{milnor}.
-      Or find generators of $\H^*(\BO)$ that fulfill the axioms for
+      Or find generators of $\H^*(\BO)$ that fulfil the axioms for
       the Stiefel-Whitney classes, then apply uniqueness
       \cite[Chap.~7.6]{may}.
     \end{description}
@@ -772,7 +772,7 @@ description of the fundamental class of a manifold:
   \cite[see \forexample][Theorem~7.1~ff.]{milnor}.
   \begin{proof}
     Check naturality of the expression and all further
-    definining properties from \autoref{def:swclasses}.
+    defining properties from \autoref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
@@ -851,7 +851,7 @@ This section introduces a family of cohomology classes
 of manifolds, together with several possibilities of how to
 define---and eventually work with---them.
 Later then, \autoref{sec:wutheorem} reveals their close relation to
-the Stiefel-Whitney classes which is utilized in the proof of Massey's
+the Stiefel-Whitney classes which is utilised in the proof of Massey's
 theorem.
 
 \begin{Def}\label{def:wuclasses}
@@ -952,7 +952,7 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
       = \capped{\SQ(x)}{\fundcl M}
     \end{gather}
     which will be proven below.
-    Beforehands, recall the following:
+    Beforehand, recall the following:
     \begin{description}
     \item[By \autoref{lem:thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
@@ -1126,7 +1126,7 @@ the alternative definition of the Wu classes from
 %     \;.
 %   \end{gather*}
 % \end{Rem}
-The proof uses the alternative characterization
+The proof uses the alternative characterisation
 \begin{gather*}
   \antipode(\SQ)(\u{\N M}) = \thomiso(\V{\N M})
 \end{gather*}

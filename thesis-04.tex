@@ -9,9 +9,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Brown's Theorem}
-% Review the necessary results about the structure of the unoriented cobor-
-% dism ring and explain R. L. Brown’s proof of the immersion conjecture up
-% to cobordism. [immersionconj], [brown]
+% Review the necessary results about the structure of the unoriented
+% cobordism ring and explain R. L. Brown’s proof of the immersion
+% conjecture up to cobordism. [immersionconj], [brown]
 The overall goal of this chapter is to proof the following theorem of
 R.~L.~Brown following his paper \cite{brown},
 which essentially states that the immersion conjecture is true up to
@@ -24,7 +24,7 @@ the cobordism relation.
 As one easily sees that this property is stable under
 the ring operations (Lemma~\autoref{lem:brownstableunderringops}),
 the main idea for the proof is to find manifolds
-fullfilling the conjecture whose cobordism classes form a generating set
+fulfilling the conjecture whose cobordism classes form a generating set
 of the cobordism ring.
 As the latter has the form of a polynomial algebra
 $\Zmod2[\sigma_i|i\neq 2^r-1]$, a set of elements
@@ -62,7 +62,7 @@ review within \autoref{sec:cobordismringstructure}.
 In order to find representatives for a set of algebraically
 independent generators of the polynomial ring $\c_*$, one needs a way
 to detect indecomposable elements. Indecomposable in this 
-context means to not be expressable as a sum of products of lower
+context means to not be expressible as a sum of products of lower
 degree elements.
 This section will follow an approach of Thom 
 \cite[Chapters~IV.5 and~IV.6]{thom}.
@@ -82,8 +82,8 @@ From this \autoref{sec:indecomposabilitycriterion} will deduce a
 simple criterion for a manifold to be cobordant to a product of
 manifolds.
 
-Beforehands, mind the following notation of partitions needed for
-symmetrizing polynomials.
+Beforehand, mind the following notation of partitions needed for
+symmetrising polynomials.
 \begin{Def}\label{def:partition}
   Let $k,l\in\Nat$ be integers.
   \begin{itemize}
@@ -105,7 +105,7 @@ symmetrizing polynomials.
   \item
     Call a sequence or partition \emph{non-dyadic}, if
     none of its entries is of the form $2^m-1$.
-  \item The concatenation of sequences and analoguesly partitions will
+  \item The concatenation of sequences, and analogously partitions, will
     be denoted by
     \begin{align*}
       \Nat^{l_1} \times \Nat^{l_2}
@@ -124,7 +124,7 @@ symmetrizing polynomials.
 \end{Def}
 
 Also as preparation, recall some properties of symmetric polynomials
-and agree on a shorthand for symmetrized monomials.
+and agree on a shorthand for symmetrised monomials.
 \begin{LemDef}
   Let $n\in\Nat$ and $\Zmod2[t_1,\dotsc,t_n]$ be the graded polynomial
   algebra in $n$ variables over the fields $\Zmod2$, each $t_i$ of
@@ -136,18 +136,18 @@ and agree on a shorthand for symmetrized monomials.
     \subset \Zmod2[t_1,\dotsc,t_n]$
     be the graded subalgebra of symmetric polynomials in $n$ variables.
   \item $\Symm{n}_*$ has a basis indexed by partitions $\Part$
-    consisting of symmetrized monomials, \idest elements of the form
+    consisting of symmetrised monomials, \idest elements of the form
     \begin{gather*}
       \symm{n} t^\Part \coloneqq \sum_{I^n\in\Part} t^I \in \Symm{n}_k
     \end{gather*}
     where $t^{(i_1,\dotsc,i_n)}\coloneqq t_1^{i_1}\dotsm t_n^{i_n}$.
     \begin{proof}
       \optcite[footnote~2, p.~154]{thom}
-      Every symmetric polynomial is the sum of homogenous symmetric
+      Every symmetric polynomial is the sum of homogeneous symmetric
       polynomials, \idest is of the form $\sum_{I^n\in A}t^I$. This
-      however can be written as a sum of symmetrized monomials by
+      however can be written as a sum of symmetrised monomials by
       descending induction on the number of monomial summands $\#A$,
-      which makes the symmetrized monomials a generating set of $\Symm{n}_*$.
+      which makes the symmetrised monomials a generating set of $\Symm{n}_*$.
       Linear independence is clear as monomials $t^I$ and $t^{I'}$ are
       linearly independent if $I\neq I'$, and sequences belonging to
       different partitions must be unequal.
@@ -184,7 +184,7 @@ Now the desired polynomials can be defined.
   Let $k\in\Nat$, $\Part\in\PartitionsOf k$, and let
   $\Zmod2[\alpha_1,\dotsc,\alpha_k]$ be the polynomial ring in $k$
   variables where $\alpha_i$ has degree $i$.
-  Define the homogenous polynomial
+  Define the homogeneous polynomial
   $\s{\Part}\in\Zmod2[\alpha_1,\dotsc,\alpha_k]$ of degree $k$ by
   \begin{gather*}
     \s{\Part}(\el 1 n,\dotsc, \el k n) = \symm{n} t^{\Part} \in \Symm{n}_k
@@ -338,7 +338,7 @@ Stiefel-Whitney class.
 
 \subsection{Stiefel-Whitney Numbers of Product Manifolds}
 \label{sec:swnumsofproductmfds}
-In order to apply the special polynomials from the preceeding section
+In order to apply the special polynomials from the preceding section
 and their product property \autoref{lem:productrule:general} to
 the Stiefel-Whitney numbers of (product) manifolds, first start with
 Stiefel-Whitney classes.
@@ -472,9 +472,9 @@ Recall that two closed manifolds of the same dimension $n$ are
 (unoriented) cobordant if their disjoint union is the border of an
 $(n+1)$-dimensional manifold.
 This is an equivalence relation amongst $n$-manifolds, and the
-set of equivalence classes forms an abelian group $\c_n$ of order two
+set of equivalence classes forms an Abelian group $\c_n$ of order two
 with the disjoint sum as addition and the $n$-sphere as zero element.
-The cartesian product turns the graded $\Zmod2$-module
+The Cartesian product turns the graded $\Zmod2$-module
 $\c_*\coloneqq \bigoplus_{n\geq 0}\c_n$ into an $\Zmod2$-algebra
 called the (unoriented) cobordism ring.
 Denote the cobordism equivalence class of a manifold $M$ by $[M]$.
@@ -501,14 +501,14 @@ Further, the structure of this algebra is well-known.
 
 During the proof of the above theorem, Thom constructs special
 manifolds that form a basis of the cobordism ring,
-and are uniquely characterized by the below properties.
+and are uniquely characterised by the below properties.
 For the formulation recall that a sequence or partition is called
 \emph{non-dyadic}, if none of its entries is of the form $2^r-1$.
 \begin{Thm}\label{thm:basiscobordismring}
   There exists a basis of the cobordism ring represented by manifolds
   $V_\Part$ that in each degree $k$ is indexed by non-dyadic
   partitions $\Part$ of $k$. Further, the $V_\Part$ are uniquely
-  characterized by
+  characterised by
   \begin{gather*}
     \s{\Part'}(\W{V_\Part}) = \delta_{\Part,\Part'}
     \in \H^k(V_{\Part})\cong \Zmod2
@@ -674,7 +674,7 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     the cobordism ring.
     This is a proof of Theorem~\ref{thm:cobordismringstructure} using
     Theorem~\ref{thm:basiscobordismring}.
-  \item By \ref{item:generatorscobordimsring}, the bordism
+  \item By \ref{item:generatorscobordimsring}, the cobordism
     class of a manifold $W$ of dimension $k$ is an indecomposable
     element of $\c_*$ if and only if its unique representation by
     basis elements $[V_\Part]$ contains as a summand the unique
@@ -885,7 +885,7 @@ the cohomology ring of its factor.
   relation $c\otimes N=0$.
   For readability skip $1\otimes$ and $\otimes d(1)$ in element
   notation wherever it is clear to which part the summand belongs.
-  Further it fulfills
+  Further it fulfils
   \begin{enumerate}
   \item
     For $\pi\colon \Twistedprodcovspace{k}{X}\to\Twistedprod{k}{X}$
@@ -1037,7 +1037,7 @@ direct consequence of the following Lemma.
   Let $M$, $n$, $k$ be as in
   \autoref{thm:twistedprod:indecompcriterion} above.
   Then there is a map $f\colon X\to M$ of spaces which is injective on
-  cohomology and fulfills
+  cohomology and fulfils
   \begin{gather*}
     \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
     = \binom{k+n-1}{n} \cdot c^k
@@ -1051,7 +1051,7 @@ direct consequence of the following Lemma.
   are well-known, take $f$ to be a reduction of $\T M$ to line bundles
   using the splitting principle.
   \Idest choose a space $X$ and a map $f\colon X\to M$ which is
-  injective on cohomology and fulfills
+  injective on cohomology and fulfils
   $\pb f \T M = \xi_1\oplus\dotsb\oplus\xi_n$ for line bundles
   $\xi_i$ over $X$, each with total Stiefel-Whitney class
   $\W{\xi_i}=1+\alpha_i$.
@@ -1103,7 +1103,7 @@ direct consequence of the following Lemma.
   The key point now qualifying $f$ for the proof, is that both $f$ and
   thus by
   \itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
-  also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfill
+  also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfil
   \begin{enumerate}
   \item with $\W{\pb f\T M} = \prod_{i=1}^n (1+\alpha_i)$ that
     \begin{gather}\label{eq:lem:twistedprod:indecompcriterion:sM}
@@ -1206,11 +1206,11 @@ direct consequence of the following Lemma.
 By Theorem~\autoref{thm:twistedprod:indecompcriterion}, one has to
 both choose
 \begin{itemize}
-\item the dimension cobination, as well as
+\item the dimension combination, as well as
 \item the factor (see later)
 \end{itemize}
 of a twisted product correctly, in order to obtain the representative
-of an indecomposable cobordims class.
+of an indecomposable cobordism class.
 For the correct dimension choice note, that any integer $m$ with
 binary representation
 \begin{gather*}
@@ -1274,7 +1274,7 @@ true up to cobordism.
 Also recall, that if one can show the conjecture's statement is stable
 under the ring operations of the cobordism ring
 $\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
-generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfills the conjecture.
+generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfils the conjecture.
 Thus, for the proof one needs to construct a set of manifolds
 $(\G i|i\neq2^r-1)$ that both fulfil the conjecture and represent
 indecomposable cobordism classes.
