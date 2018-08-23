@@ -1,18 +1,168 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
-% -- Chapter 2: Homotopical Formulation of the Immersion Problem --
+% -- Chapter 2: Homotopy Theoretical Formulation of the Immersion Problem --
 % 
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\chapter{Homotopical Formulation of the Immersion Problem}
+\chapter{Homotopy Theoretical Formulation of the Immersion Problem}
 % Explain carefully how the immersion problem can be reformulated purely
 % in terms of homotopy theory. [immersionconj] (The necessary results from differential
-% topology and Hirsch-Smale theory should be stated clearly but may be presented without proofs.)
+% topology and Hirsch-Smale theory should be stated clearly but may be
+% presented without proofs.)
+
+  
+Immersions are merely a special case of monomorphisms of vector
+bundles. So, recall that
+a morphism $(\xi_1\colon\E_1\to X_1)\to(\xi_2\colon E_2\to X_2)$
+of vector bundles over different spaces is a map $F\colon E_1\to E_2$
+that covers its restriction to the zero section, \idest it makes the
+following diagram commute
+\begin{center}
+  \begin{tikzcd}
+    E_1 \ar[r,"F"]\ar[d, "\xi_1"]
+    & E_2 \ar[d, "\xi_2"]
+    \\
+    X_1 \ar[r, "F|_{\zerosec{\xi_1}}"]
+    & X_2
+  \end{tikzcd}.
+\end{center}
+Further remember the fact that such a morphism is a monomorphism in
+the category of vector bundles $\Vect$, if and only if its restriction
+to each fibre is injective.
+\begin{Def}
+  A (smooth) map $f\colon M\to N$ of smooth manifolds is called
+  an \emph{immersion} if its differential
+  $\Diff f\colon\T M\to\T N$ is a monomorphism of vector
+  bundles.
+\end{Def}
+Note that not all vector bundle monomorphisms between tangent bundles
+of smooth manifolds need to be 
+
+Later, an important result due to Hirsch and Smale will be needed that
+relates spaces of immersions and vector bundle monomorphisms.
+For the formulation, one has to equip the respective sets with a
+topology as follows.
+\begin{Def}
+  Let $M$, $N$ be closed smooth manifolds of dimensions $\dim M < \dim N$.
+  \begin{enumerate}
+  \item % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
+  \item
+    Equip the set of all vector bundle monomorphisms from $\xi_1$ to
+    $\xi_2$ with the compact-open topology, and denote that space by
+    $\Mono{\xi_1}{\xi_2}$.
+  \item % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
+    The set $\Imm M N$ of all immersions from $M$ to $N$ injects
+    into $\Mono{\T M}{\T N}$ by taking the differential
+    $f\mapsto\Diff f$.
+    Equip $\Imm M N$ in the following with the subspace topology.
+    This results in the weak topology described in
+    \cite[Section~2.1]{hirsch}, which equals the Whitney
+    $C^1$-topology since $M$ was chosen compact.
+    By the way, $\Imm M N$ is open in $C^1(M,N)$ equipped with the
+    Whitney $C^1$-topology
+    (see \cite[Section~2.1, Theorem~1.1]{hirsch}),
+    and thus not a discrete space.
+  \end{enumerate}
+\end{Def}
+
+
+\begin{Thm}\label{thm:immersionconj}
+  For $n\in\Nat$, every closed, smooth, $n$-dimensional manifold
+  immerses into $\R^{2n-\alpha(n)}$, where $\alpha(n)$ is defined as
+  the minimal number of summands in any binary representation of $n$.
+\end{Thm}
+
+\begin{Rem}[Stable Normal Bundle] % TODO
+  
+\end{Rem}
+
+\begin{Thm}\label{thm:immersionconj:equalities}
+  Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
+  The following statements are equal.
+  \begin{enumerate}
+  \item\label{item:immersionconj:1} $M$ immerses into $\R^{n+k}$.
+  \item\label{item:immersionconj:2} There is a (normal) $k$-dimensional vector bundle
+    $\N{}\colon\E{\N{}}\to M$ over $M$ with
+    \begin{gather*}
+      \N{}\oplus\T M\cong\trivbdl^{n+k}
+      \;.
+    \end{gather*}
+  \item\label{item:immersionconj:3}
+    For the map $\N M\colon M\to\B\Orth$ characterising the stable
+    normal vector bundle over $M$
+    there is a lift $\N{}\colon M\to\B\Orth(k)$ making the following
+    diagram commute up to homotopy
+    \begin{center}
+      \begin{tikzcd}
+        M
+        \ar[r, "\N{}"]
+        \ar[dr, "\N{M}"{left}, bend right]
+        & \BO(k) \ar[d, "\incl"] \\
+        & \BO
+      \end{tikzcd}
+    \end{center}
+  \end{enumerate}
+\end{Thm}
+From a homotopy theoretical viewpoint, one obviously is most
+interested in statement \ref{item:immersionconj:3}.
+So, before passing over to the proof, have a look at some first
+advantages of this approach.
+
+For one, this formulation points out a certain homotopy invariance of
+the immersion problem, namely an $n$-manifold already satisfies the
+immersion property if it is \emph{homotopic} to one doing so. 
+The interesting intermediate result that every $n$-manifold is
+at least \emph{cobordant} to one fulfilling the conjecture's property
+will be discussed in \autoref{chap:brown}.
+
+Moreover as a second major advantage, statement
+\ref{item:immersionconj:3} directly puts the immersion problem in the
+setting of characteristic classes, more precisely Stiefel-Whitney
+classes, which provides a formidable further arsenal of tooling.
+As an example, the motivation for the exact value of the immersion
+dimension will be deduced in \autoref{chap:massey}.
+
+\begin{proof}[proof of \autoref{thm:immersionconj:equalities}]
+  Using Steenrod's classification theorem
+  \itemref{def:charcls}{item:classificationthm} 
+  and the properties of the stable normal bundle of a manifold
+  directly yields the equality of \ref{item:immersionconj:2} and
+  \ref{item:immersionconj:3}.
+
+  The trickier part is to relate \ref{item:immersionconj:1} and
+  \ref{item:immersionconj:2}, even though it is easily seen that
+  \ref{item:immersionconj:1} implies \ref{item:immersionconj:2} by
+  simply taking $\N{}$ to be the normal bundle of the immersion from
+  \ref{item:immersionconj:1}. The converse direction however heavily
+  relies on the following major result in immersion theory by Hirsch
+  using preliminary work of Smale
+  \cite[Sections~5 and 6]{hirschimmersions}.
+  
+  \begin{Thm}[Hirsch-Smale]
+    \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
+    Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
+    Then the differential map
+    $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
+    induces isomorphisms on the homotopy groups.
+    Especially,
+    \begin{gather*}
+      \Diff_*\colon
+      \pi_*(\Imm M N) \overset\sim\longto \pi_*(\Mono{\T M}{\T N})
+    \end{gather*}
+    describes an isomorphism of path-connected components.
+    % Original formulation by Hirsch in [hirschimmersions], sec. 5:
+    Therefore, every vector bundle monomorphism
+    $F\colon\T M\to\T N$ is homotopic (through vector bundle
+    monomorphisms) to a monomorphism which is the differential
+    $\Diff f$ of a smooth map $f\colon M\to N$, \idest of an
+    immersion.
+  \end{Thm}
+\end{proof}
 
 
 %%% Local Variables:

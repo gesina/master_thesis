@@ -196,6 +196,8 @@
 \newcommand*{\immto}{\hookrightarrow} % immersion arrow
 \newcommand*{\immlongto}{\lhook\joinrel\longrightarrow} % long immersion arrow
 
+\newcommand*{\Diff}{\mathrm{D}} % differential of a map of manifolds
+
 % spaces
 \newcommand*{\Sph}{S} % sphere symbol
 \newcommand*{\Sphere}[1]{\Sph^{#1}} % {#1}-sphere
@@ -209,7 +211,7 @@
 \newcommand*{\EG}{\E{\mathrm{G}}} % total space of the universal bundle
 \newcommand*{\GL}[1]{\mathrm{GL}_{#1}(\R)} % general linear group over \R
 \newcommand*{\Orth}{O} % orthogonal matrices
-\newcommand*{\BO}{\mathrm{BO}} % classifying space of O-bundles
+\newcommand*{\BO}{\B\Orth} % classifying space of O-bundles
 \newcommand*{\pt}{*} % single point space
 \newcommand*{\zeroset}{\{0\}} % set containing only 0
 \newcommand*{\Boundary}[1]{\partial{#1}} % boundary of a space
@@ -218,6 +220,8 @@
 \newcommand*{\Top}{\mathrm{Top}} % category of topological spaces
 \newcommand*{\Vect}{\mathrm{Vect}} % category of vector bundles
 \newcommand*{\Hom}[1]{\mathrm{Hom}_{#1}} % #1-module homomorphisms
+\newcommand*{\Mono}[2]{\mathrm{Mono}({#1},{#2})} % space of all vector bundle monomorphisms from #1 to #2 with compact-open topology
+\newcommand*{\Imm}[2]{\mathrm{Imm}({#1},{#2})} % subspace of all immersions from #1 to #2 within \Mono(\T #1,\T #2)
 
 % (co)homology classes/maps
 \renewcommand*{\H}{H} % co-/homology (overrides 'double accute')

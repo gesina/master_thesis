@@ -161,7 +161,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Def}
 
 \section{Characteristic Classes}
-\begin{Def}[Classifying Spaces]\label{def:charcls}
+\begin{LemDef}[Classifying Spaces]\label{def:charcls}
   \optcite[Chapter~14.4]{tomdieck}
   \begin{enumerate}
   \item Any topological group $G$ admits a contractible space $\EG$ with a
@@ -177,7 +177,8 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \item\label{item:classificationthm}
     $\gamma^G$ fulfils the following universal property:
     For any space $X$ admitting the homotopy type of a CW-complex
-    there is a bijection between $[X,\BG]$ and the isomorphism classes of
+    there is a bijection between $[X,\BG]$, which denotes the homotopy
+    classes of maps from $X$ to $\BG$, and the isomorphism classes of
     principal $G$-bundles over $X$, given by
     \begin{gather*}
       \left(f\colon X\to\BG \right) \longmapsto \pb f \gamma^G
@@ -188,11 +189,12 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
     Steenrod's classification theorem
     \cite[Theorem~14.4.1]{tomdieck}.
     \optcite[Theorem~1.4, p.~75]{immersionconj}
-  \item There is a natural equivalence between the category of
+  \item\label{item:vbcharacterisation}
+    There is a natural equivalence between the category of
     $n$-dimensional vector bundles $\Vect$ and that of principal
     $\Orth(n)$- respectively $\GL n$-bundles.
   \end{enumerate}
-\end{Def}
+\end{LemDef}
 
 \begin{Def}[Characteristic Class]
   A characteristic class
@@ -231,8 +233,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   identified with its corresponding cohomology class.
 \end{Rem}
 
-\begin{Rem}
-  % TODO: Why are char classes nice idea?
+\begin{Rem} % TODO: Why are char classes nice idea?
 \end{Rem}
 
 \subsection{Thom Classes}
