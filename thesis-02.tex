@@ -55,6 +55,9 @@ topology as follows.
     Equip the set of all vector bundle monomorphisms from $\xi_1$ to
     $\xi_2$ with the compact-open topology, and denote that space by
     $\Mono{\xi_1}{\xi_2}$.
+    Note that a path between monomorphisms $F_1$ and $F_2$ in the
+    space $\Mono \xi \eta$ is an homotopy from $F_1$ to $F_2$ which is
+    a vector bundle monomorphism in each stage.
   \item % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
     The set $\Imm M N$ of all immersions from $M$ to $N$ injects
     into $\Mono{\T M}{\T N}$ by taking the differential
@@ -77,39 +80,83 @@ topology as follows.
   the minimal number of summands in any binary representation of $n$.
 \end{Thm}
 
-\begin{Rem}[Stable Normal Bundle] % TODO
-  
-\end{Rem}
-
-\begin{Thm}\label{thm:immersionconj:equalities}
-  Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
-  The following statements are equal.
+In order to reformulate the above theorem, recall the notion of the
+stable normal bundle. 
+\begin{LemDef}
+  Let $M^n$ be a smooth manifold.
   \begin{enumerate}
-  \item\label{item:immersionconj:1} $M$ immerses into $\R^{n+k}$.
-  \item\label{item:immersionconj:2} There is a (normal) $k$-dimensional vector bundle
+  \item
+    The \emph{normal bundle $\N\iota$ of an embedding}
+    $\iota\colon M^n\to N^{n+r}$ of manifolds is the $r$-dimensional
+    quotient bundle $\pb\iota\T N/\T M$, respectively the one
+    fulfilling $\N\iota\oplus\T M\cong\pb\iota\T N$.
+  \item 
+    Call normal bundles of embeddings
+    $\iota_1\colon M\to\R^{n+r}$, $\iota_2\colon M\to\R^{n+r+s}$
+    stably isomorphic in case
+    $\N{\iota_1}\oplus\trivbdl^{s}\cong\N{\iota_1}$.
+    This also implies that the corresponding classifying map $f_2$ of
+    $\N{\iota_2}$ factors over the classifying map $f_1$ of
+    $\N{\iota_1}$ as   
+    \begin{center}
+      \begin{tikzcd}
+        M \ar[r, "f_1"]
+        \ar[dr, bend right, "f_2"{left}]
+        & \B\Orth(r)
+        \ar[d, "\incl"]
+        \\
+        & \B\Orth(r+s)
+      \end{tikzcd}
+      and that their classifying maps into $\B\Orth$ agree.
+    \end{center}
+  \item 
+    By Whitney's Embedding Theorem % TODO: ref [Adachi, Embeddings and Immersions], Thm 2.2, p.46
+    it is known that such embeddings exist.
+    Further, by \forexample the General Position theorem
+    \cite[Chap.~2]{embeddingsummary}
+    it is known that for sufficiently large $k\in\Nat$ all embeddings
+    $M\to\R^{n+k}$ are isotopic, \idest homotopic through embeddings,
+    and hence all their normal bundles are isomorphic.
+    Therefore, the above equivalence relation yields a unique class
+    $\N M$ called the \emph{stable normal bundle of $M$}.
+    As the classifying maps into $\BO$ agree for all higher
+    dimensional normal bundles, this map can serve as classifying map
+    for the stable normal bundle.
+ \end{enumerate}
+\end{LemDef}
+
+\begin{Thm}\label{thm:immersionconj:equivalences}
+  Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
+  The following statements are equivalent.
+  \begin{enumerate}
+  \item\label{item:immersionconj:1}
+    $M$ immerses into $\R^{n+k}$.
+  \item\label{item:immersionconj:2}
+    There is a vector bundle monomorphism $F\colon\T M\to\T{\R^{n+k}}$.
+  \item\label{item:immersionconj:3}
+    There is a $k$-dimensional vector bundle
     $\N{}\colon\E{\N{}}\to M$ over $M$ with
     \begin{gather*}
       \N{}\oplus\T M\cong\trivbdl^{n+k}
       \;.
     \end{gather*}
-  \item\label{item:immersionconj:3}
+  \item\label{item:immersionconj:4}
     For the map $\N M\colon M\to\B\Orth$ characterising the stable
-    normal vector bundle over $M$
-    there is a lift $\N{}\colon M\to\B\Orth(k)$ making the following
-    diagram commute up to homotopy
+    normal bundle over $M$ there is a lift $\N{}\colon M\to\B\Orth(k)$
+    making the following diagram commute up to homotopy
     \begin{center}
       \begin{tikzcd}
         M
         \ar[r, "\N{}"]
         \ar[dr, "\N{M}"{left}, bend right]
-        & \BO(k) \ar[d, "\incl"] \\
+        & \BO(k) \ar[d, "\incl", hookrightarrow] \\
         & \BO
       \end{tikzcd}
     \end{center}
   \end{enumerate}
 \end{Thm}
 From a homotopy theoretical viewpoint, one obviously is most
-interested in statement \ref{item:immersionconj:3}.
+interested in statement \ref{item:immersionconj:4}.
 So, before passing over to the proof, have a look at some first
 advantages of this approach.
 
@@ -121,47 +168,95 @@ at least \emph{cobordant} to one fulfilling the conjecture's property
 will be discussed in \autoref{chap:brown}.
 
 Moreover as a second major advantage, statement
-\ref{item:immersionconj:3} directly puts the immersion problem in the
+\ref{item:immersionconj:4} directly puts the immersion problem in the
 setting of characteristic classes, more precisely Stiefel-Whitney
 classes, which provides a formidable further arsenal of tooling.
 As an example, the motivation for the exact value of the immersion
 dimension will be deduced in \autoref{chap:massey}.
 
-\begin{proof}[proof of \autoref{thm:immersionconj:equalities}]
-  Using Steenrod's classification theorem
-  \itemref{def:charcls}{item:classificationthm} 
-  and the properties of the stable normal bundle of a manifold
-  directly yields the equality of \ref{item:immersionconj:2} and
-  \ref{item:immersionconj:3}.
-
-  The trickier part is to relate \ref{item:immersionconj:1} and
-  \ref{item:immersionconj:2}, even though it is easily seen that
-  \ref{item:immersionconj:1} implies \ref{item:immersionconj:2} by
-  simply taking $\N{}$ to be the normal bundle of the immersion from
-  \ref{item:immersionconj:1}. The converse direction however heavily
-  relies on the following major result in immersion theory by Hirsch
-  using preliminary work of Smale
-  \cite[Sections~5 and 6]{hirschimmersions}.
-  
-  \begin{Thm}[Hirsch-Smale]
-    \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
-    Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
-    Then the differential map
-    $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
-    induces isomorphisms on the homotopy groups.
-    Especially,
-    \begin{gather*}
-      \Diff_*\colon
-      \pi_*(\Imm M N) \overset\sim\longto \pi_*(\Mono{\T M}{\T N})
-    \end{gather*}
-    describes an isomorphism of path-connected components.
-    % Original formulation by Hirsch in [hirschimmersions], sec. 5:
-    Therefore, every vector bundle monomorphism
-    $F\colon\T M\to\T N$ is homotopic (through vector bundle
-    monomorphisms) to a monomorphism which is the differential
-    $\Diff f$ of a smooth map $f\colon M\to N$, \idest of an
-    immersion.
-  \end{Thm}
+\begin{proof}[proof of \autoref{thm:immersionconj:equivalences}]
+  \begin{description}
+  \item[\ref{item:immersionconj:3}$\Leftrightarrow$\ref{item:immersionconj:4}:]
+    Using Steenrod's classification theorem
+    \itemref{def:charcls}{item:classificationthm} 
+    and the properties of the stable normal bundle of a manifold
+    directly yields the equivalence of \ref{item:immersionconj:3} and
+    \ref{item:immersionconj:4}.
+  \item[\ref{item:immersionconj:2}$\Leftrightarrow$\ref{item:immersionconj:3}:]
+    In order to get from a vector bundle monomorphism
+    $F\colon M\to\R^{n+k}$ to a normal bundle, first note that the
+    trivial bundle $\T{\R^{n+k}}$ is easily equipped with an
+    orthonormal frame. Thus, one can consider the fibre-wise orthogonal
+    complement $\N{}$ of the image $F(\T M)$ which is a vector bundle over
+    $F(M)\subset\R^{n+k}$. Its pullback to $M$ along
+    $F|_{\zerosec{\T M}}$ obviously fulfils the required property of
+    \ref{item:immersionconj:3}.
+    
+    Conversely, when starting with some rank $k$ vector bundle $\N{}$
+    such that $\N{}\oplus\T M\cong\trivbdl^{n+k}$, there is a vector
+    bundle monomorphism $\N{}\to\trivbdl$ over $M$. Then the
+    following chain of vector bundle morphisms
+    \begin{center}
+      \begin{tikzcd}
+        \T M \ar[d]
+        \ar[r, hookrightarrow]
+        & M\times\R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \ar[r]
+        & \pt\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \ar[r, hookrightarrow]
+        & \R^{n+k}\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \\
+        M
+        \ar[r,equals]
+        & M
+        \ar[r]
+        & \pt
+        \ar[r, hookrightarrow]
+        & \R^{n+k}
+      \end{tikzcd}
+    \end{center}
+    is fibre-wise injective in each stage, and hence a monomorphism as
+    was needed.
+  \item[\ref{item:immersionconj:1}$\Leftrightarrow$\ref{item:immersionconj:2}:]
+    The tricky part is to relate \ref{item:immersionconj:1} and
+    \ref{item:immersionconj:2}, even though it is easily seen that
+    \ref{item:immersionconj:1} implies \ref{item:immersionconj:2} by
+    simply taking $F$ to be the differential $\Diff f$ of the
+    immersion from \ref{item:immersionconj:1}.
+    The converse direction however relies on the following major
+    result in immersion theory by Hirsch using preliminary work 
+    of Smale
+    \cite[Sections~5 and 6]{hirschimmersions}.
+    \begin{Thm}[Hirsch-Smale]
+      \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
+      Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
+      Then the differential map
+      $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
+      induces isomorphisms on the homotopy groups.
+      Especially,
+      \begin{gather*}
+        \Diff_*\colon
+        \pi_1(\Imm M N) \overset\sim\longto \pi_1(\Mono{\T M}{\T N})
+      \end{gather*}
+      describes an isomorphism of path-connected components.
+      % Original formulation by Hirsch in [hirschimmersions], sec. 5:
+      Therefore, every vector bundle monomorphism
+      $F\colon\T M\to\T N$ is homotopic (through vector bundle
+      monomorphisms) to a monomorphism which is the differential
+      $\Diff f$ of a smooth map $f\colon M\to N$, \idest of an
+      immersion.
+    \end{Thm}
+    Thus, any monomorphism of vector bundles over smooth, closed
+    manifolds $M$ and $N$ implies the existence of an immersion from $M$
+    to $N$.
+    In order to apply this to our problem for some smooth closed
+    $n$-manifold $M$ and $\R^{n+k}$ which is not compact, choose
+    $N=\Sphere{n+k}$. As $\dim M<n+k$ by assumption, every immersion
+    $M\to\Sphere{n+k}$ misses a point on $\Sphere{n+k}$ and hence
+    factors over an immersion $M\to\R^{n+k}$.
+    This then shows that also \ref{item:immersionconj:2} implies
+    \ref{item:immersionconj:1} which makes them equivalent.
+  \end{description}
 \end{proof}
 
 
