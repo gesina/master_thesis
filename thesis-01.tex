@@ -9,8 +9,103 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Preliminaries}
-\section{Steenrod Squares}
+\begin{itemize} % TODO: Chapter overview
+\item Introduce immersions and the normal bundle
+  (will be connected for homotopy theoretical investigation in Chap 2)
+\item Introduce Steenrod squares, Thom classes, Thom isos
+\item Introduce concept of characteristic classes
+\item Introduce SW classes with major properties
+\item Show SW classes are combi of the above
+  (needed for Wu's resp. Massey's Theorem)
+\item Later: Further char. classes 
+\end{itemize}
 
+\section{Immersions and Normal Bundles}
+% TODO: section overview
+Immersions are merely a special case of monomorphisms of vector
+bundles. So, recall that a morphism
+$(\xi_1\colon\E_1\to X_1)\to(\xi_2\colon E_2\to X_2)$ 
+of vector bundles over different spaces is a map $F\colon E_1\to E_2$
+that covers its restriction to the zero section, \idest it makes the
+following diagram commute
+\begin{center}
+  \begin{tikzcd}
+    E_1 \ar[r,"F"]\ar[d, "\xi_1"]
+    & E_2 \ar[d, "\xi_2"]
+    \\
+    X_1 \ar[r, "F|_{\zerosec{\xi_1}}"]
+    & X_2
+  \end{tikzcd}.
+\end{center}
+Further remember the fact that such a morphism is a monomorphism in
+the category of vector bundles $\Vect$, if and only if its restriction
+to each fibre is injective.
+\begin{Def}
+  A smooth map $f\colon M\to N$ of smooth manifolds is called
+  an \emph{immersion}, written $M\immto N$, if its differential
+  $\Diff f\colon\T M\to\T N$ is a monomorphism of vector
+  bundles.
+\end{Def}
+It is easy to see that in general not all vector bundle monomorphisms
+between tangent bundles of smooth manifolds need to be the
+differential of an immersion. However, taking the differential gives a
+canonical inclusion of the set of immersions into the set of vector
+bundle monomorphisms.
+Later, an important result due to Hirsch and Smale will be needed that
+relates spaces of immersions and vector bundle monomorphisms homotopy
+theoretically.
+
+Another major property of immersions which will finally make it
+possible to translate the existence of an immersion into a homotopy
+theoretical statement, is that every immersion gives rise to a normal
+bundle as follows.
+\begin{LemDef}
+  Let $M^n$ be a smooth manifold.
+  \begin{enumerate}
+  \item
+    The \emph{normal bundle $\N{\emb}$ of an immersion}
+    $\imm\colon M^n\immto N^{n+r}$ of manifolds is the $r$-dimensional
+    quotient bundle $\pb{\imm}\T N/\T M$, respectively the one
+    fulfilling $\N{\imm}\oplus\T M\cong\pb{\imm}\T N$.
+    This is well-defined as by definition the fibre-wise rank of the
+    immersion's differential is constantly $\dim M$.
+  \item
+    Call normal bundles of immersions
+    $\imm_1\colon M\immto\R^{n+r}$, $\imm_2\colon M\immto\R^{n+r+s}$
+    stably isomorphic in case
+    $\N{\imm_1}\oplus\trivbdl^{s}\cong\N{\imm_1}$.
+    This also implies that the corresponding classifying map $f_2$ of
+    $\N{\imm_2}$ factors over the classifying map $f_1$ of
+    $\N{\imm_1}$ as   
+    \begin{center}
+      \begin{tikzcd}
+        M \ar[r, "f_1"]
+        \ar[dr, bend right, "f_2"{left}]
+        & \B\Orth(r)
+        \ar[d, "\incl"]
+        \\
+        & \B\Orth(r+s)
+      \end{tikzcd}
+      and that their classifying maps into $\B\Orth$ agree.
+    \end{center}
+  \item 
+    By Whitney's Embedding Theorem % TODO: ref [Adachi, Embeddings and Immersions], Thm 2.2, p.46
+    it is known that such embeddings exist.
+    Further, by \forexample the General Position theorem
+    \cite[Chap.~2]{embeddingsummary}
+    it is known that for sufficiently large $k\in\Nat$ all embeddings
+    $M\to\R^{n+k}$ are isotopic, \idest homotopic through embeddings,
+    and hence all their normal bundles are isomorphic.
+    Therefore, the above equivalence relation yields a unique class
+    $\N M$ called the \emph{stable normal bundle of $M$}.
+    As the classifying maps into $\BO$ agree for all higher
+    dimensional normal bundles, this map can serve as classifying map
+    for the stable normal bundle.
+ \end{enumerate}
+\end{LemDef}
+
+
+\section{Steenrod Squares}
 The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1]{steenrodepstein}.
 \begin{Def}[Steenrod Squares]\label{def:sq}
   The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
@@ -208,7 +303,6 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
     \Cl\colon [-, \BG] \Longrightarrow \H^i(-; R)\;.
   \end{gather*}
 \end{Def}
-
 \begin{Rem}
   By Brown's representation theorem \optcite[Chap.~4.E]{hatcher}
   $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
@@ -526,28 +620,28 @@ Normal bundles give an interesting, more geometrical
 description of the fundamental class of a manifold:
 \begin{Lem}\label{lem:thomisofundcl}
   Let $M$ be an $n$-dimensional compact manifold, and
-  $i\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
-  normal bundle $\N M$ of rank $\rkk>0$.
+  $\emb\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
+  normal bundle $\N{\emb}$ of rank $\rkk>0$.
   The normal bundle gives rise to an embedding
-  $e\colon \E{\N M}\to\Sphere{n+\rkk}$ of its total space
-  as a tubular neighbourhood $e(\E{\N M})$ of $i(M)$ into the
+  $e\colon \E{\N{\emb}}\to\Sphere{n+\rkk}$ of its total space
+  as a tubular neighbourhood $e(\E{\N{\emb}})$ of $i(M)$ into the
   $(n+\rkk)$-sphere.
   The quotient map
   \begin{gather*}
     \collapse\colon
     \Sphere{n+\rkk}
-    \to \Sphere{n+\rkk}/\left( \Sphere{n+\rkk}\setminus e(\E{\N M}) \right)
-    \cong \Discbdl{\N M} / \Spherebdl{\N M}
-    \cong \Thomspace{\N M}
+    \to \Sphere{n+\rkk}/\left( \Sphere{n+\rkk}\setminus e(\E{\N{\emb}}) \right)
+    \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
+    \cong \Thomspace{\N{\emb}}
   \end{gather*}
-  that collapses every point outside of $e(\E{\N M})$ to the infinity
+  that collapses every point outside of $e(\E{\N{\emb}})$ to the infinity
   point fulfils
   \begin{center}
     \begin{tikzcd}[row sep=0pt]
       \H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
-      & \H_{n+\rkk}(\Thomspace{\N M}) \ar [r, "\pf \incl"]
-      & \relH_{n+\rkk}(\Thomspace{\N M})
-      %\coloneqq \H_{n+\rkk}(\Thomspace{\N M}, \infty)
+      & \H_{n+\rkk}(\Thomspace{\N{\emb}}) \ar [r, "\pf \incl"]
+      & \relH_{n+\rkk}(\Thomspace{\N{\emb}})
+      %\coloneqq \H_{n+\rkk}(\Thomspace{\N{\emb}}, \infty)
       \ar [r, "\pf t"{above}, "\cong"{below}]
       & \H_{n}(M)% \cong \Zmod2
       \\
@@ -555,13 +649,13 @@ description of the fundamental class of a manifold:
       &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
     \end{tikzcd}
   \end{center}
-  where $\incl\colon(\Thomspace{\N M},\emptyset)\to(\Thomspace{\N M}, \{\infty\})$ is the
+  where $\incl\colon(\Thomspace{\N{\emb}},\emptyset)\to(\Thomspace{\N{\emb}}, \{\infty\})$ is the
   canonical inclusion of pairs of spaces.
   This holds for any choice of embeddings $i$ and $e$.
   \begin{proof}
     First note that by the long exact sequence of the pair 
-     $(\Thomspace{\N M}, \{\infty\})$ the map
-     $\pf \incl\colon \H_r(\Thomspace{\N M})\to \relH(\Thomspace{\N M})$
+     $(\Thomspace{\N{\emb}}, \{\infty\})$ the map
+     $\pf \incl\colon \H_r(\Thomspace{\N{\emb}})\to \relH(\Thomspace{\N{\emb}})$
     is an isomorphism in every degree $r>0$. The proof will be
     conducted in two steps, first proving the connected case, then
     the general one.
@@ -570,8 +664,8 @@ description of the fundamental class of a manifold:
     \item[Connected case:]
       Assume that $M$ is connected.
       Then
-      $\H_{n+k}(\Thomspace{\N M})
-      \cong\relH_r(\Thomspace{\N M})
+      $\H_{n+k}(\Thomspace{\N{\emb}})
+      \cong\relH_r(\Thomspace{\N{\emb}})
       \cong \H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
       the Thom isomorphism, and by connectedness of $M$.
       Thus, one only has to show that
@@ -579,7 +673,7 @@ description of the fundamental class of a manifold:
       is non-zero.    
       The trick now is to reduce once again to the homology of the
       sphere:
-      Locally around any point $p\in\Thomspace{\N M}\setminus\{\infty\}$ the
+      Locally around any point $p\in\Thomspace{\N{\emb}}\setminus\{\infty\}$ the
       collapse map $\collapse$ is by definition a
       homeomorphism. Therefore, on homology there is the following 
       commutative diagram
@@ -589,13 +683,13 @@ description of the fundamental class of a manifold:
           \ar[d,mapsto]\ar[r,phantom,"\in"{near start}]
           &\H_{n+\rkk}(\Sphere{n+\rkk})
           \ar[r, "\pf\incl\pf\collapse"]\ar[d,"\pf\incl"]
-          &\relH_{n+\rkk}(\Thomspace{\N M})
+          &\relH_{n+\rkk}(\Thomspace{\N{\emb}})
           \ar[d,"\pf\incl"]\\
           \left.\fundcl{\Sphere{n+\rkk}}\right|_{\collapse^{-1}(p)}
           \ar[r,phantom,"\in"{near start}]
           &\H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
           \ar[r,"\pf\collapse"{above},"\cong"{below}]
-          &\H_{n+\rkk}(\Thomspace{\N M}, \Thomspace{\N M}\setminus p)
+          &\H_{n+\rkk}(\Thomspace{\N{\emb}}, \Thomspace{\N{\emb}}\setminus p)
         \end{tikzcd}
       \end{center}
       By definition of the fundamental class $\fundcl{\Sphere{n+\rkk}}$,
@@ -604,37 +698,38 @@ description of the fundamental class of a manifold:
       $\pf\collapse\left(\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}\right)
       = \left(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\right)|_p$.
       However, then $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\in
-      \H_{n+\rkk}(\Thomspace{\N M})$
+      \H_{n+\rkk}(\Thomspace{\N{\emb}})$
       cannot be zero as was to be shown.
 
     \item[General case] In case $M=\coprod_i M_i$ is the disjoint sum of its connected
       components $M_i$, $i\in I$ for some index set $I$, note the following:
       \begin{itemize}
-      \item $\E{\N M} = \coprod_i\E{\N{M_i}}$,
-        where $\N{M_i}\coloneqq\N M|_{M_i}$.
-      \item Thus, $\Thomspace{\N M} = \bigvee_i\Thomspace{\N{M_i}}$ using the
+      \item $\E{\N{\emb}} = \coprod_i\E{\N{\emb_i}}$,
+        where $\emb_i\coloneqq\emb|_{M_i}$.
+        % where $\N{M_i}\coloneqq\N{\emb}|_{M_i}$.
+      \item Thus, $\Thomspace{\N{\emb}} = \bigvee_i\Thomspace{\N{\emb_i}}$ using the
         collapse maps
         \begin{gather*}
           \collapse_i\colon
           \Sphere{n+\rkk}
           \overset{\collapse}\longto
-          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{M}})\right)
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb}})\right)
           \overset{\proj}\longto
-          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{M_i}})\right)
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb_i}})\right)
         \end{gather*}
         for the disjoint parts,
         and $\collapse=\bigvee_i\collapse_i$.
-      \item Thus, $\H_r(\Thomspace{\N M}) = \prod_i \H_r(\Thomspace{\N{M_i}})$ for
+      \item Thus, $\H_r(\Thomspace{\N{\emb}}) = \prod_i \H_r(\Thomspace{\N{\emb_i}})$ for
         all degrees $r$, $\fundcl M = (\fundcl{M_i})_i$, and
         $\pf\collapse = \prod_i\pf{\collapse_i}$.
-        % \item Thus, $\H_{n+\rkk}(\Thomspace{\N M})
+        % \item Thus, $\H_{n+\rkk}(\Thomspace{\N{\emb}})
         %   \cong \H_{n+\rkk}(M)\cong\prod_i \Zmod2$, and $\fundcl{M} = (1)_i$.
       \end{itemize}
       With this one sees directly from the definition of the fundamental
       class of a manifold that
       $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}} = \fundcl M$
       if and only if for all connected component manifolds $M_i$ holds
-      $\pf\incl\pf{\collapse_i}\fundcl{\Sphere{n+\rkk}} = \fundcl M_i$
+      $\pf\incl\pf{\collapse_i}\fundcl{\Sphere{n+\rkk}} = \fundcl{M_i}$
       which is true by the first case.
       \qedhere
     \end{description}
@@ -713,16 +808,22 @@ description of the fundamental class of a manifold:
       This follows directly from the construction for the existence of
       the Stiefel-Whitney classes.
     \end{proof}
-  \item $\w{i}{\trivbdl}=0$ for $i>0$, and one immediately concludes
+  \item\label{item:swoftrivbdl} $\w{i}{\trivbdl}=0$ for $i>0$, and one immediately concludes
     from multiplicativity:
     \begin{enumerate}
-    \item The Stiefel-Whitney classes are stable, \idest
+    \item\label{item:swclassesstable} The Stiefel-Whitney classes are stable, \idest
       $\w{i}{\xi\oplus\trivbdl} = \w{i}{\xi}$.
+      Thus, for a manifold $M^n$, all normal bundles $\N{\emb}$ of
+      embeddings $\emb\colon M\to\R^{n+k+r}$ share the same
+      Stiefel-Whitney classes. These are also the ones obtained by
+      pullback along the classifying map of the stable normal bundle
+      of $M$, written $\W{\N M}$ accordingly.
     \item\label{item:wuclassmfdinverse}
       If $\xi\oplus\eta = \trivbdl$, $\w{i}{\xi}\cup\w{i}{\eta}=1$.
-      Especially, for any choice of embedding with normal bundle $\N M$
-      of a manifold $M$ we have $\T M \oplus \N M = \trivbdl$ and
-      therefore $1 = \W{\T M} \cup \W{\N M}$.
+      Especially, for any choice of embedding $\emb\colon M^n\to\R^{n+k}$
+      with normal bundle $\N{\emb}$ of a smooth manifold $M$ we have
+      $\T M\oplus\N{\emb} = \trivbdl$ and therefore
+      $1 = \W{\T M} \cup \W{\N{\emb}} = \W{\T M}\cup\W{\N M}$.
     \end{enumerate}
     \begin{proof}
       The trivial rank $n$ bundle over $X$ is defined as the pullback
@@ -753,7 +854,8 @@ description of the fundamental class of a manifold:
   $\W{M} \coloneqq \W{\T M}$ and
   $\dualW{M} \coloneqq \dualW{\T M} = \W{\N M}$
   where the last equality is the one from
-  Remark~\autoref{rem:propswclasses} above.
+  Remark~\itemref{rem:propswclasses}{item:swoftrivbdl}\ref{item:wuclassmfdinverse}
+  above.
 \end{Def}
 
 \begin{Thm}\label{thm:altdefswclasses}
@@ -928,28 +1030,28 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
-  classes in \autoref{thm:altdefswclasses}.
+  classes in Theorem~\autoref{thm:altdefswclasses}.
 \end{Rem}
 
 \begin{Thm}\label{thm:altdefwuclasses}
   Let $M$ be a compact manifold of dimension $n$, and let
-  $\N M\colon \E{\N M} \xrightarrow{p} M$ be
-  any normal bundle of rank $k$ of an embedding of $M$ into
-  $\R^{n+k}$. Then
+  $\N{\emb}\colon \E{\N{\emb}} \xrightarrow{p} M$ be
+  any normal bundle of rank $k$ of an embedding
+  $\emb\colon M\immto\R^{n+k}$. Then
   \begin{gather*}
-    \v{i}{M} = \v{i}{\N M}\in \H^i(M)
+    \v{i}{M} = \v{i}{\N{\emb}}\in \H^i(M)
   \end{gather*}
   \begin{proof}
     To proof \autoref{thm:altdefwuclasses}, the defining property of
-    $\v{i}{M}$ will be checked on $\v{i}{\N M}$, \idest one has to show
+    $\v{i}{M}$ will be checked on $\v{i}{\N{\emb}}$, \idest one has to show
     that for any $x\in \H^{n-i}(M)$ holds
     \begin{gather*}
-      \capped{x\cup \v{i}{\N M}}{\fundcl M}
+      \capped{x\cup \v{i}{\N{\emb}}}{\fundcl M}
       = \capped{\Sq i(x)}{\fundcl M}
     \end{gather*}
     Note, that this is simply the $i$th degree of the equation
     \begin{gather}\label{eq:proofaltdefwuclasses:claim}
-      \capped{x\cup \V{\N M}}{\fundcl M}
+      \capped{x\cup \V{\N{\emb}}}{\fundcl M}
       = \capped{\SQ(x)}{\fundcl M}
     \end{gather}
     which will be proven below.
@@ -958,10 +1060,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \item[By \autoref{lem:thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
       for $r\in\Nat$, $z\in \H^r(M)$,
-      $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N M}})$.
+      $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N{\emb}}})$.
     \item[By \autoref{lem:thomisofundcl}:]
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
-      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N M}$ is
+      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N{\emb}}$ is
       the collapse map of a tubular embedding of the normal bundle $\N
       M$.
     \item[By \eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}:]
@@ -980,19 +1082,19 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
     \end{description}
     For the proof fix some $i\leq n$, some arbitrary $x\in
     \H^{n-i}(M)$, as well as a collapse map
-    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N M}$ as in
+    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N{\emb}}$ as in
     \autoref{lem:thomisofundcl}.
     For simplicity, denote
-    $\Vu\coloneqq \V{\N M}$,
+    $\Vu\coloneqq \V{\N{\emb}}$,
     $\Sph\coloneqq \Sphere{n+\rkk}$,
-    $\U\coloneqq \u{\N M}$ and
+    $\U\coloneqq \u{\N{\emb}}$ and
     $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
     respectively
     $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
     
     
     In a first calculation reformulate
-    $\capped{x\cup \V{\N M}}{\fundcl M}$ using the cohomology of the
+    $\capped{x\cup \V{\N{\emb}}}{\fundcl M}$ using the cohomology of the
     $(n+k)$-sphere:
     \begin{align}\notag
       \capped{x\cup \Vu}{\fundcl M}
@@ -1129,7 +1231,7 @@ the alternative definition of the Wu classes from
 % \end{Rem}
 The proof uses the alternative characterisation
 \begin{gather*}
-  \antipode(\SQ)(\u{\N M}) = \thomiso(\V{\N M})
+  \antipode(\SQ)(\u{\N{\emb}}) = \thomiso(\V{\N{\emb}})
 \end{gather*}
 of the Wu classes from \autoref{thm:altdefwuclasses}, and quite directly
 follows from the following Lemma:
@@ -1142,15 +1244,16 @@ follows from the following Lemma:
   \end{gather*}
 \end{Lem}
 \begin{proof}[proof of \ref{tag:wuformula}]
-  Lemma \autoref{lem:wu} states for a closed manifold $M$
+  Lemma \autoref{lem:wu} states for a closed manifold $M^n$ and any
+  embedding $\emb\colon M\to\R^{n+k}$ that
   \begin{gather*}
-    \SQ(\V{M}) \cup \W{\N M}
-    = \SQ(\V{\N M}) \cup \W{\N M}
+    \SQ(\V{M}) \cup \dualW{M}
+    = \SQ(\V{\N M}) \cup \W{\N{\emb}}
     \cequalsby{\autoref{lem:wu}} 1
     \;.
   \end{gather*}
   Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
-  as $\W{\T M} \cup \W{\N M} = 1$ by
+  as $\W{\T M} \cup \W{\N{\emb}} = 1$ by
   \itemref{rem:propswclasses}{item:wuclassmfdinverse}.
 \end{proof}
 \begin{proof}[proof of Lemma~\autoref{lem:wu}]
