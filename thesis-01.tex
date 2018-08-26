@@ -13,28 +13,36 @@
 % in terms of homotopy theory. [immersionconj] (The necessary results from differential
 % topology and Hirsch-Smale theory should be stated clearly but may be
 % presented without proofs.)
+This chapter is dedicated to gathering the concepts and results needed
+to formulate and work with the immersion conjecture.
 
-\begin{itemize} % TODO: Chapter overview
-\item Stuff necessary for formulation:
-  \begin{itemize}
-  \item Introduce immersions and the normal bundle
-    (will be connected for homotopy theoretical investigation in Chap 2)
-  \item Introduce Steenrod squares, Thom classes, Thom isos
-  \item Introduce concept of characteristic classes
-  \item Introduce SW classes with major properties
-  \item Show SW classes are combi of the above
-    (needed for Wu's resp. Massey's Theorem)
-  \item Later: Further char. classes 
-  \end{itemize}
-\item formulate
-\item reformulate
-\item connection to characteristic classes
-\end{itemize}
+As a first result, the goal of \autoref{sec:reformulation} will be to
+reformulate the immersion conjecture to the existence of certain
+liftings up to homotopy, and to outline how characteristic 
+classes can directly be applied in investigating this problem.
+
+Beforehand, the definitions and main properties of immersions,
+Steenrod squares, and selected characteristic classes are
+revised. Most importantly, the major properties and a very handy
+construction of the Stiefel-Whitney characteristic classes of vector
+bundles is given (\autoref{sec:swclasses}), which uses Steenrod
+squares (\autoref{sec:steenrodsquares}, as well as 
+the Thom isomorphisms and Thom classes (\autoref{sec:thomclasses}).
+Both the construction result and this technique of building new
+characteristic classes out of old ones with cohomology operations
+prove to be invaluable in \autoref{chap:massey} when having a closer
+look at the Stiefel-Whitney numbers of normal bundles of manifolds.
+
+Mind that a couple of preliminary results are merely referenced
+without proof.
 
 \section{Immersions and Normal Bundles}
-% TODO: section overview
-Immersions are merely a special case of monomorphisms of vector
-bundles. So, recall that a morphism
+This section recapitulates the definition and major needed properties
+of immersions, which are effectively \enquote{nice} injective maps
+between manifolds.
+
+More precisely, immersions are merely a special case of monomorphisms
+of vector bundles. So, recall that a morphism
 $(\xi_1\colon\E_1\to X_1)\to(\xi_2\colon E_2\to X_2)$ 
 of vector bundles over different spaces is a map $F\colon E_1\to E_2$
 that covers its restriction to the zero section, \idest it makes the
@@ -66,10 +74,11 @@ Later, an important result due to Hirsch and Smale will be needed that
 relates spaces of immersions and vector bundle monomorphisms homotopy
 theoretically.
 
-Another major property of immersions which will finally make it
-possible to translate the existence of an immersion into a homotopy
-theoretical statement, is that every immersion gives rise to a normal
-bundle as follows.
+Another major property of immersions is that every immersion gives
+rise to a normal bundle as follows. This will finally make it
+possible to translate the existence of an immersion into the existence
+of a vector bundle, respectively later the existence of a homotopy
+invariant lifting property.
 \begin{LemDef}
   Let $M^n$ be a smooth manifold.
   \begin{enumerate}
@@ -116,11 +125,22 @@ bundle as follows.
 \end{LemDef}
 
 
-\section{Steenrod Squares}
-The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1]{steenrodepstein}.
-\begin{Def}[Steenrod Squares]\label{def:sq}
-  The Steenrod Squares $\Sq i$ for $i\in\Nat$ are each a family of
-  cohomology operations, \idest families of homomorphisms, of the form
+\section{Steenrod Squares}\label{sec:steenrodsquares}
+Similar to the cup and cap product, Steenrod squares add quite a lot
+of further structure to a cohomology ring, adding more tools to
+differentiate spaces by means of cohomology comparison.
+As applications they will serve in constructing two kinds of
+characteristic classes, namely the Stiefel-Whitney and the Wu
+classes, and give rise to powerful cohomological obstructions
+when combined with further special properties like the Poincaré
+duality, as will be seen in \label{chap:massey}.
+
+The following definition of the Steenrod squares is due to
+Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
+\begin{Def}\label{def:sq}
+  The \emph{Steenrod squares} $\Sq i$ for $i\in\Nat$ are each a family
+  of cohomology operations, \idest families of homomorphisms, of the
+  form
   \begin{gather*}
     \left(
       \Sq i\colon \H^n(X, A;\Zmod2) \to \H^{n+i}(X, A;\Zmod2)
@@ -198,14 +218,17 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \end{proof}
 \end{Thm}
 
-\begin{Def}[Steenrod Algebra]
-  The Steenrod algebra $\A$ is the quotient
+The fact that Steenrod squares, or in general cohomology operations,
+can be added and concatenated, already gives a hint that they might
+form a ring, which was proven by Steenrod. The following notation and
+facts are according to \cite[Chap.~6]{mosher}.
+\begin{Def}
+  The \emph{Steenrod algebra} $\A$ is the quotient
   of the graded $\Zmod2$-polynomial algebra
   $\Zmod2[\Sq i|i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
   by the two-sided relations of both \ref{tag:adem} and $\Sq 0=1$.
   With the induced grading it is an associative, connected,
-  non-commutative graded Hopf algebra over $\Zmod2$
-  \cite[Chap.~6]{mosher}.
+  non-commutative graded Hopf algebra over $\Zmod2$.
 \end{Def}
 \begin{Not}
   In the following, iterated Steenrod squares
@@ -256,6 +279,10 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \end{enumerate}
 \end{Rem}
 
+The subsequent concept of formally inverting a formal sum of elements
+in a graded $\Zmod2$-algebra will recur for several characteristic
+classes. This particular definition is needed to define the Wu classes
+in \autoref{sec:wuclasses}. 
 \begin{Def}\label{def:antipode}
   The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is a
   graded homomorphism inductively defined by the relation
@@ -267,7 +294,14 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
 \end{Def}
 
 \section{Characteristic Classes}
-\begin{LemDef}[Classifying Spaces]\label{def:charcls}
+As the title suggests, the concept of characteristic classes provides the
+main tooling throughout the rest of the paper. Therefore, this section
+revises the needed results and recalls in detail the needed properties
+of Stiefel-Whitney classes, especially a construction using Thom classes.
+
+Before starting off with the definition, recall universal bundles and
+Steenrod's classification theorem.
+\begin{LemDef}\label{def:charcls}
   \optcite[Chapter~14.4]{tomdieck}
   \begin{enumerate}
   \item Any topological group $G$ admits a contractible space $\EG$ with a
@@ -302,8 +336,8 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \end{enumerate}
 \end{LemDef}
 
-\begin{Def}[Characteristic Class]
-  A characteristic class
+\begin{Def}
+  A \emph{characteristic class}
   \begin{itemize}
   \item of degree $i$
   \item with coefficients in a ring $R$
@@ -315,7 +349,7 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   \end{gather*}
 \end{Def}
 \begin{Rem}
-  By Brown's representation theorem \optcite[Chap.~4.E]{hatcher}
+  By Brown's representation theorem \optcite[Chap.~4.E]{hatcher},
   $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
   Thus, by the Yoneda lemma, a characteristic class is
   represented by a morphism
@@ -338,11 +372,22 @@ The following definition of the Steenrod squares is due to \cite[Chap.~I.1, p.~1
   identified with its corresponding cohomology class.
 \end{Rem}
 
-\begin{Rem} % TODO: Why are char classes nice idea?
-\end{Rem}
+Now that the definition is given it should be clear how 
+characteristic classes serve in translating bundle theoretic problems
+into homotopy theoretic ones. This will be a crucial step in
+reformulating the immersion conjecture.
 
-\subsection{Thom Classes}
-Let $B$ be a paracompact space, \forexample a manifold,
+
+\subsection{Thom Classes}\label{sec:thomclasses}
+In the following, Thom classes and the Thom isomorphisms will be
+revised. From the definition it will be clear that Thom classes are
+\emph{no} characteristic classes as defined before. However, the tools
+that will be introduced in this section are an important ingredient in
+constructing Stiefel-Whitney characteristic classes from Steenrod
+squares.
+
+Throughout the section,
+let $B$ be a paracompact space, \forexample a manifold,
 $\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
 and $R$ be principal ideal domain.
 \begin{Def}
@@ -358,8 +403,8 @@ and $R$ be principal ideal domain.
   \optcite[p.~441]{hatcher}
 \end{Def}
 
-The following corollaries will quite directly deduce notions of
-naturality, multiplicativity, and uniqueness for Thom classes from
+The following corollaries will deduce notions of naturality,
+multiplicativity, and uniqueness for Thom classes quite directly from
 their above definition.
 
 \begin{Cor}\label{cor:thomclsnatural}
@@ -550,10 +595,14 @@ their above definition.
   $\u{\xi}\in \H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
 \end{Rem}
 
-\begin{Thm}[Thom isomorphism]
+Having a good notion of Thom classes by now, please recall the Thom
+isomorphisms relating the cohomology of a vector bundle's total
+space to that of its base space.
+\begin{Thm}
   For any Thom class $\u{\xi}$ of $\xi$, and any degree $r$ there are
-  isomorphisms that are natural with respect to pullbacks of vector
-  bundles over paracompact spaces
+  the following isomorphisms, called the \emph{Thom isomorphisms},
+  that are natural with respect to pullbacks of vector bundles over
+  paracompact spaces:
   \begin{align*}
     \thomiso\colon
     \H^r(B;R) &\longrightarrow \H^{r+\rkk}(\thomspacepair{E}; R)
@@ -562,8 +611,8 @@ their above definition.
     \\
     x &\longrightarrow \pb p (x) \cup \u{\xi}
     & \alpha &\longrightarrow \pf p (\u{\xi} \cap \alpha)
+               \;.
   \end{align*}
-  called the \emph{Thom isomorphisms}.
   \begin{proof}
     Naturality directly follows from the naturality of the Thom class
     in \autoref{cor:thomclsnatural}, and naturality of the cup-
@@ -574,6 +623,8 @@ their above definition.
   \end{proof}
 \end{Thm}
 
+The relation amongst these isomorphisms will be crucial in
+calculations for Wu's theorem in \autoref{sec:wuclassesmain}.
 \begin{Lem}\label{lem:thomisoself-adjoint}
   If $B$ is connected, the Thom isomorphisms are adjoint in the
   following sense:
@@ -627,8 +678,12 @@ first recall the following properties of the cap product.
 \end{proof}
 
 % TODO: Better motivation for relationship Thom isomorphism <-> fundamental cl
-Normal bundles give an interesting, more geometrical
-description of the fundamental class of a manifold:
+As this paper is rather interested in manifolds than general spaces,
+have a look at the homology Thom isomorphism of a manifold, or more
+precisely the fundamental class of a manifold. The following gives a
+more geometrical notion of the latter with the help of normal bundles,
+and---more importantly---will enable to work on the simpler
+cohomology of spheres when needed.
 \begin{Lem}\label{lem:thomisofundcl}
   Let $M$ be an $n$-dimensional compact manifold, and
   $\emb\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
@@ -748,7 +803,8 @@ description of the fundamental class of a manifold:
 \end{Lem}
 
 
-\subsection{Stiefel-Whitney Classes}
+\subsection{Stiefel-Whitney Classes}\label{sec:swclasses}
+% TODO: section overview
 \begin{Def}[Stiefel-Whitney Classes]\label{def:swclasses}
   The Stiefel-Whitney classes are
   characteristic classes for principal $\Orth$-bundles
@@ -962,6 +1018,7 @@ description of the fundamental class of a manifold:
 
 
 \section{Reformulation of the Immersion Problem}
+\label{sec:reformulation}
 % TODO: section overview
 
 \begin{Thm}\label{thm:immersionconj}
