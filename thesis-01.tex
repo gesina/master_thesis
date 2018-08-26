@@ -1,23 +1,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
-% -- Chapter 1: Preliminaries --
+% -- Chapter 1: Formulation of the Immersion Conjecture --
 % 
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\chapter{Preliminaries}
+\chapter{Formulation of the Immersion Conjecture}
+% Explain carefully how the immersion problem can be reformulated purely
+% in terms of homotopy theory. [immersionconj] (The necessary results from differential
+% topology and Hirsch-Smale theory should be stated clearly but may be
+% presented without proofs.)
+
 \begin{itemize} % TODO: Chapter overview
-\item Introduce immersions and the normal bundle
-  (will be connected for homotopy theoretical investigation in Chap 2)
-\item Introduce Steenrod squares, Thom classes, Thom isos
-\item Introduce concept of characteristic classes
-\item Introduce SW classes with major properties
-\item Show SW classes are combi of the above
-  (needed for Wu's resp. Massey's Theorem)
-\item Later: Further char. classes 
+\item Stuff necessary for formulation:
+  \begin{itemize}
+  \item Introduce immersions and the normal bundle
+    (will be connected for homotopy theoretical investigation in Chap 2)
+  \item Introduce Steenrod squares, Thom classes, Thom isos
+  \item Introduce concept of characteristic classes
+  \item Introduce SW classes with major properties
+  \item Show SW classes are combi of the above
+    (needed for Wu's resp. Massey's Theorem)
+  \item Later: Further char. classes 
+  \end{itemize}
+\item formulate
+\item reformulate
+\item connection to characteristic classes
 \end{itemize}
 
 \section{Immersions and Normal Bundles}
@@ -948,351 +959,181 @@ description of the fundamental class of a manifold:
   \end{proof}
 \end{Thm}
 
-\subsection{Wu Classes}
-Let $M$ be a compact, $n$-dimensional manifold.
-This section introduces a family of cohomology classes
-of manifolds, together with several possibilities of how to
-define---and eventually work with---them.
-Later then, \autoref{sec:wutheorem} reveals their close relation to
-the Stiefel-Whitney classes which is utilised in the proof of Massey's
-theorem.
 
-\begin{Def}\label{def:wuclasses}
-  The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
-  as the cohomology class in $\H^i(M)$ that is uniquely determined by
-  \begin{center}
-    \begin{tikzcd}[row sep=0pt, column sep=small]
-      \H^i(M) \ar[r, equal, "\isosymb"]
-      & \H_{n-1}(M) \ar[r, equal, "\isosymb"]
-      &\Hom{\Zmod2}(\H^{n-i}(M), \Zmod2) \ar[r, equal, "\isosymb"]
-      &\Zmod2
-      \\
-      y \ar[rr, mapsto] &&\capped{ x\cup y }{ \fundcl M }\\
-      \v{i}{M} \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
-    \end{tikzcd}
-  \end{center}
-  where the first isomorphism from the left is Poincaré duality
-  and the second is the universal coefficient theorem
-  for the field $\Zmod2$.
-  Equivalently, for any cohomology class $x\in \H^{n-i}(M)$ of fixed
-  degree $n-i$ holds
-  \begin{gather*}
-    x\cup \v{i}{M} = \Sq i(x) \in \H^n(M) \cong \Zmod2
-  \end{gather*}
-  Mind the fixed degree of $x$---the above will not be true for other
-  degree cohomology classes in general!
+
+\section{Reformulation of the Immersion Problem}
+% TODO: section overview
+
+\begin{Thm}\label{thm:immersionconj}
+  For $n\in\Nat$, every closed, smooth, $n$-dimensional manifold
+  immerses into $\R^{2n-\alpha(n)}$, where $\alpha(n)$ is defined as
+  the minimal number of summands in any binary representation of $n$.
+\end{Thm}
+% TODO: Def "immersion problem", "immersion property" of a manifold
+
+An essential step for the reformulation of the immersion conjecture is
+a theorem of Hirsch and Smale, which gives a homotopy theoretical
+relation between the spaces of immersions of two manifolds $\Imm M N$
+and of the vectorbundle monomorphisms $\Mono{\T M}{\T N}$ between
+their tangent bundles. For the formulation, one has to equip the
+respective sets with a topology as follows.
+\begin{Def}
+  Let $M$, $N$ be closed smooth manifolds of dimensions $\dim M < \dim N$.
+  \begin{enumerate}
+  \item % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
+  \item
+    Equip the set of all vector bundle monomorphisms from $\xi_1$ to
+    $\xi_2$ with the compact-open topology, and denote that space by
+    $\Mono{\xi_1}{\xi_2}$.
+    Note that a path between monomorphisms $F_1$ and $F_2$ in the
+    space $\Mono \xi \eta$ is an homotopy from $F_1$ to $F_2$ which is
+    a vector bundle monomorphism in each stage.
+  \item % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
+    The set $\Imm M N$ of all immersions from $M$ to $N$ injects
+    into $\Mono{\T M}{\T N}$ by taking the differential
+    $f\mapsto\Diff f$.
+    Equip $\Imm M N$ in the following with the subspace topology.
+    This results in the weak topology described in
+    \cite[Section~2.1]{hirsch}, which equals the Whitney
+    $C^1$-topology since $M$ was chosen compact.
+    By the way, $\Imm M N$ is open in $C^1(M,N)$ equipped with the
+    Whitney $C^1$-topology
+    (see \cite[Section~2.1, Theorem~1.1]{hirsch}),
+    and thus not a discrete space.
+  \end{enumerate}
 \end{Def}
 
-\begin{Rem}
-  Some immediate consequences of the definitions of the Wu classes of
-  $M$ are
-  \begin{itemize}
-  \item $\v{0}{M} = 1$
-  \item $\v{i}{M} = 0$ for $i>\frac n 2$, because $\Sq i(x) = 0$ if the
-    degree of x is lower than $i$.
-  \end{itemize}
-\end{Rem}
-
-
-\begin{Def}\label{def:dualwuclasses}
-  The \emph{total Wu class} of $M$ is defined as the sum
-  $\sum_{i\geq0}\v{i}{M}$. The \emph{total dual Wu class}
-  $\dualV{M}\eqqcolon \sum_{i\geq 0}\dualv{i}{M}$
-  and the dual Wu classes $\dualv{i}{M}$
-  of $M$ are defined by
+Now one can state the following major result in immersion theory by
+Hirsch using preliminary work of Smale
+\cite[Sections~5 and 6]{hirschimmersions}.
+\begin{Thm}[Hirsch-Smale]\label{thm:hirschsmale}
+  \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
+  Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
+  Then the differential map
+  $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
+  induces isomorphisms on the homotopy groups.
+  Especially,
   \begin{gather*}
-    \V{M} \cup \dualV{M} = 1
+    \Diff_*\colon
+    \pi_1(\Imm M N) \overset\sim\longto \pi_1(\Mono{\T M}{\T N})
   \end{gather*}
-  or equivalently
-  \begin{align*}
-    1 &= \dualv{0}{M} \cup \v{0}{M} = \dualv{0}{M} \\
-    0 &= \sum_{r+s=i}\v{r}{M}\cup\dualv{s}{M}
-      &&\text{in degree $0\leq i\leq n$}
-  \end{align*}
-\end{Def}
+  describes an isomorphism of path-connected components.
+  % Original formulation by Hirsch in [hirschimmersions], sec. 5:
+  Therefore, every vector bundle monomorphism
+  $F\colon\T M\to\T N$ is homotopic (through vector bundle
+  monomorphisms) to a monomorphism which is the differential
+  $\Diff f$ of a smooth map $f\colon M\to N$, \idest of an
+  immersion.
+\end{Thm}
+Thus, any monomorphism of vector bundles over smooth, closed
+manifolds $M$ and $N$ implies the existence of an immersion from $M$
+to $N$.
 
-The following more general definition of Wu classes
-will be shown to be equivalent to the one above in
-Definition~\autoref{def:wuclasses}.
-It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
-\begin{Def}\label{def:altwuclasses}
-  Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
-  paracompact space $B$.
-  The $i$th \emph{Wu class} $\v{i}{\xi}$ of $\xi$ for $0\leq i\leq n$
-  is defined as the cohomology class in $\H^i(B)$ that is uniquely
-  determined by
-  \begin{gather*}
-    \antipode(\Sq i)(\u{\xi}) = \thomiso(\v{i}{\xi}) = \pb p \v{i}{\xi} \cup \u{\xi}
-  \end{gather*}
-  The \emph{total Wu class} of $\xi$ is defined as usual as
-  $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$ and satisfies accordingly 
-  $\antipode(\SQ)(\u{\xi})=\V{\xi}$.
-\end{Def}
-\begin{Rem}
-  Compare this to the possible definition of the Stiefel-Whitney
-  classes in Theorem~\autoref{thm:altdefswclasses}.
-\end{Rem}
-
-\begin{Thm}\label{thm:altdefwuclasses}
-  Let $M$ be a compact manifold of dimension $n$, and let
-  $\N{\emb}\colon \E{\N{\emb}} \xrightarrow{p} M$ be
-  any normal bundle of rank $k$ of an embedding
-  $\emb\colon M\immto\R^{n+k}$. Then
-  \begin{gather*}
-    \v{i}{M} = \v{i}{\N{\emb}}\in \H^i(M)
-  \end{gather*}
-  \begin{proof}
-    To proof \autoref{thm:altdefwuclasses}, the defining property of
-    $\v{i}{M}$ will be checked on $\v{i}{\N{\emb}}$, \idest one has to show
-    that for any $x\in \H^{n-i}(M)$ holds
+This gives rise to the subsequent reformulation of the immersion
+conjecture in \autoref{thm:immersionconj}.
+\begin{Thm}\label{thm:immersionconj:equivalences}
+  Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
+  The following statements are equivalent.
+  \begin{enumerate}
+  \item\label{item:immersionconj:1}
+    $M$ immerses into $\R^{n+k}$.
+  \item\label{item:immersionconj:2}
+    There is a vector bundle monomorphism $F\colon\T M\to\T{\R^{n+k}}$.
+  \item\label{item:immersionconj:3}
+    There is a $k$-dimensional vector bundle
+    $\N{}\colon\E{\N{}}\to M$ over $M$ with
     \begin{gather*}
-      \capped{x\cup \v{i}{\N{\emb}}}{\fundcl M}
-      = \capped{\Sq i(x)}{\fundcl M}
+      \N{}\oplus\T M\cong\trivbdl^{n+k}
+      \;.
     \end{gather*}
-    Note, that this is simply the $i$th degree of the equation
-    \begin{gather}\label{eq:proofaltdefwuclasses:claim}
-      \capped{x\cup \V{\N{\emb}}}{\fundcl M}
-      = \capped{\SQ(x)}{\fundcl M}
-    \end{gather}
-    which will be proven below.
-    Beforehand, recall the following:
-    \begin{description}
-    \item[By \autoref{lem:thomisoself-adjoint}:]
-      $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
-      for $r\in\Nat$, $z\in \H^r(M)$,
-      $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N{\emb}}})$.
-    \item[By \autoref{lem:thomisofundcl}:]
-      $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
-      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N{\emb}}$ is
-      the collapse map of a tubular embedding of the normal bundle $\N
-      M$.
-    \item[By \eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}:]
-      The total Steenrod square
-      $\SQ\colon \H^m(\Sphere m)
-      \to \H^*(\Sphere m)$
-      is the identity on $\H^m(\Sphere m)$, \idest
-      $\Sq i\colon \H^m(\Sphere{m})\to \H^{m+i}(\Sphere{m})$ is zero for
-      $i\neq0$.
-    \item[By Definition \autoref{def:sq}:] The total Steenrod Square
-      $\SQ$ is natural and a ring homomorphism.
-    \item[By \eqref{eq:capprod2}:]
-      For any map of spaces $f\colon X\to Y$ and co-/homology classes
-      $a$ and $\beta$ in the corresponding co-/homology groups holds
-      $\capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}$
-    \end{description}
-    For the proof fix some $i\leq n$, some arbitrary $x\in
-    \H^{n-i}(M)$, as well as a collapse map
-    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N{\emb}}$ as in
-    \autoref{lem:thomisofundcl}.
-    For simplicity, denote
-    $\Vu\coloneqq \V{\N{\emb}}$,
-    $\Sph\coloneqq \Sphere{n+\rkk}$,
-    $\U\coloneqq \u{\N{\emb}}$ and
-    $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
-    respectively
-    $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
-    
-    
-    In a first calculation reformulate
-    $\capped{x\cup \V{\N{\emb}}}{\fundcl M}$ using the cohomology of the
-    $(n+k)$-sphere:
-    \begin{align}\notag
-      \capped{x\cup \Vu}{\fundcl M}
-      &\equalsby{\autoref{lem:thomisofundcl}}
-        \capped
-        {x\cup\Vu}
-        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
-      \\\notag
-      &\equalsby{\autoref{lem:thomisoself-adjoint}}
-        \capped
-        {\thomiso\left(x\cup\Vu\right)}
-        {\pf\collapse\fundcl{\Sph}}
-      \\\notag
-      &\equalsby{\eqref{eq:capprod2}}
-        \pf\collapse\capped
-        {\pb\collapse\thomiso\left(x\cup\Vu\right)}
-        {\fundcl{\Sph}}
-      \\\notag
-      &\equalsby{\eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}}
-        \pf\collapse\capped
-        {\SQ\left(\pb\collapse\thomiso\left(x\cup\Vu\right)\right)}
-        {\fundcl{\Sph}}
-      \\\notag
-      &\equalsby{Naturality}
-        \pf\collapse\capped
-        {\pb\collapse\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
-        {\fundcl{\Sph}}
-      \\\label{eq:proofaltdefwuclasses:eq1}
-      &\equalsby{\eqref{eq:capprod2}}
-        \capped
-        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
-        {\pf\collapse\fundcl{\Sph}}
-    \end{align}
-    Having introduced $\SQ$ on the left hand side, one observes a
-    certain commutativity of the Thom isomorphism, and the total
-    Steenrod square:
-    \begin{align}\notag
-      \SQ\left(\thomiso\left(x\cup\Vu\right)\right)
-      &=
-        \SQ\left(\left(\pb p x\cup \pb p\Vu\right) \cup \U\right)
-      \\\notag
-      &=
-        \SQ\left(\pb p x\cup \left(\pb p\Vu \cup \U\right)\right)
-      \\\notag
-      &\equalsby{Def. $\thomiso$}
-       \SQ\left(\pb p x\cup \thomiso(\Vu)\right)
-      \\\notag
-      &\equalsby{Naturality, Ring Hom.}
-        \pb p\SQ(x) \cup \SQ(\thomiso(\Vu))
-      \\\notag
-      &\equalsby{Def. $\V{M}$}
-        \pb p\SQ(x) \cup \SQ(\antipode(\SQ)(u))
-      \\\notag
-      &\equalsby{Def. $\antipode$}
-        \pb p\SQ(x) \cup u
-      \\\label{eq:proofaltdefwuclasses:eq2}
-      &\equalsby{Def. $\thomiso$}
-        \thomiso(\SQ(x))
-    \end{align}
-    Inserting \eqref{eq:proofaltdefwuclasses:eq2} into
-    \eqref{eq:proofaltdefwuclasses:eq1} from above easily yields the
-    claim in \eqref{eq:proofaltdefwuclasses:claim} that proves the theorem:
-    \begin{align*}
-      \capped{x\cup \Vu}{\fundcl M}
-      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
-        \capped
-        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
-        {\pf\collapse\fundcl{\Sph}}
-      \\
-      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq2}}
-        \capped
-        {\thomiso(\SQ(x))}
-        {\pf\collapse\fundcl{\Sph}}
-      \\
-      &\equalsby{\autoref{lem:thomisoself-adjoint}}
-        \capped
-        {\SQ(x)}
-        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
-      \\
-      &\equalsby{\autoref{lem:thomisofundcl}}
-        \capped
-        {\SQ(x)}
-        {\fundcl M}
-        \qedhere
-    \end{align*}
-  \end{proof}
+  \item\label{item:immersionconj:4}
+    For the map $\N M\colon M\to\B\Orth$ characterising the stable
+    normal bundle over $M$ there is a lift $\N{}\colon M\to\B\Orth(k)$
+    making the following diagram commute up to homotopy
+    \begin{center}
+      \begin{tikzcd}
+        M
+        \ar[r, "\N{}"]
+        \ar[dr, "\N{M}"{left}, bend right]
+        & \BO(k) \ar[d, "\incl", hookrightarrow] \\
+        & \BO
+      \end{tikzcd}
+    \end{center}
+  \end{enumerate}
 \end{Thm}
+From a homotopy theoretical viewpoint, one obviously is most
+interested in statement \ref{item:immersionconj:4}.
+One major advantage of this approach is that the bundle theoretic
+context allows to apply the huge arsenal of characteristic classes of
+vector bundles.
+For example the value $k=n-\alpha(n)$ of the minimal immersion dimension
+is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
 
-
-\section[Wu's Theorem]{Wu's Theorem}\label{sec:wutheorem}
-This section is meant to show a direct connection between the
-Stiefel-Whitney classes and the Wu classes, which can be shown using
-the alternative definition of the Wu classes from
-\autoref{thm:altdefwuclasses}.
-
-\begin{Thm}[Wu]\label{thm:wu}
-  A closed manifold gives rise to the following two equalities
-  \begin{align}\notag
-    \dualW{M} &= \SQ\left(\dualV{M}\right)
-    &\text{respectively}&
-    &\dualw{k}{M} &= \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
-    &\text{and}
-    \\
-    \W{M} &= \SQ\left(\V{M}\right)
-    &\text{respectively}&
-    &\w{k}{M} &= \sum_{i\geq0} \Sq i\left(\v{k-i}{M}\right)
-    \label{tag:wuformula}\tag{Wu's formula}
-  \end{align}
-  that are equivalent using
-  $\dualW{M}\cup\W{M} = 1$ and
-  \begin{gather*}
-    \SQ(\dualV{M})\cup\SQ(\V{M})
-    = \SQ(\dualV{M}\cup\V{M})
-    = \SQ(1)
-    = 1
-    \;.
-  \end{gather*}
-\end{Thm}
-% \begin{Rem}
-%   The following is equivalent to Wu's formula
-%   \begin{gather*}
-%     \dualW{M} = \SQ\left(\dualV{M}\right)
-%     \qquad\text{respectively}\qquad
-%     \dualw{k}{M} = \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
-%   \end{gather*}
-%   using the inverses $\dualW{M}\cup\W{M} = 1$ and
-%   \begin{gather*}
-%     \SQ(\dualV{M})\cup\SQ(\V{M})
-%     = \SQ(\dualV{M}\cup\V{M})
-%     = \SQ(1)
-%     = 1
-%     \;.
-%   \end{gather*}
-% \end{Rem}
-The proof uses the alternative characterisation
-\begin{gather*}
-  \antipode(\SQ)(\u{\N{\emb}}) = \thomiso(\V{\N{\emb}})
-\end{gather*}
-of the Wu classes from \autoref{thm:altdefwuclasses}, and quite directly
-follows from the following Lemma:
-\begin{Lem}\label{lem:wu}
-  For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
-  paracompact space holds
-  \begin{gather*}
-    \SQ(\V{\xi}) \cup \W{\xi}= 1
-    \;.
-  \end{gather*}
-\end{Lem}
-\begin{proof}[proof of \ref{tag:wuformula}]
-  Lemma \autoref{lem:wu} states for a closed manifold $M^n$ and any
-  embedding $\emb\colon M\to\R^{n+k}$ that
-  \begin{gather*}
-    \SQ(\V{M}) \cup \dualW{M}
-    = \SQ(\V{\N M}) \cup \W{\N{\emb}}
-    \cequalsby{\autoref{lem:wu}} 1
-    \;.
-  \end{gather*}
-  Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
-  as $\W{\T M} \cup \W{\N{\emb}} = 1$ by
-  \itemref{rem:propswclasses}{item:wuclassmfdinverse}.
+\begin{proof}[proof of \autoref{thm:immersionconj:equivalences}]
+  \begin{description}
+  \item[\ref{item:immersionconj:3}$\Leftrightarrow$\ref{item:immersionconj:4}:]
+    Using Steenrod's classification theorem
+    \itemref{def:charcls}{item:classificationthm} 
+    and the properties of the stable normal bundle of a manifold
+    directly yields the equivalence of \ref{item:immersionconj:3} and
+    \ref{item:immersionconj:4}.
+  \item[\ref{item:immersionconj:2}$\Leftrightarrow$\ref{item:immersionconj:3}:]
+    In order to get from a vector bundle monomorphism
+    $F\colon M\to\R^{n+k}$ to a normal bundle, first note that the
+    trivial bundle $\T{\R^{n+k}}$ is easily equipped with an
+    orthonormal frame. Thus, one can consider the fibre-wise orthogonal
+    complement $\N{}$ of the image $F(\T M)$ which is a vector bundle over
+    $F(M)\subset\R^{n+k}$. Its pullback to $M$ along
+    $F|_{\zerosec{\T M}}$ obviously fulfils the required property of
+    \ref{item:immersionconj:3}.
+    
+    Conversely, when starting with some rank $k$ vector bundle $\N{}$
+    such that $\N{}\oplus\T M\cong\trivbdl^{n+k}$, there is a vector
+    bundle monomorphism $\N{}\to\trivbdl$ over $M$. Then the
+    following chain of vector bundle morphisms
+    \begin{center}
+      \begin{tikzcd}
+        \T M \ar[d]
+        \ar[r, hookrightarrow]
+        & M\times\R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \ar[r]
+        & \pt\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \ar[r, hookrightarrow]
+        & \R^{n+k}\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
+        \\
+        M
+        \ar[r,equals]
+        & M
+        \ar[r]
+        & \pt
+        \ar[r, hookrightarrow]
+        & \R^{n+k}
+      \end{tikzcd}
+    \end{center}
+    is fibre-wise injective in each stage, and hence a monomorphism as
+    was needed.
+  \item[\ref{item:immersionconj:1}$\Leftrightarrow$\ref{item:immersionconj:2}:]
+    The tricky part is to relate \ref{item:immersionconj:1} and
+    \ref{item:immersionconj:2}, even though it is easily seen that
+    \ref{item:immersionconj:1} implies \ref{item:immersionconj:2} by
+    simply taking $F$ to be the differential $\Diff f$ of the
+    immersion from \ref{item:immersionconj:1}.
+    
+    The converse direction is an application of the Hirsch-Smale
+    theorem~\autoref{thm:hirschsmale}.
+    However, first substitute the non-compact manifold $\R^{n+k}$ with
+    the compact sphere $N=\Sphere{n+k}$, to make $M$ and $N$ comply
+    with the preliminaries of the theorem. As $\dim M<n+k$ by assumption,
+    every immersion $M\to\Sphere{n+k}$ misses a point on
+    $\Sphere{n+k}$ and hence factors over an immersion $M\to\R^{n+k}$.
+    This then shows that also \ref{item:immersionconj:2} implies
+    \ref{item:immersionconj:1} which makes them equivalent.
+  \end{description}
 \end{proof}
-\begin{proof}[proof of Lemma~\autoref{lem:wu}]
-  For simplicity use the shortenings
-  $\U\coloneqq \u{\xi}$,
-  $\Vu\coloneqq \V{\xi}$, and
-  $\Ws\coloneqq \W{\xi}$.
-  Then calculate
-  \begin{align*}
-    \thomiso(1)
-    &= \U
-    \\
-    &\equalsby{Def.~\autoref{def:antipode}}
-      \SQ\left(\antipode(\SQ)(\U)\right)
-    \\
-    &\equalsby{Def.~\autoref{def:altwuclasses}}
-      \SQ\left(\thomiso(\Vu)\right)
-    \\
-    &\equalsby{Def.~$\thomiso$}
-      \SQ\left(\pb p\Vu \cup \U\right)
-    \\
-    &\equalsby{\ref{tag:cartan}, Naturality}
-      \pb p\SQ(\Vu) \cup \SQ(\U)
-    \\
-    &\equalsby{\autoref{thm:altdefswclasses}}
-      \pb p\SQ(\Vu) \cup \thomiso(\Ws)
-    \\
-    &\equalsby{Def.~$\thomiso$}
-      \pb p\SQ(\Vu) \cup \left(\pb p \Ws \cup \U\right)
-    \\
-    &=
-      \pb p\left(\SQ(\Vu) \cup \Ws\right) \cup \U
-    \\
-    &\equalsby{Def.~$\thomiso$}
-      \thomiso\left(\SQ(\Vu) \cup \Ws\right)
-  \end{align*}
-  Applying the inverse of the Thom isomorphism to both sides
-  yields the equality which was to be shown.
-\end{proof}
+
+
+% TODO: Obstruction by Stiefel-Whitney classes
+
 
 
 %%% Local Variables:

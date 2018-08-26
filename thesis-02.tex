@@ -1,201 +1,764 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
-% -- Chapter 2: Homotopy Theoretical Formulation of the Immersion Problem --
+% -- Chapter 2: General Obstructions by Characteristic Classes --
 % 
 % Author: Gesina Schwalbe
 % Supervisor: Georgios Raptis
 % University of Regensburg 2018
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+\chapter{General Obstructions by Characteristic Classes}
+\label{chap:massey}
+% Review the theory of Stiefel-Whitney classes and the properties of the
+% Steenrod algebra (as needed). Give a careful and detailed exposition of
+% the proof of Massey’s theorem. Explain that the estimate in Massey’s
+% theorem is the best possible in general.
+% [massey], [immersionconj]
 
-\chapter{Homotopy Theoretical Formulation of the Immersion Problem}
-% Explain carefully how the immersion problem can be reformulated purely
-% in terms of homotopy theory. [immersionconj] (The necessary results from differential
-% topology and Hirsch-Smale theory should be stated clearly but may be
-% presented without proofs.)
+% TODO: Chapter overview
+\begin{itemize}
+\item Preliminaries: new Characteristic classes from SW classes
+\item Massey's Theorem: no obstruction through char cls up to $n-\alpha(n)$
+\item Best possible result for general bound on obstacles
+\item generalisation?
+\end{itemize}
 
-% TODO: chapter overview
+\section{Wu Classes}
+\subsection{Equivalent Definitions}
+Let $M$ be a compact, $n$-dimensional manifold.
+This section introduces a family of cohomology classes
+of manifolds, together with several possibilities of how to
+define---and eventually work with---them.
+Later then, \autoref{sec:wutheorem} reveals their close relation to
+the Stiefel-Whitney classes which is utilised in the proof of Massey's
+theorem.
 
-\begin{Thm}\label{thm:immersionconj}
-  For $n\in\Nat$, every closed, smooth, $n$-dimensional manifold
-  immerses into $\R^{2n-\alpha(n)}$, where $\alpha(n)$ is defined as
-  the minimal number of summands in any binary representation of $n$.
-\end{Thm}
-
-An essential step for the reformulation of the immersion conjecture is
-a theorem of Hirsch and Smale, which gives a homotopy theoretical
-relation between the spaces of immersions of two manifolds $\Imm M N$
-and of the vectorbundle monomorphisms $\Mono{\T M}{\T N}$ between
-their tangent bundles. For the formulation, one has to equip the
-respective sets with a topology as follows.
-\begin{Def}
-  Let $M$, $N$ be closed smooth manifolds of dimensions $\dim M < \dim N$.
-  \begin{enumerate}
-  \item % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
-  \item
-    Equip the set of all vector bundle monomorphisms from $\xi_1$ to
-    $\xi_2$ with the compact-open topology, and denote that space by
-    $\Mono{\xi_1}{\xi_2}$.
-    Note that a path between monomorphisms $F_1$ and $F_2$ in the
-    space $\Mono \xi \eta$ is an homotopy from $F_1$ to $F_2$ which is
-    a vector bundle monomorphism in each stage.
-  \item % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
-    The set $\Imm M N$ of all immersions from $M$ to $N$ injects
-    into $\Mono{\T M}{\T N}$ by taking the differential
-    $f\mapsto\Diff f$.
-    Equip $\Imm M N$ in the following with the subspace topology.
-    This results in the weak topology described in
-    \cite[Section~2.1]{hirsch}, which equals the Whitney
-    $C^1$-topology since $M$ was chosen compact.
-    By the way, $\Imm M N$ is open in $C^1(M,N)$ equipped with the
-    Whitney $C^1$-topology
-    (see \cite[Section~2.1, Theorem~1.1]{hirsch}),
-    and thus not a discrete space.
-  \end{enumerate}
+\begin{Def}\label{def:wuclasses}
+  The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
+  as the cohomology class in $\H^i(M)$ that is uniquely determined by
+  \begin{center}
+    \begin{tikzcd}[row sep=0pt, column sep=small]
+      \H^i(M) \ar[r, equal, "\isosymb"]
+      & \H_{n-1}(M) \ar[r, equal, "\isosymb"]
+      &\Hom{\Zmod2}(\H^{n-i}(M), \Zmod2) \ar[r, equal, "\isosymb"]
+      &\Zmod2
+      \\
+      y \ar[rr, mapsto] &&\capped{ x\cup y }{ \fundcl M }\\
+      \v{i}{M} \ar[rr, mapsto] &&\capped{\Sq i(x)}{\fundcl M}
+    \end{tikzcd}
+  \end{center}
+  where the first isomorphism from the left is Poincaré duality
+  and the second is the universal coefficient theorem
+  for the field $\Zmod2$.
+  Equivalently, for any cohomology class $x\in \H^{n-i}(M)$ of fixed
+  degree $n-i$ holds
+  \begin{gather*}
+    x\cup \v{i}{M} = \Sq i(x) \in \H^n(M) \cong \Zmod2
+  \end{gather*}
+  Mind the fixed degree of $x$---the above will not be true for other
+  degree cohomology classes in general!
 \end{Def}
 
-Now one can state the following major result in immersion theory by
-Hirsch using preliminary work of Smale
-\cite[Sections~5 and 6]{hirschimmersions}.
-\begin{Thm}[Hirsch-Smale]\label{thm:hirschsmale}
-  \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
-  Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
-  Then the differential map
-  $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
-  induces isomorphisms on the homotopy groups.
-  Especially,
+\begin{Rem}
+  Some immediate consequences of the definitions of the Wu classes of
+  $M$ are
+  \begin{itemize}
+  \item $\v{0}{M} = 1$
+  \item $\v{i}{M} = 0$ for $i>\frac n 2$, because $\Sq i(x) = 0$ if the
+    degree of x is lower than $i$.
+  \end{itemize}
+\end{Rem}
+
+
+\begin{Def}\label{def:dualwuclasses}
+  The \emph{total Wu class} of $M$ is defined as the sum
+  $\sum_{i\geq0}\v{i}{M}$. The \emph{total dual Wu class}
+  $\dualV{M}\eqqcolon \sum_{i\geq 0}\dualv{i}{M}$
+  and the dual Wu classes $\dualv{i}{M}$
+  of $M$ are defined by
   \begin{gather*}
-    \Diff_*\colon
-    \pi_1(\Imm M N) \overset\sim\longto \pi_1(\Mono{\T M}{\T N})
+    \V{M} \cup \dualV{M} = 1
   \end{gather*}
-  describes an isomorphism of path-connected components.
-  % Original formulation by Hirsch in [hirschimmersions], sec. 5:
-  Therefore, every vector bundle monomorphism
-  $F\colon\T M\to\T N$ is homotopic (through vector bundle
-  monomorphisms) to a monomorphism which is the differential
-  $\Diff f$ of a smooth map $f\colon M\to N$, \idest of an
-  immersion.
-\end{Thm}
-Thus, any monomorphism of vector bundles over smooth, closed
-manifolds $M$ and $N$ implies the existence of an immersion from $M$
-to $N$.
+  or equivalently
+  \begin{align*}
+    1 &= \dualv{0}{M} \cup \v{0}{M} = \dualv{0}{M} \\
+    0 &= \sum_{r+s=i}\v{r}{M}\cup\dualv{s}{M}
+      &&\text{in degree $0\leq i\leq n$}
+  \end{align*}
+\end{Def}
 
-This gives rise to the subsequent reformulation of the immersion
-conjecture in \autoref{thm:immersionconj}.
-\begin{Thm}\label{thm:immersionconj:equivalences}
-  Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
-  The following statements are equivalent.
-  \begin{enumerate}
-  \item\label{item:immersionconj:1}
-    $M$ immerses into $\R^{n+k}$.
-  \item\label{item:immersionconj:2}
-    There is a vector bundle monomorphism $F\colon\T M\to\T{\R^{n+k}}$.
-  \item\label{item:immersionconj:3}
-    There is a $k$-dimensional vector bundle
-    $\N{}\colon\E{\N{}}\to M$ over $M$ with
+The following more general definition of Wu classes
+will be shown to be equivalent to the one above in
+Definition~\autoref{def:wuclasses}.
+It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
+\begin{Def}\label{def:altwuclasses}
+  Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
+  paracompact space $B$.
+  The $i$th \emph{Wu class} $\v{i}{\xi}$ of $\xi$ for $0\leq i\leq n$
+  is defined as the cohomology class in $\H^i(B)$ that is uniquely
+  determined by
+  \begin{gather*}
+    \antipode(\Sq i)(\u{\xi}) = \thomiso(\v{i}{\xi}) = \pb p \v{i}{\xi} \cup \u{\xi}
+  \end{gather*}
+  The \emph{total Wu class} of $\xi$ is defined as usual as
+  $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$ and satisfies accordingly 
+  $\antipode(\SQ)(\u{\xi})=\V{\xi}$.
+\end{Def}
+\begin{Rem}
+  Compare this to the possible definition of the Stiefel-Whitney
+  classes in Theorem~\autoref{thm:altdefswclasses}.
+\end{Rem}
+
+\begin{Thm}\label{thm:altdefwuclasses}
+  Let $M$ be a compact manifold of dimension $n$, and let
+  $\N{\emb}\colon \E{\N{\emb}} \xrightarrow{p} M$ be
+  any normal bundle of rank $k$ of an embedding
+  $\emb\colon M\immto\R^{n+k}$. Then
+  \begin{gather*}
+    \v{i}{M} = \v{i}{\N{\emb}}\in \H^i(M)
+  \end{gather*}
+  \begin{proof}
+    To proof \autoref{thm:altdefwuclasses}, the defining property of
+    $\v{i}{M}$ will be checked on $\v{i}{\N{\emb}}$, \idest one has to show
+    that for any $x\in \H^{n-i}(M)$ holds
     \begin{gather*}
-      \N{}\oplus\T M\cong\trivbdl^{n+k}
-      \;.
+      \capped{x\cup \v{i}{\N{\emb}}}{\fundcl M}
+      = \capped{\Sq i(x)}{\fundcl M}
     \end{gather*}
-  \item\label{item:immersionconj:4}
-    For the map $\N M\colon M\to\B\Orth$ characterising the stable
-    normal bundle over $M$ there is a lift $\N{}\colon M\to\B\Orth(k)$
-    making the following diagram commute up to homotopy
-    \begin{center}
-      \begin{tikzcd}
-        M
-        \ar[r, "\N{}"]
-        \ar[dr, "\N{M}"{left}, bend right]
-        & \BO(k) \ar[d, "\incl", hookrightarrow] \\
-        & \BO
-      \end{tikzcd}
-    \end{center}
-  \end{enumerate}
+    Note, that this is simply the $i$th degree of the equation
+    \begin{gather}\label{eq:proofaltdefwuclasses:claim}
+      \capped{x\cup \V{\N{\emb}}}{\fundcl M}
+      = \capped{\SQ(x)}{\fundcl M}
+    \end{gather}
+    which will be proven below.
+    Beforehand, recall the following:
+    \begin{description}
+    \item[By \autoref{lem:thomisoself-adjoint}:]
+      $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
+      for $r\in\Nat$, $z\in \H^r(M)$,
+      $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N{\emb}}})$.
+    \item[By \autoref{lem:thomisofundcl}:]
+      $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
+      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N{\emb}}$ is
+      the collapse map of a tubular embedding of the normal bundle $\N
+      M$.
+    \item[By \eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}:]
+      The total Steenrod square
+      $\SQ\colon \H^m(\Sphere m)
+      \to \H^*(\Sphere m)$
+      is the identity on $\H^m(\Sphere m)$, \idest
+      $\Sq i\colon \H^m(\Sphere{m})\to \H^{m+i}(\Sphere{m})$ is zero for
+      $i\neq0$.
+    \item[By Definition \autoref{def:sq}:] The total Steenrod Square
+      $\SQ$ is natural and a ring homomorphism.
+    \item[By \eqref{eq:capprod2}:]
+      For any map of spaces $f\colon X\to Y$ and co-/homology classes
+      $a$ and $\beta$ in the corresponding co-/homology groups holds
+      $\capped{a}{\pf f \beta} = \pf f \capped{\pb f a}{\beta}$
+    \end{description}
+    For the proof fix some $i\leq n$, some arbitrary $x\in
+    \H^{n-i}(M)$, as well as a collapse map
+    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N{\emb}}$ as in
+    \autoref{lem:thomisofundcl}.
+    For simplicity, denote
+    $\Vu\coloneqq \V{\N{\emb}}$,
+    $\Sph\coloneqq \Sphere{n+\rkk}$,
+    $\U\coloneqq \u{\N{\emb}}$ and
+    $\pf\collapse\coloneqq \pf{(\incl\circ\collapse)}$
+    respectively
+    $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
+    
+    
+    In a first calculation reformulate
+    $\capped{x\cup \V{\N{\emb}}}{\fundcl M}$ using the cohomology of the
+    $(n+k)$-sphere:
+    \begin{align}\notag
+      \capped{x\cup \Vu}{\fundcl M}
+      &\equalsby{\autoref{lem:thomisofundcl}}
+        \capped
+        {x\cup\Vu}
+        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
+      \\\notag
+      &\equalsby{\autoref{lem:thomisoself-adjoint}}
+        \capped
+        {\thomiso\left(x\cup\Vu\right)}
+        {\pf\collapse\fundcl{\Sph}}
+      \\\notag
+      &\equalsby{\eqref{eq:capprod2}}
+        \pf\collapse\capped
+        {\pb\collapse\thomiso\left(x\cup\Vu\right)}
+        {\fundcl{\Sph}}
+      \\\notag
+      &\equalsby{\eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}}
+        \pf\collapse\capped
+        {\SQ\left(\pb\collapse\thomiso\left(x\cup\Vu\right)\right)}
+        {\fundcl{\Sph}}
+      \\\notag
+      &\equalsby{Naturality}
+        \pf\collapse\capped
+        {\pb\collapse\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
+        {\fundcl{\Sph}}
+      \\\label{eq:proofaltdefwuclasses:eq1}
+      &\equalsby{\eqref{eq:capprod2}}
+        \capped
+        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
+        {\pf\collapse\fundcl{\Sph}}
+    \end{align}
+    Having introduced $\SQ$ on the left hand side, one observes a
+    certain commutativity of the Thom isomorphism, and the total
+    Steenrod square:
+    \begin{align}\notag
+      \SQ\left(\thomiso\left(x\cup\Vu\right)\right)
+      &=
+        \SQ\left(\left(\pb p x\cup \pb p\Vu\right) \cup \U\right)
+      \\\notag
+      &=
+        \SQ\left(\pb p x\cup \left(\pb p\Vu \cup \U\right)\right)
+      \\\notag
+      &\equalsby{Def. $\thomiso$}
+       \SQ\left(\pb p x\cup \thomiso(\Vu)\right)
+      \\\notag
+      &\equalsby{Naturality, Ring Hom.}
+        \pb p\SQ(x) \cup \SQ(\thomiso(\Vu))
+      \\\notag
+      &\equalsby{Def. $\V{M}$}
+        \pb p\SQ(x) \cup \SQ(\antipode(\SQ)(u))
+      \\\notag
+      &\equalsby{Def. $\antipode$}
+        \pb p\SQ(x) \cup u
+      \\\label{eq:proofaltdefwuclasses:eq2}
+      &\equalsby{Def. $\thomiso$}
+        \thomiso(\SQ(x))
+    \end{align}
+    Inserting \eqref{eq:proofaltdefwuclasses:eq2} into
+    \eqref{eq:proofaltdefwuclasses:eq1} from above easily yields the
+    claim in \eqref{eq:proofaltdefwuclasses:claim} that proves the theorem:
+    \begin{align*}
+      \capped{x\cup \Vu}{\fundcl M}
+      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
+        \capped
+        {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
+        {\pf\collapse\fundcl{\Sph}}
+      \\
+      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq2}}
+        \capped
+        {\thomiso(\SQ(x))}
+        {\pf\collapse\fundcl{\Sph}}
+      \\
+      &\equalsby{\autoref{lem:thomisoself-adjoint}}
+        \capped
+        {\SQ(x)}
+        {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
+      \\
+      &\equalsby{\autoref{lem:thomisofundcl}}
+        \capped
+        {\SQ(x)}
+        {\fundcl M}
+        \qedhere
+    \end{align*}
+  \end{proof}
 \end{Thm}
-From a homotopy theoretical viewpoint, one obviously is most
-interested in statement \ref{item:immersionconj:4}.
-So, before passing over to the proof, have a look at some first
-advantages of this approach.
 
-For one, this formulation points out a certain homotopy invariance of
-the immersion problem, namely an $n$-manifold already satisfies the
-immersion property if it is \emph{homotopic} to one doing so. 
-The interesting intermediate result that every $n$-manifold is
-at least \emph{cobordant} to one fulfilling the conjecture's property
-will be discussed in \autoref{chap:brown}.
 
-Moreover as a second major advantage, statement
-\ref{item:immersionconj:4} directly puts the immersion problem in the
-setting of characteristic classes, more precisely Stiefel-Whitney
-classes, which provides a formidable further arsenal of tooling.
-As an example, the motivation for the exact value of the immersion
-dimension will be deduced in \autoref{chap:massey}.
+\subsection{Wu's Theorem}\label{sec:wutheorem}
+This section is meant to show a direct connection between the
+Stiefel-Whitney classes and the Wu classes, which can be shown using
+the alternative definition of the Wu classes from
+\autoref{thm:altdefwuclasses}.
 
-\begin{proof}[proof of \autoref{thm:immersionconj:equivalences}]
-  \begin{description}
-  \item[\ref{item:immersionconj:3}$\Leftrightarrow$\ref{item:immersionconj:4}:]
-    Using Steenrod's classification theorem
-    \itemref{def:charcls}{item:classificationthm} 
-    and the properties of the stable normal bundle of a manifold
-    directly yields the equivalence of \ref{item:immersionconj:3} and
-    \ref{item:immersionconj:4}.
-  \item[\ref{item:immersionconj:2}$\Leftrightarrow$\ref{item:immersionconj:3}:]
-    In order to get from a vector bundle monomorphism
-    $F\colon M\to\R^{n+k}$ to a normal bundle, first note that the
-    trivial bundle $\T{\R^{n+k}}$ is easily equipped with an
-    orthonormal frame. Thus, one can consider the fibre-wise orthogonal
-    complement $\N{}$ of the image $F(\T M)$ which is a vector bundle over
-    $F(M)\subset\R^{n+k}$. Its pullback to $M$ along
-    $F|_{\zerosec{\T M}}$ obviously fulfils the required property of
-    \ref{item:immersionconj:3}.
-    
-    Conversely, when starting with some rank $k$ vector bundle $\N{}$
-    such that $\N{}\oplus\T M\cong\trivbdl^{n+k}$, there is a vector
-    bundle monomorphism $\N{}\to\trivbdl$ over $M$. Then the
-    following chain of vector bundle morphisms
-    \begin{center}
-      \begin{tikzcd}
-        \T M \ar[d]
-        \ar[r, hookrightarrow]
-        & M\times\R^{n+k} \ar[d,"\trivbdl^{n+k}"]
-        \ar[r]
-        & \pt\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
-        \ar[r, hookrightarrow]
-        & \R^{n+k}\times \R^{n+k} \ar[d,"\trivbdl^{n+k}"]
-        \\
-        M
-        \ar[r,equals]
-        & M
-        \ar[r]
-        & \pt
-        \ar[r, hookrightarrow]
-        & \R^{n+k}
-      \end{tikzcd}
-    \end{center}
-    is fibre-wise injective in each stage, and hence a monomorphism as
-    was needed.
-  \item[\ref{item:immersionconj:1}$\Leftrightarrow$\ref{item:immersionconj:2}:]
-    The tricky part is to relate \ref{item:immersionconj:1} and
-    \ref{item:immersionconj:2}, even though it is easily seen that
-    \ref{item:immersionconj:1} implies \ref{item:immersionconj:2} by
-    simply taking $F$ to be the differential $\Diff f$ of the
-    immersion from \ref{item:immersionconj:1}.
-    
-    The converse direction is an application of the Hirsch-Smale
-    theorem~\autoref{thm:hirschsmale}.
-    However, first substitute the non-compact manifold $\R^{n+k}$ with
-    the compact sphere $N=\Sphere{n+k}$, to make $M$ and $N$ comply
-    with the preliminaries of the theorem. As $\dim M<n+k$ by assumption,
-    every immersion $M\to\Sphere{n+k}$ misses a point on
-    $\Sphere{n+k}$ and hence factors over an immersion $M\to\R^{n+k}$.
-    This then shows that also \ref{item:immersionconj:2} implies
-    \ref{item:immersionconj:1} which makes them equivalent.
-  \end{description}
+\begin{Thm}[Wu]\label{thm:wu}
+  A closed manifold gives rise to the following two equalities
+  \begin{align}\notag
+    \dualW{M} &= \SQ\left(\dualV{M}\right)
+    &\text{respectively}&
+    &\dualw{k}{M} &= \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
+    &\text{and}
+    \\
+    \W{M} &= \SQ\left(\V{M}\right)
+    &\text{respectively}&
+    &\w{k}{M} &= \sum_{i\geq0} \Sq i\left(\v{k-i}{M}\right)
+    \label{tag:wuformula}\tag{Wu's formula}
+  \end{align}
+  that are equivalent using
+  $\dualW{M}\cup\W{M} = 1$ and
+  \begin{gather*}
+    \SQ(\dualV{M})\cup\SQ(\V{M})
+    = \SQ(\dualV{M}\cup\V{M})
+    = \SQ(1)
+    = 1
+    \;.
+  \end{gather*}
+\end{Thm}
+% \begin{Rem}
+%   The following is equivalent to Wu's formula
+%   \begin{gather*}
+%     \dualW{M} = \SQ\left(\dualV{M}\right)
+%     \qquad\text{respectively}\qquad
+%     \dualw{k}{M} = \sum_{i\geq0} \Sq i\left(\dualv{k-i}{M}\right)
+%   \end{gather*}
+%   using the inverses $\dualW{M}\cup\W{M} = 1$ and
+%   \begin{gather*}
+%     \SQ(\dualV{M})\cup\SQ(\V{M})
+%     = \SQ(\dualV{M}\cup\V{M})
+%     = \SQ(1)
+%     = 1
+%     \;.
+%   \end{gather*}
+% \end{Rem}
+The proof uses the alternative characterisation
+\begin{gather*}
+  \antipode(\SQ)(\u{\N{\emb}}) = \thomiso(\V{\N{\emb}})
+\end{gather*}
+of the Wu classes from \autoref{thm:altdefwuclasses}, and quite directly
+follows from the following Lemma:
+\begin{Lem}\label{lem:wu}
+  For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
+  paracompact space holds
+  \begin{gather*}
+    \SQ(\V{\xi}) \cup \W{\xi}= 1
+    \;.
+  \end{gather*}
+\end{Lem}
+\begin{proof}[proof of \ref{tag:wuformula}]
+  Lemma \autoref{lem:wu} states for a closed manifold $M^n$ and any
+  embedding $\emb\colon M\to\R^{n+k}$ that
+  \begin{gather*}
+    \SQ(\V{M}) \cup \dualW{M}
+    = \SQ(\V{\N M}) \cup \W{\N{\emb}}
+    \cequalsby{\autoref{lem:wu}} 1
+    \;.
+  \end{gather*}
+  Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
+  as $\W{\T M} \cup \W{\N{\emb}} = 1$ by
+  \itemref{rem:propswclasses}{item:wuclassmfdinverse}.
 \end{proof}
+\begin{proof}[proof of Lemma~\autoref{lem:wu}]
+  For simplicity use the shortenings
+  $\U\coloneqq \u{\xi}$,
+  $\Vu\coloneqq \V{\xi}$, and
+  $\Ws\coloneqq \W{\xi}$.
+  Then calculate
+  \begin{align*}
+    \thomiso(1)
+    &= \U
+    \\
+    &\equalsby{Def.~\autoref{def:antipode}}
+      \SQ\left(\antipode(\SQ)(\U)\right)
+    \\
+    &\equalsby{Def.~\autoref{def:altwuclasses}}
+      \SQ\left(\thomiso(\Vu)\right)
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \SQ\left(\pb p\Vu \cup \U\right)
+    \\
+    &\equalsby{\ref{tag:cartan}, Naturality}
+      \pb p\SQ(\Vu) \cup \SQ(\U)
+    \\
+    &\equalsby{\autoref{thm:altdefswclasses}}
+      \pb p\SQ(\Vu) \cup \thomiso(\Ws)
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \pb p\SQ(\Vu) \cup \left(\pb p \Ws \cup \U\right)
+    \\
+    &=
+      \pb p\left(\SQ(\Vu) \cup \Ws\right) \cup \U
+    \\
+    &\equalsby{Def.~$\thomiso$}
+      \thomiso\left(\SQ(\Vu) \cup \Ws\right)
+  \end{align*}
+  Applying the inverse of the Thom isomorphism to both sides
+  yields the equality which was to be shown.
+\end{proof}
+
+
+\section{Massey's Theorem on the Stiefel-Whitney Classes of Manifolds}
+Massey's main theorem on the Stiefel-Whitney classes of manifolds
+gives a very concrete obstruction on what degrees of the dual
+Stiefel-Whitney classes may be non-zero.
+More precisely, it formulates a connecting to the existence of binary
+representations of the manifold's dimension.
+\begin{Thm}[Massey]\label{thm:massey}
+  \optcite[Theorem~I.]{massey}
+  Let $M$ be a compact, $n$-dimensional manifold.
+  Given an integer $q$ with $0<q<n$ such that $\dualw{n-q}{M}\neq0$,
+  there is a sequence of integers $h_1\geq\dotsb\geq h_q\geq0$ of
+  length $q$ that fulfils
+  \begin{gather*}
+    n = \sum_{i=1}^{q} 2^{h_i}
+  \end{gather*}
+\end{Thm}
+
+As an immediate consequence all dual Stiefel-Whitney classes of degree
+greater than $n-\alpha(n)$ of any manifold must be zero, because there
+cannot be any shorter representation of $n$ by powers of two
+than its binary representation of length $\alpha(n)$.
+
+The following sections are dedicated to the proof of Massey's Theorem.
+Let $M$ be a compact, $n$-dimensional manifold throughout the proof.
+The latter consists of several steps:
+\begin{steps}
+\item\label{tag:masseystep1} 
+  Show that for any $q$, admissible iterated Steenrod square $\Sq I$, and cohomology
+  class $x\in\H^q(M)$ of degree $q$ such that $\Sq I(x)$ is non-trivial there exists
+  some representation of the form
+  \begin{gather*}
+    \deg \left(\Sq I(x)\right)
+    = 2^k\cdot
+    \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
+    \;.
+  \end{gather*}
+\item\label{tag:masseystep2}
+  Find some iterated Steenrod square which is non-trivial in degree
+  $\Sq I\colon\H^q(M)\to\H^n(M)$.
+\end{steps}
+Applying \ref{tag:masseystep1} to the Steenrod square $\Sq I$ from
+\ref{tag:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
+immediately yields the result as
+\begin{gather*}
+  n = \deg\left(\Sq I(x)\right) = \underbrace
+  {2^{k_1+k}+\dotsb+2^{k_{q-1}+k} + 2^{k}}_{\text{$q$ summands}}
+  \;.
+\end{gather*}
+
+\subsection[Degree Dissection for Steenrod Squares]
+{Step 1: A Degree Dissection for Steenrod Squares}
+\ref{tag:masseystep1} requires to proof the following claim.
+\begin{Lem}[\ref{tag:masseystep1}]\label{lem:masseystep1}
+  Let $q\geq 0$ be an integer,
+  and $I\in\Nat^{\l(I)}$ an admissible sequence of integers.
+  Further, let $x\in\H^q(M)$ be a cohomology class of degree $q$
+  such that $\Sq I(x)$ is non-trivial.
+  Then there exists $k\in\Nat$ and a sequence of integers
+  $k_1\geq\dotsb\geq k_{q-1}\geq0$ of length $q-1$ such that the
+  degree of $\Sq I(x)$ can be represented as the dissection
+  \begin{gather*}
+    \deg \Sq I(x)
+    = \deg x + \d(I)
+    = 2^k\cdot
+    \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
+    \;.
+  \end{gather*}
+  % Mind that the maximum length of such a sequence is $\deg\Sq I(x)$.
+\end{Lem}
+
+In order to split the proof into several cases, recall that
+$\Sq I(x) = 0$ for $\e(I)>\deg x$ by
+\itemref{rem:sq}{item:squpperboundgeneral}. This leaves the two cases
+$\e(I)<\deg x$ and $\e(I)=\deg x$.
+Inductively applying the following Lemma by Serre restricts the
+proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
+\begin{Lem}[Serre]
+  \label{lem:serre}
+  Every admissible sequence $I\in\Nat^{\l(I)}$ of excess $\e(I)>0$
+  admits an admissible sequence $J$ with $\e(J)<\e(I)$,
+  together with some $k\in\Nat$
+  such that for any cohomology class $x\in\H^{\e(I)}$ holds
+  \begin{gather*}
+    \Sq I(x) = \left(\Sq J(x)\right) ^{2^k}
+    \qquad\text{respectively}\qquad
+    \deg\left(\Sq I(x)\right) = 2^k\cdot \deg\left(\Sq J(x)\right)
+  \end{gather*}
+\end{Lem}
+
+Before proving \autoref{lem:serre} one can finish the argumentation for
+the case $\e(I)<\deg x$.
+\begin{proof}[proof of \autoref{lem:masseystep1}]
+  Let $q\in\Nat$ and $I=(i_1,\dotsc,i_l)$ be an admissible sequence such that
+  $\e(I)<q$.
+  Assume there is a cohomology class $x\in\H^q(M)$ such that $\Sq I(x)\neq0$.
+  Set
+  \begin{alignat*}{4}
+    \alpha_0 &= q-1-\e(I)\geq 0 &\qquad&\text{which is positive as $\e(I)<q$,} \\
+    \alpha_r &= i_{r}-2i_{r+1}  &&\text{for $1\leq r< \l(I)$, and} \\ 
+    \alpha_{\l(I)} &= i_{\l(I)}
+    \;.
+  \end{alignat*}
+  It is an easy exercise that the excess of $I$ can be rewritten as
+  $\e(I)=\sum_{r=1}^{\l(I)}\alpha_r$, so
+  \begin{gather}\label{eq:alpha0}
+    \sum_{r=0}^{\l(I)}\alpha_r = \alpha_0 + \e(I) \cequalsby{Def.} q-1
+    \;.
+  \end{gather}
+  Just as easily one sees
+  \begin{align}\label{eq:proofmassey:eq1}
+    i_s
+    &= \sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
+  \end{align}
+  The above definitions then directly imply the following reformulation
+  of $\d(I)$ in terms of $\alpha_i$:
+  \begin{align}\notag
+    \d(I) \coloneqq \sum_{s=1}^{\l(I)}i_s 
+    &\cequalsby{\eqref{eq:proofmassey:eq1}}
+      \sum_{s=1}^{\l(I)}\sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
+    &\equalsby{Reorder} \sum_{j=1}^{\l(I)}
+      \left(\sum_{m=0}^{j-1}2^m\right)\alpha_j
+      = \sum_{j=1}^{\l(I)}(2^j-1)\alpha_j 
+      = \sum_{j=1}^{\l(I)}2^j\alpha_j
+      - \sum_{j=1}^{\l(I)}\alpha_j\\
+    \label{eq:proofmassey:eq2}
+    &= \sum_{j=1}^{\l(I)}2^j\alpha_j
+      - \e(I)
+      \;.
+  \end{align}
+  All put together yields
+  \begin{align*}
+    \deg\left(\Sq I(x)\right)
+    &= \deg(x) + \d(I)\\
+    &= 1 + \deg(x) -1 +\d(I) \\
+    &\equalsby{\eqref{eq:proofmassey:eq2}}
+      1 + q - 1 - \e(I) + \sum_{j=1}^{\l(I)}2^j\alpha_j \\
+    &\equalsby{Def.}
+      1 + \alpha_0 + \sum_{j=1}^{\l(I)}2^j\alpha_j \\
+    &= 1 + \sum_{j=0}^{\l(I)}2^j\alpha_j
+    = 1 + \left(
+      \underbrace{2^0 +\dotsb+ 2^0}_{\text{$\alpha_0$ times}}
+      + \dotsb
+      + \underbrace{2^{\l(I)}+\dotsb+2^{\l(I)}}_{\text{$\alpha_{\l(I)}$ times}}
+      \right)
+  \end{align*}
+  which is one plus a sum of exactly
+  $\sum_{j=0}^{\l(I)}\alpha_j\cequalsby{\eqref{eq:alpha0}} q-1$
+  powers of two as was to be shown.
+  The $k_j$ are in this case
+  \begin{gather*}
+    k_j = \begin{cases}
+      0 & 0< j\leq \alpha_0\\
+      1 & \alpha_0< j\leq \alpha_1\\
+      \vdots\\
+      \l(I) & \alpha_{\l(I)-1}<j\leq \alpha_{\l(I)}
+    \end{cases}
+    \qedhere
+  \end{gather*}
+\end{proof}
+
+\begin{proof}[proof of \autoref{lem:serre}]
+  \optcite[Lemma~1, converse part, p.~159]{serre}
+  First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
+  of excess $\e(I)>0$ can be written as
+  $I=(2^{k-1}i_k,\dotsc,2i_k,i_k,i_{k+1},\dotsc,i_l)$
+  with $l>k\geq 1$ chosen maximal, \idest $i_k>2i_{k+1}$. If $I$ is admissible, the subsequence
+  $J\coloneqq(i_{k+1},\dotsc,i_l)$ will be admissible as well.
+  In order to see that such $J$ and $k$ fulfil the requirements from
+  \autoref{lem:serre} one only needs to show
+  \begin{claim}
+    For $I$ and $J$ as above, and $x\in\H^{\e(I)}(X)$ a cohomology
+    class of a space $X$ holds
+    \begin{enumerate}
+    \item $\Sq I(x) = \left(\Sq J(x)\right)^{2^k}$, and
+    \item $\e(I)<\e(J)$.
+    \end{enumerate}
+  \end{claim}
+  For the first part one simply has to check that
+  $\deg(\Sq J(x))=i_k$, as the statement then inductively follows from
+  property \eqref{eq:sqsquared} that $\Sq i(y)=y^2$ for any cohomology
+  class with $i=\deg(y)$.
+  So calculate
+  \begin{align*}
+    \deg(\Sq J(x))
+    &= \d(J) + \deg(x)\\
+    &= \d(J) + \e(I)\\
+    &= \d(J) 
+      + \left(\sum_{r=1}^{\l(I)-1}(i_r-2i_{r+1})\right)
+      + i_{\l(I)}\\
+    &= \d(J)
+      + \left(\sum_{r=1}^{k-1}\underbrace{(i_r-2i_{r+1})}_{=0}\right)
+      + (i_k-2i_{k+1})
+      +\left(\sum_{r=k+1}^{\l(I)-1}(i_r-2i_{r+1})\right) + i_{\l(I)}\\
+    &= \d(J)
+      + (i_k-2i_{k+1})
+      + \e(J) \\
+    &= \d(J) + i_k - 2i_{k+1} + 2i_{k+1} - \d(J) \\
+    &= i_k
+  \end{align*}
+  Comparing the excesses yields the second part:
+  \begin{gather*}
+    \e(I) - \e(J)
+    = \left(\sum_{r=1}^{k-1}\underbrace{(i_r-2i_{r+1})}_{=0}\right)
+    + \underbrace{(i_k - 2i_{k+1})}_{\text{$>0$ by def. of k}}
+    > 0
+    \qedhere
+  \end{gather*}
+\end{proof}
+
+
+\subsection[Non-trivial Iterated Steenrod Squares for Manifolds]
+{Step 2: Existence of Non-trivial Iterated Steenrod Squares for Manifolds}
+
+This section is dedicated to finding an iterated Steenrod square
+$\Sq I$ of degree $n-q$ that is non-trivial in degree
+$\Sq I\colon\H^q(M)\to\H^n(M)$ in order to complete
+\ref{tag:masseystep2}
+and thus prove Theorem~\autoref{thm:massey}.
+
+The candidate is the multiplication map
+\begin{gather*}
+  \H^q(M) \longto \H^n(M)
+  \qquad
+  x\longmapsto x\cup\dualw{n-q}{M}
+\end{gather*}
+which is non-trivial as the cup-product is non-degenerated
+by Poincaré duality \cite[Proposition~3.38]{hatcher}.
+It remains to see that this map actually comes from a (sum of)
+iterated Steenrod square(s) which then must be non-trivial.
+But this easily follows from the next main Lemma,
+the proof of which essentially uses Wu's Theorem and the properties of
+the Wu classes.
+
+\begin{Lem}\label{lem:masseystep2}
+  Let $0<k<n$ and $x\in\H^k(M)$ be a cohomology class.
+  Then
+  \begin{gather*}
+    x\cdot\dualw{n-k}{M} = \sum_{i>0}\Sq i(x)\cdot\dualw{n-k-i}{M}
+  \end{gather*}
+\end{Lem}
+Applying this inductively with the induction step
+\begin{gather*}
+  \Sq I(x)\cdot\dualw{n-k-j}
+  = \sum_{i>0}\Sq i\circ\Sq I(x)\cdot\dualw{n-k-(i+j)}{M}
+\end{gather*}
+yields the needed result.
+
+\begin{proof}[proof of \autoref{lem:masseystep2}]
+  As above let $0<k<n$ and $x\in\H^k(M)$.
+  For simplicity write
+  $\ws i\coloneqq\w i M$, $\dualws i\coloneqq\dualw i M$,
+  $\vu i = \v i M$ and $\dualvu i = \dualv i M$.
+  In order to translate from Stiefel-Whitney classes to Steenrod
+  squares and back again recall the following results.
+  \begin{description}
+  \item[By Theorem \autoref{thm:wu} (Wu):]
+    $\sum_{j=0}^{s} \Sq j(\dualvu{s-j}) = \dualws{s-j}$
+    for any $s\leq n$.
+  \item[By Definition~\autoref{def:wuclasses} of $\Vu$:]
+    $\vu i \cdot y = \Sq i(y)$
+    for any $i\leq n$ and $y\in\H^{n-i}(M)$.
+  \item[By Definition~\autoref{def:dualwuclasses} of $\dualVu$:]
+    $\dualvu d = \sum_{i=1}^{d} \vu i\cdot \dualvu{d-i}$ for $d>0$.
+  \end{description}
+  The full calculation is then
+  \begin{align*}
+    x\cdot \dualws{n-k}
+    &\cequalsby{\autoref{thm:wu}}
+      x\cdot \sum_{i=0}^{n-k} \Sq i(\dualvu{n-k-i}) \\
+    &\equalsby{Def. $\Sq 0$}
+      x\cdot\left(
+      \dualvu{n-k} + \sum_{i=1}^{n-k} \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Def. $\dualVu$}
+      x\cdot\left(
+      \left(\sum_{i=1}^{n-k} \vu{i}\cdot\dualvu{n-k-i}\right)
+      + \left(\sum_{i=1}^{n-k} \Sq i(\dualvu{n-k-i})\right)
+      \right) \\
+    &=
+      \sum_{i=1}^{n-k} \left(
+      \vu{i}\cdot x\cdot \dualvu{n-k-i}
+      + x\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Def. $\Vu$}
+      \sum_{i=1}^{n-k} \left(
+      \Sq i (x\cdot \dualvu{n-k-i})
+      + x\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{\ref{tag:cartan}, Def. $\Sq 0$}
+      \sum_{i=1}^{n-k} \left(
+      \left( \sum_{r=0}^{i} \Sq r(x)\cdot \Sq{i-r}(\dualvu{n-k-i}) \right)
+      + \Sq 0(x)\cdot \Sq i(\dualvu{n-k-i})
+      \right) \\
+    &=
+      \sum_{i=1}^{n-k} \left(
+      \sum_{r=1}^{i} \Sq r(x)\cdot \Sq{i-r}(\dualvu{n-k-i})
+      \right) \\
+    &\equalsby{Reorder}
+      \sum_{r=1}^{n-k} \Sq r(x) \cdot
+      \left( \sum_{j=0}^{n-k-r} \Sq j(\dualvu{n-k-(j+r)}) \right) \\
+    &\equalsby{\autoref{thm:wu}}
+      \sum_{r=1}^{n-k} \Sq r(x) \cdot\dualws{n-k-r}
+      \qedhere
+  \end{align*}
+\end{proof}
+
+\section{Best Possible Result}
+Recall that a closed $n$-manifold can only immerse into
+$\R^{2n-a}$ if all Stiefel-Whitney classes $\dualw{i}{\N M}$ of its
+normal bundle are zero in degrees greater than $n-a$.
+Massey's Theorem now states that this condition is met for
+$a=\alpha(n)$, and thus suggests the conjecture that every
+manifold immerses into $\R^{2n-\alpha(n)}$.
+
+Naturally, there occurs the question whether Massey's $\alpha(n)$ is
+the best possible (\idest largest) result for arbitrary closed
+$n$-manifolds.
+The answer is yes, proved by the following counterexamples of manifolds
+not immersing into $\R^{2n-(\alpha(n)+1)}$.
+
+\begin{Thm}
+  \optcite[p.~87]{immersionconj}
+  Denote by $\RP{i}$ the $i$th real projective space.
+  \begin{enumerate}
+  \item For $n=2^i$, the Stiefel-Whitney class
+    $\dualw{n-\alpha(n)}{\RP{2^i}}$ is not zero.
+  \item For $n\in\Nat$ with binary expansion
+    $n=\sum_{r=1}^{q}2^{i_r}$, $i_1>\dotsb>i_q$, the Stiefel-Whitney class
+    $\dualw{n-\alpha(n)}{\prod_{r=1}^{q}\RP{2^r}}$ is not zero.
+  \end{enumerate}
+  \begin{proof}
+    The total Stiefel-Whitney class of $\RP{n}$ for arbitrary
+    $n\in\Nat$ is
+    \begin{gather*}
+      \W{\RP n} = (1+x)^{n+1}\in\H^*(\RP n)\cong \Zmod2[x]/(x^{n+1})
+    \end{gather*}
+    (see \forexample \cite[Example~(19.4.1)]{tomdieck}).
+    For $n=2^i$ this takes the form
+    \begin{align*}
+      \W{\RP{2^i}}
+      &= (x+1)^{2^i+1}
+      = 1 + x + x^{2^i}
+        \text{ , thus} \\
+      \dualW{\RP{2^i}}
+      &= \sum_{r=0}^{2^i-1} x^r
+        \text{ , especially with $\alpha(2^i)=1$} \\
+      \dualw{n-\alpha(n)}{\RP{2^i}}
+      &= x^{2^i-1}\neq 0
+      %   \quad\text{, as} \\
+      % \W{\RP{2^i}}\cdot\dualW{\RP{2^i}}
+      % &= \sum_{r=0}^{2^i-1}x^r
+      % + \sum_{r=1}^{2^i}x^r
+      % + \sum_{r=0}^{2^i-1}x^{2^i}\cdot x^r \\
+      % &= \left( 1 + \sum_{r=1}^{2^i-1}x^r \right)
+      %   + \left( \sum_{r=1}^{2^i-1}x^r + x^{2^i} \right)
+      %   + x^{2^i}
+      %   = 1
+    \end{align*}
+    which proves the first statement.
+    For the second statement where $n=\sum_{r=1}^q 2^{i_q}$ note that
+    \begin{gather}\label{eq:bestresultproof1}
+      n-\alpha(n)
+      = \left( \sum_{r=1}^q 2^{i_r} \right) - q
+      = \sum_{r=1}^q \left( 2^{i_r} - 1 \right)
+      \;.
+    \end{gather}
+    Using multiplicativity %(\ref{tag:swclassesmultiplicativity})
+    of the Stiefel-Whitney classes one gets
+    \begin{align*}
+      \dualW{\prod_{r=1}^q \RP{i_r}}
+      &= \prod_{r=1}^q \dualW{\RP{i_r}}
+        \text{ , and especially by \eqref{eq:bestresultproof1}} \\
+      \dualw{n-\alpha(n)}{\prod_{r=1}^{q}\RP{i_r}}
+      &= \prod_{r=1}^q x^{2^r-1}
+        = x^{n-\alpha(n)} \neq 0
+        \qedhere
+    \end{align*}
+  \end{proof}
+\end{Thm}
+
+
+\section{Outlook: Generalisation of Massey's Theorem} % TODO
+\optcite[Section~II.1]{immersionconj}
 
 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
 %%% End:
+
