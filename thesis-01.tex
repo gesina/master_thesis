@@ -18,7 +18,7 @@ to formulate and work with the immersion conjecture.
 
 As a first result, the goal of \autoref{sec:reformulation} will be to
 reformulate the immersion conjecture to the existence of certain
-liftings up to homotopy, and to outline how characteristic 
+lifts up to homotopy, and to outline how characteristic 
 classes can directly be applied in investigating this problem.
 
 Beforehand, the definitions and main properties of immersions,
@@ -36,7 +36,7 @@ look at the Stiefel-Whitney numbers of normal bundles of manifolds.
 Mind that a couple of preliminary results are merely referenced
 without proof.
 
-\section{Immersions and Normal Bundles}
+\section{Immersions and Normal Bundles}\label{sec:immersions}
 This section recapitulates the definition and major needed properties
 of immersions, which are effectively \enquote{nice} injective maps
 between manifolds.
@@ -94,20 +94,6 @@ invariant lifting property.
     $\imm_1\colon M\immto\R^{n+r}$, $\imm_2\colon M\immto\R^{n+r+s}$
     stably isomorphic in case
     $\N{\imm_1}\oplus\trivbdl^{s}\cong\N{\imm_1}$.
-    This also implies that the corresponding classifying map $f_2$ of
-    $\N{\imm_2}$ factors over the classifying map $f_1$ of
-    $\N{\imm_1}$ as   
-    \begin{center}
-      \begin{tikzcd}
-        M \ar[r, "f_1"]
-        \ar[dr, bend right, "f_2"{left}]
-        & \B\Orth(r)
-        \ar[d, "\incl"]
-        \\
-        & \B\Orth(r+s)
-      \end{tikzcd}
-      and that their classifying maps into $\B\Orth$ agree.
-    \end{center}
   \item 
     By Whitney's Embedding Theorem % TODO: ref [Adachi, Embeddings and Immersions], Thm 2.2, p.46
     it is known that such embeddings exist.
@@ -118,18 +104,148 @@ invariant lifting property.
     and hence all their normal bundles are isomorphic.
     Therefore, the above equivalence relation yields a unique class
     $\N M$ called the \emph{stable normal bundle of $M$}.
-    As the classifying maps into $\BO$ agree for all higher
-    dimensional normal bundles, this map can serve as classifying map
-    for the stable normal bundle.
  \end{enumerate}
+ When working with vector bundles in a context that is stable in the
+ above sense, the stable normal bundle of $M$ may be identified with
+ an arbitrary representative of itself.
 \end{LemDef}
 
 
-\section{Steenrod Squares}\label{sec:steenrodsquares}
+\section{Characteristic Classes of Vector Bundles}
+As the title suggests, the concept of characteristic classes provides the
+main tooling throughout the rest of the paper. Therefore, this section
+revises the needed results, and recalls in detail the needed properties
+of Stiefel-Whitney classes, especially a construction using Thom
+classes and Steenrod squares.
+
+Before starting off with the definition, recall universal bundles and
+Steenrod's classification theorem.
+\begin{LemDef}\label{def:charcls}
+  \optcite[Chapter~14.4]{tomdieck}
+  \begin{enumerate}
+  \item Any topological group $G$ admits a contractible space $\EG$ with a
+    free $G$-action, and a corresponding principal $G$-bundle
+    $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$, called the
+    \emph{universal $G$-bundle},
+    where $\gamma_G$, $\EG$, and $\BG$ are all unique up to
+    homotopy.
+    $\BG$ is called the \emph{classifying space} for principal
+    $G$-bundles.
+    For construction and uniqueness see \cite[Example~1B.7~ff.]{hatcher},
+    respectively note that universal coverings are unique up to homotopy.
+  \item\label{item:classificationthm}
+    $\gamma^G$ fulfils the following universal property:
+    For any space $X$ admitting the homotopy type of a CW-complex
+    there is a bijection between $[X,\BG]$, which denotes the homotopy
+    classes of maps from $X$ to $\BG$, and the isomorphism classes of
+    principal $G$-bundles over $X$, given by
+    \begin{gather*}
+      \left(f\colon X\to\BG \right) \longmapsto \pb f \gamma^G
+      \;
+      \text{\optcite[Theorem 1.4]{immersionconj}}.
+    \end{gather*}
+    This correspondence is natural in $X$, and is a version of
+    Steenrod's classification theorem
+    \cite[Theorem~14.4.1]{tomdieck}.
+    \optcite[Theorem~1.4, p.~75]{immersionconj}
+  \end{enumerate}
+\end{LemDef}
+
+As this paper is mainly interested in vector bundles, have a closer
+look at the significance of classifying spaces in that context,
+especially on the effect on normal bundles of manifolds.
+\begin{Lem}\label{lem:classificationvb}
+  Let $X$ be a space, $r,s\in\Nat$.
+  \begin{enumerate}
+  \item\label{item:vbcharacterisation}
+    There is a natural equivalence between the category of
+    $n$-dimensional vector bundles $\Vect$ and that of principal
+    $\Orth(n)$- respectively $\GL n$-bundles.
+  \item
+    On vector bundles, the inclusion $\B\Orth(r)\to\B\Orth(r+s)$
+    represents the direct sum with the trivial bundle $\trivbdl^s$.
+    \Idest for vector bundles $\xi_1$ and $\xi_2$ over $X$ with
+    classifying maps $f_1$ respectively $f_2$, there is a lift up to
+    homotopy of the form
+    \begin{center}
+      \begin{tikzcd}
+        X \ar[r, "f_1"]
+        \ar[dr, bend right, "f_2"{left}]
+        & \B\Orth(r)
+        \ar[d, "\incl"]
+        \\
+        & \B\Orth(r+s)
+      \end{tikzcd}
+    \end{center}
+    if and only if $\xi_1\oplus\trivbdl^{s}\cong\xi_2$.
+  \item\label{item:charclsstablenormalbundle}
+    Taking the limit of all classifying maps of the normal bundles of
+    $M$ yields a homotopy class in
+    $[M,\B\Orth=\varinjlim_{k}\B\Orth(k)]$
+    that classifies the stable normal bundle of $M$ uniquely.
+    It has the property, that its lifts in $[M,\B\Orth(r)]$
+    are exactly the classifying maps of the normal bundles of $M$.
+    This follows, because by the definition of normal bundles
+    any vector bundle $\xi$ over $M$ will be a normal
+    bundle if $\xi\oplus\trivbdl^r\cong\N{}$ for a normal bundle
+    $\N{}$ of $M$.
+  \end{enumerate}  
+\end{Lem}
+
+Now one can introduce the general concept of characteristic
+classes. The particular case of vector bundles, namely the
+Stiefel-Whitney classes, will be discussed in detail in
+\autoref{sec:swclasses}.
+\begin{Def}
+  A \emph{characteristic class}
+  \begin{itemize}
+  \item of degree $i$
+  \item with coefficients in a ring $R$
+  \item for principal $G$-bundles for a group $G$
+  \end{itemize}
+  is a natural transformation
+  \begin{gather*}
+    \Cl\colon [-, \BG] \Longrightarrow \H^i(-; R)\;.
+  \end{gather*}
+\end{Def}
+\begin{Rem}
+  By Brown's representation theorem \optcite[Chap.~4.E]{hatcher},
+  $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
+  Thus, by the Yoneda lemma, a characteristic class is
+  represented by a morphism
+  \begin{gather*}
+    \cl\colon \BG \longto K(i, R)
+  \end{gather*}
+  in $\Top$, \idest by a cohomology class $\cl$ of $\BG$.
+  Thus, applying $\Cl$ to a principal $G$-bundle over a
+  space $X$, which admits the homotopy type of a CW-complex, that is
+  represented by a morphism $\eta\colon X\to\BG$
+  as in \itemref{def:charcls}{item:classificationthm}
+  yields
+  \begin{gather*}
+    \Cl(X) = \pb{\eta} \cl \in \H^i(X;R)
+    \;.
+  \end{gather*}
+  This describes a one-to-one correspondence between
+  characteristic classes as above and cohomology classes in
+  $\H^i(BG;R)$, and in the following any characteristic class will be
+  identified with its corresponding cohomology class.
+\end{Rem}
+
+Now that the definition is given it should be clear how 
+characteristic classes serve in translating bundle theoretic problems
+into homotopy theoretic ones. This will be a crucial step in
+reformulating the immersion conjecture.
+
+The next subsections will prepare a particular construction of
+Stiefel-Whitney classes, the characteristic classes of vector
+bundles.
+
+\subsection{Steenrod Squares}\label{sec:steenrodsquares}
 Similar to the cup and cap product, Steenrod squares add quite a lot
-of further structure to a cohomology ring, adding more tools to
+of further structure to a cohomology ring, thus adding more tools to
 differentiate spaces by means of cohomology comparison.
-As applications they will serve in constructing two kinds of
+As applications, they will serve in constructing two kinds of
 characteristic classes, namely the Stiefel-Whitney and the Wu
 classes, and give rise to powerful cohomological obstructions
 when combined with further special properties like the Poincaré
@@ -293,98 +409,14 @@ in \autoref{sec:wuclasses}.
   \end{gather*}
 \end{Def}
 
-\section{Characteristic Classes}
-As the title suggests, the concept of characteristic classes provides the
-main tooling throughout the rest of the paper. Therefore, this section
-revises the needed results and recalls in detail the needed properties
-of Stiefel-Whitney classes, especially a construction using Thom classes.
 
-Before starting off with the definition, recall universal bundles and
-Steenrod's classification theorem.
-\begin{LemDef}\label{def:charcls}
-  \optcite[Chapter~14.4]{tomdieck}
-  \begin{enumerate}
-  \item Any topological group $G$ admits a contractible space $\EG$ with a
-    free $G$-action, and a corresponding principal $G$-bundle
-    $\gamma^G\colon \EG\to\BG\coloneqq \EG/G$, called the
-    \emph{universal $G$-bundle},
-    where $\gamma_G$, $\EG$, and $\BG$ are all unique up to
-    homotopy.
-    $\BG$ is called the \emph{classifying space} for principal
-    $G$-bundles.
-    For construction and uniqueness see \cite[Example~1B.7~ff.]{hatcher},
-    respectively note that universal coverings are unique up to homotopy.
-  \item\label{item:classificationthm}
-    $\gamma^G$ fulfils the following universal property:
-    For any space $X$ admitting the homotopy type of a CW-complex
-    there is a bijection between $[X,\BG]$, which denotes the homotopy
-    classes of maps from $X$ to $\BG$, and the isomorphism classes of
-    principal $G$-bundles over $X$, given by
-    \begin{gather*}
-      \left(f\colon X\to\BG \right) \longmapsto \pb f \gamma^G
-      \;
-      \text{\optcite[Theorem 1.4]{immersionconj}}.
-    \end{gather*}
-    This correspondence is natural in $X$, and is a version of
-    Steenrod's classification theorem
-    \cite[Theorem~14.4.1]{tomdieck}.
-    \optcite[Theorem~1.4, p.~75]{immersionconj}
-  \item\label{item:vbcharacterisation}
-    There is a natural equivalence between the category of
-    $n$-dimensional vector bundles $\Vect$ and that of principal
-    $\Orth(n)$- respectively $\GL n$-bundles.
-  \end{enumerate}
-\end{LemDef}
-
-\begin{Def}
-  A \emph{characteristic class}
-  \begin{itemize}
-  \item of degree $i$
-  \item with coefficients in a ring $R$
-  \item for principal $G$-bundles for a group $G$
-  \end{itemize}
-  is a natural transformation
-  \begin{gather*}
-    \Cl\colon [-, \BG] \Longrightarrow \H^i(-; R)\;.
-  \end{gather*}
-\end{Def}
-\begin{Rem}
-  By Brown's representation theorem \optcite[Chap.~4.E]{hatcher},
-  $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
-  Thus, by the Yoneda lemma, a characteristic class is
-  represented by a morphism
-  \begin{gather*}
-    \cl\colon \BG \longto K(i, R)
-  \end{gather*}
-  in $\Top$, \idest by a cohomology class $\cl$ of $\BG$.
-  Thus, applying $\Cl$ to a principal $G$-bundle over a
-  space $X$, which admits the homotopy type of a CW-complex, that is
-  represented by a morphism $\eta\colon X\to\BG$
-  as in \itemref{def:charcls}{item:classificationthm}
-  yields
-  \begin{gather*}
-    \Cl(X) = \pb{\eta} \cl \in \H^i(X;R)
-    \;.
-  \end{gather*}
-  This describes a one-to-one correspondence between
-  characteristic classes as above and cohomology classes in
-  $\H^i(BG;R)$, and in the following any characteristic class will be
-  identified with its corresponding cohomology class.
-\end{Rem}
-
-Now that the definition is given it should be clear how 
-characteristic classes serve in translating bundle theoretic problems
-into homotopy theoretic ones. This will be a crucial step in
-reformulating the immersion conjecture.
-
-
-\subsection{Thom Classes}\label{sec:thomclasses}
+\subsection{Thom Classes and the Thom Isomorphisms}\label{sec:thomclasses}
 In the following, Thom classes and the Thom isomorphisms will be
 revised. From the definition it will be clear that Thom classes are
-\emph{no} characteristic classes as defined before. However, the tools
-that will be introduced in this section are an important ingredient in
-constructing Stiefel-Whitney characteristic classes from Steenrod
-squares.
+\emph{no} characteristic classes in the above sense. However, the
+tools that will be introduced in this section are an important
+ingredient in constructing Stiefel-Whitney characteristic classes from
+Steenrod squares.
 
 Throughout the section,
 let $B$ be a paracompact space, \forexample a manifold,
@@ -803,10 +835,17 @@ cohomology of spheres when needed.
 \end{Lem}
 
 
-\subsection{Stiefel-Whitney Classes}\label{sec:swclasses}
+\subsection{Definition and Construction of Stiefel-Whitney Classes}
+\label{sec:swclasses}
+This section is going to recall the defining axioms, as well as some
+immediate properties of Stiefel-Whitney classes which are generators
+for characteristic classes of vector bundles.
+Furthermore, a handy construction of them is introduced based on the
+results prepared in the previous subsections.
+
 % TODO: section overview
-\begin{Def}[Stiefel-Whitney Classes]\label{def:swclasses}
-  The Stiefel-Whitney classes are
+\begin{Def}\label{def:swclasses}
+  The \emph{Stiefel-Whitney classes} are
   characteristic classes for principal $\Orth$-bundles
   respectively vector bundles,
   \idest cohomology classes
@@ -838,7 +877,7 @@ cohomology of spheres when needed.
   \optcite[compare §4, p.~37]{milnor}
 \end{Def}
 
-\begin{Thm}[Existence and Uniqueness of Stiefel-Whitney Classes]
+\begin{Thm}
   Stiefel-Whitney classes exist and are uniquely defined by the above
   properties. Furthermore, they generate $\H^*(\BO;\Zmod2)\cong \Zmod2[\ws{i}|i\geq1]$.
   \begin{proof}[proof (sketch)]
@@ -862,11 +901,16 @@ cohomology of spheres when needed.
   \end{proof}
 \end{Thm}
 
-\begin{Rem}[Further Properties of the Stiefel-Whitney Classes]
+As already mentioned, the above generating property means that every
+characteristic class of vector bundles of a fixed dimension can be
+represented as a certain combination of Stiefel-Whitney classes.
+Moreover, they behave extremely well concerning vector bundle
+operations as the below immediate properties further emphasise.
+\begin{Rem}
   \label{rem:propswclasses}
   Let $\xi$, $\eta$ be vector bundles over a space $X$.
   \begin{enumerate} 
-  \item $\w{i}{\eta} = 0$
+  \item\label{item:propswclasses:dimesioncut} $\w{i}{\eta} = 0$
     for any vector bundle $\eta$ with $\rk\eta < i$.
     Therefore, the total Stiefel-Whitney class $\W{\xi}$ is
     well-defined (\idest the sum is finite)
@@ -904,6 +948,9 @@ cohomology of spheres when needed.
   \end{enumerate}
 \end{Rem}
 
+In order to algebraically work with the Stiefel-Whitney classes, the
+formal inverse is often handy. Especially, since it is well-known for
+manifolds as explained below.
 \begin{Def}
   Define the \emph{dual Stiefel-Whitney (characteristic) classes}
   $\dualws{i}$ in degree $i$ inductively by
@@ -925,6 +972,10 @@ cohomology of spheres when needed.
   above.
 \end{Def}
 
+Also, it is of advantage for algebraic considerations to relate the
+Stiefel-Whitney classes to other algebraic constructs on cohomology,
+in particular the Steenrod squares. The below construction technique
+will therefore be especially useful.
 \begin{Thm}\label{thm:altdefswclasses}
   The Stiefel-Whitney classes can be given as
   \begin{gather*}
@@ -1017,35 +1068,63 @@ cohomology of spheres when needed.
 
 
 
-\section{Reformulation of the Immersion Problem}
+\section{Reformulation of the Immersion Conjecture}
 \label{sec:reformulation}
 % TODO: section overview
 
+The problem which this paper investigates can finally be clearly
+stated with the definitions from
+\autoref{sec:immersions}.
+The goal of this section is to complete this chapter with a
+reformulation of the immersion conjecture to a statement that can be
+analysed with means of homotopy theory of vector bundles. This
+then makes it possible to directly involve the Stiefel-Whitney classes
+from \autoref{sec:swclasses}. The short elaborations on how
+obstructions arise that way will be needed in the subsequent
+chapter.
+
+Before reformulating, recall the actual immersion conjecture.
+\begin{Def}
+  For $n\in\Nat$ consider the unique minimal binary expansion
+  \begin{gather*}
+    n=2^{i_1}+\dotsb+2^{i_{l_n}},
+    \quad\text{with}\quad
+    i_1<\dotsb<i_{l_n}
+    \;.
+  \end{gather*}
+  Define $\alpha(n)\coloneqq l_n$, \idest $\alpha(n)$ is the number of
+  ones in the binary notation of $n$.
+\end{Def}
 \begin{Thm}\label{thm:immersionconj}
   For $n\in\Nat$, every closed, smooth, $n$-dimensional manifold
-  immerses into $\R^{2n-\alpha(n)}$, where $\alpha(n)$ is defined as
-  the minimal number of summands in any binary representation of $n$.
+  immerses into $\R^{2n-\alpha(n)}$.
 \end{Thm}
-% TODO: Def "immersion problem", "immersion property" of a manifold
+In the style of this conjecture, an $n$-manifold that immerses into
+some $\R^{2n-\alpha(n)}$ will be said to have the
+\emph{immersion property}. % TODO: check, whether defs are needed
+And the question, whether a particular manifold does have the
+immersion property, will be referred to as the \emph{immersion problem} for
+this manifold.
 
 An essential step for the reformulation of the immersion conjecture is
 a theorem of Hirsch and Smale, which gives a homotopy theoretical
 relation between the spaces of immersions of two manifolds $\Imm M N$
-and of the vectorbundle monomorphisms $\Mono{\T M}{\T N}$ between
+and of the vector bundle monomorphisms $\Mono{\T M}{\T N}$ between
 their tangent bundles. For the formulation, one has to equip the
 respective sets with a topology as follows.
 \begin{Def}
-  Let $M$, $N$ be closed smooth manifolds of dimensions $\dim M < \dim N$.
+  Let $M$, $N$ be closed smooth manifolds of dimensions $\dim M<\dim N$.
   \begin{enumerate}
-  \item % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
   \item
     Equip the set of all vector bundle monomorphisms from $\xi_1$ to
-    $\xi_2$ with the compact-open topology, and denote that space by
-    $\Mono{\xi_1}{\xi_2}$.
+    $\xi_2$ with the compact-open topology (see \forexample
+    \cite{hatcher}), and denote that space by $\Mono{\xi_1}{\xi_2}$.
     Note that a path between monomorphisms $F_1$ and $F_2$ in the
     space $\Mono \xi \eta$ is an homotopy from $F_1$ to $F_2$ which is
     a vector bundle monomorphism in each stage.
-  \item % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
+  \item
+    % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
+    % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
     The set $\Imm M N$ of all immersions from $M$ to $N$ injects
     into $\Mono{\T M}{\T N}$ by taking the differential
     $f\mapsto\Diff f$.
@@ -1062,9 +1141,10 @@ respective sets with a topology as follows.
 
 Now one can state the following major result in immersion theory by
 Hirsch using preliminary work of Smale
-\cite[Sections~5 and 6]{hirschimmersions}.
+\cite[Sections~5 and 6]{hirschimmersions}. The following formulation
+is according to
+\cite[Theorem~1.2]{immersionconj}. % TODO: better ref modern formulation
 \begin{Thm}[Hirsch-Smale]\label{thm:hirschsmale}
-  \optcite[Theorem~1.2]{immersionconj} % TODO: better ref for modern formulation
   Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
   Then the differential map
   $\Diff\colon \Imm M N\to \Mono{\T M}{\T N}$
@@ -1086,8 +1166,8 @@ Thus, any monomorphism of vector bundles over smooth, closed
 manifolds $M$ and $N$ implies the existence of an immersion from $M$
 to $N$.
 
-This gives rise to the subsequent reformulation of the immersion
-conjecture in \autoref{thm:immersionconj}.
+This finally gives rise to the subsequent reformulation of the
+immersion problem of a manifold in \autoref{thm:immersionconj}.
 \begin{Thm}\label{thm:immersionconj:equivalences}
   Let $n,k\in\Nat$ and $M^n$ be a closed, smooth, $n$-dimensional manifold.
   The following statements are equivalent.
@@ -1130,10 +1210,15 @@ is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
   \begin{description}
   \item[\ref{item:immersionconj:3}$\Leftrightarrow$\ref{item:immersionconj:4}:]
     Using Steenrod's classification theorem
-    \itemref{def:charcls}{item:classificationthm} 
-    and the properties of the stable normal bundle of a manifold
-    directly yields the equivalence of \ref{item:immersionconj:3} and
-    \ref{item:immersionconj:4}.
+    \itemref{def:charcls}{item:classificationthm},
+    a classifying map of a normal bundle as in
+    \ref{item:immersionconj:3} will directly yield a lift as required
+    in \ref{item:immersionconj:4}.
+    
+    On the other hand, by the properties of the classifying map $\N M$
+    from \itemref{lem:classificationvb}{item:charclsstablenormalbundle},
+    any lift of it to $[M,\B\Orth(k)]$ corresponds to a normal bundle
+    of $M$ of rank $k$ as is needed for \ref{item:immersionconj:4}.
   \item[\ref{item:immersionconj:2}$\Leftrightarrow$\ref{item:immersionconj:3}:]
     In order to get from a vector bundle monomorphism
     $F\colon M\to\R^{n+k}$ to a normal bundle, first note that the
@@ -1185,12 +1270,33 @@ is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
     $\Sphere{n+k}$ and hence factors over an immersion $M\to\R^{n+k}$.
     This then shows that also \ref{item:immersionconj:2} implies
     \ref{item:immersionconj:1} which makes them equivalent.
+    \qedhere
   \end{description}
 \end{proof}
 
-
-% TODO: Obstruction by Stiefel-Whitney classes
-
+This now gives rise to involve the powerful obstruction theory of
+Stiefel-Whitney classes as follows.
+\begin{Cor}
+  Let $n,k\in\Nat$, and $M^n$ be a smooth, closed manifold.
+  If $M$ immerses into $\R^{n+k}$, then all $\dualw{i}{M}=0$ for
+  $i>k$.
+  \begin{proof}
+    By Theorem~\autoref{thm:immersionconj:equivalences} $M$ immerses
+    into $\R^{n+k}$ if and only if there is a rank-$k$
+    normal bundle $\N{}$ of $M$.
+    Since the Stiefel-Whitney classes are stable,
+    $\W{\N{}}=\W{\N M}\cequalsby{Def.}\dualW{M}$.
+    However, as explained in
+    \itemref{rem:propswclasses}{item:propswclasses:dimesioncut},
+    all Stiefel-Whitney classes $\w{i}{\N{}}$ of degree $i$ exceeding
+    the rank $k$ of $\N{}$ are zero.
+  \end{proof}
+\end{Cor}
+As a result, the immersion conjecture requires that all $n$-manifolds
+have vanishing dual Stiefel-Whitney classes in degrees $i>n-\alpha(n)$.
+That this is true, is a theorem of Massey which will be proven in
+\autoref{chap:massey}. It was an inspiration to state the conjecture
+with the value $k=n-\alpha(n)$ in the first place.
 
 
 %%% Local Variables:
