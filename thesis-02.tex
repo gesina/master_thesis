@@ -15,24 +15,39 @@
 % the proof of Massey’s theorem. Explain that the estimate in Massey’s
 % theorem is the best possible in general.
 % [massey], [immersionconj]
+Recall from Corollary~\autoref{cor:obstruction} that a manifold can
+only immerse in codimension $k$ if its dual Stiefel-Whitney classes in
+degrees higher than $k$ are zero.
+This chapter is mainly dedicated to show a theorem of Massey that this
+obstruction is void in general for $k=n-\alpha(n)$
+(\autoref{sec:massey}), and that this is the best possible general
+result (\autoref{sec:bestpossibleresult}), \idest for $k<n-\alpha(n)$
+there are examples of manifolds not immersing into $\R^{n+k}$.
 
-% TODO: Chapter overview
-\begin{itemize}
-\item Preliminaries: new Characteristic classes from SW classes
-\item Massey's Theorem: no obstruction through char cls up to $n-\alpha(n)$
-\item Best possible result for general bound on obstacles
-\item generalisation?
-\end{itemize}
+First start with some preliminary work on Massey's Theorem.
 
 \section{Wu Classes}\label{sec:wuclassesmain}
+A crucial part in the proof of Massey's theorem is to cleverly involve
+a new type of characteristic classes with nice properties that are
+directly connected to Stiefel-Whitney classes through Steenrod
+squares.
+These so-called Wu classes will be introduced in
+\autoref{def:wuclasses}, and later in \autoref{sec:wutheorem}, Wu's
+theorem on their relation to Stiefel-Whitney classes is shown.
+
 \subsection{Equivalent Definitions}\label{sec:wuclasses}
-Let $M$ be a compact, $n$-dimensional manifold.
-This section introduces a family of cohomology classes
-of manifolds, together with several possibilities of how to
-define---and eventually work with---them.
-Later then, \autoref{sec:wutheorem} reveals their close relation to
-the Stiefel-Whitney classes which is utilised in the proof of Massey's
-theorem.
+Let $M$ be a compact, $n$-dimensional manifold throughout this
+section.
+In the following, a family of cohomology classes of manifolds is
+defined in several ways allowing for different alternatives to work
+with them.
+These so-called Wu classes are introduced first via their original and
+intuitive definition on manifolds, then via their more handy
+definition on vector bundles.
+It is explicitly skipped in this section to check that the properties
+of characteristic classes of vector bundles are fulfilled, as this
+will be an immediate consequence of Wu's theorem in the subsequent
+section.
 
 \begin{Def}\label{def:wuclasses}
   The $i$th \emph{Wu class} $\v{i}{M}$ of $M$ for $0\leq i\leq n$ is defined
@@ -70,7 +85,7 @@ theorem.
   \end{itemize}
 \end{Rem}
 
-
+As for the Stiefel-Whitney classes, one has a notion of a total class.
 \begin{Def}\label{def:dualwuclasses}
   The \emph{total Wu class} of $M$ is defined as the sum
   $\sum_{i\geq0}\v{i}{M}$. The \emph{total dual Wu class}
@@ -88,10 +103,13 @@ theorem.
   \end{align*}
 \end{Def}
 
+A more general definition on vector bundles is much more handy when
+trying to find relations to other characteristic classes.
 The following more general definition of Wu classes
-will be shown to be equivalent to the one above in
+will turn out to be equivalent in a certain sense to the one above in
 Definition~\autoref{def:wuclasses}.
-It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}). 
+For the formulation recall the antipode of the Steenrod algebra
+(see \autoref{def:antipode}).
 \begin{Def}\label{def:altwuclasses}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
@@ -110,6 +128,10 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
   classes in Theorem~\autoref{thm:altdefswclasses}.
 \end{Rem}
 
+Recall that the definition of Stiefel-Whitney classes of manifolds
+utilises the canonical tangent bundle structure.
+In contrast to that, the Wu classes of manifolds utilise normal
+bundles, as will be clear from the promised equivalence below.
 \begin{Thm}\label{thm:altdefwuclasses}
   Let $M$ be a compact manifold of dimension $n$, and let
   $\N{\emb}\colon \E{\N{\emb}} \xrightarrow{p} M$ be
@@ -262,10 +284,11 @@ It uses the antipode of the Steenrod algebra (see \autoref{def:antipode}).
 
 
 \subsection{Wu's Theorem}\label{sec:wutheorem}
-This section is meant to show a direct connection between the
-Stiefel-Whitney classes and the Wu classes, which can be shown using
-the alternative definition of the Wu classes from
-\autoref{thm:altdefwuclasses}.
+Wu's theorem, the goal of this section, gives a close relation of
+the Wu classes from above with the Stiefel-Whitney classes using
+Steenrod squares. Besides, it also immediately proves that Wu classes
+as defined in \autoref{thm:altdefwuclasses} are actually characteristic
+classes.
 
 \begin{Thm}[Wu]\label{thm:wu}
   A closed manifold gives rise to the following two equalities
@@ -373,11 +396,12 @@ follows from the following Lemma:
 
 
 \section{Massey's Theorem on the Stiefel-Whitney Classes of Manifolds}
+\label{sec:massey}
 Massey's main theorem on the Stiefel-Whitney classes of manifolds
-gives a very concrete obstruction on what degrees of the dual
-Stiefel-Whitney classes may be non-zero.
-More precisely, it formulates a connecting to the existence of binary
-representations of the manifold's dimension.
+gives a concrete, general proposition, in which degrees the dual
+Stiefel-Whitney classes may be non-zero. Remember that this is the
+obstruction for the existence of immersions which is to be
+investigated in this chapter.
 \begin{Thm}[Massey]\label{thm:massey}
   \optcite[Theorem~I.]{massey}
   Let $M$ be a compact, $n$-dimensional manifold.
@@ -390,11 +414,11 @@ representations of the manifold's dimension.
 \end{Thm}
 
 As an immediate consequence all dual Stiefel-Whitney classes of degree
-greater than $n-\alpha(n)$ of any manifold must be zero, because there
-cannot be any shorter representation of $n$ by powers of two
-than its binary representation of length $\alpha(n)$.
+greater than $n-\alpha(n)$ of any manifold must be zero,
+because there cannot be any shorter representation of $n$ by powers of
+two than its binary representation of length $\alpha(n)$.
 
-The following sections are dedicated to the proof of Massey's Theorem.
+The following subsections are dedicated to the proof of Massey's Theorem.
 Let $M$ be a compact, $n$-dimensional manifold throughout the proof.
 The latter consists of several steps:
 \begin{steps}
@@ -536,7 +560,9 @@ the case $\e(I)<\deg x$.
   \optcite[Lemma~1, converse part, p.~159]{serre}
   First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
   of excess $\e(I)>0$ can be written as
-  $I=(2^{k-1}i_k,\dotsc,2i_k,i_k,i_{k+1},\dotsc,i_l)$
+  \begin{gather*}
+    I=(2^{k-1}i_k,\dotsc,2i_k,i_k,i_{k+1},\dotsc,i_l)
+  \end{gather*}
   with $l>k\geq 1$ chosen maximal, \idest $i_k>2i_{k+1}$. If $I$ is admissible, the subsequence
   $J\coloneqq(i_{k+1},\dotsc,i_l)$ will be admissible as well.
   In order to see that such $J$ and $k$ fulfil the requirements from
@@ -585,11 +611,10 @@ the case $\e(I)<\deg x$.
 \subsection[Non-trivial Iterated Steenrod Squares for Manifolds]
 {Step 2: Existence of Non-trivial Iterated Steenrod Squares for Manifolds}
 
-This section is dedicated to finding an iterated Steenrod square
+This section is dedicated to the search of an iterated Steenrod square
 $\Sq I$ of degree $n-q$ that is non-trivial in degree
 $\Sq I\colon\H^q(M)\to\H^n(M)$ in order to complete
-\ref{tag:masseystep2}
-and thus prove Theorem~\autoref{thm:massey}.
+\ref{tag:masseystep2} of the prove of Theorem~\autoref{thm:massey}.
 
 The candidate is the multiplication map
 \begin{gather*}
@@ -602,7 +627,7 @@ by Poincaré duality \cite[Proposition~3.38]{hatcher}.
 It remains to see that this map actually comes from a (sum of)
 iterated Steenrod square(s) which then must be non-trivial.
 But this easily follows from the next main Lemma,
-the proof of which essentially uses Wu's Theorem and the properties of
+the proof of which essentially uses Wu's theorem and the properties of
 the Wu classes.
 
 \begin{Lem}\label{lem:masseystep2}
@@ -677,18 +702,22 @@ yields the needed result.
       \qedhere
   \end{align*}
 \end{proof}
+This finished the proof of Massey's theorem.
 
-\section{Best Possible Result}
+
+\section{Best Possible Result}\label{sec:bestpossibleresult}
 Recall that a closed $n$-manifold can only immerse into
-$\R^{2n-a}$ if all Stiefel-Whitney classes $\dualw{i}{\N M}$ of its
-normal bundle are zero in degrees greater than $n-a$.
+$\R^{n+k}$ if all Stiefel-Whitney classes $\dualw{i}{\N M}$ of its
+normal bundle are zero in degrees greater than $k$.
 Massey's Theorem now states that this condition is met for
-$a=\alpha(n)$, and thus suggests the conjecture that every
-manifold immerses into $\R^{2n-\alpha(n)}$.
+$k=n-\alpha(n)$, and thus for all manifolds voids the above
+obstruction to the immersion property. From this arose the idea for
+the immersion conjecture.
 
-Naturally, there occurs the question whether Massey's $\alpha(n)$ is
-the best possible (\idest largest) result for arbitrary closed
-$n$-manifolds.
+Naturally, there occurs the question whether Massey's $n-\alpha(n)$ is
+the best possible (\idest smallest) result for arbitrary closed
+$n$-manifolds, making the immersion conjecture the best
+guess of a general possible immersion codimension.
 The answer is yes, proved by the following counterexamples of manifolds
 not immersing into $\R^{2n-(\alpha(n)+1)}$.
 
@@ -755,7 +784,7 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
 
 \section{Outlook: Generalisation of Massey's Theorem} % TODO
 \optcite[Section~II.1]{immersionconj}
-
+% TODO: reference outlook chapter in chapter introduction
 
 %%% Local Variables:
 %%% mode: latex
