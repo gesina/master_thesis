@@ -18,15 +18,193 @@
 Recall from Corollary~\autoref{cor:obstruction} that a manifold can
 only immerse in codimension $k$ if its dual Stiefel-Whitney classes in
 degrees higher than $k$ are zero.
-This chapter is mainly dedicated to show a theorem of Massey that this
-obstruction is void in general for $k=n-\alpha(n)$
-(\autoref{sec:massey}), and that this is the best possible general
-result (\autoref{sec:bestpossibleresult}), \idest for $k<n-\alpha(n)$
-there are examples of manifolds not immersing into $\R^{n+k}$.
+This chapter is mainly dedicated to the proof of a theorem by Massey
+\cite{massey}, which says that this obstruction is void in general for
+$k=n-\alpha(n)$ (\autoref{sec:massey}), and that this is the best
+possible general result (\autoref{sec:bestpossibleresult}), \idest for
+$k<n-\alpha(n)$ there are examples of manifolds not immersing into
+$\R^{n+k}$.
 
-First start with some preliminary work on Massey's Theorem.
+The preliminary work for Massey's theorem encompasses a review on
+Steenrod squares in \autoref{sec:steenrodsquares}, and the
+investigation of the so-called Wu characteristic classes in
+\autoref{sec:wuclassesmain}.
+The latter involves several definitions giving rise to nice properties
+in general and concerning manifolds (\autoref{sec:wuclasses}), and
+preparations plus proof of the Wu formula, a handy relation of Wu
+classes with Stiefel-Whitney classes.
 
-\section{Wu Classes}\label{sec:wuclassesmain}
+Within the reviews of Steenrod squares and Thom classes, a couple of
+results will be merely referenced without proof.
+
+\section{Steenrod Squares}\label{sec:steenrodsquares}
+Similar to the cup and cap product, Steenrod squares add quite a lot
+of further structure to a cohomology ring, thus adding more tools to
+differentiate spaces by means of cohomology comparison respectively.
+As applications, they will serve in constructing two kinds of
+characteristic classes, namely the Stiefel-Whitney and the Wu
+classes, and finally they will give rise to a proof of Massey's
+theorem on obstructions for the immersion conjecture.
+
+The following definition of the Steenrod squares is due to
+Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
+\begin{Def}\label{def:sq}
+  The \emph{Steenrod squares} $\Sq i$ for $i\in\Nat$ are each a family
+  of cohomology operations, \idest families of homomorphisms, of the
+  form
+  \begin{gather*}
+    \left(
+      \Sq i\colon \H^n(X, A;\Zmod2) \to \H^{n+i}(X, A;\Zmod2)
+      \;\middle|\;
+      n\in\Nat
+    \right)
+  \end{gather*}
+  that satisfy the following relations for any pair of spaces $(X,A)$, and any map of
+  pairs of spaces $f\colon (X,A)\to (Y,B)$:
+  \begin{description}
+  \item[(Naturality)]\label{item:sqnaturality} $\pb f\circ\Sq i = \Sq i\circ\pb f$
+  \item[(Stability)]\label{item:sqstability} $\susp\circ\Sq i = \Sq i\circ\susp$
+  \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in \H^n(X)$ holds
+    \begin{gather}\label{tag:cartan}\tag{Cartan's formula}
+      \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
+    \end{gather}
+  \item[(Fixed values)] The following values are fixed for $x\in \H^n(X,A)$:
+    % \begin{gather}\label{eq:sqlowerbound}
+    %   \Sq i(x) = \begin{cases}
+    %     0 & n<i \\
+    %     x^2 & n=i
+    %   \end{cases}
+    %   \qquad\text{and}\qquad
+    %   \Sq i = \begin{cases}
+    %     \Id & i=0\\
+    %     \beta & i=1
+    %   \end{cases}
+    % \end{gather}
+    \begin{alignat}{4}
+      \Sq i(x) &= 0     & \qquad\text{for }n<i \label{eq:sqlowerbound}\\
+      \Sq i(x) &= x^2   & \qquad\text{for }n=i \label{eq:sqsquared}\\
+      \Sq 0    &= \Id   \label{eq:sqidentity}
+      % \\\notag
+      % \Sq 1    &= \beta \label{eq:sqbockstein}
+    \end{alignat}
+    % where $\beta$ denotes the Bockstein homomorphism
+    % \cite[see \forexample][Chap.~3.E]{hatcher} of the exact
+    % coefficient sequence
+    % \begin{center}
+    %   \begin{tikzcd}
+    %     0 \ar[r]
+    %     &\Zmod2 \ar[r,"\incl"]
+    %     &\Zmod4 \ar[r,"\proj"]
+    %     &\Zmod2 \ar[r]
+    %     &0
+    %   \end{tikzcd}
+    % \end{center}
+  \item[(Adem relations)] For $\alpha<2\beta$ holds
+    \begin{gather}\label{tag:adem}\tag{Adem's formula}
+      \Sq\alpha \circ \Sq\beta =
+      \sum_{j=0}^{\left\lfloor \frac \alpha 2 \right\rfloor}
+      \binom{\beta-j-1}{\alpha-2j}
+      \Sq{\alpha+\beta+j}\Sq{j}
+    \end{gather}
+  \end{description}
+  $\SQ\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
+  Steenrod squares called the \emph{the total Steenrod square}.
+  Note that for any degree $n\in\Nat$ the total Steenrod square
+  $\SQ\colon \H^n(X)\to \H^*(X)$ is well-defined since the sum is
+  finite by \eqref{eq:sqlowerbound}.
+  Also \ref{tag:cartan} can be reformulated to
+  $\SQ(x\cup y) = \SQ(x)\cup\SQ(y)$, \idest $\SQ$ is a group
+  homomorphism with respect to the cup-product.
+\end{Def}
+
+\begin{Thm}
+  The Steenrod squares exist and are uniquely determined by
+  naturality, \ref{tag:cartan}, and the fixed values
+  %\eqref{eq:sqlowerbound}, \eqref{eq:sqsquared}, and
+  %\eqref{eq:sqidentity}
+  from Definition~\autoref{def:sq}.
+  \begin{proof}
+    For existence see \cite[Chapter 2]{mosher},
+    for uniqueness see \cite[VIII §3]{steenrodepstein}.
+  \end{proof}
+\end{Thm}
+
+The fact that Steenrod squares, or in general cohomology operations,
+can be added and concatenated, already gives a hint that they might
+form a ring, which was proven by Steenrod. The following notation and
+facts are according to \cite[Chap.~6]{mosher}.
+\begin{Def}
+  The \emph{Steenrod algebra} $\A$ is the quotient
+  of the graded $\Zmod2$-polynomial algebra
+  $\Zmod2[\Sq i|i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
+  by the two-sided relations of both \ref{tag:adem} and $\Sq 0=1$.
+  With the induced grading it is an associative, connected,
+  non-commutative graded Hopf algebra over $\Zmod2$.
+\end{Def}
+\begin{Not}
+  In the following, iterated Steenrod squares
+  $\Sq{i_1}\cdot\Sq{i_2}\dotsm\Sq{i_l}$ will have the short form
+  $\Sq{(i_1,i_2,\dotsc,i_l)}$,
+  and will be evaluated on an element $x$ of a cohomology ring as
+  $\Sq{i_1}\circ\dotsb\circ\Sq{i_l}(x)$ respecting the
+  properties from \autoref{def:sq}.
+  Furthermore, for a sequence $I=(i_1,\dotsc,i_l)$,
+  respectively $\Sq I$, denote by
+  \begin{description}[labelindent=1em]
+  \item[$\l(I)\coloneqq l$] the \emph{length} of $I$,
+  \item[$\d(I)\coloneqq \sum_{j=0}^{l} i_j$] the \emph{degree} of $I$,
+    and by
+  \item[$\e(I)\coloneqq 2i_1-\d(I)=\sum_{j=1}^{l-1}(i_j-2i_{j+1})$]
+    the \emph{excess} of $I$.
+  \end{description}
+  The sequence $I$, respectively $\Sq I$, is called \emph{admissible},
+  if $\l(I)=1$ or $i_j\geq 2i_{j+1}$ for $0\leq j<\l(I)$.
+\end{Not}
+
+\begin{Rem}\label{rem:sq}
+  The following properties will be needed for Massey's Theorem:
+  \begin{enumerate}
+  \item The set of iterated Steenrod squares $\Sq I$ of admissible
+    sequences $I$ forms a basis for $A$ as $\Zmod2$-vector space
+    \cite[Chap.~6, Theorem~1]{mosher}.
+  \end{enumerate}
+  Let $I=(i_1,\dotsc,i_l)$ be a sequence in $\Nat$.
+  \begin{enumerate}[resume*]
+  \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
+  \item\label{item:squpperboundgeneral} $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
+    \begin{proof}
+      This follows by induction over $\l(I)$ using
+      \eqref{eq:sqlowerbound}. The case $\l(I)=1$ follows directly 
+      from \eqref{eq:sqlowerbound}.
+      For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_l)$, the condition
+      $\deg(x) < \e(I)=i_1-\d(J)$
+      implies
+      \begin{gather*}
+        \deg(\Sq J(x))
+        = \deg(x)+\d(J) < \e(J)+\d(J) = 2i_2
+        \overset{\text{adm.}}\leq i_1
+      \end{gather*}
+      So,
+      $\Sq I(x)=\Sq{i_1}(\Sq J(x)) \cequalsby{\eqref{eq:sqlowerbound}} 0$.
+    \end{proof}
+  \end{enumerate}
+\end{Rem}
+
+The subsequent concept of formally inverting a formal sum of elements
+in a graded $\Zmod2$-algebra will recur for several characteristic
+classes. This particular definition is needed to define the Wu classes
+in \autoref{sec:wuclasses}. 
+\begin{Def}\label{def:antipode}
+  The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is a
+  graded homomorphism inductively defined by the relation
+  \begin{gather*}
+    1 = \Sq 0
+    = \SQ \Sqcup \antipode(\SQ)
+    = \sum_{k\geq0}\sum_{r+s=k} \Sq r \Sqcup \antipode(\Sq s)
+  \end{gather*}
+\end{Def}
+
+\section{Wu Classes and the Wu Formula}\label{sec:wuclassesmain}
 A crucial part in the proof of Massey's theorem is to cleverly involve
 a new type of characteristic classes with nice properties that are
 directly connected to Stiefel-Whitney classes through Steenrod
@@ -35,7 +213,526 @@ These so-called Wu classes will be introduced in
 \autoref{def:wuclasses}, and later in \autoref{sec:wutheorem}, Wu's
 theorem on their relation to Stiefel-Whitney classes is shown.
 
-\subsection{Equivalent Definitions}\label{sec:wuclasses}
+\subsection{Thom Classes and the Thom Isomorphisms}\label{sec:thomclasses}
+In the following, Thom classes and the Thom isomorphisms will be
+revised. From the definition it will be clear that Thom classes are
+\emph{no} characteristic classes in the above sense. However, the
+tools that will be introduced in this section are an important
+ingredient in constructing Stiefel-Whitney characteristic classes from
+Steenrod squares.
+
+Throughout the section,
+let $B$ be a paracompact space, \forexample a manifold,
+$\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
+and $R$ be principal ideal domain.
+\begin{Def}
+  A \emph{Thom class} of $\xi$ in $R$-coefficients is a
+  cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
+  such that for all points $b\in B$ and fibre inclusions
+  $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
+  the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
+  free generator of the $R$-module $\H^{\rkk}(\spherepair{E_b}; R)$,
+  \idest a unit
+  of the ring
+  $\H^{\rkk}(\spherepair{E_b};R)\cong \H^{\rkk}(\spherepair{\R}; R)\cong R$.
+  \optcite[p.~441]{hatcher}
+\end{Def}
+
+The following corollaries will deduce notions of naturality,
+multiplicativity, and uniqueness for Thom classes quite directly from
+their above definition.
+
+\begin{Cor}\label{cor:thomclsnatural}
+  The Thom class construction is natural with respect to the pullback
+  of vector bundles over paracompact spaces.
+  \Idest given any map of paracompact spaces $f\colon A\to B$, and a
+  vector bundle $\xi\colon E\to B$,
+  the pullback $\pb f \U$ of a Thom class $\U$ of $\xi$ will
+  be a Thom class of $\pb f \xi$.
+  \begin{proof}
+    Let $\U$ be a Thom class of $\xi$ and $a\in A$ any point.
+    Consider the restriction $\pb i_a(\pb f \U)$
+    of the pullback of $\U$ to the fibre over $a$. To show that this
+    is a generator of $\H^{\rkk}(\spherepair{E_a};R)$ first use that
+    pullbacks commute with restriction:
+    \begin{gather*}
+      \pb i_a(\pb f \U)
+      = \pb {(f\circ i_a)} \U
+      = \pb {(i_{f(a)}\circ f)} \U
+      = \pb f (\pb i_{f(a)} \U)
+    \end{gather*}
+    $\pb i_{f(a)} \U$ is a generator by definition of $\U$.
+    Now the restriction of $f$
+    \begin{gather*}
+      f\colon (\spherepair{(\pb f E)_a}) \to (\spherepair{E_{f(a)}})
+    \end{gather*}
+    is an isomorphism, and thus
+    $\pb f\colon \H^r(\spherepair{E_{f(a)}})
+    \cong \H^r(\spherepair{(\pb f E)_a})$
+    sends generators to generators for all $r\in\Nat$.
+  \end{proof}
+\end{Cor}
+
+\begin{Rem}
+  Let $\xi$, $\eta$ be vector bundles over a space $B$.
+  \begin{itemize}
+  \item There is a canonical isomorphism
+    $\E{(\xi\oplus\eta)}\cong\E\xi\oplus\E\eta$
+    with the canonical projections
+    $\pi_\xi\colon \E{(\xi\oplus\eta)}\to \E\xi$
+    and
+    $\pi_\eta\colon\E{(\xi\oplus\eta)}\to \E\eta$.
+  \item There is a corresponding Künneth isomorphism
+    defining the \emph{cross-product} \optcite[p.~214]{hatcher}
+    \begin{align*}
+      \H^*(\thomspacepair{\E\xi})
+      \otimes
+      \H^*(\thomspacepair{\E\eta})
+      &\longisoto
+        \H^*(\thomspacepair{\E{(\xi\oplus\eta)}})\\
+      x\otimes y
+      &\longmapsto
+        \pb \pi_\xi x \cup \pb \pi_\eta y
+        \eqqcolon x\times y
+        \;.
+    \end{align*}
+    \cite[Theorem~3.18]{hatcher}
+  \end{itemize}
+\end{Rem}
+\begin{Cor}\label{cor:thomclassmultiplicative}
+  The Thom class construction for coefficients in a field $R$ is
+  multiplicative in the following sense:
+  For vector bundles $\xi\colon E\to B$, $\eta\colon E'\to B$
+  of rank $\rkk$ respectively $\rkl$ over a paracompact space $B$, and Thom
+  classes
+  $\u{\xi}\in \H^{\rkk}(\thomspacepair{\E\xi}; R)$,
+  $\u{\eta}\in \H^{\rkl}(\thomspacepair{\E\eta}; R)$
+  the class
+  \begin{gather*}
+    \u{\xi}\times\u{\eta}
+    \coloneqq \pb \pi_\xi\u{\xi} \cup \pb \pi_\eta\u{\eta}
+    \in \H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}})
+  \end{gather*}
+  is a Thom class of $\xi\oplus\eta$.
+  \begin{proof}
+    Consider a fibre $b\in B$. As cup product and pullback commute
+    with restriction, the cross-product also commutes with
+    restriction, \idest one has to show that
+    \begin{gather*}
+      \pb i_a(\u{\xi}\times\u{\eta})
+      = \left(\pb i_a\u{\xi}\right)
+      \times \left(\pb i_a\u{\eta}\right)
+    \end{gather*}
+    is a generator of
+    $\H^{\rkk+\rkl}(\thomspacepair{\E{(\xi\oplus\eta)}};R)$.
+    % There are homotopies making the following diagram commute
+    % \begin{center}
+    %   \begin{tikzcd}
+    %     (\spherepair{\E{(\xi)}_b})
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]
+    %     &(\spherepair{\E{(\xi\oplus\eta)}_b})
+    %     \ar[l,"\pi_\xi"above] \ar[r,"\pi_\eta"]
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]
+    %     &(\spherepair{\E{(\eta)}_b})
+    %     \ar[d, dash, "\isosymb"{above,rotate=90}]\\
+    %     (\spherepair{\R^i})
+    %     &(\spherepair{\R^{i+j}})
+    %     \ar[l,"\proj"above] \ar[r,"\proj"]
+    %     &(\spherepair{\R^{j}})
+    %   \end{tikzcd}
+    % \end{center}
+    By the naturality of the Künneth isomorphism there is the
+    following commutative diagram that translates this problem to one
+    on the cohomology of spheres:
+    \begin{center}
+      \begin{tikzcd}
+        \H^*(\spherepair{\E\xi_b};R)
+        \otimes \H^*(\spherepair{\E\eta_b};R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & \H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        \H^*(\spherepair{\R^{\rkk}}; R)\otimes \H^*(\spherepair{\R^{\rkl}}; R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & \H^*(\spherepair{\R^{\rkk+\rkl}}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        \H^*(I^{\rkk},\Boundary{I^{\rkk}}; R)\otimes \H^*(I^{\rkl}, \Boundary{I^{\rkl}}; R)
+        \ar[r, "\cong"]
+        \ar[d, dash, "\cong"{above,rotate=90}]
+        & \H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}}; R)
+        \ar[d, dash, "\cong"{below,rotate=90}]
+        \\
+        \H^*(\Sphere{\rkk}; R)\otimes \H^*(\Sphere{\rkl}; R)
+        \ar[r, "\cong"]
+        & \H^*(\Sphere{\rkk+\rkl}; R)
+      \end{tikzcd}
+    \end{center}
+    Furthermore, the simple structure of the cohomology of spheres
+    yields for the Künneth isomorphism in the desired degree
+    \begin{align*}
+      \H^{\rkk+\rkl}(\Sphere{\rkk+\rkl};R)
+      &\cong
+        \left(\H^*(\Sphere{\rkk}; R)\otimes \H^*(\Sphere{\rkl}; R)\right)_{\rkk+\rkl}\\
+      &\coloneqq
+        \bigoplus_{\mathclap{r+s=\rkk+\rkl}}
+        \H^r(\Sphere{\rkk};R)\otimes \H^s(\Sphere{\rkl};R)
+        =
+        \H^{\rkk}(\Sphere{\rkk};R)\otimes \H^{\rkl}(\Sphere{\rkl};R)
+    \end{align*}
+    by leaving out zero-summands for the last equality.
+    Thus, a generator of
+    $\H^{\rkk}(\Sphere{\rkk}; R)\otimes \H^{\rkl}(\Sphere{\rkl}; R)$,
+    which is the tensor product $\iota_{\rkk}\otimes\iota_{\rkl}$ of a generator
+    in each factor,
+    is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
+    $\H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
+    Using the isomorphisms above proves the claim.
+    \optcite[compare proof of Theorem~3.19, p.~221]{hatcher}
+    % % Maybe put into separate Lemma:
+    % Now one can use the fact, that for any two generators
+    % $\iota_{\rkk}$ of $\H^{\rkk}(\spherepair{\R^{\rkk}})$ and
+    % $\iota_{\rkl}$ of $\H^{\rkl}(\spherepair{\R^{\rkl}})$,
+    % the cross-product
+    % $\iota_{\rkk}\times\iota_{\rkl}$ is a generator of
+    % $\H^{\rkk+\rkl}(\spherepair{\R^{\rkk+\rkl}})$.
+  \end{proof}
+\end{Cor}
+
+\begin{Cor}
+  Every vector bundle $\xi$ has a unique Thom class $\u{\xi}$ in
+  $\Zmod2$-coefficients.
+  Furthermore, for any map of paracompact spaces $f\colon A\to B$ and
+  vector bundle $\xi\colon E\to B$ holds $\u{\pb f \xi} = \pb f \u{\xi}$.
+  \begin{proof}[proof (sketch)]
+    \begin{description}
+    \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
+      \cite[Proposition~17.9.3]{tomdieck}.
+    \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
+      Using a suitable Mayer-Vietoris sequence for gluing, and an
+      inductive argument starting with the trivial bundle case, one can show:
+      Any two classes in $\H^{\rkk}(\thomspacepair{E};R)$ whose
+      restrictions coincide on all fibres will coincide.
+      However, for $R=\Zmod2$ there is exactly one possible choice for
+      a unit $\u{\xi}|_{E_b}\in
+      \H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
+      over each point $b$.
+    \item[Naturality:] Clear from uniqueness and the naturality of Thom classes.
+    \end{description}
+  \end{proof}
+\end{Cor}
+
+\begin{Rem}
+  Using paracompactness of $B$ and
+  \cite[Proposition~17.9.6]{tomdieck}, one concludes that
+  $\u{\xi}\in \H^{\rkk}(\thomspacepair{E};R)$ has to be a unit.
+\end{Rem}
+
+Having a good notion of Thom classes by now, please recall the Thom
+isomorphisms relating the cohomology of a vector bundle's total
+space to that of its base space.
+\begin{Thm}
+  For any Thom class $\u{\xi}$ of $\xi$, and any degree $r$ there are
+  the following isomorphisms, called the \emph{Thom isomorphisms},
+  that are natural with respect to pullbacks of vector bundles over
+  paracompact spaces:
+  \begin{align*}
+    \thomiso\colon
+    \H^r(B;R) &\longrightarrow \H^{r+\rkk}(\thomspacepair{E}; R)
+    & \thomiso\colon
+      \H_{r+\rkk}(\thomspacepair{E}; R) &\longrightarrow \H^r(B;R)
+    \\
+    x &\longrightarrow \pb p (x) \cup \u{\xi}
+    & \alpha &\longrightarrow \pf p (\u{\xi} \cap \alpha)
+               \;.
+  \end{align*}
+  \begin{proof}
+    Naturality directly follows from the naturality of the Thom class
+    in \autoref{cor:thomclsnatural}, and naturality of the cup-
+    respectively cap-product.
+    The cohomology part then is a direct application of Leray's theorem
+    \cite[Theorem~4D.8]{hatcher}.
+    For the homology part see \forexample \cite[Theorem~14.6]{switzer}.
+  \end{proof}
+\end{Thm}
+
+The relation amongst these isomorphisms will be crucial in
+calculations for Wu's theorem in \autoref{sec:wuclassesmain}.
+\begin{Lem}\label{lem:thomisoself-adjoint}
+  If $B$ is connected, the Thom isomorphisms are adjoint in the
+  following sense:
+  For $r\in\Nat$, $x\in \H^r(B)$,
+  and $\alpha\in \H_{r+\rkk}(\thomspacepair{E})$  holds 
+  \begin{gather*}
+    \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
+  \end{gather*}
+\end{Lem}
+In order to proof Lemma~\autoref{lem:thomisoself-adjoint},
+first recall the following properties of the cap product.
+\begin{Rem}
+  For
+  a map of triples of spaces
+  $f\colon (Y,Y'',Y')\to (X,X'',X')$,
+  cohomology classes
+  $a\in \H^i(X,X')$ and $b\in \H^j(X,X')$,
+  homology classes
+  $\gamma\in \H_{i+j}(X, X'\cup X'')$
+  and
+  $\beta\in \H_j(Y, Y'\cup Y'')$,
+  and a vector bundle $E\xrightarrow{p}B$
+  holds
+  \begin{align}
+    \label{eq:capprod1}
+    \capped{a\cup b}{\beta} &= \capped{b}{a\cap\beta}
+                              \in \H_0(X,X'')\\
+    \label{eq:capprod2}
+    \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
+                              \in \H_0(X,X'')
+                            &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}\\
+    \label{eq:capprod3}
+    \pf p &= \Id \colon
+    \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
+  \end{align}
+\end{Rem}
+\begin{proof}[proof of Lemma~\autoref{lem:thomisoself-adjoint}]
+  With $\U\coloneqq\u{\xi}$ one calculates
+  \begin{align*}
+    \capped{t(x)}{\alpha}
+    &= \capped{\pb p x \cup \U}{\alpha} \\
+    &\equalsby{\eqref{eq:capprod1}}
+      \capped{\pb p x}{\U\cap\alpha} \\
+    &\equalsby{\eqref{eq:capprod3}}
+      \pf p\capped{\pb p x}{\U\cap\alpha} \\
+    &\equalsby{\eqref{eq:capprod2}}
+      \capped{x}{\pf p(u\cap\alpha)}
+      = \capped{x}{\thomiso (\alpha)} \in\Zmod2
+      \qedhere
+  \end{align*}
+\end{proof}
+
+% TODO: Better motivation for relationship Thom isomorphism <-> fundamental cl
+As this paper is rather interested in manifolds than general spaces,
+have a look at the homology Thom isomorphism of a manifold, or more
+precisely the fundamental class of a manifold. The following gives a
+more geometrical notion of the latter with the help of normal bundles,
+and---more importantly---will enable to work on the simpler
+cohomology of spheres when needed.
+\begin{Lem}\label{lem:thomisofundcl}
+  Let $M$ be an $n$-dimensional compact manifold, and
+  $\emb\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
+  normal bundle $\N{\emb}$ of rank $\rkk>0$.
+  The normal bundle gives rise to an embedding
+  $e\colon \E{\N{\emb}}\to\Sphere{n+\rkk}$ of its total space
+  as a tubular neighbourhood $e(\E{\N{\emb}})$ of $i(M)$ into the
+  $(n+\rkk)$-sphere.
+  The quotient map
+  \begin{gather*}
+    \collapse\colon
+    \Sphere{n+\rkk}
+    \to \Sphere{n+\rkk}/\left( \Sphere{n+\rkk}\setminus e(\E{\N{\emb}}) \right)
+    \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
+    \cong \Thomspace{\N{\emb}}
+  \end{gather*}
+  that collapses every point outside of $e(\E{\N{\emb}})$ to the infinity
+  point fulfils
+  \begin{center}
+    \begin{tikzcd}[row sep=0pt]
+      \H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
+      & \H_{n+\rkk}(\Thomspace{\N{\emb}}) \ar [r, "\pf \incl"]
+      & \relH_{n+\rkk}(\Thomspace{\N{\emb}})
+      %\coloneqq \H_{n+\rkk}(\Thomspace{\N{\emb}}, \infty)
+      \ar [r, "\pf t"{above}, "\cong"{below}]
+      & \H_{n}(M)% \cong \Zmod2
+      \\
+      \fundcl{\Sphere{n+\rkk}} \ar[rrr, mapsto]
+      &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
+    \end{tikzcd}
+  \end{center}
+  where $\incl\colon(\Thomspace{\N{\emb}},\emptyset)\to(\Thomspace{\N{\emb}}, \{\infty\})$ is the
+  canonical inclusion of pairs of spaces.
+  This holds for any choice of embeddings $i$ and $e$.
+  \begin{proof}
+    First note that by the long exact sequence of the pair 
+     $(\Thomspace{\N{\emb}}, \{\infty\})$ the map
+     $\pf \incl\colon \H_r(\Thomspace{\N{\emb}})\to \relH(\Thomspace{\N{\emb}})$
+    is an isomorphism in every degree $r>0$. The proof will be
+    conducted in two steps, first proving the connected case, then
+    the general one.
+    
+    \begin{description}
+    \item[Connected case:]
+      Assume that $M$ is connected.
+      Then
+      $\H_{n+k}(\Thomspace{\N{\emb}})
+      \cong\relH_r(\Thomspace{\N{\emb}})
+      \cong \H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
+      the Thom isomorphism, and by connectedness of $M$.
+      Thus, one only has to show that
+      $\pf\collapse\fundcl{\Sphere{n+\rkk}}$
+      is non-zero.    
+      The trick now is to reduce once again to the homology of the
+      sphere:
+      Locally around any point $p\in\Thomspace{\N{\emb}}\setminus\{\infty\}$ the
+      collapse map $\collapse$ is by definition a
+      homeomorphism. Therefore, on homology there is the following 
+      commutative diagram
+      \begin{center}
+        \begin{tikzcd}
+          \fundcl{\Sphere{n+\rkk}}
+          \ar[d,mapsto]\ar[r,phantom,"\in"{near start}]
+          &\H_{n+\rkk}(\Sphere{n+\rkk})
+          \ar[r, "\pf\incl\pf\collapse"]\ar[d,"\pf\incl"]
+          &\relH_{n+\rkk}(\Thomspace{\N{\emb}})
+          \ar[d,"\pf\incl"]\\
+          \left.\fundcl{\Sphere{n+\rkk}}\right|_{\collapse^{-1}(p)}
+          \ar[r,phantom,"\in"{near start}]
+          &\H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
+          \ar[r,"\pf\collapse"{above},"\cong"{below}]
+          &\H_{n+\rkk}(\Thomspace{\N{\emb}}, \Thomspace{\N{\emb}}\setminus p)
+        \end{tikzcd}
+      \end{center}
+      By definition of the fundamental class $\fundcl{\Sphere{n+\rkk}}$,
+      the class $\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}$ in the
+      diagram is a generator, and thus also is
+      $\pf\collapse\left(\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}\right)
+      = \left(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\right)|_p$.
+      However, then $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\in
+      \H_{n+\rkk}(\Thomspace{\N{\emb}})$
+      cannot be zero as was to be shown.
+
+    \item[General case] In case $M=\coprod_i M_i$ is the disjoint sum of its connected
+      components $M_i$, $i\in I$ for some index set $I$, note the following:
+      \begin{itemize}
+      \item $\E{\N{\emb}} = \coprod_i\E{\N{\emb_i}}$,
+        where $\emb_i\coloneqq\emb|_{M_i}$.
+        % where $\N{M_i}\coloneqq\N{\emb}|_{M_i}$.
+      \item Thus, $\Thomspace{\N{\emb}} = \bigvee_i\Thomspace{\N{\emb_i}}$ using the
+        collapse maps
+        \begin{gather*}
+          \collapse_i\colon
+          \Sphere{n+\rkk}
+          \overset{\collapse}\longto
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb}})\right)
+          \overset{\proj}\longto
+          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb_i}})\right)
+        \end{gather*}
+        for the disjoint parts,
+        and $\collapse=\bigvee_i\collapse_i$.
+      \item Thus, $\H_r(\Thomspace{\N{\emb}}) = \prod_i \H_r(\Thomspace{\N{\emb_i}})$ for
+        all degrees $r$, $\fundcl M = (\fundcl{M_i})_i$, and
+        $\pf\collapse = \prod_i\pf{\collapse_i}$.
+        % \item Thus, $\H_{n+\rkk}(\Thomspace{\N{\emb}})
+        %   \cong \H_{n+\rkk}(M)\cong\prod_i \Zmod2$, and $\fundcl{M} = (1)_i$.
+      \end{itemize}
+      With this one sees directly from the definition of the fundamental
+      class of a manifold that
+      $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}} = \fundcl M$
+      if and only if for all connected component manifolds $M_i$ holds
+      $\pf\incl\pf{\collapse_i}\fundcl{\Sphere{n+\rkk}} = \fundcl{M_i}$
+      which is true by the first case.
+      \qedhere
+    \end{description}
+  \end{proof}
+\end{Lem}
+
+\subsection{A Construction of Stiefel-Whitney Classes}
+Now, the promised construction of the Stiefel-Whitney classes from
+Thom classes and Steenrod squares can be presented.
+
+\begin{Thm}\label{thm:altdefswclasses}
+  The Stiefel-Whitney classes can be given as
+  \begin{gather*}
+    \Sq i(\u{\xi}) = \thomiso(\w{i}{\xi}) = \pb p \w{i}{\xi} \cup \u{\xi}
+  \end{gather*}
+  for any vector bundle $\xi\colon E\to B$ over a paracompact space
+  $X$. As the Thom isomorphism is a group homomorphism, one can
+  formulate the above as
+  \begin{gather*}
+    \SQ(\u{\xi}) = \thomiso(\W{\xi}) = \pb p \W{\xi} \cup \u{\xi}
+  \end{gather*}
+  The representing cohomology classes can be constructed using the
+  embeddings $\BO(n)\subset\BO$ for $n\geq i$ and the fact that
+  $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$
+  \cite[see \forexample][Theorem~7.1~ff.]{milnor}.
+  \begin{proof}
+    Check naturality of the expression and all further
+    defining properties from \autoref{def:swclasses}.
+    \begin{description}
+    \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
+      are natural.
+    \item[$\ws{0}=1$:]
+      $\H^0(\thomspacepair{\E{\gamma_0}}) = \Zmod2$, thus 1 is the only
+      candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
+      isomorphism sends 1 to 1 in this degree.
+    \item[$\W{\gamma_1}=1+x$:]
+      $\Sq 0(\u{\gamma_1})\cequalsby{\eqref{eq:sqidentity}}\u{\gamma_1}
+      = \pb p\w{0}{\gamma_1}\cup\u{\gamma_1}$
+      directly gives
+      $\pb p\w{0}{\gamma_1}=1$, and thus $\w{0}{\gamma_1}=1$.
+      With
+      $\Sq 1(\u{\gamma_1})\cequalsby{\eqref{eq:sqsquared}}\u{\gamma_1}^2
+      =\pb p\w{1}{\gamma_1}\cup x$,
+      the class $\pb p\w{1}{\gamma_1}$ cannot be zero, thus also
+      $\w{1}{\gamma_1}$ cannot be zero, but it is the generator $x$.
+    \item[Multiplicativity:]
+      Consider vector bundles $\xi$, $\eta$ over a paracompact space
+      $B$. With $\u{\xi\oplus\eta}=\u{\xi}\cup\u{\eta}$ and the fact
+      \begin{gather}\label{eq:projectionscommute}
+        p_\xi\circ\pi_\xi = p_{\xi\oplus\eta} = p_\eta\circ\pi_\eta
+      \end{gather}
+      get
+      \begin{align*}
+        \thomiso(\w{i}{\xi\oplus\eta})
+        &= \Sq i(\u{\xi\oplus\eta}) \\
+        &\equalsby{\autoref{cor:thomclassmultiplicative}}
+          \Sq i(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta})\\
+        &\equalsby{\ref{tag:cartan}}
+          \sum_{r+s=i}
+          \Sq r(\pb\pi_\xi\u{\xi}) \cup \Sq s(\pb \pi_\eta\u{\eta}) \\
+        &\equalsby{Naturality}
+          \sum_{r+s=i}
+          \pb\pi_\xi\Sq r(\u{\xi}) \cup \pb \pi_\eta\Sq s(\u{\eta}) \\
+        &\equalsby{Definition}
+          \sum_{r+s=i}
+          \pb\pi_\xi\thomiso(\w{r}{\xi})
+          \cup \pb\pi_\eta\thomiso(\w{s}{\eta}) \\
+        &\equalsby{Definition}
+          \sum_{r+s=i}
+          \pb\pi_\xi \left(\pb p_\xi  \w{r}{\xi}  \cup \u{\xi} \right)
+          \cup
+          \pb\pi_\eta\left(\pb p_\eta \w{s}{\eta} \cup \u{\eta}\right) \\
+        &= \left(
+          \sum_{r+s=i}
+          \pb\pi_\xi \pb p_\xi \w{r}{\xi} \cup
+          \pb\pi_\eta\pb p_\eta\w{s}{\eta}
+          \right)
+          \cup
+          \left(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta}\right) \\
+        &\equalsby{\eqref{eq:projectionscommute}, Definition}
+          \left(\sum_{r+s=i}
+          \pb p_{\xi\oplus\eta} \w{r}{\xi} \cup \pb p_{\xi\oplus\eta} \w{s}{\eta}
+          \right)
+          \cup
+          \u{\xi} \times \u{\eta} \\
+        &\equalsby{Group Hom., \autoref{cor:thomclassmultiplicative}}
+          \pb p_{\xi\oplus\eta}
+          \left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
+          \cup
+          \u{\xi\oplus\eta}\\
+        &\equalsby{Definition}
+          \thomiso\left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
+          \;.
+      \end{align*}
+      Applying $\thomiso^{-1}$ yields the result.
+      \qedhere
+    \end{description}
+  \end{proof}
+\end{Thm}
+
+
+\subsection{Equivalent Definitions of Wu Classes}\label{sec:wuclasses}
 Let $M$ be a compact, $n$-dimensional manifold throughout this
 section.
 In the following, a family of cohomology classes of manifolds is
@@ -624,8 +1321,9 @@ The candidate is the multiplication map
 \end{gather*}
 which is non-trivial as the cup-product is non-degenerated
 by Poincaré duality \cite[Proposition~3.38]{hatcher}.
-It remains to see that this map actually comes from a (sum of)
-iterated Steenrod square(s) which then must be non-trivial.
+It remains to see that this map actually comes from a sum of
+iterated Steenrod squares, one of which then must be non-trivial and
+of the correct degree.
 But this easily follows from the next main Lemma,
 the proof of which essentially uses Wu's theorem and the properties of
 the Wu classes.
@@ -783,6 +1481,7 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
 
 
 \section{Outlook: Generalisation of Massey's Theorem} % TODO: (GEORGE) include?
+Due to Brown\&Peterson
 \optcite[Section~II.1]{immersionconj}
 % TODO: reference outlook chapter in chapter introduction
 

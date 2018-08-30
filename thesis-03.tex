@@ -52,10 +52,12 @@ concerning indecomposability---in
 of the generating set in \autoref{sec:proofbrown}, where all
 preliminary work is merged.
 
-For clarity of presentation a couple of results from Thom's paper
-\cite{thom} will merely be referenced without proof throughout the
-review within \autoref{sec:cobordismringstructure}.
-
+For clarity of presentation, both a couple of results from Thom's
+paper \cite{thom} within the review in
+\autoref{sec:cobordismringstructure},
+as well as the concrete calculation of the cohomology ring structure
+of twisted products, will merely be referenced without proof.
+The reader is assumed to be familiar with symmetric polynomials.
 
 \section{Detecting Indecomposable Elements of the Cobordism Ring}
 \label{sec:indecomposableelements}
@@ -64,11 +66,17 @@ independent generators of the polynomial ring $\c_*$, one needs a way
 to detect indecomposable elements. Indecomposable in this 
 context means to not be expressible as a sum of products of lower
 degree elements.
+
 This section will follow an approach of Thom 
-\cite[Chapters~IV.5 and~IV.6]{thom}.
+\cite[Chapters~IV.5 and~IV.6]{thom}, in which a certain characteristic
+class serves as indicator. This characteristic class is constructed
+out of Stiefel-Whitney classes using certain functions on symmetric
+polynomials (see \autoref{sec:functions}), and becomes particularly
+handy on tangent bundles of manifolds (see
+\autoref{sec:swnumsofproductmfds}). The final indication lemma is then
+stated and proved in \autoref{sec:indecomposabilitycriterion}.
 
-
-\subsection{Special Properties of Symmetric Polynomials}
+\subsection{Special Properties of Symmetric Polynomials}\label{sec:functions}
 This subsection examines a special kind of polynomials that
 obey a product rule similar to \ref{tag:cartan} whenever evaluated on
 elements of the form of a total Stiefel-Whitney class
