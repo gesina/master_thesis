@@ -22,7 +22,7 @@ the cobordism relation.
 \end{Thm}
 
 As one easily sees that this property is stable under
-the ring operations (Lemma~\autoref{lem:brownstableunderringops}),
+the ring operations (Lemma~\ref{lem:brownstableunderringops}),
 the main idea for the proof is to find manifolds
 fulfilling the conjecture whose cobordism classes form a generating set
 of the cobordism ring.
@@ -32,7 +32,7 @@ $([\G i]|i\neq2^r-1)$ will already be a generating set if all of the
 $\G i$ are indecomposable.
 Thus, the candidates generating elements that will be constructed
 in \autoref{sec:proofbrown} need to be tested for (see
-Theorem~\autoref{thm:brownproof}):
+Theorem~\ref{thm:brownproof}):
 \begin{enumerate}
 \item indecomposability, which is the more lengthy part as it
   requires the preliminary results from
@@ -80,7 +80,7 @@ stated and proved in \autoref{sec:indecomposabilitycriterion}.
 This subsection examines a special kind of polynomials that
 obey a product rule similar to \ref{tag:cartan} whenever evaluated on
 elements of the form of a total Stiefel-Whitney class
-(see Lemma~\autoref{lem:productrule:general}).
+(see Lemma~\ref{lem:productrule:general}).
 
 As a consequence, one can express certain combinations of
 Stiefel-Whitney numbers of product manifolds in terms of ones of their
@@ -174,8 +174,9 @@ and agree on a shorthand for symmetrised monomials.
     $\el 1 n=\sum_{r=1}^{n}t_r$,
     $\el 2 n=\sum_{1\leq r<s\leq n} t_r t_s$.
     \begin{proof}
-      This is the fundamental theorem on symmetric polynomials,
-      see \forexample \cite[Chapter~4.4, Satz~1]{bosch2013algebra}.
+      This is the well-known fundamental theorem on symmetric
+      polynomials, see \forexample
+      \cite[Chap.~4.4, Satz~1]{bosch2013algebra}. 
     \end{proof}
   \item As a simple calculation shows that the elementary symmetric
     polynomials in $n$ variables fulfil
@@ -205,9 +206,13 @@ Now the desired polynomials can be defined.
     polynomials are algebraically independent, and
   \item the definition does not depend on $n$ as long as $k\leq n$.
   \end{enumerate}
-  Further, for a any graded ring $A_*=\bigoplus_{i\geq 0} A_i$ write
-  elements as $a=\sum_i a_i \coloneqq (a_0,a_1,\dotsc)$, and define
-  the evaluation of $\s{\Part}$ on such an element $a$ as
+  Further, for a graded ring $A_*=\bigoplus_{i\geq 0} A_i$ write
+  elements as
+  \begin{gather*}
+    a=\sum_i a_i \coloneqq (a_0,a_1,a_2,\dotsc)
+    \;,
+  \end{gather*}
+  and define the evaluation of $\s{\Part}$ on such an element $a$ as
   \begin{gather*}
     \s{\Part}(a) \coloneqq \s{\Part}(a_1,\dotsc,a_k)
     \;,
@@ -336,7 +341,7 @@ Stiefel-Whitney class.
 \begin{Ex}
   The most important partition of an integer $k$ will be the trivial
   one $(k)\in\PartitionsOf k$. In this case
-  Lemma~\autoref{lem:productrule:general} says
+  Lemma~\ref{lem:productrule:general} says
   \begin{gather*}
     \s{(k)}(a\cdot b) = \s{(k)}(a) + \s{(k)}(b)
     \;.
@@ -346,10 +351,11 @@ Stiefel-Whitney class.
 
 \subsection{Stiefel-Whitney Numbers of Product Manifolds}
 \label{sec:swnumsofproductmfds}
-In order to apply the special polynomials from the preceding section
-and their product property \autoref{lem:productrule:general} to
-the Stiefel-Whitney numbers of (product) manifolds, first start with
-Stiefel-Whitney classes.
+In order to apply the special polynomials out of the preceding
+section, as well as their product property from
+Lemma~\ref{lem:productrule:general}, to the Stiefel-Whitney
+numbers of (product) manifolds, first start with Stiefel-Whitney
+classes.
 
 So, let $M^n=M_1^{n_1}\times M_2^{n_2}$ all be closed manifolds of the
 noted dimension throughout this section.
@@ -373,7 +379,7 @@ Recall that
   \ref{tag:swclassesmultiplicativity} of the Stiefel-Whitney classes.
 \end{enumerate}
 Thus, one can apply the multiplication
-Lemma~\autoref{lem:productrule:general} to $\W{M}$, which immediately
+rule~\ref{lem:productrule:general} to $\W{M}$, which immediately
 yields:
 \begin{Cor}\label{cor:productrule:swcl}
   For $M=M_1\times M_2$ manifolds as above one gets for any partition
@@ -382,7 +388,7 @@ yields:
     \s{\Part}(\W{M})
     =
     \s{\Part}\left(\W{M_1}\cdot \W{M_2}\right)
-    &\cequalsby{\autoref{lem:productrule:general}}
+    &\cequalsby{\ref{lem:productrule:general}}
       \sum_{\mathclap{\Part_1\concat\Part_2=\Part}}
       \s{\Part_1}(\W{M_1}) \cdot \s{\Part_2}(\W{M_2})
     \\ &=
@@ -418,7 +424,7 @@ the following notation.
   \end{align*}
 \end{Def}
 
-Now the product rule \autoref{lem:productrule:general} translates to
+Now the product rule from Lemma~\ref{lem:productrule:general} translates to
 \begin{Cor}\label{cor:swnumdecompositionmfds}
   For closed manifolds $M_1$, and $M_2$ with dimensions $n_1$ and
   $n_2$ one has
@@ -446,7 +452,7 @@ Now the product rule \autoref{lem:productrule:general} translates to
   $W$, then $W$ is no product manifold.
   \begin{proof}
     The statement immediately follows from the previous
-    Corollary~\autoref{cor:productrule:swcl} with the following
+    Corollary~\ref{cor:productrule:swcl} with the following
     two facts:
     \begin{enumerate}
     \item The generator $\fundcl{M_1\times
@@ -503,7 +509,7 @@ Further, the structure of this algebra is well-known.
     See \cite[Theorem~IV.12]{thom} or
     \autoref{sec:indecomposabilitycriterion},
     \ref{item:generatorscobordimsring}, for a proof using
-    Theorem~\autoref{thm:basiscobordismring} below.
+    Theorem~\ref{thm:basiscobordismring} below.
   \end{proof}
 \end{Thm}
 
@@ -586,18 +592,18 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
   % for summation notation: \optcite[p.154, (4)f]{thom};
 \end{Thm}
 
-\begin{proof}[proof of \autoref{thm:indecomposabilitycriterion}]
-  Using the main theorems \autoref{thm:basiscobordismring} and
-  \autoref{thm:cobordantiffswnumscoincide} from
+\begin{proof}[proof of Theorem~\ref{thm:indecomposabilitycriterion}]
+  Using the main theorems \ref{thm:basiscobordismring} and
+  \ref{thm:cobordantiffswnumscoincide} from
   \autoref{sec:cobordismringstructure}, as well as the main
-  corollaries \autoref{cor:productrule:swcl} and
-  \autoref{cor:swnumdecompositionmfds} from
+  corollaries \ref{cor:productrule:swcl} and
+  \ref{cor:swnumdecompositionmfds} from
   \autoref{sec:swnumsofproductmfds}, enables to obtain the
   desired result in the following steps.
   \begin{steps}
   \item\label{item:manifoldbasisrepr}
     As the classes $[V_\Part]$ form a basis of the cohomology ring by
-    Theorem~\autoref{thm:basiscobordismring}, any manifold $M^n$ is
+    Theorem~\ref{thm:basiscobordismring}, any manifold $M^n$ is
     cobordant to a unique linear combination, \idest disjoint sum,
     \begin{gather*}
       [M] = \coprod_{\mathclap{\substack{
@@ -608,7 +614,7 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     \end{gather*}
     of the classes $[V_\Part]$.
     Now the Stiefel-Whitney numbers are determined by the cobordism
-    class according to Theorem~\autoref{thm:cobordantiffswnumscoincide}additive with
+    class according to Theorem~\ref{thm:cobordantiffswnumscoincide}additive with
     and are additive with respect to disjoint sums.
     So, one gets for any Stiefel-Whitney number $\wsnum{I}{M}$ of $M$
     \begin{align*}
@@ -672,9 +678,9 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     Furthermore, such a basis element $[V_{(k)}]$ cannot be
     decomposable, as otherwise $\snum{(k)}{V_{(k)}} = 0$
     by \autoref{eq:productrule:swnum} in
-    Corollary~\autoref{cor:swnumdecompositionmfds},
+    Corollary~\ref{cor:swnumdecompositionmfds},
     which contradicts the definition in
-    \autoref{thm:basiscobordismring}.
+    Theorem~\ref{thm:basiscobordismring}.
     
     Altogether, the basis elements represented by a $k$-dimensional
     manifold $V_{(k)}\in\c_k$ for $k\neq 2^m-1$ are
@@ -719,13 +725,13 @@ in constructing a candidate generating set of the cobordism ring.
 \section{Twisted Products}
 \label{sec:twistedprod}
 The candidates for a generating set needed for the proof of Brown's
-Theorem~\autoref{thm:brown} will be inductively constructed
+Theorem~\ref{thm:brown} will be inductively constructed
 using the so-called twisted product construction explained below.
 The main advantage of this tool is---besides quite a couple of handy
 preservation properties---the fact that a twisted product is
 indecomposable if and only if its factor is and the dimension was
 chosen correctly
-(Theorem~\autoref{thm:twistedprod:indecompcriterion}). The latter will
+(Theorem~\ref{thm:twistedprod:indecompcriterion}). The latter will
 be the main result of this section, and is discussed in
 \autoref{sec:twistedprod:indecompcriterion}.
 
@@ -945,7 +951,7 @@ calculations involving higher dimensional bundles.
     For $k=0$ this is simply the product rule for the total
     Stiefel-Whitney class because $\Twistedprod{0}{\xi}=\xi\times\xi$
     and $c=0$. Thus, assume $k\geq0$.
-    Then by \autoref{thm:twistedprod:cohomstructure} the total
+    Then, by Theorem~\ref{thm:twistedprod:cohomstructure}, the total
     Stiefel-Whitney class of the two-dimensional vector bundle
     $\Twistedprod{k}{\xi}$ must be of the general form
     \begin{align*}
@@ -1033,17 +1039,17 @@ defining the desired basis for the cobordism ring in the subsequent section.
   cobordism ring if and only if $M$ does and $\binom{k+n-1}{n}$ is
   non-zero modulo two.
 \end{Thm}
-Recall Theorem~\autoref{thm:indecomposabilitycriterion}, saying
+Recall Theorem~\ref{thm:indecomposabilitycriterion}, saying
 a manifold $M^n$ represents an indecomposable element if and only if
 $\snum{(n)}{M}$ is non-zero,
 and recall that $\Twistedprod{k}{-}$ preserves injectivity on
 cohomology by
-\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}.
-Then Theorem~\autoref{thm:twistedprod:indecompcriterion} is a
+Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}.
+Then Theorem~\ref{thm:twistedprod:indecompcriterion} is a
 direct consequence of the following Lemma.
 \begin{Lem}\label{lem:twistedprod:indecompcriterion}
   Let $M$, $n$, $k$ be as in
-  \autoref{thm:twistedprod:indecompcriterion} above.
+  Theorem~\ref{thm:twistedprod:indecompcriterion} above.
   Then there is a map $f\colon X\to M$ of spaces which is injective on
   cohomology and fulfils
   \begin{gather*}
@@ -1054,7 +1060,7 @@ direct consequence of the following Lemma.
     \;.
   \end{gather*}
 \end{Lem}
-\begin{proof}[proof of \autoref{lem:twistedprod:indecompcriterion}]
+\begin{proof}[proof of Lemma~\ref{lem:twistedprod:indecompcriterion}]
   As the Stiefel-Whitney classes of twisted products of line bundles
   are well-known, take $f$ to be a reduction of $\T M$ to line bundles
   using the splitting principle.
@@ -1064,21 +1070,21 @@ direct consequence of the following Lemma.
   $\xi_i$ over $X$, each with total Stiefel-Whitney class
   $\W{\xi_i}=1+\alpha_i$.
   With the fibre bundle properties from
-  \itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}%
+  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}%
   \ref{item:twistedprod:preservespb}
   and the tangent space structure from
-  \itemref{rem:twistedprodproperties}{item:twistedprodmanifold}%
+  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodmanifold}%
   \ref{item:twistedprod:tangentspace}
   this yields on vector bundles:
   \begin{align*}
     \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
-    &\cequalsby{\autoref{rem:twistedprodproperties}}
+    &\cequalsby{\ref{rem:twistedprodproperties}}
       \Twistedprod{k}{\pb f \T M}
       = \Twistedprod{k}{\bigoplus_{i\leq n}\xi_i}
       = \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}
     \\
     \pb{\Twistedprod{k}{f}} \T{\Twistedprod{k}{M}}
-    &\cequalsby{\autoref{rem:twistedprodproperties}}
+    &\cequalsby{\ref{rem:twistedprodproperties}}
       \pb{\Twistedprod{k}{f}} \left(
       \T{\RP k} \oplus \Twistedprod{k}{\T M}
       \right)\\
@@ -1089,7 +1095,7 @@ direct consequence of the following Lemma.
     \intertext{And on Stiefel-Whitney classes:}
     \pb{\Twistedprod{k}{f}} \W{\Twistedprod{k}{\T M}}
     &= \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}}
-      \cequalsby{\autoref{cor:twistedprod:swlinebdl}}
+      \cequalsby{\ref{cor:twistedprod:swlinebdl}}
       \prod_{i\leq n} \left(1 + c + e(\alpha_i) + d(\alpha_i)\right)
     \\
     \pb{\Twistedprod{k}{f}} \W{\T\Twistedprod{k}{M}}
@@ -1110,7 +1116,7 @@ direct consequence of the following Lemma.
   \end{align*}
   The key point now qualifying $f$ for the proof, is that both $f$ and
   thus by
-  \itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
+  Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
   also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfil
   \begin{enumerate}
   \item with $\W{\pb f\T M} = \prod_{i=1}^n (1+\alpha_i)$ that
@@ -1167,7 +1173,7 @@ direct consequence of the following Lemma.
   \end{Lem}
   Before applying this to $t_1=u_i$, $t_2=v_i$, $m=2n+k$, and $l=2$,
   recall the following special properties from
-  \autoref{thm:twistedprod:cohomstructure} of the mentioned symbols in
+  Theorem~\ref{thm:twistedprod:cohomstructure} of the mentioned symbols in
   $\H^*(\Twistedprod{k}{X})$:
   \begin{itemize}
   \item $c^{k+1}=0$,
@@ -1211,7 +1217,7 @@ direct consequence of the following Lemma.
   as was stated.
 \end{proof}
 
-By Theorem~\autoref{thm:twistedprod:indecompcriterion}, one has to
+By Theorem~\ref{thm:twistedprod:indecompcriterion}, one has to
 both choose
 \begin{itemize}
 \item the dimension combination, as well as
@@ -1236,7 +1242,7 @@ can be written as $m=2^{i_1}+2n\eqqcolon k+2n$, where:
 This is favourable because the binomial coefficient
 $\binom{k-1}{n}$ will never be zero modulo two by the following Lemma,
 as is required by the indecomposability criterion for twisted products
-in \autoref{thm:twistedprod:indecompcriterion}.
+in Theorem~\ref{thm:twistedprod:indecompcriterion}.
 \begin{Lem}
   For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
   if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
@@ -1352,7 +1358,7 @@ Now define the representatives of the generating set's elements as follows.
   \end{enumerate}
 \end{Thm}
 \begin{proof}[proof of
-  \itemref{thm:brownproof}{item:indecomposabilityproperty}]
+  Theorem~\itemref{thm:brownproof}{item:indecomposabilityproperty}]
   By definition, all $\G m$ either are some $\Twistedprod{2^i}{\pt}$
   or arise from one as iterated twisted product. More precisely, for a binary
   representation
@@ -1370,12 +1376,12 @@ Now define the representatives of the generating set's elements as follows.
         \;.
   \end{align*}
   But $\Twistedprod{2^{i}}{\pt}=\RP{2^i}$ represents an indecomposable
-  element of the Cobordism ring by Example~\autoref{ex:rpnindecomposable}.
-  Thus, by Corollary~\autoref{cor:twistedprod:indecompcriterion} all
+  element of the Cobordism ring by Example~\ref{ex:rpnindecomposable}.
+  Thus, by Corollary~\ref{cor:twistedprod:indecompcriterion} all
   $\G m$ also represent indecomposable cobordism classes.
 \end{proof}
 \begin{proof}[proof of
-  \itemref{thm:brownproof}{item:brownimmersionproperty}]
+  Theorem~\itemref{thm:brownproof}{item:brownimmersionproperty}]
   \optcite[p.~84, proof Thm.~1.30]{immersionconj}
   In order to proof the immersion property of the manifolds $\G m$,
   conduct an induction over $\alpha(m)$.
@@ -1399,7 +1405,7 @@ Now define the representatives of the generating set's elements as follows.
     \end{gather*}
   \end{description}
   As described in
-  \itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
+  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
   this induces an immersion of twisted products
   \begin{center}
     \begin{tikzcd}[row sep=small, column sep=large]
@@ -1417,7 +1423,7 @@ Now define the representatives of the generating set's elements as follows.
   \end{center}
   The latter twisted product however is a fibre bundle over
   $\RP{2^i_1}$ as in
-  \itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
+  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
   More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
   The needed immersion will be given by the following Lemma.
   \begin{Lem}

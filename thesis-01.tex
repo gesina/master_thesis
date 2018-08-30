@@ -240,7 +240,7 @@ Stiefel-Whitney classes, will be discussed in detail in
   Thus, applying $\Cl$ to a principal $G$-bundle over a
   space $X$, which admits the homotopy type of a CW-complex, that is
   represented by a morphism $\eta\colon X\to\BG$
-  as in \itemref{def:charcls}{item:classificationthm}
+  as in Definition~\itemref{def:charcls}{item:classificationthm}
   yields
   \begin{gather*}
     \Cl(X) = \pb{\eta} \cl \in \H^i(X;R)
@@ -325,8 +325,7 @@ essential:
   \item[{Formally invert them:}]
     Used to define the dual Stiefel-Whitney classes for Massey's
     theorem, see below.
-  \item[{Algebraically combine Stiefel-Whitney classes using their
-      generating property:}]
+  \item[{Algebraically combine Stiefel-Whitney classes:}]
     Used in \autoref{chap:brown} to construct an indecomposability
     indicator.
   \item[{Apply Steenrod squares to Stiefel-Whitney classes:}]
@@ -378,7 +377,7 @@ characteristic class. However, given only the above axioms:
     \item[Existence]
       A possible concrete construction utilises the Euler
       class. Another definition via Steenrod squares can be 
-      found later in \autoref{thm:altdefswclasses}.
+      found later in Theorem~\ref{thm:altdefswclasses}.
     \item[Uniqueness]
       Here one can use the splitting principle and the knowledge about
       $\W{\gamma_1}$
@@ -613,7 +612,7 @@ vector bundles.
 For example the value $k=n-\alpha(n)$ of the minimal immersion dimension
 is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
 
-\begin{proof}[proof of \autoref{thm:immersionconj:equivalences}]
+\begin{proof}[proof of Theorem~\ref{thm:immersionconj:equivalences}]
   The strategy is to show
   \ref{item:immersionconj:1}$\Rightarrow$%
   \ref{item:immersionconj:4}$\Leftrightarrow$%
@@ -627,10 +626,10 @@ is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
     using Steenrod's classification theorem
     \itemref{def:charcls}{item:classificationthm} and the properties
     of the stable normal bundle from
-    \itemref{lem:classificationvb}{item:charclsstablenormalbundle}.
+    Lemma~\itemref{lem:classificationvb}{item:charclsstablenormalbundle}.
   \item[\ref{item:immersionconj:4}$\Rightarrow$\ref{item:immersionconj:3}:]
     Also by
-    \itemref{lem:classificationvb}{item:charclsstablenormalbundle},
+    Lemma~\itemref{lem:classificationvb}{item:charclsstablenormalbundle},
     any rank $k$ vector bundle that is represented by a lift of
     $\N{M}$ to $[M,\B\Orth(k)]$ as in \ref{item:immersionconj:4} has
     the property needed for \ref{item:immersionconj:3}.
@@ -679,7 +678,7 @@ is motivated by means of Stiefel-Whitney classes in \autoref{chap:massey}.
     immersion from \ref{item:immersionconj:1}.
     
     The converse direction is an application of the Hirsch-Smale
-    theorem~\autoref{thm:hirschsmale}.
+    theorem~\ref{thm:hirschsmale}.
     However, first substitute the non-compact manifold $\R^{n+k}$ with
     the compact sphere $N=\Sphere{n+k}$, to make $M$ and $N$ comply
     with the preliminaries of the theorem. As $\dim M<n+k$ by assumption,
@@ -698,13 +697,13 @@ characteristic classes of vector bundles as follows.
   If $M$ immerses into $\R^{n+k}$, then $\dualw{i}{M}=0$ for all
   $i>k$.
   \begin{proof}
-    By Theorem~\autoref{thm:immersionconj:equivalences} $M$ immerses
+    By Theorem~\ref{thm:immersionconj:equivalences} $M$ immerses
     into $\R^{n+k}$ if and only if there is a rank-$k$
     normal bundle $\N{}$ of $M$.
     Since the Stiefel-Whitney classes are stable,
     $\W{\N{}}=\W{\N M}\cequalsby{Def.}\dualW{M}$.
     However, as explained in
-    \itemref{rem:propswclasses}{item:propswclasses:dimesioncut},
+    Remark~\itemref{rem:propswclasses}{item:propswclasses:dimesioncut},
     all Stiefel-Whitney classes $\w{i}{\N{}}$ of degree $i$ exceeding
     the rank $k$ of $\N{}$ are zero.
   \end{proof}

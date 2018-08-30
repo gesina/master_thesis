@@ -16,7 +16,7 @@
 % eq:  equation,   reference by \eqref
 % tag: tagged equation/item, reference by \ref
 % item: untagged item,    ""
-% def: definition, reference by \autoref
+% def: definition, reference by \ref
 % thm: theorem,    ""
 % lem: lemma,      ""
 % cor: corollary,  ""
@@ -27,11 +27,14 @@
 
 % LANGUAGE
 \usepackage[ngerman, main=english]{babel}
-%\hyphenation{}
+\hyphenation{Mas-sey Mas-sey's Ei-len-berg=Mac-Lane}
 \usepackage[autostyle=try]{csquotes}
 
 % INDICES
-\usepackage[style=alphabetic, backend=biber]{biblatex}
+\usepackage[
+style=alphabetic, backend=biber,
+doi=false, url=false
+]{biblatex}
 \bibliography{thesis.bib}
 
 % \usepackage{makeidx}
@@ -98,7 +101,7 @@
 \newcommand*{\Idest}{I.e.\ } % I.e.
 \newcommand*{\forexample}{e.g.\ } % e.g.
 \newcommand*{\Forexample}{E.g.\ } % E.g.
-\newcommand*{\itemref}[2]{\autoref{#1}.\ref{#2}} % ref to item in thm
+\newcommand*{\itemref}[2]{\ref{#1}.\ref{#2}} % ref to item in thm
 
 % THEOREMS
 \newtheorem{Thm}{Theorem}

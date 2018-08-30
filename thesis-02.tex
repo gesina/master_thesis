@@ -15,7 +15,7 @@
 % the proof of Massey’s theorem. Explain that the estimate in Massey’s
 % theorem is the best possible in general.
 % [massey], [immersionconj]
-Recall from Corollary~\autoref{cor:obstruction} that a manifold can
+Recall from Corollary~\ref{cor:obstruction} that a manifold can
 only immerse in codimension $k$ if its dual Stiefel-Whitney classes in
 degrees higher than $k$ are zero.
 This chapter is mainly dedicated to the proof of a theorem by Massey
@@ -122,7 +122,7 @@ Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
   naturality, \ref{tag:cartan}, and the fixed values
   %\eqref{eq:sqlowerbound}, \eqref{eq:sqsquared}, and
   %\eqref{eq:sqidentity}
-  from Definition~\autoref{def:sq}.
+  from Definition~\ref{def:sq}.
   \begin{proof}
     For existence see \cite[Chapter 2]{mosher},
     for uniqueness see \cite[VIII §3]{steenrodepstein}.
@@ -147,7 +147,7 @@ facts are according to \cite[Chap.~6]{mosher}.
   $\Sq{(i_1,i_2,\dotsc,i_l)}$,
   and will be evaluated on an element $x$ of a cohomology ring as
   $\Sq{i_1}\circ\dotsb\circ\Sq{i_l}(x)$ respecting the
-  properties from \autoref{def:sq}.
+  properties from Definition~\ref{def:sq}.
   Furthermore, for a sequence $I=(i_1,\dotsc,i_l)$,
   respectively $\Sq I$, denote by
   \begin{description}[labelindent=1em]
@@ -210,7 +210,7 @@ a new type of characteristic classes with nice properties that are
 directly connected to Stiefel-Whitney classes through Steenrod
 squares.
 These so-called Wu classes will be introduced in
-\autoref{def:wuclasses}, and later in \autoref{sec:wutheorem}, Wu's
+Definition~\ref{def:wuclasses}, and later in \autoref{sec:wutheorem}, Wu's
 theorem on their relation to Stiefel-Whitney classes is shown.
 
 \subsection{Thom Classes and the Thom Isomorphisms}\label{sec:thomclasses}
@@ -343,31 +343,35 @@ their above definition.
     % \end{center}
     By the naturality of the Künneth isomorphism there is the
     following commutative diagram that translates this problem to one
-    on the cohomology of spheres:
+    on the cohomology of spheres (all cohomology rings with
+    $R$-coefficients):
     \begin{center}
       \begin{tikzcd}
-        \H^*(\spherepair{\E\xi_b};R)
-        \otimes \H^*(\spherepair{\E\eta_b};R)
+        \H^*(\spherepair{\E\xi_b})
+        \otimes \H^*(\spherepair{\E\eta_b})
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & \H^*(\spherepair{\E{(\xi\oplus\eta)}_b}; R)
+        & \H^*(\spherepair{\E{(\xi\oplus\eta)}_b})
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        \H^*(\spherepair{\R^{\rkk}}; R)\otimes \H^*(\spherepair{\R^{\rkl}}; R)
+        \H^*(\spherepair{\R^{\rkk}})
+        \otimes \H^*(\spherepair{\R^{\rkl}})
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & \H^*(\spherepair{\R^{\rkk+\rkl}}; R)
+        & \H^*(\spherepair{\R^{\rkk+\rkl}})
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        \H^*(I^{\rkk},\Boundary{I^{\rkk}}; R)\otimes \H^*(I^{\rkl}, \Boundary{I^{\rkl}}; R)
+        \H^*(I^{\rkk},\Boundary{I^{\rkk}})
+        \otimes \H^*(I^{\rkl}, \Boundary{I^{\rkl}})
         \ar[r, "\cong"]
         \ar[d, dash, "\cong"{above,rotate=90}]
-        & \H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}}; R)
+        & \H^*(I^{\rkk+\rkl}, \Boundary{I^{\rkk+\rkl}})
         \ar[d, dash, "\cong"{below,rotate=90}]
         \\
-        \H^*(\Sphere{\rkk}; R)\otimes \H^*(\Sphere{\rkl}; R)
+        \H^*(\Sphere{\rkk})
+        \otimes \H^*(\Sphere{\rkl})
         \ar[r, "\cong"]
-        & \H^*(\Sphere{\rkk+\rkl}; R)
+        & \H^*(\Sphere{\rkk+\rkl})
       \end{tikzcd}
     \end{center}
     Furthermore, the simple structure of the cohomology of spheres
@@ -409,7 +413,7 @@ their above definition.
   \begin{proof}[proof (sketch)]
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
-      \cite[Proposition~17.9.3]{tomdieck}.
+      \cite[Prop.~17.9.3]{tomdieck}.
     \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
       Using a suitable Mayer-Vietoris sequence for gluing, and an
       inductive argument starting with the trivial bundle case, one can show:
@@ -450,7 +454,7 @@ space to that of its base space.
   \end{align*}
   \begin{proof}
     Naturality directly follows from the naturality of the Thom class
-    in \autoref{cor:thomclsnatural}, and naturality of the cup-
+    in Corollary~\ref{cor:thomclsnatural}, and naturality of the cup-
     respectively cap-product.
     The cohomology part then is a direct application of Leray's theorem
     \cite[Theorem~4D.8]{hatcher}.
@@ -469,7 +473,7 @@ calculations for Wu's theorem in \autoref{sec:wuclassesmain}.
     \capped{t(x)}{\alpha} = \capped{x}{t(\alpha)} \in\Zmod2
   \end{gather*}
 \end{Lem}
-In order to proof Lemma~\autoref{lem:thomisoself-adjoint},
+In order to proof Lemma~\ref{lem:thomisoself-adjoint},
 first recall the following properties of the cap product.
 \begin{Rem}
   For
@@ -496,7 +500,7 @@ first recall the following properties of the cap product.
     \Zmod2\cong \H_0(\thomspacepair{E})\to \H_0(B)\cong\Zmod2
   \end{align}
 \end{Rem}
-\begin{proof}[proof of Lemma~\autoref{lem:thomisoself-adjoint}]
+\begin{proof}[proof of Lemma~\ref{lem:thomisoself-adjoint}]
   With $\U\coloneqq\u{\xi}$ one calculates
   \begin{align*}
     \capped{t(x)}{\alpha}
@@ -565,10 +569,12 @@ cohomology of spheres when needed.
     \item[Connected case:]
       Assume that $M$ is connected.
       Then
-      $\H_{n+k}(\Thomspace{\N{\emb}})
-      \cong\relH_r(\Thomspace{\N{\emb}})
-      \cong \H_n(M) \cong \Zmod2=\{\fundcl M, 0\}$ by
-      the Thom isomorphism, and by connectedness of $M$.
+      \begin{gather*}
+        \H_{n+k}(\Thomspace{\N{\emb}})
+        \cong\relH_r(\Thomspace{\N{\emb}})
+        \cong \H_n(M) \cong \Zmod2=\{\fundcl M, 0\}
+      \end{gather*}
+      by the Thom isomorphism, and by connectedness of $M$.
       Thus, one only has to show that
       $\pf\collapse\fundcl{\Sphere{n+\rkk}}$
       is non-zero.    
@@ -658,7 +664,7 @@ Thom classes and Steenrod squares can be presented.
   \cite[see \forexample][Theorem~7.1~ff.]{milnor}.
   \begin{proof}
     Check naturality of the expression and all further
-    defining properties from \autoref{def:swclasses}.
+    defining properties from Definition~\ref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
       are natural.
@@ -686,7 +692,7 @@ Thom classes and Steenrod squares can be presented.
       \begin{align*}
         \thomiso(\w{i}{\xi\oplus\eta})
         &= \Sq i(\u{\xi\oplus\eta}) \\
-        &\equalsby{\autoref{cor:thomclassmultiplicative}}
+        &\equalsby{\ref{cor:thomclassmultiplicative}}
           \Sq i(\pb\pi_\xi\u{\xi} \cup \pb\pi_\eta\u{\eta})\\
         &\equalsby{\ref{tag:cartan}}
           \sum_{r+s=i}
@@ -716,7 +722,7 @@ Thom classes and Steenrod squares can be presented.
           \right)
           \cup
           \u{\xi} \times \u{\eta} \\
-        &\equalsby{Group Hom., \autoref{cor:thomclassmultiplicative}}
+        &\equalsby{Group Hom., \ref{cor:thomclassmultiplicative}}
           \pb p_{\xi\oplus\eta}
           \left(\sum_{r+s=i}\w{r}{\xi}\cup\w{s}{\eta}\right)
           \cup
@@ -804,9 +810,9 @@ A more general definition on vector bundles is much more handy when
 trying to find relations to other characteristic classes.
 The following more general definition of Wu classes
 will turn out to be equivalent in a certain sense to the one above in
-Definition~\autoref{def:wuclasses}.
+Definition~\ref{def:wuclasses}.
 For the formulation recall the antipode of the Steenrod algebra
-(see \autoref{def:antipode}).
+(see Definition~\ref{def:antipode}).
 \begin{Def}\label{def:altwuclasses}
   Let $\xi\colon E\xrightarrow{p} B$ be a vector bundle over a
   paracompact space $B$.
@@ -822,7 +828,7 @@ For the formulation recall the antipode of the Steenrod algebra
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
-  classes in Theorem~\autoref{thm:altdefswclasses}.
+  classes in Theorem~\ref{thm:altdefswclasses}.
 \end{Rem}
 
 Recall that the definition of Stiefel-Whitney classes of manifolds
@@ -838,7 +844,7 @@ bundles, as will be clear from the promised equivalence below.
     \v{i}{M} = \v{i}{\N{\emb}}\in \H^i(M)
   \end{gather*}
   \begin{proof}
-    To proof \autoref{thm:altdefwuclasses}, the defining property of
+    To proof Theorem~\ref{thm:altdefwuclasses}, the defining property of
     $\v{i}{M}$ will be checked on $\v{i}{\N{\emb}}$, \idest one has to show
     that for any $x\in \H^{n-i}(M)$ holds
     \begin{gather*}
@@ -853,11 +859,11 @@ bundles, as will be clear from the promised equivalence below.
     which will be proven below.
     Beforehand, recall the following:
     \begin{description}
-    \item[By \autoref{lem:thomisoself-adjoint}:]
+    \item[By \ref{lem:thomisoself-adjoint}:]
       $\capped{\thomiso(z)}{\alpha} = \capped{z}{\thomiso(\alpha)}$
       for $r\in\Nat$, $z\in \H^r(M)$,
       $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N{\emb}}})$.
-    \item[By \autoref{lem:thomisofundcl}:]
+    \item[By \ref{lem:thomisofundcl}:]
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
       where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N{\emb}}$ is
       the collapse map of a tubular embedding of the normal bundle $\N
@@ -869,7 +875,7 @@ bundles, as will be clear from the promised equivalence below.
       is the identity on $\H^m(\Sphere m)$, \idest
       $\Sq i\colon \H^m(\Sphere{m})\to \H^{m+i}(\Sphere{m})$ is zero for
       $i\neq0$.
-    \item[By Definition \autoref{def:sq}:] The total Steenrod Square
+    \item[By Definition~\ref{def:sq}:] The total Steenrod Square
       $\SQ$ is natural and a ring homomorphism.
     \item[By \eqref{eq:capprod2}:]
       For any map of spaces $f\colon X\to Y$ and co-/homology classes
@@ -879,7 +885,7 @@ bundles, as will be clear from the promised equivalence below.
     For the proof fix some $i\leq n$, some arbitrary $x\in
     \H^{n-i}(M)$, as well as a collapse map
     $\collapse\colon\Sphere{n+k}\to\Thomspace{\N{\emb}}$ as in
-    \autoref{lem:thomisofundcl}.
+    Lemma~\ref{lem:thomisofundcl}.
     For simplicity, denote
     $\Vu\coloneqq \V{\N{\emb}}$,
     $\Sph\coloneqq \Sphere{n+\rkk}$,
@@ -894,12 +900,12 @@ bundles, as will be clear from the promised equivalence below.
     $(n+k)$-sphere:
     \begin{align}\notag
       \capped{x\cup \Vu}{\fundcl M}
-      &\equalsby{\autoref{lem:thomisofundcl}}
+      &\equalsby{\ref{lem:thomisofundcl}}
         \capped
         {x\cup\Vu}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\\notag
-      &\equalsby{\autoref{lem:thomisoself-adjoint}}
+      &\equalsby{\ref{lem:thomisoself-adjoint}}
         \capped
         {\thomiso\left(x\cup\Vu\right)}
         {\pf\collapse\fundcl{\Sph}}
@@ -965,12 +971,12 @@ bundles, as will be clear from the promised equivalence below.
         {\thomiso(\SQ(x))}
         {\pf\collapse\fundcl{\Sph}}
       \\
-      &\equalsby{\autoref{lem:thomisoself-adjoint}}
+      &\equalsby{\ref{lem:thomisoself-adjoint}}
         \capped
         {\SQ(x)}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
       \\
-      &\equalsby{\autoref{lem:thomisofundcl}}
+      &\equalsby{\ref{lem:thomisofundcl}}
         \capped
         {\SQ(x)}
         {\fundcl M}
@@ -984,7 +990,7 @@ bundles, as will be clear from the promised equivalence below.
 Wu's theorem, the goal of this section, gives a close relation of
 the Wu classes from above with the Stiefel-Whitney classes using
 Steenrod squares. Besides, it also immediately proves that Wu classes
-as defined in \autoref{thm:altdefwuclasses} are actually characteristic
+as defined in Theorem~\ref{thm:altdefwuclasses} are actually characteristic
 classes.
 
 \begin{Thm}[Wu]\label{thm:wu}
@@ -1030,7 +1036,7 @@ The proof uses the alternative characterisation
 \begin{gather*}
   \antipode(\SQ)(\u{\N{\emb}}) = \thomiso(\V{\N{\emb}})
 \end{gather*}
-of the Wu classes from \autoref{thm:altdefwuclasses}, and quite directly
+of the Wu classes from Theorem~\ref{thm:altdefwuclasses}, and quite directly
 follows from the following Lemma:
 \begin{Lem}\label{lem:wu}
   For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
@@ -1041,19 +1047,19 @@ follows from the following Lemma:
   \end{gather*}
 \end{Lem}
 \begin{proof}[proof of \ref{tag:wuformula}]
-  Lemma \autoref{lem:wu} states for a closed manifold $M^n$ and any
+  Lemma~\ref{lem:wu} states for a closed manifold $M^n$ and any
   embedding $\emb\colon M\to\R^{n+k}$ that
   \begin{gather*}
     \SQ(\V{M}) \cup \dualW{M}
     = \SQ(\V{\N M}) \cup \W{\N{\emb}}
-    \cequalsby{\autoref{lem:wu}} 1
+    \cequalsby{\ref{lem:wu}} 1
     \;.
   \end{gather*}
   Cupping with $\W{M}=\W{\T M}$ on both sides yields the claim
   as $\W{\T M} \cup \W{\N{\emb}} = 1$ by
-  \itemref{rem:propswclasses}{item:wuclassmfdinverse}.
+  Remark~\itemref{rem:propswclasses}{item:wuclassmfdinverse}.
 \end{proof}
-\begin{proof}[proof of Lemma~\autoref{lem:wu}]
+\begin{proof}[proof of Lemma~\ref{lem:wu}]
   For simplicity use the shortenings
   $\U\coloneqq \u{\xi}$,
   $\Vu\coloneqq \V{\xi}$, and
@@ -1063,10 +1069,10 @@ follows from the following Lemma:
     \thomiso(1)
     &= \U
     \\
-    &\equalsby{Def.~\autoref{def:antipode}}
+    &\equalsby{Def.~\ref{def:antipode}}
       \SQ\left(\antipode(\SQ)(\U)\right)
     \\
-    &\equalsby{Def.~\autoref{def:altwuclasses}}
+    &\equalsby{Def.~\ref{def:altwuclasses}}
       \SQ\left(\thomiso(\Vu)\right)
     \\
     &\equalsby{Def.~$\thomiso$}
@@ -1075,7 +1081,7 @@ follows from the following Lemma:
     &\equalsby{\ref{tag:cartan}, Naturality}
       \pb p\SQ(\Vu) \cup \SQ(\U)
     \\
-    &\equalsby{\autoref{thm:altdefswclasses}}
+    &\equalsby{\ref{thm:altdefswclasses}}
       \pb p\SQ(\Vu) \cup \thomiso(\Ws)
     \\
     &\equalsby{Def.~$\thomiso$}
@@ -1131,7 +1137,10 @@ The latter consists of several steps:
   \end{gather*}
 \item\label{tag:masseystep2}
   Find some iterated Steenrod square which is non-trivial in degree
-  $\Sq I\colon\H^q(M)\to\H^n(M)$.
+  \begin{gather*}
+    \Sq I\colon\H^q(M)\to\H^n(M)
+    \;.
+  \end{gather*}
 \end{steps}
 Applying \ref{tag:masseystep1} to the Steenrod square $\Sq I$ from
 \ref{tag:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
@@ -1165,10 +1174,10 @@ immediately yields the result as
 
 In order to split the proof into several cases, recall that
 $\Sq I(x) = 0$ for $\e(I)>\deg x$ by
-\itemref{rem:sq}{item:squpperboundgeneral}. This leaves the two cases
-$\e(I)<\deg x$ and $\e(I)=\deg x$.
+Remark~\itemref{rem:sq}{item:squpperboundgeneral}. This leaves the two
+cases $\e(I)<\deg x$ and $\e(I)=\deg x$.
 Inductively applying the following Lemma by Serre restricts the
-proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
+proof of Lemma~\ref{lem:masseystep1} to the first case where $\e(I)<q$.
 \begin{Lem}[Serre]
   \label{lem:serre}
   Every admissible sequence $I\in\Nat^{\l(I)}$ of excess $\e(I)>0$
@@ -1182,9 +1191,9 @@ proof of \autoref{lem:masseystep1} to the first case where $\e(I)<q$.
   \end{gather*}
 \end{Lem}
 
-Before proving \autoref{lem:serre} one can finish the argumentation for
+Before proving Lemma~\ref{lem:serre} one can finish the argumentation for
 the case $\e(I)<\deg x$.
-\begin{proof}[proof of \autoref{lem:masseystep1}]
+\begin{proof}[proof of Lemma~\ref{lem:masseystep1}]
   Let $q\in\Nat$ and $I=(i_1,\dotsc,i_l)$ be an admissible sequence such that
   $\e(I)<q$.
   Assume there is a cohomology class $x\in\H^q(M)$ such that $\Sq I(x)\neq0$.
@@ -1253,7 +1262,7 @@ the case $\e(I)<\deg x$.
   \end{gather*}
 \end{proof}
 
-\begin{proof}[proof of \autoref{lem:serre}]
+\begin{proof}[proof of Lemma~\ref{lem:serre}]
   \optcite[Lemma~1, converse part, p.~159]{serre}
   First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
   of excess $\e(I)>0$ can be written as
@@ -1263,7 +1272,7 @@ the case $\e(I)<\deg x$.
   with $l>k\geq 1$ chosen maximal, \idest $i_k>2i_{k+1}$. If $I$ is admissible, the subsequence
   $J\coloneqq(i_{k+1},\dotsc,i_l)$ will be admissible as well.
   In order to see that such $J$ and $k$ fulfil the requirements from
-  \autoref{lem:serre} one only needs to show
+  Lemma~\ref{lem:serre} one only needs to show
   \begin{claim}
     For $I$ and $J$ as above, and $x\in\H^{\e(I)}(X)$ a cohomology
     class of a space $X$ holds
@@ -1311,7 +1320,7 @@ the case $\e(I)<\deg x$.
 This section is dedicated to the search of an iterated Steenrod square
 $\Sq I$ of degree $n-q$ that is non-trivial in degree
 $\Sq I\colon\H^q(M)\to\H^n(M)$ in order to complete
-\ref{tag:masseystep2} of the prove of Theorem~\autoref{thm:massey}.
+\ref{tag:masseystep2} of the prove of Theorem~\ref{thm:massey}.
 
 The candidate is the multiplication map
 \begin{gather*}
@@ -1342,7 +1351,7 @@ Applying this inductively with the induction step
 \end{gather*}
 yields the needed result.
 
-\begin{proof}[proof of \autoref{lem:masseystep2}]
+\begin{proof}[proof of Lemma~\ref{lem:masseystep2}]
   As above let $0<k<n$ and $x\in\H^k(M)$.
   For simplicity write
   $\ws i\coloneqq\w i M$, $\dualws i\coloneqq\dualw i M$,
@@ -1350,19 +1359,19 @@ yields the needed result.
   In order to translate from Stiefel-Whitney classes to Steenrod
   squares and back again recall the following results.
   \begin{description}
-  \item[By Theorem \autoref{thm:wu} (Wu):]
+  \item[By Theorem~\ref{thm:wu} (Wu):]
     $\sum_{j=0}^{s} \Sq j(\dualvu{s-j}) = \dualws{s-j}$
     for any $s\leq n$.
-  \item[By Definition~\autoref{def:wuclasses} of $\Vu$:]
+  \item[By Definition~\ref{def:wuclasses} of $\Vu$:]
     $\vu i \cdot y = \Sq i(y)$
     for any $i\leq n$ and $y\in\H^{n-i}(M)$.
-  \item[By Definition~\autoref{def:dualwuclasses} of $\dualVu$:]
+  \item[By Definition~\ref{def:dualwuclasses} of $\dualVu$:]
     $\dualvu d = \sum_{i=1}^{d} \vu i\cdot \dualvu{d-i}$ for $d>0$.
   \end{description}
   The full calculation is then
   \begin{align*}
     x\cdot \dualws{n-k}
-    &\cequalsby{\autoref{thm:wu}}
+    &\cequalsby{\ref{thm:wu}}
       x\cdot \sum_{i=0}^{n-k} \Sq i(\dualvu{n-k-i}) \\
     &\equalsby{Def. $\Sq 0$}
       x\cdot\left(
@@ -1395,7 +1404,7 @@ yields the needed result.
     &\equalsby{Reorder}
       \sum_{r=1}^{n-k} \Sq r(x) \cdot
       \left( \sum_{j=0}^{n-k-r} \Sq j(\dualvu{n-k-(j+r)}) \right) \\
-    &\equalsby{\autoref{thm:wu}}
+    &\equalsby{\ref{thm:wu}}
       \sum_{r=1}^{n-k} \Sq r(x) \cdot\dualws{n-k-r}
       \qedhere
   \end{align*}
