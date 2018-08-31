@@ -18,7 +18,7 @@
 Recall from Corollary~\ref{cor:obstruction} that a manifold can
 only immerse in codimension $k$ if its dual Stiefel-Whitney classes in
 degrees higher than $k$ are zero.
-This chapter is mainly dedicated to the proof of a theorem by Massey
+This chapter is dedicated to the proof of a theorem by Massey
 \cite{massey}, which says that this obstruction is void in general for
 $k=n-\alpha(n)$ (\autoref{sec:massey}), and that this is the best
 possible general result (\autoref{sec:bestpossibleresult}), \idest for
@@ -31,16 +31,16 @@ investigation of the so-called Wu characteristic classes in
 \autoref{sec:wuclassesmain}.
 The latter involves several definitions giving rise to nice properties
 in general and concerning manifolds (\autoref{sec:wuclasses}), and
-preparations plus proof of the Wu formula, a handy relation of Wu
-classes with Stiefel-Whitney classes.
+preparations plus proof of the Wu formula in \autoref{sec:wutheorem},
+a handy relation of Wu classes with Stiefel-Whitney classes.
 
 Within the reviews of Steenrod squares and Thom classes, a couple of
 results will be merely referenced without proof.
 
 \section{Steenrod Squares}\label{sec:steenrodsquares}
-Similar to the cup and cap product, Steenrod squares add quite a lot
-of further structure to a cohomology ring, thus adding more tools to
-differentiate spaces by means of cohomology comparison respectively.
+Similar to the cup and cap product, Steenrod squares add further
+structure to a cohomology ring, thus adding more tools to
+differentiate spaces by means of cohomology.
 As applications, they will serve in constructing two kinds of
 characteristic classes, namely the Stiefel-Whitney and the Wu
 classes, and finally they will give rise to a proof of Massey's
@@ -169,7 +169,7 @@ facts are according to \cite[Chap.~6]{mosher}.
     \cite[Chap.~6, Theorem~1]{mosher}.
   \end{enumerate}
   Let $I=(i_1,\dotsc,i_l)$ be a sequence in $\Nat$.
-  \begin{enumerate}[resume*]
+  \begin{enumerate}[resume]
   \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
   \item\label{item:squpperboundgeneral} $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
     \begin{proof}
@@ -210,16 +210,21 @@ a new type of characteristic classes with nice properties that are
 directly connected to Stiefel-Whitney classes through Steenrod
 squares.
 These so-called Wu classes will be introduced in
-Definition~\ref{def:wuclasses}, and later in \autoref{sec:wutheorem}, Wu's
-theorem on their relation to Stiefel-Whitney classes is shown.
+\autoref{sec:wuclasses}.
+The proof of Wu's theorem on their relation to Stiefel-Whitney
+classes in \autoref{sec:wutheorem} utilises some properties of Thom
+classes and the Thom isomorphism as reviewed in
+\autoref{sec:thomclasses}, as well as a certain construction of
+Stiefel-Whitney classes as introduced in
+\autoref{sec:swclsconstruction}.
+
 
 \subsection{Thom Classes and the Thom Isomorphisms}\label{sec:thomclasses}
 In the following, Thom classes and the Thom isomorphisms will be
-revised. From the definition it will be clear that Thom classes are
-\emph{no} characteristic classes in the above sense. However, the
-tools that will be introduced in this section are an important
-ingredient in constructing Stiefel-Whitney characteristic classes from
-Steenrod squares.
+revised. The tools to be introduced in this section are an important
+ingredient for the proof of Wu's theorem, both directly as well as for
+constructing Stiefel-Whitney characteristic classes from Steenrod
+squares.
 
 Throughout the section,
 let $B$ be a paracompact space, \forexample a manifold,
@@ -551,7 +556,8 @@ cohomology of spheres when needed.
       & \H_{n}(M)% \cong \Zmod2
       \\
       \fundcl{\Sphere{n+\rkk}} \ar[rrr, mapsto]
-      &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M
+      &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}})
+      = \fundcl M
     \end{tikzcd}
   \end{center}
   where $\incl\colon(\Thomspace{\N{\emb}},\emptyset)\to(\Thomspace{\N{\emb}}, \{\infty\})$ is the
@@ -644,6 +650,7 @@ cohomology of spheres when needed.
 \end{Lem}
 
 \subsection{A Construction of Stiefel-Whitney Classes}
+\label{sec:swclsconstruction}
 Now, the promised construction of the Stiefel-Whitney classes from
 Thom classes and Steenrod squares can be presented.
 
@@ -663,7 +670,7 @@ Thom classes and Steenrod squares can be presented.
   $\ws{i}=\pb\incl\w{i}{\gamma_n}\in \H^i(\BO)$
   \cite[see \forexample][Theorem~7.1~ff.]{milnor}.
   \begin{proof}
-    Check naturality of the expression and all further
+    One has to check naturality of the expression and all further
     defining properties from Definition~\ref{def:swclasses}.
     \begin{description}
     \item[Naturality:] Both $\Sq i$ and $t$ respectively also $t^{-1}$
