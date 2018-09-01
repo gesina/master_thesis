@@ -8,7 +8,10 @@
 % University of Regensburg 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, english, bibliography=totoc, oneside, BCOR=3mm]{scrreprt}
+\documentclass[
+a4paper, english, oneside, BCOR=3mm,
+bibliography=totoc, abstract=true,
+]{scrreprt}
 \input{thesis-def.tex}
 
 % TITEL
@@ -38,8 +41,11 @@
 \begin{document}
 
 \maketitle
-\tableofcontents
 
+% Abstract
+\include{thesis-abstract}
+
+\tableofcontents
 
 % Introduction
 \include{thesis-00}
