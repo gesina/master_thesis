@@ -531,7 +531,7 @@ For the formulation recall that a sequence or partition is called
   where $\delta$ is the usual Kronecker delta.
   \begin{proof}
     See \cite[Section~IV.5, proof of Theorem~IV.9]{thom}.
-    % TODO: (GEORGE) proof/construction special basis cobordism ring [Thom]? [Milnor] better source?
+    \TODO{Do proof / construction?} % [Milnor] better source?
   \end{proof}
 \end{Thm}
 
@@ -865,7 +865,7 @@ manifolds and fibre bundles.
 Besides the above direct properties, there is a fairly easy
 description of the cohomology ring of a twisted product relating it to
 the cohomology ring of its factor.
-\begin{Thm}\label{thm:twistedprod:cohomstructure}% TODO: (GEORGE) proof, or explicitly say that it's missing
+\begin{Thm}\label{thm:twistedprod:cohomstructure}
   Let $X$ be a space and $k\in\Nat$.
   Define
   \begin{itemize}
@@ -927,6 +927,7 @@ the cohomology ring of its factor.
   \end{enumerate}
   \begin{proof}
     See \cite[Theorem~7.1]{brown}.
+    \TODO{Do proof of \ref{thm:twistedprod:cohomstructure}?} % or explicitly say that it's missing!
   \end{proof}
 \end{Thm}
 
@@ -1395,7 +1396,7 @@ Now define the representatives of the generating set's elements as follows.
       =\RP{2^i}
     \end{gather*}
     which immerses into $\R^{2m-1}=\R^{2m-\alpha(m)}$ by
-    Whitney's immersion theorem. % TODO: ref
+    Whitney's immersion theorem~\cite{whitneyimmersiontheorem}.
   \item[$\alpha(m)\geq2$:]
     For the induction step write $m=2^{i_1}+2n$ as above, and assume
     there is an immersion
@@ -1426,7 +1427,9 @@ Now define the representatives of the generating set's elements as follows.
   Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
   More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
   The needed immersion will be given by the following Lemma.
-  \begin{Lem}
+  \begin{Lem}\label{lem:immersionvbtotalspaces}
+    \TODO{Ref. for proof?!}
+    \optcite[p.~85]{immersionconj}
     \optcite[compare Prop. 4.3]{brown}
     The total space of a vector bundle $E\to M^n$ of rank $k$ over a
     closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
@@ -1449,7 +1452,8 @@ Now define the representatives of the generating set's elements as follows.
     \immlongto \R^{2m - \alpha(m)}
     \;.
   \end{gather*}
-  % TODO: (GEORGE) proof Lemma
+  %\begin{proof}[proof of Lemma~\ref{lem:immersionvbtotalspaces}]
+  %\end{proof}
 \end{proof}
 
 %%% Local Variables:

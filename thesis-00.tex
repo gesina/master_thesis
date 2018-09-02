@@ -12,63 +12,121 @@
 % a survey of literature with comments related to the current research questions
 % popular presentation of project and its results
 % involved fields/theories, preliminary knowledge, notation
+%Timeline:
+%\begin{description}
+%\item[1944] Whitney's immersion theorem \cite{whitneyimmersiontheorem}
+%\item[1950] Wu's theorem \cite{wu}
+%\item[1954] Structure of the cobordism ring by Thom \cite{thomfrench}
+%\item[1959] Hirsch-Smale theorem by M.~W.~Hirsch \cite{hirschimmersions} (PhD thesis)
+%\item[1960] Massey's theorem \cite{massey}
+%\item[1971] R.~L.~Brown's theorem \cite{brown}
+%\item[1985] proof of immersion conjecture by R.~L.~Cohen \cite{immersionconj}
+%\end{description}
 
-% Immersions are roughly speaking mappings between
-% manifolds that at least locally look like embeddings, globally however
-% allow self-intersection or -convergence of the image.
-Timeline:
-\begin{description}
-\item[1944] Whitney's immersion theorem \cite{whitneyimmersiontheorem}
-\item[1950] Wu's theorem \cite{wu}
-\item[1954] Structure of the cobordism ring by Thom \cite{thomfrench}
-\item[1959] Hirsch-Smale theorem by M.~W.~Hirsch \cite{hirschimmersions} (PhD thesis)
-\item[1960] Massey's theorem \cite{massey}
-\item[1971] R.~L.~Brown's theorem \cite{brown}
-\item[1985] proof of immersion conjecture by R.~L.~Cohen \cite{immersionconj}
-\end{description}
 
-\begin{itemize}
-\item immersion problem and relation to characteristic classes
-\item state \& reformulate immersion conjecture
-\item two steps necessary for proof (not given; due to Cohen)
-\item (Massey) show that obstructions by characteristic classes vanish for
-  $n-\alpha(n)$ and that this is possible best result
-\item (Brown) show that is true up to cobordism and how certain
-  characteristic classes play a major role (to detect indecomposable
-  elements of the cobordism ring)
-\item Reader assumed to be familiar with
-  \begin{itemize}
-  \item Steenrod squares
-  \item characteristic classes, especially Stiefel-Whitney classes
-  \item the cobordism ring
-  \end{itemize}
-\end{itemize}
+Immersions are roughly speaking mappings between
+manifolds that at least locally look like embeddings, globally however
+allow self-intersection or, if the domain is not compact,
+self-convergence of the image.
+They first became of interest with Whitney's embedding and immersion
+theorems~\cite{whitneyimmersiontheorem} in 1944, making immersions
+of certain codimension into real space always available for the
+investigation of manifolds.
+
+Attempts to reduce the above codimension of $2n-1$ for $n$ manifolds
+were heated up by new available tools, when a theorem of
+M.~W.~Hirsch~\cite{hirschimmersions} allowed to answer the question
+about the existence of an immersion of certain codimension by the
+existence of a normal-bundle-like vector bundle of certain dimension.
+Amongst others, this brought in a main obstruction by dual
+Stiefel-Whitney classes.
+
+In 1960 then, Massey~\cite{massey} showed with the help of Wu's
+theorem~\cite{wu} from 1950 that this obstruction for compact
+$n$-manifolds is void for exactly all codimensions greater than
+$n-\alpha(n)$, where $\alpha(n)$ is the number of ones in the binary
+notation of $n$.
+This motivated the conjecture that the answer to the question
+\begin{quote}
+    What is the minimum codimension $k$ such that for every
+    $n$-dimensional compact manifold there exists an
+    immersion $M\immto\R^{n+k}$ into real space?
+\end{quote}
+is $k=n-\alpha(n)$, thereafter commonly called the immersion
+conjecture.
+
+The guess was partly reassured in 1971 by a result of R.~L.~Brown's
+investigations of the cobordism ring~\cite{brown}, proving the
+conjecture up to cobordism. It heavily relies on Thom's results in
+1954 on the structure of the cobordism ring~\cite{thomfrench} from and
+previous work by Dold, and its idea is to provide generators of the
+cobordism ring that fulfil the immersion property. The representatives
+for generators given by Brown can be even more simplified as
+demonstrated in \cite{immersionconj}.
+Nevertheless, the main work lies in finding a criterion for
+indecomposability of cobordism classes, which is given by an indicator
+characteristic class, once more utilising the new tools.
+
+After a long series of steps, notably amongst others by
+E.~H.~Brown~Jr. and F.~P.~Peterson and the above, the conjecture was
+finally proven in 1985 by R.~L.~Cohen, showing that all stable normal
+bundles of $n$-manifolds factor over $\B\Orth(n-\alpha(n))$.
+Its main idea is to refine Steenrod's classification theorem for
+vector bundles and find for each $n$ a classifying space specifically
+for stable normal bundles of $n$-manifolds, over which all classifying
+maps factor. It is then shown that this factorisation admits a lift to
+ $\B\Orth(n-\alpha(n))$.
+Important intermediate steps are to prove this up to cobordism and then
+\emph{de-Thom-ifying}, as they called it, the result.
+
+The attention of this thesis lies on the results by Massey and
+R.~L.~Brown, especially the role of characteristic classes in tackling
+these problems.
+The needed reformulation using the Hirsch-Smale theorem, as well as
+the obstruction by characteristic classes, is given in
+\autoref{chap:reformulation}.
+A detailed proof of Massey's theorem follows in \autoref{chap:massey},
+and a proof of Brown's theorem finalises the efforts in
+\autoref{chap:brown}.
+
+%\begin{itemize}
+%\item immersion problem and relation to characteristic classes
+%\item state \& reformulate immersion conjecture
+%\item two steps necessary for proof (not given; due to Cohen)
+%\item (Massey) show that obstructions by characteristic classes vanish for
+%  $n-\alpha(n)$ and that this is possible best result
+%\item (Brown) show that is true up to cobordism and how certain
+%  characteristic classes play a major role (to detect indecomposable
+%  elements of the cobordism ring)
+%\end{itemize}
+The reader is assumed to be familiar with the concepts of Steenrod
+squares, characteristic classes, especially Stiefel-Whitney classes,
+and the cobordism ring. Those theories will merely be recapitulated
+replacing a couple of proofs by references.
 
 \section*{Notation}
 \begin{itemize}
 \item \enquote{Space} always means topological space, and all maps
   between spaces are continuous if not stated otherwise.
-  % \item $\Zmod2 \coloneqq \Z/2\Z$
 \item For $X$, $Y$ spaces $[X,Y]$ denotes the set of homotopy classes
   of base point preserving maps $X\to Y$.
-\item All manifolds are topological manifolds.
-\item All homology groups have $\Zmod2$ coefficients if not stated
-  otherwise. Singular homology in degree $r$ of a pair $(X,A)$ with
-  coefficients in a ring $R$ is denoted by $H_r(X,A;R)$, with the
-  short form $H_r(X;R)\coloneqq H_r(X,\emptyset;R)$. Relative homology
-  of a pointed space $(X,\ast)$ is denoted by $\relH_r(X;R)\coloneqq
-  H_r(X,\ast;R)$. Analogously for singular cohomology.
+\item All manifolds are smooth, closed manifolds if not stated otherwise.
 \item All vector bundles are real if not stated otherwise.
+\item $\Zmod2 \coloneqq \Z/2\Z$.
+\item All homology groups have $\Zmod2$ coefficients if not stated
+  otherwise. Singular cohomology in degree $r$ of a pair $(X,A)$ with
+  coefficients in a ring $R$ is denoted by $\H^r(X,A;R)$, with the
+  short form $\H^r(X;R)\coloneqq\H^r(X,\emptyset;R)$. Relative cohomology
+  of a pointed space $(X,\ast)$ is denoted by $\relH^r(X;R)$.
+  Analogously for singular homology.
 \item The following notation for a fibre bundle $\xi\colon E\to B$ is used:
-  \begin{itemize}
-  \item $\E\xi\coloneqq E$ denotes the total space.
-  \item $\B\xi\coloneqq B$ denotes the base space.
-  \item $p_\xi\coloneqq p$ denotes the underlying surjection.
-  \item $\E_b$ denotes the fibre over a point $b\in \B$.
-  \item $0_\xi$ denotes the zero section if it exists.
-  \item $\minuszerosec{E}\coloneqq E\setminus\Im\zerosec{\xi}$
-    is the total space without the zero section.
-  \end{itemize}
+  $\E\xi\coloneqq E$ denotes the total space,
+  $\B\xi\coloneqq B$ the base space,
+  $p_\xi\coloneqq p$ the underlying surjection,
+  $\E_b\coloneqq p^{-1}(b)$ the fibre over a point $b\in \B$,
+  $0_\xi$ denotes the zero section if it exists, and
+  $\minuszerosec{E}\coloneqq E\setminus\Im\zerosec{\xi}$
+  is the total space without the zero section.
 \item The following notation for cup-~and cap-product will be used,
   where $(X,A)$, $(X,B)$ are pairs of spaces, $R$ a unital commutative
   ring, and $i,j\in\Nat$:
@@ -80,7 +138,6 @@ Timeline:
       (x, y) &\longmapsto x\cup y
     \end{align*}
   \item The (relative) cap-product is denoted as
-    % TODO: cap-product vs. Kronecker pairing?
     \begin{align*}
       -\cap-\colon
       H^i(X,A;R)\times H_{i+j}(X,A\cup B;R) &\longto H_j(X,B;R)\\
@@ -92,17 +149,17 @@ Timeline:
 
 
 % Nomenclature:
-\nomenclature{$H^i(-; R)$}{Singular cohomology of degree $i$ with coefficients
-  in $R$}
-\nomenclature{$K(i,G)$}{$ith$ Eilenberg-MacLane space over group $G$}
-\nomenclature{$\GL n$}{Group of $n$-dimensional matrices over $\R$}
-\nomenclature{$\Orth(n)$}{Group of $n$-dimensional orthogonal matrices over $\R$}
-\nomenclature{$\Orth$}{Group of orthogonal matrices over $\R$}
-\nomenclature{$\Sigma$}{Suspension of a space $X$,
-  respectively suspension isomorphism on co-/homology
-}
-\nomenclature{$\zerosec\xi$}{Zero section of a vector bundle $\xi$}
-\nomenclature{$\cap$}{cap-product $H^i(X;R)\times H_j(X;R) \to H_{j-i}(X;R)$}
+%\nomenclature{$H^i(-; R)$}{Singular cohomology of degree $i$ with coefficients
+%  in $R$}
+%\nomenclature{$K(i,G)$}{$ith$ Eilenberg-MacLane space over group $G$}
+%\nomenclature{$\GL n$}{Group of $n$-dimensional matrices over $\R$}
+%\nomenclature{$\Orth(n)$}{Group of $n$-dimensional orthogonal matrices over $\R$}
+%\nomenclature{$\Orth$}{Group of orthogonal matrices over $\R$}
+%\nomenclature{$\Sigma$}{Suspension of a space $X$,
+%  respectively suspension isomorphism on co-/homology
+%}
+%\nomenclature{$\zerosec\xi$}{Zero section of a vector bundle $\xi$}
+%\nomenclature{$\cap$}{cap-product $H^i(X;R)\times H_j(X;R) \to H_{j-i}(X;R)$}
 
 %%% Local Variables:
 %%% mode: latex

@@ -62,8 +62,11 @@ Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
   that satisfy the following relations for any pair of spaces $(X,A)$, and any map of
   pairs of spaces $f\colon (X,A)\to (Y,B)$:
   \begin{description}
-  \item[(Naturality)]\label{item:sqnaturality} $\pb f\circ\Sq i = \Sq i\circ\pb f$
-  \item[(Stability)]\label{item:sqstability} $\susp\circ\Sq i = \Sq i\circ\susp$
+  \item[(Naturality)]\label{item:sqnaturality}
+    $\pb f\circ\Sq i = \Sq i\circ\pb f$.
+  \item[(Stability)]\label{item:sqstability}
+    $\susp\circ\Sq i = \Sq i\circ\susp$
+    where $\susp$ is the suspension isomorphism on cohomology.
   \item[(Cartan formula)] For any $n\in\Nat$, and $x,y\in \H^n(X)$ holds
     \begin{gather}\label{tag:cartan}\tag{Cartan's formula}
       \Sq i(x\cup y) = \sum_{r+s=i}\Sq r(x)\cup\Sq s(y)
@@ -419,7 +422,8 @@ their above definition.
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
       \cite[Prop.~17.9.3]{tomdieck}.
-    \item[Uniqueness:] % TODO: (GEORGE) Ref for Uniqueness of Thom class 
+    \item[Uniqueness:]
+      \TODO{Ref. for uniqueness of Thom class}
       Using a suitable Mayer-Vietoris sequence for gluing, and an
       inductive argument starting with the trivial bundle case, one can show:
       Any two classes in $\H^{\rkk}(\thomspacepair{E};R)$ whose
@@ -521,7 +525,6 @@ first recall the following properties of the cap product.
   \end{align*}
 \end{proof}
 
-% TODO: Better motivation for relationship Thom isomorphism <-> fundamental cl
 As this paper is rather interested in manifolds than general spaces,
 have a look at the homology Thom isomorphism of a manifold, or more
 precisely the fundamental class of a manifold. The following gives a
@@ -1496,10 +1499,11 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
 \end{Thm}
 
 
-\section{Outlook: Generalisation of Massey's Theorem} % TODO: (GEORGE) include?
+\section{Outlook: Generalisation of Massey's Theorem}
+% TODO: reference outlook chapter in chapter introduction
+\TODO{Skip?}
 Due to Brown\&Peterson
 \optcite[Section~II.1]{immersionconj}
-% TODO: reference outlook chapter in chapter introduction
 
 %%% Local Variables:
 %%% mode: latex

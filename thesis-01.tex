@@ -121,8 +121,9 @@ topology as follows.
     space $\Mono \xi \eta$ is an homotopy from $F_1$ to $F_2$ which is
     a vector bundle monomorphism in each stage.
   \item
-    % TODO: (GEORGE) check topology of \Imm(M, N); compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
-    % TODO: Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
+    \TODO{Correct topology for $\Imm{M}{N}$?}
+    % compare Lecture_Notes_on_Immersions_of_Surfaces_in_3-Space--Nowik.ps
+    % Whitney $C^r$-topology; see [Hirsch, Differential Topology, Chap 2, p.35]
     The set $\Imm M N$ of all immersions from $M$ to $N$ injects
     into $\Mono{\T M}{\T N}$ by taking the differential
     $f\mapsto\Diff f$.
@@ -141,7 +142,8 @@ Now one can state the major result in immersion theory by
 Hirsch using preliminary work of Smale
 cite[Sections~5 and 6]{hirschimmersions}.
 The following formulation is according to
-\cite[Theorem~1.2]{immersionconj}. % TODO: better ref modern formulation
+\cite[Theorem~1.2]{immersionconj}.
+\TODO{Better ref. for modern formulation}
 \begin{Thm}[Hirsch-Smale]\label{thm:hirschsmale}
   Let $M$, $N$ be closed manifolds with $\dim M<\dim N$.
   Then the differential map
@@ -314,7 +316,8 @@ Stiefel-Whitney classes, will be discussed in detail in
 \end{Def}
 \begin{Rem}
   By Brown's representation theorem \optcite[Chap.~4.E]{hatcher},
-  $\H^i(-;R)$ is a representable functor represented by $K(i,R)$.
+  $\H^i(-;R)$ is a representable functor represented by the
+  Eilenberg-MacLane spaces $K(i,R)$.
   Thus, by the Yoneda lemma, a characteristic class is
   represented by a morphism
   \begin{gather*}
@@ -346,7 +349,10 @@ bundles.
   \item\label{item:vbcharacterisation}
     There is a natural equivalence between the category of
     $n$-dimensional vector bundles and that of principal
-    $\Orth(n)$- respectively $\GL n$-bundles.
+    $\Orth(n)$- respectively $\GL n$-bundles, where $\Orth(n)$ is the
+    $n$-dimensional real orthogonal group, and $\Orth$ their limit
+    correspondingly, \idest the group of all orthogonal matrices over
+    $\R$.
   \item
     On vector bundles, the inclusion $\B\Orth(r)\to\B\Orth(r+s)$
     represents the direct sum with the trivial bundle $\trivbdl^s$.
@@ -558,7 +564,6 @@ especially handy in the context relevant for the immersion conjecture.
 
 \section{Reformulation of the Immersion Conjecture}
 \label{sec:reformulation}
-% TODO: section overview
 
 The problem which this paper investigates can finally be clearly
 stated with the definitions from
@@ -587,7 +592,7 @@ Before reformulating, recall the actual immersion conjecture.
 \end{Thm}
 In the style of this conjecture, an $n$-manifold that immerses into
 some $\R^{2n-\alpha(n)}$ will be said to have the
-\emph{immersion property}. % TODO: check, whether defs are needed
+\emph{immersion property}.
 And the question, whether a particular manifold does have the
 immersion property, will be referred to as the \emph{immersion problem} for
 this manifold.
