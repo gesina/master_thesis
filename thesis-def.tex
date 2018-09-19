@@ -206,7 +206,13 @@ doi=false, url=false
 \newcommand*{\Diff}{\mathrm{D}} % differential of a map of manifolds
 
 % spaces
+\newcommand*{\Splitlineoplus}[3][8em]{
+  \parbox{#1}{\centering
+    $#2$\\$\oplus$\\$#3$
+  }
+}
 \newcommand*{\Sph}{S} % sphere symbol
+\newcommand*{\Disk}[1]{D^{#1}} % {#1}-disk
 \newcommand*{\Sphere}[1]{\Sph^{#1}} % {#1}-sphere
 \newcommand*{\CP}[1][\infty]{\C{}\mathrm{P}^{#1}} % complex projective space
 \newcommand*{\RP}[1]{\R{}\mathrm{P}^{#1}} % #1th real projektive space

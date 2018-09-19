@@ -865,68 +865,569 @@ manifolds and fibre bundles.
 Besides the above direct properties, there is a fairly easy
 description of the cohomology ring of a twisted product relating it to
 the cohomology ring of its factor.
-\begin{Thm}\label{thm:twistedprod:cohomstructure}
+This can be revealed inductively using a diagram of long exact
+sequences which relates the cohomology of two degrees of twisted
+products and known sequences of spheres.
+Use the following notation.
+
+\begin{Def}
   Let $X$ be a space and $k\in\Nat$.
+  Note that by the Künneth isomorphism
+  $\H^*(X^2)\cong\H^*(X)\otimes\H^*(X)$, and recall that all exact
+  sequences of $\Zmod2$-vector spaces split.
   Define
   \begin{itemize}
   \item
+    $\pi_k\colon \Sphere k\times X^2\to\Twistedprod k X$
+    to be the quotient map from the definition (index omitted if
+    obvious),
+  \item
+    $\proj\colon\Twistedprod k X\to \RP k$
+    to be the fibre bundle map,
+  \item
+    $T\colon \Sphere{k}\times X^2\to\Sphere{k}\times X^2$,
+    $(s,p,q)\mapsto(-s,q,p)$,
+  \item
     $N\coloneqq
-    \left\{
+    \ker(x\otimes y\mapsto x\otimes y + y\otimes x)
+    = \left(\left\{
         a\otimes b + b\otimes a
-        \in \H^*(X\times X)\cong \H^*(X)\otimes\H^*(X)
-      \right\}$,
+        \in \H^*(X\times X)
+      \right\}\right)_{\Zmod2}$,
   \item
     $d\colon \H^*(X)\to\H^*(X\times X)$,
     $d(a)\coloneqq a\times a$, and
     $D\coloneqq
     \left\{ d(a)=a\otimes a \in \H^*(X\times X) \right\}$,
   \item
-    $s\in\H^k(\Sphere k)\cong\Zmod2$ to be the generator, and
+    $s_k\in\H^k(\Sphere k)\cong\Zmod2$ to be the generator, and
   \item
-    $c\coloneqq \pb\proj x$ to be the pullback of the generator
-    $x\in\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$.
+    $c_k\coloneqq \pb\proj x\in\H^1(\Twistedprod{k}{X})$ to be the
+    pullback of the generator $x\in\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$.
   \end{itemize}
-  Note that $N+D$ is closed under multiplication and addition.
-  Then the cohomology ring of $\Twistedprod{k}{X}$ has the form
-  \begin{gather*}
-    \H^*(\Twistedprod{k}{X})
-    \cong
-    \left(\H^*(\RP k)\otimes D\right)
-    + \left( 1\otimes N \right)
-    + \left( \H^m(\Sphere m) \otimes N \right)
-  \end{gather*}
-  with the induced grading and multiplication which respects the
-  relation $c\otimes N=0$.
-  For readability skip $1\otimes$ and $\otimes d(1)$ in element
-  notation wherever it is clear to which part the summand belongs.
-  Further it fulfils
+  Note that $N+D$ is closed under multiplication and addition,
+  and---as a first hint on the cohomology structure---$\proj$ admits a
+  section  $[s]\mapsto[s,p,p]$ for any point $p\in X$, thus making
+  $\H^*(\RP k)$ a direct summand of $\H^*(\Twistedprod k X)$ of the
+  form $\Zmod2[c]/(c^{k+1})$.
+\end{Def}
+
+The essential step in relating a twisted product to its lower
+dimensional counterpart and the sphere in a useful way is the below
+alternative pushout construction.
+\begin{Rem}
+  Let $X$ again be a space and $k\in\Nat_{\geq1}$.
   \begin{enumerate}
   \item
-    For $\pi\colon \Twistedprodcovspace{k}{X}\to\Twistedprod{k}{X}$
-    holds
+    The twisted product $\Twistedprod{k}{X}$ is the pushout
+    $(\Disk k\times X^2)\cup_{T}(\Sphere{k-1}\times X^2)$ of
+    \begin{center}
+      \begin{tikzcd}
+        \Sphere{k}\times X^2
+        &\ar[from=l,leftarrow, "T"]
+        \Sphere{k}\times X^2
+        \ar[r, rightarrowtail, "\incl"]
+        &\Disk{k}\times X^2
+      \end{tikzcd}
+    \end{center}
+    \idest it is the product $\Disk k\times X^2$ of the closed
+    $k$-disk with $X^2$ with the identification
+    $(s,p,q)=T((s,p,q))\coloneqq(-s,q,p)$ on all boundary points in
+    $\Boundary{\Disk k\times X^2}=\Sphere{k-1}\times X^2$.
+  \item
+    The pushouts
+    \begin{align*}
+      \Twistedprod{k}{X}
+      &=(\Disk k\times X^2)\cup_{T}(\Sphere{k-1}\times X^2)
+      \qquad\text{and}\\
+      \Twistedprod{k-1}{X}
+      &=(\Sphere{k-1}\times X^2)\cup_{T}(\Sphere{k-1}\times X^2)
+    \end{align*}
+    merge to the commutative pushout diagram
+    \begin{center}
+      \begin{tikzcd}
+        \Sphere{k-1}\times X^2
+        \ar[r, equals]
+        \ar[d, "T"]
+        &\Sphere{k-1}\times X^2
+        \ar[r, rightarrowtail, "\incl"]
+        \ar[d, "\pi"]
+        &\Disk{k}\times X^2
+        \ar[d]
+        \\
+        \Sphere{k-1}\times X^2
+        \ar[r, "\pi"]
+        &\Twistedprod{k-1}{X}
+        \ar[r, rightarrowtail, "\incl"]
+        &\Twistedprod{k}{X}
+      \end{tikzcd}
+    \end{center}
+    making $(\Twistedprod{k}{X}, \Twistedprod{k-1}{X})$ a neighbourhood
+    deformation retract pair using the stability of cofibrations under pushout.
+    Furthermore, for a smaller disk $\Disk{k}_+\subsetneq\Disk k$
+    there is an obvious excision
+    \begin{gather*}
+      (\Disk k\times X^2, \Sphere{k-1}\times X^2)
+      \rightarrowtail
+      (\Twistedprod{k}{X}, \overline{\Twistedprod{k-1}{X}})
+    \end{gather*}
+    where
+    $\overline{\Twistedprod{k-1}{X}}\coloneqq
+    ((\Disk k\setminus\Disk{k}_+)\times X^2)
+    \cup_{T}
+    (\Sphere{k-1}\times X^2)$
+    is the embedded
+    $\Twistedprod{k-1}{X}$ with a collar, \idest a neighbourhood
+    deformation retract of $\Twistedprod{k-1}{X}$ in
+    $\Twistedprod{k}{X}$.
+  \item
+    The excision
+    \begin{gather*}
+      (\Disk{k}_+,\Sphere{k-1}_+) \amalg (\Disk{k}_-,\Sphere{k-1}_-)
+      \immlongto
+      (\Sphere k, \Sphere{k-1}\times I)
+    \end{gather*}
+    of an upper and a lower polar cap into the sphere relative to its
+    bloated equator, is compatible with the excision from above
+    in the sense that the following diagram commutes:
+    \begin{center}
+      \begin{tikzcd}
+        (\Disk{k}_+,\Sphere{k-1}_+) \amalg (\Disk{k}_-,\Sphere{k-1}_-)
+        \ar[r, hookrightarrow, "\text{excis.}"]
+        \ar[d, "\pi"]
+        &(\Sphere k, \Sphere{k-1}\times I)
+        \ar[r, dash, "\simeq"]
+        \ar[d, "\pi"]
+        &(\Sphere k, \Sphere{k-1})
+        \ar[d, "\pi"]
+        \\
+        (\Disk{k}, \Sphere{k-1})\times X^2
+        \ar[r, hookrightarrow, "\text{excis.}"]
+        &(\Twistedprod{k}{X},\overline{\Twistedprod{k-1}{X}})
+        \ar[r, dash, "\simeq"]
+        &(\Twistedprod{k}{X}, \Twistedprod{k-1}{X})
+      \end{tikzcd}
+    \end{center}
+  \end{enumerate}
+\end{Rem}
+
+This now nicely fits into a larger diagram of pairs of spaces, which
+induces a diagram of long exact sequences of cohomology.
+\begin{Lem}
+  For a space $X$ and $k\in\Nat_{\geq1}$ the following diagram commutes
+  \begin{center}
+    \begin{tikzcd}[column sep=small]
+      (\Disk{k}_+,\Sphere{k-1}_+)\times X^2
+      \ar[r,hookrightarrow,"\tau"]
+      \ar[rr, equals, bend left=30]
+      &\displaystyle\coprod_{+,-} (\Disk{k},\Sphere{k-1})\times X^2
+      \ar[r,"\pi"]
+      &(\Disk{k}_+,\Sphere{k-1}_+)\times X^2
+      \\
+      &
+      \ar[from=u, hookrightarrow, "\text{excision}"]
+      (\Sphere{k},\Sphere{k-1}\times I)\times X^2
+      \ar[r, "\pi"]
+      &
+      \ar[from=u, hookrightarrow, "\text{excision}"]
+      \left(
+        \Twistedprod{k}{X},
+        \overline{\Twistedprod{k-1}{X}}
+        % \Twistedprod{k-1}{X}\cup_{\Sphere{k-1}_+} (\Sphere{k-1}\times I)
+      \right)
+      \\
+      &
+      \ar[u, dash, "\simeq"]
+      (\Sphere{k},\Sphere{k-1})\times X^2
+      \ar[r, "\pi_k"]
+      &
+      \ar[u, dash, "\simeq"]
+      (\Twistedprod{k}{X},\Twistedprod{k-1}{X})
+      \ar[r, "\proj"]
+      &(\RP k, \RP{k-1})
+      \\
+      \ar[uuu, hookrightarrow, "\tilde j"]
+      \Disk{k}_+\times X^2
+      \ar[r, hookrightarrow, "\iota"]
+      &
+      \ar[u, hookrightarrow, "\hat j"]
+      (\Sphere k\times X^2)
+      \ar[r, "\pi_k"]
+      &
+      \ar[u, hookrightarrow, "j"]
+      \Twistedprod{k}{X}
+      \ar[r, "\proj"]
+      &
+      \ar[u, hookrightarrow]
+      \RP k
+      \\
+      \ar[u, hookrightarrow, "\tilde i"]
+      \Sphere{k-1}\times X^2
+      \ar[r, equals]
+      &
+      \ar[u, hookrightarrow, "\hat i"]
+      \Sphere{k-1}\times X^2
+      \ar[r, "\pi_{k-1}"]
+      &
+      \ar[u, hookrightarrow, "i"]
+      \Twistedprod{k-1}{X}
+      \ar[r, "\proj"]
+      &
+      \ar[u, hookrightarrow]
+      \RP{k-1}
+    \end{tikzcd}
+  \end{center}
+  resulting in the commutative diagram of exact cohomology sequences
+\begin{center}
+  \begin{tikzcd}[column sep=small]
+    \vdots\ar[d]&\vdots\ar[d]&\vdots\ar[d]\\
+    \H^l((\Disk{k},\Sphere{k-1})\times X^2)
+    \ar[from=r, "\pb\tau"]
+    &\H^l((\Sphere{k},\Sphere{k-1})\times X^2)
+    \ar[from=r, "\pb{\pi_k}"]
+    &\H^l((\Disk{k},\Sphere{k-1})\times X^2)
+    \\
+    \ar[from=u, "\pb{\tilde j}"]
+    \H^l(\Disk{k}\times X^2)
+    \ar[from=r, "\pb{\iota}"]
+    &
+    \ar[from=u, "\pb{\hat j}"]
+    \H^l(\Sphere k\times X^2)
+    \ar[from=r, "\pb{\pi_k}"]
+    &
+    \ar[from=u, "\pb j"]
+    \H^l(\Twistedprod{k}{X})
+    \\
+    \ar[from=u, "\pb{\tilde i}"]
+    \H^l(\Sphere{k-1}\times X^2)
+    \ar[r, equals]
+    &
+    \ar[from=u, "\pb{\hat i}"]
+    \H^l(\Sphere{k-1}\times X^2)
+    \ar[from=r, "\pb{\pi_{k-1}}"]
+    &
+    \ar[from=u, "\pb i"]
+    \H^l(\Twistedprod{k-1}{X})
+    \\
+    \ar[from=u, "\tilde{\delta}"]
+    \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
+    \ar[from=r, "\pb\tau"]
+    &
+    \ar[from=u, "\hat{\delta}"]
+    \H^{l-1}((\Sphere{k},\Sphere{k-1})\times X^2)
+    \ar[from=r, "\pb{\pi_k}"]
+    &
+    \ar[from=u, "\delta"]
+    \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
+    \\
+    \vdots\ar[from=u]&\vdots\ar[from=u]&\vdots\ar[from=u]
+    \end{tikzcd}
+  \end{center}
+  where $\pb\tau\pb\pi$ is the identity.
+\end{Lem}
+
+% TODO: Maybe in Appendix?
+\begin{Rem}
+  The cohomology sequences of the pairs
+  $(\Disk{k},\Sphere{k-1})\times X^2$ and
+  $(\Sphere{k},\Sphere{k-1})\times X^2$ are well-known from the
+  sequences of the pairs $(\Disk{k},\Sphere{k-1})$ and $(\Sphere{k},\Sphere{k-1})$.
+  For $k>1$ they are given for $l\in\Nat$:
+  % \begin{center}
+  %   \begin{tikzcd}[row sep=tiny, column sep=tiny]
+  %     \Splitlineoplus{1\otimes\H^{l-1}(X^2)}{s_k\otimes\H^{l-k-1}(X^2)}
+  %     \ar[d, equals]
+  %     &
+  %     \Splitlineoplus{1\otimes\H^{l-1}(X^2)}{s_{k-1}\otimes\H^{l-k}(X^2)}
+  %     \ar[d, equals]
+  %     &
+  %     \Splitlineoplus{s_k\otimes\H^{l-k}(X^2)}{s_k\otimes\H^{l-k}(X^2)}
+  %     \ar[d, equals]
+  %     \\
+  %     \H^{l-1}(\Sphere k\times X^2)
+  %     \ar[r, "\pb{\hat i}"]
+  %     &\H^{l-1}(\Sphere{k-1}\times X^2)
+  %     \ar[r, "\hat{\delta}"]
+  %     &\H^l((\Sphere{k},\Sphere{k-1})\times X^2)
+  %     \ar[r, "\pb{\hat j}"]
+  %     &\H^l(\Sphere k\times X)
+  %     \\
+  %     (1\otimes a, s_k\otimes b)
+  %     \ar[r, mapsto]
+  %     &(1\otimes a, 0)
+  %     &(s_k\otimes a, s_k\otimes b)
+  %     \ar[r, mapsto]
+  %     &(0, s_k\otimes (a+b))\\
+  %     &(1\otimes a,s_{k-1}\otimes b)
+  %     \ar[r, mapsto]
+  %     &(s_k\otimes b, s_k\otimes b)
+  %   \end{tikzcd}
+  % \end{center}
+  % and
+  % \begin{center}
+  %   \begin{tikzcd}[row sep=tiny, column sep=tiny]
+  %     \H^{l-1}(X^2)
+  %     \ar[d, equals]
+  %     &
+  %     &
+  %     s_k\otimes\H^{l-k}(X^2)
+  %     \ar[d, equals]
+  %     \\
+  %     \H^{l-1}(\Disk k\times X^2)
+  %     \ar[r, "\pb{\tilde i}"]
+  %     &\H^{l-1}(\Sphere{k-1}\times X^2)
+  %     \ar[r, "\tilde{\delta}"]
+  %     &\H^l((\Disk{k},\Sphere{k-1})\times X^2)
+  %     \ar[r, "\pb{\tilde j}=0"]
+  %     &\H^l(\Disk k\times X)
+  %     \\
+  %     a
+  %     \ar[r, mapsto]
+  %     &(1\otimes a, 0)
+  %     \\
+  %     &(1\otimes a,s_{k-1}\otimes b)
+  %     \ar[r, mapsto]
+  %     &s_k\otimes b
+  %   \end{tikzcd}
+  % \end{center}
+  \begin{center}
+    \newcommand*{\argument}[1]{{\scriptstyle #1}}
+    \begin{tikzcd}[row sep=tiny, column sep=small]
+      &\argument{(1\otimes a,s_{k-1}\otimes b)}
+      \ar[r, mapsto]
+      &\argument{(s_k\otimes b, s_k\otimes b)}
+      \\
+      \argument{(1\otimes a, s_k\otimes b)}
+      \ar[r, mapsto]
+      &\argument{(1\otimes a, 0)}
+      &\argument{(s_k\otimes a, s_k\otimes b)}
+      \ar[r, mapsto]
+      &\argument{(0, s_k\otimes (a+b))}
+      \\
+      \H^{l-1}(\Sphere k\times X^2)
+      \ar[r, "\pb{\hat i}"]
+      &\H^{l-1}(\Sphere{k-1}\times X^2)
+      \ar[r, "\hat{\delta}"]
+      &\H^l((\Sphere{k},\Sphere{k-1})\times X^2)
+      \ar[r, "\pb{\hat j}"]
+      &\H^l(\Sphere k\times X)
+      \\
+      \Splitlineoplus{1\otimes\H^{l-1}(X^2)}{s_k\otimes\H^{l-k-1}(X^2)}
+      \ar[u, equals]
+      &
+      \Splitlineoplus{1\otimes\H^{l-1}(X^2)}{s_{k-1}\otimes\H^{l-k}(X^2)}
+      \ar[u, equals]
+      \ar[ddddd, equals]
+      &
+      \Splitlineoplus{s_k\otimes\H^{l-k}(X^2)}{s_k\otimes\H^{l-k}(X^2)}
+      \ar[u, equals]
+      \\
+      \argument{(1\otimes a, s_k\otimes b)}
+      \ar[dd, mapsto, "\pb{\iota}"]
+      &&\argument{(s_k\otimes a, s_k\otimes b)}
+      \ar[dd, mapsto, "\pb{\tau}"]
+      \\~\\
+      \argument{a}
+      && \argument{s_k\otimes a}
+      \\
+      \H^{l-1}(X^2)
+      \ar[d, equals]
+      &
+      &
+      s_k\otimes\H^{l-k}(X^2)
+      \ar[d, equals]
+      \\
+      \H^{l-1}(\Disk k\times X^2)
+      \ar[r, "\pb{\tilde i}"]
+      &\H^{l-1}(\Sphere{k-1}\times X^2)
+      \ar[r, "\tilde{\delta}"]
+      &\H^l((\Disk{k},\Sphere{k-1})\times X^2)
+      \ar[r, "\pb{\tilde j}", "=0"{below}]
+      &\H^l(\Disk k\times X)
+      \\
+      \argument{a}
+      \ar[r, mapsto]
+      &\argument{(1\otimes a, 0)}
+      \\
+      &\argument{(1\otimes a,s_{k-1}\otimes b)}
+      \ar[r, mapsto]
+      &\argument{s_k\otimes b}
+    \end{tikzcd}
+  \end{center}
+  Furthermore,
+  it is easily seen that
+  \begin{align*}
+    \pb \pi\colon
+    \H^l((\Disk k, \Sphere{k-1})\times X^2)
+    &\to \H^l((\Sphere k, \Sphere{k-1})\times X^2)
+    \\
+    s_k\otimes x\otimes y
+    &\mapsto
+      (s_k\otimes x\otimes y, s_k\otimes y\otimes x)
+  \end{align*}
+  For $k=1$ one has the modifications
+  \begin{center}
+    \begin{tikzcd}[row sep=tiny]
+      &(1\otimes a, s_0\otimes b)
+      \ar[r, mapsto, "\hat{\delta}"]
+      &(s_1\otimes(a+b), s_1\otimes(a+b))
+      \\
+      (1\otimes a, s_1\otimes b)
+      \ar[r, mapsto, "\pb{\hat i}"]
+      &(1\otimes a, s_0\otimes a)
+      \\
+      a
+      \ar[r, mapsto, "\pb{\tilde i}"]
+      &(1\otimes a, s_0\otimes a)
+      \\
+      &(1\otimes a, s_0\otimes b)
+      \ar[r, mapsto, "\tilde{\delta}"]
+      &s_1\otimes(a+b)
+    \end{tikzcd}
+  \end{center}
+\end{Rem}
+Some immediate results are:
+\begin{Cor}
+  \begin{enumerate}
+  \item 
+    $\pb\pi\pb j
+    = \pb{\hat j}\pb\pi\colon
+    s_k\otimes(x\otimes y)\mapsto s_k\otimes(x\otimes y+y\otimes x)$
+    % TODO: other immediate results
+  \end{enumerate}
+\end{Cor}
+  
+\begin{Thm}\label{thm:twistedprod:cohomstructure}
+  Let $X$ be a space and $k\in\Nat$.
+  Then the cohomology ring of $\Twistedprod{k}{X}$ has the form
+  \begin{align*}
+    \H^*(\Twistedprod{k}{X})
+    &\cong
+      \left(
+      \Zmod2[c,s]/(c^{k+1},s^2,cs)
+      \right)
+      \otimes (N+D)
+  \end{align*}
+  with the additional relations $c\otimes N=0=s\otimes D$.
+  In other words, it is the group
+  \begin{align*}
+    \H^*(\Twistedprod{k}{X})
+    &\cong
+      (1\otimes(N+D))
+      \oplus \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+      \oplus (s\otimes N)
+    \\
+    &\cong
+       \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+      \oplus (1\otimes D)
+      \oplus (1\otimes N)
+      \oplus (s\otimes N)
+    \\
+    &\cong
+      \left(\H^*(\RP k) \otimes D \right)
+      \oplus \left(\H^*(\Sphere k) \otimes N\right)
+  \end{align*}
+  with the relation $c\otimes d(a)+c\otimes d(b)=c\otimes d(a+b)$, and
+  equipped with a multiplication determined by
+  \begin{enumerate}
+  \item
+    $(1\otimes g) \cdot (1\otimes f)= 1\otimes ab$,
+    $(1\otimes g) \cdot (s\otimes f)= s\otimes ab$,
+    for $g,f\in N+D$.
+  \item
+    $(1\otimes d(a))\cdot (c^i\otimes d(b)) = c\otimes d(ab)$, and
+    $(1\otimes N) \cdot (c^i\otimes D)\cdot = 0$
+    for $a,b\in\H^*(X)$, $1\leq i\leq k$.
+  \item 
+    $(c\otimes D)\cdot(s_k\otimes N) = 0$.
+  \item
+    $(c^i\otimes d(1))\cdot(c^j\otimes d(1)) = c^{i+j}\otimes d(1)$
+    for $0\leq i+j\leq k$, and $0$ else.
+  \item 
+    $(s\otimes n)\cdot (s\otimes n')=0$ for any $n,n'\in N$.
+  \end{enumerate}
+  For readability skip $1\otimes$ and $\otimes d(1)$ in element
+  notation wherever it is clear to which part the summand
+  belongs.
+  Furthermore, $\H^*(\Twistedprod{k}{X})$ fulfils
+  \begin{enumerate}[resume]
+  \item
+    $\pb\pi$ is an isomorphism on
+    \begin{align*}
+      \pb\pi\colon
+      (1\otimes D)\oplus (1\otimes N)\oplus(s_k \otimes N)
+      &\longto
+        (1\otimes(D+N))\oplus(s_k\otimes N)
+        \subset\H^*(\Sphere k\times X^2)
+      \\
+      1\otimes d + 1\otimes n_1 + s_k\otimes n_2
+      &\longmapsto
+        1\otimes(d+n_1) + s_k\otimes n_2
+        \;.
+    \end{align*}
+    Furthermore,
     \begin{align}\label{eq:twistedprodcohom:pi}
       \pb\pi(c)&=0
-      &\text{and}&
-      &\pb\pi(c^r\otimes d(a_1) + 1\otimes n_1 + s\otimes n_2)
-      &= 1\otimes n_1 + s\otimes n_2
+      &\text{thus}&
+      &\pb\pi(c^r\otimes d(a) + 1\otimes n_1 + s\otimes n_2)
+      &= 1\otimes n_1 + s_k\otimes n_2
         \;.
     \end{align}
+    for any elements $x\in\H^*(X)$, $n_1,n_2\in N$.
   \item
     For any section $s_p\colon\RP k\to\Twistedprod{k}{X}$, $q\mapsto[q,p,p]$,
     of the fibre bundle described in
-    \eqref{eq:twistedprodrpnfibrebdl}, and $n_1,n_2\in N$, $a\in\H^*(X)$ holds
+    \eqref{eq:twistedprodrpnfibrebdl}, and $n_1,n_2\in N$, $0\neq a\in\H^*(X)$ holds
     \begin{align}\label{eq:twistedprodcohom:section}
-      \pb s_p(c^r\otimes d(a)) &= \delta_{a,1} \cdot x^r
+      \pb s_p(c) &= x
       &\text{and}&
-      &\pb s_p(1\otimes n_1 + s\otimes n_2) &= 0
+      &\pb s_p(c\otimes d(a) + 1\otimes n_1 + s\otimes n_2) &= 0
       \;.
     \end{align}
-    where $\delta_{a,1}$ is the Kronecker delta.
   \item\label{item:twistedprod:preservescohominj}
     $\Twistedprod{k}{-}$ preserves injectivity on cohomology.
   \end{enumerate}
   \begin{proof}
-    See \cite[Theorem~7.1]{brown}.
+    % TODO: Idea/outline of proof
+    Compare also \cite[Theorem~7.1]{brown}.
+    
+    Preservation of injectivity on cohomology is easily explained.
+    Consider a map $f\colon X\to Y$ which is injective on cohomology
+    and induces the map
+    $F\colon\Sphere{k}\times X^2\to\Sphere{k}\times Y^2$.
+    Since every element in $\H^*(\RP k)\otimes D$ can uniquely be
+    written as a sum of $c^i\cdot (1\otimes d(x))$, 
+    % TODO: improper reasoning
+    one only has to check injectivity of $\pb{\Twistedprod k f}$ on
+    the two parts
+    $\left( \H^*(\RP k)\otimes 1 \right)$
+    and
+    $\left(
+      (1\otimes D) \oplus (1\otimes N) \oplus (s_k\otimes N)
+    \right)$.
+    \begin{description}
+    \item[First part:]
+      Since $\Twistedprod k f$ is a morphism of fibre bundles over
+      $\RP k$,
+      \begin{gather*}
+        \pb{\Twistedprod k f}(c)
+        = \pb{\Twistedprod k f}(\pb\proj(x))
+        = \pb\proj(x)
+        = c
+        \in\H^*(\Twistedprod k X)
+        \;,
+      \end{gather*}
+      so $\pb{\Twistedprod k f}$ is injective on
+      $\H^*(\RP k)\otimes 1\subset\H^*(\Twistedprod k Y)$.
+    \item[Second part:]
+      Obviously
+      $\pb F\colon\H^*(\Sphere k\times Y^2)\to\H^*(\Sphere k\times X^2)$ 
+      will be injective. The isomorphism property of $\pb\pi$ hence
+      implies injectivity of $\pb{\Twistedprod k f}$ on
+      $(1\otimes D) \oplus (1\otimes N)\oplus (s_k\otimes N)
+      \subset\H^*(\Twistedprod k Y)$.
+    \end{description}
+
     \TODO{Do proof of \ref{thm:twistedprod:cohomstructure}?} % or explicitly say that it's missing!
   \end{proof}
 \end{Thm}
