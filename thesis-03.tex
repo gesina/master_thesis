@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Master Thesis in Mathematics
 % "Immersions and Stiefel-Whitney classes of Manifolds"
 % -- Chapter 3: The Immersion Conjecture up to Cobordism --
@@ -420,7 +420,7 @@ the following notation.
   \begin{align*}
     \s{\Part}(W) &\coloneqq \s{\Part}(\W{W})\\
     \snum{\Part}{W} &\coloneqq \capped{\s{\Part}(W)}{\fundcl{W}}
-    \;.
+                      \;.
   \end{align*}
 \end{Def}
 
@@ -608,9 +608,9 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     \begin{gather*}
       [M] = \coprod_{\mathclap{\substack{
             \Part\in\PartitionsOf n \\\text{ non-dyadic}
-        }}} \alpha_\Part [V_\Part]
-        \;,\quad
-        \alpha_\Part \in \Zmod2,
+          }}} \alpha_\Part [V_\Part]
+      \;,\quad
+      \alpha_\Part \in \Zmod2,
     \end{gather*}
     of the classes $[V_\Part]$.
     Now the Stiefel-Whitney numbers are determined by the cobordism
@@ -653,8 +653,8 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
       }}}
       \s{\Part_1}(V_{\Part_1'}) \cdot \s{\Part_2}(V_{\Part_2'})
       \overset{\text{Def.}}=
-        \sum_{\mathclap{\substack{
-        \Part_1\concat\Part_2=\Part'\\
+      \sum_{\mathclap{\substack{
+      \Part_1\concat\Part_2=\Part'\\
       \Part_1\in\PartitionsOf{n_1}\\
       \Part_2\in\PartitionsOf{n_2}\\
       }}}
@@ -711,10 +711,10 @@ in constructing a candidate generating set of the cobordism ring.
     \begin{align*}
       \s{(k)}(\RP k)
       &\cequalsby{Def.} \sum_{i=1}^{k+1} x^k
-      = (k+1)x^k \\
+        = (k+1)x^k \\
       \snum{(k)}{\RP k}
       &= \capped{(k+1)x^k}{\fundcl{\RP k}}
-      = k+1
+        = k+1
         \equiv 1 \mod2
         \;.
         \qedhere
@@ -748,7 +748,7 @@ be the main result of this section, and is discussed in
     \Zmod2 &\leftgroupaction \Twistedprodcovspace{k}{X}
              \;,
     &[1] \actson (s, (p_1,p_2)) &\coloneqq (-s, (p_2, p_1))
-                                \;,
+                                  \;,
   \end{align*}
   which combines the antipodal action $[1]\actson s\coloneqq -s$ on
   $\Sphere k$ and twisting on $X\times X$.
@@ -848,7 +848,7 @@ manifolds and fibre bundles.
         \\
         &&[(s,v), (m_1,v_1), (m_2,v_2)]
         &\longmapsto
-          \left( ([s], v), [s, (m_1,v_1), (m_2, v_2)] \right)
+        \left( ([s], v), [s, (m_1,v_1), (m_2, v_2)] \right)
       \end{alignat*}
       where $\proj\colon\Twistedprod{k}{M}\to\RP k$ is the projection.
       The first isomorphism is due to the covering space property, and
@@ -905,13 +905,26 @@ Use the following notation.
     $c_k\coloneqq \pb\proj x\in\H^1(\Twistedprod{k}{X})$ to be the
     pullback of the generator $x\in\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$.
   \end{itemize}
+\end{Def}
+\begin{Rem}
   Note that $N+D$ is closed under multiplication and addition,
   and---as a first hint on the cohomology structure---$\proj$ admits a
   section  $[s]\mapsto[s,p,p]$ for any point $p\in X$, thus making
   $\H^*(\RP k)$ a direct summand of $\H^*(\Twistedprod k X)$ of the
   form $\Zmod2[c]/(c^{k+1})$.
-\end{Def}
-
+  From the factorisation
+  \begin{center}
+    \begin{tikzcd}
+      S^k\times X^2
+      \ar[r, "\pi"]
+      \ar[d, "\proj_{\Sphere k}"]
+      &\Twistedprod k X \ar[r, "\proj"]
+      &\RP k \\
+      S^k \ar[rru, "\pi", bend right=15]
+    \end{tikzcd}
+  \end{center}
+  it is obvious that $\pb\pi(c)=0$.
+\end{Rem}
 \begin{Thm}\label{thm:twistedprod:cohomstructure}
   Let $X$ be a space and $k\in\Nat$.
   Then the cohomology ring of $\Twistedprod{k}{X}$ has the form
@@ -934,7 +947,7 @@ Use the following notation.
       \Zmod2[c]/(c^{k+1})\subset\H^*(\Twistedprod k X)
       \;,
     \end{gather*}
-  \item $\pb\pi (c\otimes d(1)) = 0$, and
+    and
   \item\label{item:twistedprodcohom:pi}
     $\pb\pi (s\otimes n) = s\otimes n$,
     $\pb\pi (1\otimes (n+d(a))) = 1\otimes (n+d(a))$
@@ -963,7 +976,7 @@ Use the following notation.
       \pb s_p(c) &= x
       &\text{and}&
       &\pb s_p(c\otimes d(a) + 1\otimes n_1 + s\otimes n_2) &= 0
-      \;.
+                                                              \;.
     \end{align}
   \item\label{item:twistedprod:preservescohominj}
     $\Twistedprod{k}{-}$ preserves injectivity on cohomology.
@@ -1040,13 +1053,13 @@ calculations involving higher dimensional bundles.
         1 &\quad&&&{(=\ws0)} \\
       &+ \delta_1\cdot c\otimes d(1) + \delta_2\cdot c^2\otimes d(1)
           &&\delta_1,\delta_2\in\{0,1\}
-            &&{(\text{check section})}\\
+                &&{(\text{check section})}\\
       &+ 1\otimes d(a)
           &&a \neq 1
                 &&{(\text{check $\pi$})} \\
       &+ {\textstyle \sum_{r\in I} c^{i_r}\otimes d(a_r)}
           &&a_r\neq 1,\; i_r>1
-            &&{(=0\text{ by dim.})} \\
+                &&{(=0\text{ by dim.})} \\
       &+ 1\otimes n_1 + s\otimes n_2
           &&n_1, n_2\in N
                 &&{(\text{check $\pi$})}
@@ -1077,34 +1090,34 @@ calculations involving higher dimensional bundles.
       elements of this form, so this yields the third
       summand of $\W{\Twistedprod{k}{\xi}}$.
     \item[$\pb s_p \W{\Twistedprod{k}{\xi}}$:]
-        The pullback of $\Twistedprod{k}{\xi}$ along this section is
-        \begin{gather*}
-          \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
-          \;,\quad
-          [s, v_1,v_2] \mapsto [s]
-          \;.
-        \end{gather*}
-        In order to simplify this, use the well-defined vector bundle
-        isomorphism
-        \optcite[Prop.~4.3,p~1107]{brown}
-        \begin{align*}
-          \Twistedprod{k}{\R}
-          &\overset{\sim}\longto
-            (\Twistedprodcovspace{k}{\R}/\approx)
-            \cong \E{(\gamma\oplus\trivbdl)} \\
-          [s, v_1, v_2]
-          &\longmapsto
-            [s, v_1+v_2, v_1-v_2]
-        \end{align*}
-        where $\approx$ is the equivalence relation identifying
-        $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
-        $\gamma$ is the tautological line bundle for $\RP k$.
-        Then $\pb{s_p}\Twistedprod{k}{\xi} \cong
-        \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
-        \W{\gamma\oplus\trivbdl} = 1+x$, completing the proof.
-        \qedhere
-      \end{description}
-    \end{proof}
+      The pullback of $\Twistedprod{k}{\xi}$ along this section is
+      \begin{gather*}
+        \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
+        \;,\quad
+        [s, v_1,v_2] \mapsto [s]
+        \;.
+      \end{gather*}
+      In order to simplify this, use the well-defined vector bundle
+      isomorphism
+      \optcite[Prop.~4.3,p~1107]{brown}
+      \begin{align*}
+        \Twistedprod{k}{\R}
+        &\overset{\sim}\longto
+          (\Twistedprodcovspace{k}{\R}/\approx)
+          \cong \E{(\gamma\oplus\trivbdl)} \\
+        [s, v_1, v_2]
+        &\longmapsto
+          [s, v_1+v_2, v_1-v_2]
+      \end{align*}
+      where $\approx$ is the equivalence relation identifying
+      $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
+      $\gamma$ is the tautological line bundle for $\RP k$.
+      Then $\pb{s_p}\Twistedprod{k}{\xi} \cong
+      \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
+      \W{\gamma\oplus\trivbdl} = 1+x$, completing the proof.
+      \qedhere
+    \end{description}
+  \end{proof}
 \end{Cor}
 
 The rest of this subsection is dedicated to the proof of
@@ -1144,7 +1157,7 @@ explained below. The proofs are omitted since all facts are easy to check.
     \begin{align*}
       \Twistedprod{k}{X}
       &=(\Disk k\times X^2)\cup_{T}(\Sphere{k-1}\times X^2)
-      \qquad\text{and}\\
+        \qquad\text{and}\\
       \Twistedprod{k-1}{X}
       &=(\Sphere{k-1}\times X^2)\cup_{T}(\Sphere{k-1}\times X^2)
     \end{align*}
@@ -1283,49 +1296,49 @@ induces a diagram of long exact sequences of cohomology.
     \end{tikzcd}
   \end{center}
   resulting in the commutative diagram of exact cohomology sequences
-\begin{center}
-  \begin{tikzcd}[column sep=small]
-    \vdots\ar[d]&\vdots\ar[d]&\vdots\ar[d]\\
-    \H^l((\Disk{k},\Sphere{k-1})\times X^2)
-    \ar[from=r, "\pb\tau"]
-    &\H^l((\Sphere{k},\Sphere{k-1})\times X^2)
-    \ar[from=r, "\pb{\pi_k}"]
-    &\H^l((\Disk{k},\Sphere{k-1})\times X^2)
-    \\
-    \ar[from=u, "\pb{\tilde j}"]
-    \H^l(\Disk{k}\times X^2)
-    \ar[from=r, "\pb{\iota}"]
-    &
-    \ar[from=u, "\pb{\hat j}"]
-    \H^l(\Sphere k\times X^2)
-    \ar[from=r, "\pb{\pi_k}"]
-    &
-    \ar[from=u, "\pb j"]
-    \H^l(\Twistedprod{k}{X})
-    \\
-    \ar[from=u, "\pb{\tilde i}"]
-    \H^l(\Sphere{k-1}\times X^2)
-    \ar[r, equals]
-    &
-    \ar[from=u, "\pb{\hat i}"]
-    \H^l(\Sphere{k-1}\times X^2)
-    \ar[from=r, "\pb{\pi_{k-1}}"]
-    &
-    \ar[from=u, "\pb i"]
-    \H^l(\Twistedprod{k-1}{X})
-    \\
-    \ar[from=u, "\tilde{\delta}"]
-    \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
-    \ar[from=r, "\pb\tau"]
-    &
-    \ar[from=u, "\hat{\delta}"]
-    \H^{l-1}((\Sphere{k},\Sphere{k-1})\times X^2)
-    \ar[from=r, "\pb{\pi_k}"]
-    &
-    \ar[from=u, "\delta"]
-    \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
-    \\
-    \vdots\ar[from=u]&\vdots\ar[from=u]&\vdots\ar[from=u]
+  \begin{center}
+    \begin{tikzcd}[column sep=small]
+      \vdots\ar[d]&\vdots\ar[d]&\vdots\ar[d]\\
+      \H^l((\Disk{k},\Sphere{k-1})\times X^2)
+      \ar[from=r, "\pb\tau"]
+      &\H^l((\Sphere{k},\Sphere{k-1})\times X^2)
+      \ar[from=r, "\pb{\pi_k}"]
+      &\H^l((\Disk{k},\Sphere{k-1})\times X^2)
+      \\
+      \ar[from=u, "\pb{\tilde j}"]
+      \H^l(\Disk{k}\times X^2)
+      \ar[from=r, "\pb{\iota}"]
+      &
+      \ar[from=u, "\pb{\hat j}"]
+      \H^l(\Sphere k\times X^2)
+      \ar[from=r, "\pb{\pi_k}"]
+      &
+      \ar[from=u, "\pb j"]
+      \H^l(\Twistedprod{k}{X})
+      \\
+      \ar[from=u, "\pb{\tilde i}"]
+      \H^l(\Sphere{k-1}\times X^2)
+      \ar[r, equals]
+      &
+      \ar[from=u, "\pb{\hat i}"]
+      \H^l(\Sphere{k-1}\times X^2)
+      \ar[from=r, "\pb{\pi_{k-1}}"]
+      &
+      \ar[from=u, "\pb i"]
+      \H^l(\Twistedprod{k-1}{X})
+      \\
+      \ar[from=u, "\tilde{\delta}"]
+      \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
+      \ar[from=r, "\pb\tau"]
+      &
+      \ar[from=u, "\hat{\delta}"]
+      \H^{l-1}((\Sphere{k},\Sphere{k-1})\times X^2)
+      \ar[from=r, "\pb{\pi_k}"]
+      &
+      \ar[from=u, "\delta"]
+      \H^{l-1}((\Disk{k},\Sphere{k-1})\times X^2)
+      \\
+      \vdots\ar[from=u]&\vdots\ar[from=u]&\vdots\ar[from=u]
     \end{tikzcd}
   \end{center}
   where $\pb\tau\pb\pi$ is the identity.
@@ -1347,16 +1360,16 @@ sideways maps are well-known. Some facts are listed below.
     \begin{center}
       \newcommand*{\argument}[1]{{\scriptstyle #1}}
       \begin{tikzcd}[row sep=tiny, column sep=small]
-        &\argument{(1\otimes a,s_{k-1}\otimes b)}
+        &\argument{(1\otimes f,s_{k-1}\otimes g)}
         \ar[r, mapsto]
-        &\argument{(s_k\otimes b, s_k\otimes b)}
+        &\argument{(s_k\otimes g, s_k\otimes g)}
         \\
-        \argument{(1\otimes a, s_k\otimes b)}
+        \argument{(1\otimes f, s_k\otimes g)}
         \ar[r, mapsto]
-        &\argument{(1\otimes a, 0)}
-        &\argument{(s_k\otimes a, s_k\otimes b)}
+        &\argument{(1\otimes f, 0)}
+        &\argument{(s_k\otimes f, s_k\otimes g)}
         \ar[r, mapsto]
-        &\argument{(0, s_k\otimes (a+b))}
+        &\argument{(0, s_k\otimes (f+g))}
         \\
         \H^{l-1}(\Sphere k\times X^2)
         \ar[r, "\pb{\hat i}"]
@@ -1376,13 +1389,13 @@ sideways maps are well-known. Some facts are listed below.
         \Splitlineoplus{s_k\otimes\H^{l-k}(X^2)}{s_k\otimes\H^{l-k}(X^2)}
         \ar[u, equals]
         \\
-        \argument{(1\otimes a, s_k\otimes b)}
+        \argument{(1\otimes f, s_k\otimes g)}
         \ar[dd, mapsto, "\pb{\iota}"]
-        &&\argument{(s_k\otimes a, s_k\otimes b)}
+        &&\argument{(s_k\otimes f, s_k\otimes g)}
         \ar[dd, mapsto, "\pb{\tau}"]
         \\~\\
-        \argument{a}
-        && \argument{s_k\otimes a}
+        \argument{f}
+        && \argument{s_k\otimes f}
         \\
         \H^{l-1}(X^2)
         \ar[d, equals]
@@ -1399,33 +1412,33 @@ sideways maps are well-known. Some facts are listed below.
         \ar[r, "\pb{\tilde j}", "=0"{below}]
         &\H^l(\Disk k\times X)
         \\
-        \argument{a}
+        \argument{f}
         \ar[r, mapsto]
-        &\argument{(1\otimes a, 0)}
+        &\argument{(1\otimes f, 0)}
         \\
-        &\argument{(1\otimes a,s_{k-1}\otimes b)}
+        &\argument{(1\otimes f,s_{k-1}\otimes g)}
         \ar[r, mapsto]
-        &\argument{s_k\otimes b}
+        &\argument{s_k\otimes g}
       \end{tikzcd}
     \end{center}
     For $k=1$ one has the modifications
     \begin{center}
       \begin{tikzcd}[row sep=tiny]
-        &(1\otimes a, s_0\otimes b)
+        &(1\otimes f, s_0\otimes g)
         \ar[r, mapsto, "\hat{\delta}"]
-        &(s_1\otimes(a+b), s_1\otimes(a+b))
+        &(s_1\otimes(f+g), s_1\otimes(f+g))
         \\
-        (1\otimes a, s_1\otimes b)
+        (1\otimes f, s_1\otimes g)
         \ar[r, mapsto, "\pb{\hat i}"]
-        &(1\otimes a, s_0\otimes a)
+        &(1\otimes f, s_0\otimes f)
         \\
-        a
+        f
         \ar[r, mapsto, "\pb{\tilde i}"]
-        &(1\otimes a, s_0\otimes a)
+        &(1\otimes f, s_0\otimes f)
         \\
-        &(1\otimes a, s_0\otimes b)
+        &(1\otimes f, s_0\otimes g)
         \ar[r, mapsto, "\tilde{\delta}"]
-        &s_1\otimes(a+b)
+        &s_1\otimes(f+g)
       \end{tikzcd}
     \end{center}
   \item
@@ -1464,19 +1477,68 @@ sideways maps are well-known. Some facts are listed below.
 \end{Fact}
 
 Some further immediate results are:
-\begin{Cor}
+\begin{Cor}\label{cor:twistedprodcohom:prelim}
+  Let $X$ be a space, $k\in\Nat$,
+  $a,b\in\H^*(X)$, $f\in\H^*(X^2)$, and
+  $u\in\H^*(\Twistedprod k X)$.
   \begin{enumerate}
-  \item 
+  \item\label{item:twistedprodcohom:prelim:pij} 
     $\pb\pi\pb j
     = \pb{\hat j}\pb\pi\colon
-    s_k\otimes(x\otimes y)\mapsto s_k\otimes(x\otimes y+y\otimes x)$
+    s_k\otimes(a\otimes b)\mapsto s_k\otimes(a\otimes b+b\otimes a)$
   \item $\delta = (\pb\tau\pb\pi)^{-1}\tilde\delta\pb\pi = \tilde\delta\pb\pi$
   \item $\pb j(s_k\otimes 1\otimes 1) = c^k \coloneqq \pb\proj(x^k)$
   \item $\pb i(c_k) = \pb i(c_{k-1})$
+  \item\label{item:twistedprodcohom:prelim:j}
+    $\pb j(s_k\otimes f)\cdot u
+    = \pb j\left(s_k\otimes(f\cdot \pb\iota\pb\pi(u))\right)$
     % TODO: other immediate results
   \end{enumerate}
+  \begin{proof}
+    For \ref{item:twistedprodcohom:prelim:j} first observe that the
+    ring
+    \begin{gather*}
+      \H^*(\Twistedprod k X, \Twistedprod{k-1} X)
+      = \H^*((\Disk k,\Sphere{k-1})\times X^2)
+      = s_k\otimes\H^*(X^2)
+    \end{gather*}
+    is both a module over $\H^*(\Twistedprod k X)$ and over
+    $\H^*(\Disk k\times X^2)=\H^*(X^2)$. It is known that the
+    $\H^*(X^2)$-module structure looks like
+    \begin{gather*}
+      (s_k\otimes a_1\otimes b_1)\cdot (a_2\otimes b_2)
+      = s_k\otimes\big((a_1\otimes b_1)\cdot(a_2\otimes b_2)\big)
+      = s_k\otimes(a_1a_2)\otimes(b_1b_2)
+      \;.
+    \end{gather*}
+    Now the base change between the two module structures is the one
+    along $\pb\iota\pb\pi$, and this means that
+    for any $u\in\H^*(\Twistedprod k X)$
+    and
+    $s_k\otimes f \in s_k\otimes\H^*(X^2)$
+    \begin{gather*}
+      (s_k\otimes f)\cdot u
+      = (s_k\otimes f)\cdot\pb\iota\pb\pi(u)
+      = s_k\otimes(f\cdot \pb\iota\pb\pi(u))
+      \;.
+    \end{gather*}
+    As a last step note that
+    \begin{gather*}
+      \pb j\colon
+      \H^*(\Twistedprod k X, \Twistedprod{k-1} X)
+      \to \H^*(\Twistedprod k X)
+    \end{gather*}
+    is a morphism of $\H^*(\Twistedprod k X)$-modules, \idest
+    \begin{gather*}
+      \pb j(f\cdot g) = \pb j(f)\cdot g
+      \qquad\text{for
+        $f\in\H^*(\Twistedprod k X, \Twistedprod{k-1} X)$ and
+        $g\in\H^*(\Twistedprod k X)$.}
+      \qedhere
+    \end{gather*}
+  \end{proof}
 \end{Cor}
-  
+
 We are going to inductively proof the following reformulation of
 Theorem~\ref{thm:twistedprod:cohomstructure}.
 \begin{Thm}\label{thm:twistedprod:cohomstructure:alt}
@@ -1489,7 +1551,7 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
       \oplus (s\otimes N)
     \\
     &\cong
-       \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+      \left(\bigoplus_{i=1}^k c^i\otimes D\right)
       \oplus (1\otimes D)
       \oplus (1\otimes N)
       \oplus (s\otimes N)
@@ -1505,7 +1567,7 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     $\pb\proj$ is a ring isomorphism onto its image and looks like
     \begin{align*}
       \pb\proj\colon \H^*(\RP k) &\to \H^*(\RP k)\otimes d(1)
-      \subset \H^*(\Twistedprod k X),
+                                   \subset \H^*(\Twistedprod k X),
       &x^i &\mapsto c^i\otimes d(1)
     \end{align*}
     \idest
@@ -1520,7 +1582,7 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
   \item 
     $(c\otimes d(1)) \cdot (1\otimes N) = 0$.
   \item 
-    $(c\otimes d(1)) \cdot (s_k\otimes N) = 0$.
+    $(c\otimes d(1)) \cdot (s\otimes N) = 0$.
   \item The following restriction of $\pb\pi$ is a ring isomorphism onto
     its image
     \begin{align*}
@@ -1541,457 +1603,681 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     % \item $(1\otimes f) \cdot (s\otimes g)= s\otimes fg$, and
     % \item $(s\otimes n)\cdot (s\otimes n')=0$.
     % \end{enumerate}
-  \item And finally, even though not necessary for determining the
-    multiplicative structure,
-    $\pb\pi(c\otimes d(1)) = 0$,
-    respectively with the above
-    \begin{gather*}
-      \ker(\pb\pi)
-      = (c\otimes d(1))\cdot \H^*(\Twistedprod k X)
-      = \left(\bigoplus_{i=1}^k c^i\otimes D\right)
-      \;.
-    \end{gather*}
   \end{enumerate}
+  Note that with $\pb\pi(c\otimes d(1)) = 0$ the above also implies
+  \begin{gather*}
+    \ker(\pb\pi)
+    = (c\otimes d(1))\cdot \H^*(\Twistedprod k X)
+    = \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+    \;.
+  \end{gather*}
 \end{Thm}
 \begin{proof}[proof of
   Theorem~\ref{thm:twistedprod:cohomstructure:alt}
   respectively Theorem~\ref{thm:twistedprod:cohomstructure}]
-  \TODO{Do proof of \ref{thm:twistedprod:cohomstructure}?} % or explicitly say that it's missing!
-  % TODO: Idea/outline of proof
-  Compare also \cite[Theorem~7.1]{brown}.    
-\end{proof}
-
-
-\subsection{Indecomposability of Twisted Product Cobordism Classes}
-\label{sec:twistedprod:indecompcriterion}
-Now that the cohomology ring and Stiefel-Whitney classes of line
-bundles of a twisted product are well-known, one can investigate
-general Stiefel-Whitney numbers of twisted product manifolds.
-As promised, the following result will be the cornerstone when inductively
-defining the desired basis for the cobordism ring in the subsequent section.
-\begin{Thm}\label{thm:twistedprod:indecompcriterion}
-  Let $M^n$ be a manifold and $k\in\Nat_{\geq1}$.
-  Then $\Twistedprod{k}{M}$ represents an indecomposable class of the
-  cobordism ring if and only if $M$ does and $\binom{k+n-1}{n}$ is
-  non-zero modulo two.
-\end{Thm}
-Recall Theorem~\ref{thm:indecomposabilitycriterion}, saying
-a manifold $M^n$ represents an indecomposable element if and only if
-$\snum{(n)}{M}$ is non-zero,
-and recall that $\Twistedprod{k}{-}$ preserves injectivity on
-cohomology by
-Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}.
-Then Theorem~\ref{thm:twistedprod:indecompcriterion} is a
-direct consequence of the following Lemma.
-\begin{Lem}\label{lem:twistedprod:indecompcriterion}
-  Let $M$, $n$, $k$ be as in
-  Theorem~\ref{thm:twistedprod:indecompcriterion} above.
-  Then there is a map $f\colon X\to M$ of spaces which is injective on
-  cohomology and fulfils
-  \begin{gather*}
-    \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
-    = \binom{k+n-1}{n} \cdot c^k
-    \cdot d\left( \pb f \s{(n)}(M) \right)
-    \in \H^{2n+k}(\Twistedprod{k}{M})
-    \;.
-  \end{gather*}
-\end{Lem}
-\begin{proof}[proof of Lemma~\ref{lem:twistedprod:indecompcriterion}]
-  As the Stiefel-Whitney classes of twisted products of line bundles
-  are well-known, take $f$ to be a reduction of $\T M$ to line bundles
-  using the splitting principle.
-  \Idest choose a space $X$ and a map $f\colon X\to M$ which is
-  injective on cohomology and fulfils
-  $\pb f \T M = \xi_1\oplus\dotsb\oplus\xi_n$ for line bundles
-  $\xi_i$ over $X$, each with total Stiefel-Whitney class
-  $\W{\xi_i}=1+\alpha_i$.
-  With the fibre bundle properties from
-  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}%
-  \ref{item:twistedprod:preservespb}
-  and the tangent space structure from
-  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodmanifold}%
-  \ref{item:twistedprod:tangentspace}
-  this yields on vector bundles:
+  This is roughly geared to the proof in \cite[Theorem~7.1]{brown}.
+  The idea of the induction on $k$ is to split up the $\Zmod2$-vector
+  space $\H^*(\Twistedprod k X)$ into direct summands which are either known
+  from the case $k-1$, or calculable,
+  and then check the still needed multiplication and isomorphism
+  properties.
+  The split looks as follows:
   \begin{align*}
-    \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
-    &\cequalsby{\ref{rem:twistedprodproperties}}
-      \Twistedprod{k}{\pb f \T M}
-      = \Twistedprod{k}{\bigoplus_{i\leq n}\xi_i}
-      = \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}
-    \\
-    \pb{\Twistedprod{k}{f}} \T{\Twistedprod{k}{M}}
-    &\cequalsby{\ref{rem:twistedprodproperties}}
-      \pb{\Twistedprod{k}{f}} \left(
-      \T{\RP k} \oplus \Twistedprod{k}{\T M}
-      \right)\\
-    &= \pb{\Twistedprod{k}{f}} \T{\RP k}
-      \oplus
-      \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
-      = \T{\RP k} \oplus \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}\\
-    \intertext{And on Stiefel-Whitney classes:}
-    \pb{\Twistedprod{k}{f}} \W{\Twistedprod{k}{\T M}}
-    &= \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}}
-      \cequalsby{\ref{cor:twistedprod:swlinebdl}}
-      \prod_{i\leq n} \left(1 + c + e(\alpha_i) + d(\alpha_i)\right)
-    \\
-    \pb{\Twistedprod{k}{f}} \W{\T\Twistedprod{k}{M}}
-    &= \pb{\Twistedprod{k}{f}}\W{\T{\RP k}}
-      \cdot \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}} \\
-    &= (c+1)^{k+1}
-      \cdot \prod_{i\leq n} \left(1+c+e(\alpha_i)+d(\alpha_i)\right)
+    \Im\pb j
+    &\cong \ker(\pb\pi|_{\Im\pb j})
+      \oplus \left(\Im\pb j/\ker(\pb\pi|_{\Im\pb j})\right) \\
+    &\cong \pb j(\ker(\pb\pi\pb j))
+      \oplus \Im(\pb\pi|_{\Im\pb j}) \\
+    &\cong \pb j(\ker(\pb\pi\pb j))
+      \oplus \Im(\pb\pi\pb j) \\
+    \Im\pb i
+    &= \ker\delta = \ker(\tilde\delta\pb\pi_{k-1})\\
+    &= \ker(\tilde\delta|_{\Im\pb\pi_{k-1}})
+      \oplus \ker\pb\pi_{k-1} \\
+    \H^*(\Twistedprod k X)
+    &\cong \Im\pb j
+      \oplus \left( \H^*(\Twistedprod k X)/\Im\pb j \right)\\
+    &= \Im\pb j
+      \oplus \left( \H^*(\Twistedprod k X)/\ker\pb i \right)\\
+    &\cong \Im\pb j \oplus \Im\pb i\\
+    &\cong \pb j(\ker(\pb\pi\pb j))
+      \oplus \Im(\pb\pi\pb j)
+      \oplus \ker(\tilde\delta|_{\Im\pb\pi_{k-1}})
+      \oplus \ker\pb\pi_{k-1}
   \end{align*}
-  In order to work with these Stiefel-Whitney class expressions as
-  symmetric polynomials, introduce variables $u_i, v_i$ of degree
-  one such that
+  In the end this will look like
   \begin{align*}
-    \w1{\xi_i} &= c+e(\alpha_i) = \el 1 2(u_i, v_i) = u_i+v_i \\
-    \w2{\xi_i} &= d(\alpha_i)   = \el 2 2(u_i, v_i) = u_iv_i \\
-    \W{\xi_i}  &= 1+c+e(\alpha_i)+d(\alpha_i)
-                 = 1+\sum_{i\leq2}\el i 2(u_i,v_i) = (1+u_i)(1+v_i)
-                 \;.
+    \ker\pb\pi_{k-1} &= c_{k-1}\cdot\H^*(\Twistedprod{k-1}X)
+                       \cong \bigoplus_{i=1}^{k-1} c_k^i\otimes D \\
+    \pb j(\ker(\pb\pi\pb j))
+    &= c_k^k\cdot(\pb\pi)^{-1}(1\otimes D)\cong c^k\otimes D \\
+    \ker(\tilde\delta|_{\Im\pb\pi_{k-1}}) &= 1\otimes(N+D) \\
+    \Im(\pb\pi\pb j) &\cong s_k\otimes N
   \end{align*}
-  The key point now qualifying $f$ for the proof, is that both $f$ and
-  thus by
-  Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
-  also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfil
-  \begin{enumerate}
-  \item with $\W{\pb f\T M} = \prod_{i=1}^n (1+\alpha_i)$ that
-    \begin{gather}\label{eq:lem:twistedprod:indecompcriterion:sM}
-      \pb f \s{(n)}(M)
-      = \s{(n)}(\W{\pb f\T M})
-      = \sum_{i=1}^n \alpha_i^n
-      \;
-    \end{gather}
-  \item and with
-    $\W{\pb f\T{\Twistedprod{k}{M}}}
-    = \prod_{i=1}^{k+1}(1+c) \cdot \prod_{i=1}^n
-    (1+u_i)(1+v_i)$
-    that
-    \begin{align}\notag
-      \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
-      &= \s{(2n+k)}(\W{\pb f\T{\Twistedprod{k}{M}}}) \\
-      \label{eq:lem:twistedprod:indecompcriterion:sDkM}
-      &= (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k})
-        \;.
-    \end{align}
-  \end{enumerate}
-  In order to formulate
-  $\pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})$ 
-  in terms of $c$ and $d(\alpha_i)$,
-  use one of the Newton-Girard formulas saying:
-  \begin{Lem}[Newton-Girard]
-    For integers $l, m\in\Nat$ holds
-    \begin{align*}
-      \symm{l} t^m
-      &= \sum_{\mathclap{r_1+2r_2+\dotsb+mr_=m}}
-        (-1)^m \frac{m\cdot(r_1+\dotsb+r_m-1)!}{(r_1)!\dotsm(r_m)!}
-        \cdot \prod_{i=1}^m (-\el i l)^{r_i}
-        \;.
-    \end{align*}
-    As a special case for $l=2$ this becomes modulo 2
-    \begin{align*}
-      t_1^m + t_2^m
-      &= \sum_{\mathclap{r_1+2r_2=m}}
-        \frac{m\cdot(r_1+r_2-1)!}{(r_1)!(r_2)!}
-        \cdot (\el 1 2)^{r_1} \cdot (\el 2 2)^{r_2}
-      = \sum_{\mathclap{r_1+2r_2=m}}
-        \altbinom{r_1-1}{r_2} (t_1+t_2)^{r_1}(t_1t_2)^{r_2}
-    \end{align*}
-    where $\frac{(r_1+2r_2)(r_1+r_2-1)!}{(r_1)!(r_2)!}
-    = \binom{r_1+r_2-1}{r_2} + 2\binom{r_1+r_2-1}{r_1}$
-    and the notation $\altbinom{p}{q}\coloneqq \binom{p+q}{q}$
-    was used.
-    \begin{proof}
-      A proof of the main Newton-Girard formula can be found in
-      \cite[Theorem~10.12.2]{raymond}. This special case can
-      immediately be obtained by iterated application of the formula.
-    \end{proof}
-  \end{Lem}
-  Before applying this to $t_1=u_i$, $t_2=v_i$, $m=2n+k$, and $l=2$,
-  recall the following special properties from
-  Theorem~\ref{thm:twistedprod:cohomstructure} of the mentioned symbols in
-  $\H^*(\Twistedprod{k}{X})$:
-  \begin{itemize}
-  \item $c^{k+1}=0$,
-  \item $c\cdot e(\alpha_i)=0$, and
-  \item $e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} = 0$ for $r_1+2r_2>2n$,
-    as $\H^{*>2n}(M\times M)=0$.
-  \end{itemize}
-  Then simplify in terms of $c$, $e(\alpha_i)$, $d(\alpha_i)$:
-  \begin{align}\notag
-    u_i^{2n+k} + v_i^{2n+k}
-    &=
-      \sum_{{r_1+2r_2=2n+k}}
-      \altbinom{r_1-1}{r_2} (u_i+v_i)^{r_1}(u_iv_i)^{r_2} \\\notag
-    &\equalsby{Def.}
-      \sum_{{r_1+2r_2=2n+k}}
-      \altbinom{r_1-1}{r_2}
-      (c+e(\alpha_i))^{r_1}d(\alpha_i)^{r_2} \\\notag
-    &\equalsby{$c\cdot e(\alpha_i)=0$}
-      \sum_{{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
-      \left(c^{r_1}d(\alpha_i)^{r_2}+e(\alpha_i)^{r_1}d(\alpha_i)^{r_2}\right) \\\notag
-    &\equalsby{$c^{k+1}=0$, $d(\alpha_i)^{n+s}=0$}
-      \altbinom{k-1}{n} c^k d(\alpha_i)^n
-      + \sum_{\mathclap{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
-      e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} \\
-    \label{eq:lem:twistedprod:indecompcriterion:1}
-    &= \altbinom{k-1}{n} c^k d(\alpha_i)^n      
-  \end{align}
-  Altogether it turns out that
-  \begin{align*}
-    \pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})
-    &\cequalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sDkM}}
-      (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
-    &\equalsby{$c^{k+1}=0$}
-      \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
-    &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:1}}
-      \sum_{i=1}^n \altbinom{k-1}{n} c^k d(\alpha_i)^n \\
-    &= \altbinom{k-1}{n} c^k d(\sum_{i=1}^n \alpha_i^n) \\
-    &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sM}}
-      \altbinom{k-1}{n} c^k d(\pb f \s{(n)}(M))
-  \end{align*}
-  as was stated.
-\end{proof}
-
-By Theorem~\ref{thm:twistedprod:indecompcriterion}, one has to
-both choose
-\begin{itemize}
-\item the dimension combination, as well as
-\item the factor (see later)
-\end{itemize}
-of a twisted product correctly, in order to obtain the representative
-of an indecomposable cobordism class.
-For the correct dimension choice note, that any integer $m$ with
-binary expansion
-\begin{gather*}
-  m=2^{i_1}+\dotsb+2^{i_l}
-  \;,\qquad
-  0 \leq i_1<\dotsb<i_r
-\end{gather*}
-can be written as $m=2^{i_1}+2n\eqqcolon k+2n$, where:
-\begin{itemize}
-\item $n=0$ for $l=1$, else $n=2^{i_2-1}+\dotsb+2^{i_l-1}$
-\item $\alpha(m)=\alpha(n)+1$.
-\item For $m$ not of the form $2^s-1$, $n$ will also not be of the
-  form $2^s-1$.
-\end{itemize}
-This is favourable because the binomial coefficient
-$\binom{k-1}{n}$ will never be zero modulo two by the following Lemma,
-as is required by the indecomposability criterion for twisted products
-in Theorem~\ref{thm:twistedprod:indecompcriterion}.
-\begin{Lem}
-  For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
-  if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
-  \begin{proof}
-    This is a direct consequence of Lucas' well-known theorem
-    which states
-    \begin{gather*}
-      \binom{a+b}{b} \equiv \prod_{i=0}^s \binom{a_i+b_i}{b_i} \mod 2
-    \end{gather*}
-    where $a=\sum_{i=1}^s a_i2^{i}$, $b=\sum_{i=1}^s b_i2^{i}$ are the
-    binary expansions of $a$ and $b$, and $\binom{0}{1}\coloneqq 0$.
-    This expression will be non-zero, if and only if $b_i$ is one for
-    any $i$ where $a_i+b_i$ is one. In other words, if and only if
-    $\alpha(a+b)=\sum_{i=1}^s(a_i+b_i)$.    
-  \end{proof}
-\end{Lem}
-This lemma can be applied to the combination $k-1$, $n$ from above, as one
-simply calculates
-\begin{align*}
-  \alpha(k-1+n)
-  &= \alpha\left((2^{i_1}-1)+ (2^{i_2-1}+\dotsb+2^{i_l-1})\right) \\
-  &= \alpha\left(1+2^1+\dotsb 2^{i_1-1} + 2^{i_2-1}+\dotsb+2^{i_l-1}\right) \\
-  &\equalsby{$i_1<i_2$}
-  \alpha\left(1+2^1+\dotsb 2^{i_1-1}) + \alpha(2^{i_2-1}+\dotsb+2^{i_l-1}\right)\\
-  &= \alpha(k-1) + \alpha(n)
-\end{align*}
-
-Therefore:
-\begin{Cor}\label{cor:twistedprod:indecompcriterion}
-  For $m=2^{i_1}+2n\in\Nat$ as above, the twisted product
-  $\Twistedprod{2^{i_1}}{M}$ of an indecomposable manifold $M^n$ will be
-  indecomposable.
-\end{Cor}
-
-
-\section
-{Brown's Theorem: Finding a Convenient Generating Set}
-\label{sec:proofbrown}
-Remember that the goal of this chapter was to prove R.~L.~Brown's
-theorem \ref{thm:brown} which states that the immersion conjecture is
-true up to cobordism.
-
-Also recall, that if one can show the conjecture's statement is stable
-under the ring operations of the cobordism ring
-$\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
-generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfils the conjecture.
-Thus, for the proof one needs to construct a set of manifolds
-$(\G i|i\neq2^r-1)$ that both fulfil the conjecture and represent
-indecomposable cobordism classes.
-
-\subsection{Stability Properties of the Conjecture}
-The stability properties needed are the following.
-\begin{Lem}\label{lem:brownstableunderringops}
-  Let $M_i^{n_i}$ be a closed manifold immersing into
-  $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
-  Then both manifolds
-  \begin{enumerate}
-  \item $M_1\disjointsum M_2$ for $n_1=n_2=n$, and
-  \item $M_1\times M_2$ for $n_1$, $n_2$ arbitrary
-  \end{enumerate}
-  immerse into $\R^{2(n_1+n_2)-\alpha(n_1+n_2)}$.
-  \begin{proof}
-    $M_1\times M_2$ immerses into the real space of dimension
-    \begin{align*}
-      \left( 2n_1-\alpha(n_1) \right)
-      + \left( 2n_2-\alpha(n_2) \right)
-      &= 2(n_1+n_2) - \left(\alpha(n_1)+\alpha(n_2)\right)\\
-      &\leq 2(n_1+n_2) - \left(\alpha(n_1 + n_2)\right)
-    \end{align*}
-    where the inequality is due to the number theoretic fact
-    $\alpha(n_1+n_2) \leq \alpha(n_1)+\alpha(n_2)$.
-
-    For $n_1=n=n_2$ the images of the immersions
-    \begin{gather*}
-      \iota_1\colon M_1\to\R^{2n-\alpha(n)}
-      \qquad \text{and} \qquad
-      \iota_2\colon M_2\to\R^{2n-\alpha(n)}
-    \end{gather*}
-    are compact. So by
-    concatenation with translation they can be assumed to be disjoint,
-    wherefore the disjoint union
-    $\iota_1\disjointsum\iota_2\colon M_1\disjointsum M_2\to\R^{2n-\alpha(n)}$
-    is again an immersion.
-  \end{proof}
-\end{Lem}
-
-
-\subsection{Generating Set}
-Now define the representatives of the generating set's elements as follows.
-\begin{Thm}\label{thm:brownproof}
-  Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
-  defined by
-  \begin{align*}
-    \G 0 &\coloneqq \pt \;, \\
-    \G m &\coloneqq \Twistedprod{2^{i_1}}{\G n}
-        &\text{
-          where
-          $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
-          with $0\leq i_1<\dotsb<i_l$.
-          }
-  \end{align*}
-  Then:
-  \begin{enumerate}
-  \item\label{item:brownimmersionproperty}
-    $\G m$ immerses into $\R^{2m-\alpha(m)}$.
-  \item\label{item:indecomposabilityproperty}
-    The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
-    indecomposable, and thus
-    \begin{gather*}
-      \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
-      = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
-    \end{gather*}
-  \end{enumerate}
-\end{Thm}
-\begin{proof}[proof of
-  Theorem~\itemref{thm:brownproof}{item:indecomposabilityproperty}]
-  By definition, all $\G m$ either are some $\Twistedprod{2^i}{\pt}$
-  or arise from one as iterated twisted product. More precisely, for a binary
-  representation
-  \begin{align*}
-    m &= 2^{i_1}+\dotsb + 2^{i_l} \\
-      &= 2^{i_1}+ 2\cdot\big( 2^{i_2-1} + 2\cdot(\dotsc + 2\cdot 2^{i_l-l+1})\big)
-    \\\intertext{one gets}
-    \G m &\coloneqq
-           \Twistedprod{2^{i_1}}{\G{2^{i_2-1} + 2\cdot(2^{i_3-1}+\dotsb)}}\\
-      &= \Twistedprod{2^{i_1}}{
-        \Twistedprod{2^{i_2-1}}{
-        \dotsc
-        \Twistedprod{2^{i_l-l+1}}{\pt}
-        }}
-        \;.
-  \end{align*}
-  But $\Twistedprod{2^{i}}{\pt}=\RP{2^i}$ represents an indecomposable
-  element of the Cobordism ring by Example~\ref{ex:rpnindecomposable}.
-  Thus, by Corollary~\ref{cor:twistedprod:indecompcriterion} all
-  $\G m$ also represent indecomposable cobordism classes.
-\end{proof}
-\begin{proof}[proof of
-  Theorem~\itemref{thm:brownproof}{item:brownimmersionproperty}]
-  \optcite[p.~84, proof Thm.~1.30]{immersionconj}
-  In order to proof the immersion property of the manifolds $\G m$,
-  conduct an induction over $\alpha(m)$.
+  Without inductive arguments one can already obtain the following results:
   \begin{description}
-  \item[$\alpha(m)=1$:]
-    As an induction start note that in the case of $m=2^i$ one has
+  \item[$\Im(\pb\pi\pb j)=s_k\otimes N$:]
+    Recall from
+    Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:pij}
+    that
+    \begin{align*}
+      \pb\pi\pb j\colon
+      s_k\otimes\H^*(X^2)
+      &\to 1\otimes\H^*(X^2)\oplus s_k\otimes\H^*(X^2)\\
+      s_k\otimes(a\otimes b)
+      &\mapsto s_k\otimes(a\otimes b+b\otimes a)
+    \end{align*}
+    and hence $\Im(\pb\pi\pb j)=s_k\otimes N$.
+    Obviously $\pb\pi$ maps this part of $\H^*(\Twistedprod k X)$
+    isomorphically to $s_k\otimes N\subset\H^*(\Sphere k\times X^2)$,
+    already inducing multiplication.
+  \item[$\pb j(\ker(\pb\pi\pb j))=c^k\cdot((\pb\pi)^{-1}(1\otimes(D+N)))$:]
+    Again recall
+    Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:pij}
+    to directly obtain
+    $\ker(\pb\pi\pb j) = s_k\otimes(N+D)$.
+    So one has in general
+    \begin{align*}
+      \pb j(\ker(\pb\pi\pb j))
+      &= \pb j(s_k\otimes(N+D)) \\
+      &\equalsby{Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:j}}
+        \pb j(s_k\otimes 1\otimes 1) \cdot (\pb\iota\pb\pi)^{-1}(N+D) \\
+      &= c^k \cdot \left( (\pb\pi)^{-1}(1\otimes N)
+        +  (\pb\pi)^{-1}(1\otimes D) \right)
+        \subset \ker\pb\pi 
+    \end{align*}
+  \item[$\pb j(\ker(\pb\pi\pb j))\cdot\Im(\pb\pi\pb j)=0$:]
+    Since for any
+    $c^k\cdot u\in \pb j(\ker(\pb\pi\pb j))$ and
+    $s_k\otimes f\in\Im(\pb\pi\pb j)$
+    \begin{align*}
+      c^k\cdot u \;\cdot\; s_k\otimes f
+      &= \pb j(s_k\otimes 1\otimes 1)\cdot s_k\otimes f \cdot u \\
+      &\equalsby{Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:j}}
+        \pb j(s_k\otimes\pb\iota\pb\pi(s_k\otimes f)) \cdot u \\
+      &\equalsby{$\pb\iota\pb\pi(s_k\otimes f)=\pb\iota(s_k\otimes f)=0$}
+        0
+        \;,
+    \end{align*}
+    one has $\pb j(\ker(\pb\pi\pb j))\cdot\Im(\pb\pi\pb j)=0$.
+  \end{description}
+
+  \minisec{Induction step}
+  We will start with the induction step, so assume for a space $X$ and
+  $k>1$ that Theorem~\ref{thm:twistedprod:cohomstructure:alt} holds in
+  the case $k-1$.
+  First determine the exact structure of the direct summands.
+  \begin{description}
+  \item[$\pb j(\ker(\pb\pi\pb j))\cong c^k\otimes D$:]
+    The induction assumption yields
+    \begin{align*}
+      \ker\pb j
+      = \im\delta
+      &= \im(\tilde\delta\pb\pi_{k-1}) \\
+      &= \tilde\delta(\im\pb\pi_{k-1})
+        = \tilde\delta((1\otimes(N+D)) \oplus (s_{k-1}\otimes N)) \\
+      &= s_k\otimes N
+        \;.
+    \end{align*}
+    Hence the general result from above simplifies as follows: 
     \begin{gather*}
-      \G m
-      =\Twistedprod{2^i}{\G 0}
-      =\Twistedprod{2^i}{\pt}
-      =\RP{2^i}
+      \pb j(\ker(\pb\pi\pb j))
+      = \pb j(s_k\otimes D) + \pb j(s_k\otimes N)
+      = \pb j(s_k\otimes D)
+      = c^k\cdot (1\otimes D)
     \end{gather*}
-    which immerses into $\R^{2m-1}=\R^{2m-\alpha(m)}$ by
-    Whitney's immersion theorem~\cite{whitneyimmersiontheorem}.
-  \item[$\alpha(m)\geq2$:]
-    For the induction step write $m=2^{i_1}+2n$ as above, and assume
-    there is an immersion
+    where for the last equality it was used that
+    $(1\otimes D)\subset\ker\delta$ is mapped bijectively onto $D$ by
+    $\pb\iota\pb\pi$, and that for elements
+    $u,u'\in\H^*(\Twistedprod k X)$ with $\pb\pi(u)=\pb\pi(u')$
     \begin{gather*}
-      \iota\colon\G n \immlongto \R^{2n-\alpha(n)}
+      c^k\cdot u
+      =\pb j(s_k\otimes\pb\iota\pb\pi(u))
+      =\pb j(s_k\otimes\pb\iota\pb\pi(u'))
+      =c^k\cdot u'
+      \;.
+    \end{gather*}
+    Furthermore, $\pb j$ is injective on $s_k\otimes D$, giving
+    ring isomorphisms
+    \begin{gather*}
+      c^k\cdot (1\otimes D)\cong s_k\otimes D\cong c^k\otimes D
+      \;.
+    \end{gather*}
+  \item[$\ker(\tilde\delta|_{\Im\pb\pi_{k-1}})\cong 1\otimes (D+N)$:]
+    By the assumption on $k-1$
+    \begin{gather*}
+      \Im(\pb\pi_{k-1})
+      =(1\otimes(D+N))\oplus (s_k\otimes N)
+      \in\H^*(\Sphere{k-1}\times X^2)
+      \;.
+    \end{gather*}
+    With $\ker(\tilde\delta) = 1\otimes\H^*(X^2)$, one gets
+    $\ker(\tilde\delta|_{\Im\pb\pi_{k-1}}) = 1\otimes (D+N)$.
+    Since $\pb\pi_{k-1}$ is the identity on
+    $1\otimes(D+N)\in\H^*(\Twistedprod{k-1} X)$ and $\pb{\tilde i}$ is
+    the identity on $1\otimes(D+N)\in\H^*(\Sphere k\times X^2)$,
+    $\pb\pi_{k}$ and $\pb i$ are both the identity on
+    $\ker(\tilde\delta|_{\Im\pb\pi_{k-1}})$, inducing ring structure
+    on this direct summand.
+  \item[$\ker(\pb\pi_{k-1})\cong \bigoplus_{i=1}^{k-1} c_k^i\otimes D$:]
+    By induction assumption
+    \begin{align*}
+      \ker(\pb\pi_{k-1})
+      \cong \bigoplus_{i=1}^{k-1} c_{k-1}^i\otimes D
+      &= \sum_{i=1}^{k-1} c_{k-1}^i\cdot (1\otimes D) \\
+      &=
+        \sum_{i=1}^{k-1} \pb i(c_k)^i\cdot \pb i(1\otimes D) 
+      \cong
+        \sum_{i=1}^{k-1} c_k^i\cdot (1\otimes D)\;.
+    \end{align*}
+    where the last step uses the fact that $\pb i$ maps one
+    bijectively onto the other. Surjectivity is clear since
+    $\ker(\pb\pi_{k-1})\subset\ker\delta=\Im\pb i$.
+    For injectivity, one needs the result from above that $\pb i$ is
+    injective on $1\otimes D$. Then any two elements
+    $c^r\cdot d(a)$, $c^{r'}\cdot d(a')$, with
+    $a,a'\in\H^*(X)$ and $r,r'<k$ such that
+    \begin{gather*}
+      c_{k-1}^r\cdot d(a)
+      = \pb i(c^r\cdot (1\otimes d(a)))
+      = \pb i(c^{r'}\cdot (1\otimes d(a')))
+      = c_{k-1}^{r'}\cdot d(a')
+    \end{gather*}
+    must fulfil $r=r'$ and $a=a'$, and thus coincide.
+    One can also simplify the expression by
+    \begin{gather*}
+      c_k^i\cdot (1\otimes D)
+      \cong c_{k-1}^i\otimes D
+      \cong c_k^i\otimes D
+      \qquad\quad
+      \sum_{i=1}^{k-1}c_k^i\cdot (1\otimes D)
+      \cong \bigoplus_{i=1}^{k-1} c_k^k\otimes D
       \;.
     \end{gather*}
   \end{description}
-  As described in
-  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
-  this induces an immersion of twisted products
-  \begin{center}
-    \begin{tikzcd}[row sep=small, column sep=large]
-      (\Sphere{2^{i_1}} \times \G n\times \G n/\sim)
-      \ar[d, equals]
-      \ar[r, hookrightarrow, "1\times\iota\times\iota/\sim"]
-      &
-      (\Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim)
-      \;.
-      \ar[d, equals]
-      \\
-      \G m
-      &\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
-    \end{tikzcd}
-  \end{center}
-  The latter twisted product however is a fibre bundle over
-  $\RP{2^i_1}$ as in
-  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
-  More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
-  The needed immersion will be given by the following Lemma.
-  \begin{Lem}\label{lem:immersionvbtotalspaces}
-    \TODO{Ref. for proof?!}
-    \optcite[p.~85]{immersionconj}
-    \optcite[compare Prop. 4.3]{brown}
-    The total space of a vector bundle $E\to M^n$ of rank $k$ over a
-    closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
-  \end{Lem}
-  As a result of the Lemma, $\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}$
-  immerses into real space of dimension
-  \begin{align*}
-    2\cdot 2^{i_1} + \left(4n-2\alpha(n)\right)
-    &= 2\cdot (2^{i_1}+2n) - 2\alpha(n) \\
-    &= 2m - 2\alpha(n) \\
-    &= 2m - 2\alpha(m)+2 \\
-    &\leqby{m\geq 2}
-    2m - \alpha(m)
-    \;,
-  \end{align*}
-  so altogether one gets an immersion
+  Note that in identifying the direct summands with their ring structure,
+  the claims on $\pb\pi$ and $\pb\proj$ have already been verified.
+  Namely, $\pb\pi$ maps the components $1\otimes(N+D)$ and
+  $s_k\otimes N$ isomorphically onto their images, and the embedding
+  of the direct summand $\H^*(\RP k)$ is given by $\pb\proj(x)=c$
+  by definition.
+
+  It remains to check the multiplication properties.
+  However, by the structure of the isomorphisms it is clear that
   \begin{gather*}
-    \G m
-    \immlongto \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
-    \immlongto \R^{2m - \alpha(m)}
-    \;.
+    (c^i\otimes d(b))\cdot (1\otimes d(a))
+    = c^i\cdot (1\otimes d(b))\cdot (1\otimes d(a))
+    = c^i\cdot (1\otimes d(ab))
+    = c^i\otimes d(ab)
+    \;,
   \end{gather*}
-  %\begin{proof}[proof of Lemma~\ref{lem:immersionvbtotalspaces}]
-  %\end{proof}
+  and it was already shown that
+  $c^k\cdot (1\otimes N + s_k\otimes N)=0$.
+  Taking a closer look at $\ker\delta$, it is clear that
+  \begin{align*}
+    \ker\delta
+    &\cong \ker(\pb\pi_{k-1})
+    + (\pb\pi_{k-1})^{-1}(\ker(\tilde\delta)) \\
+    &= \left(\sum_{i=1}^{k-1} c_{k-1}^i \otimes D \right)
+    + \left(\sum_{i=1}^{k-1} c_{k-1}^i \otimes D
+      + 1\otimes(N+D)
+      \right) \\
+    &= \sum_{i=1}^{k-1} c_{k-1}^i \otimes D
+      + 1\otimes(N+D) \\
+    &= \ker(\pb\pi_{k-1}) + 1\otimes(N+D)
+  \end{align*}
+  which however induces the multiplication of $c^i\otimes D$ with
+  $1\otimes(N+D)$ for $1\leq i\leq k-1$, as $\pb i$ is an isomorphism
+  restricted to the direct summand $\ker\delta$.
+
+  \minisec{Induction Start}
+  The case $k=0$ is fairly analogous but much simpler as
+  $\Twistedprod 0 X=X^2$. Thus, using the known formula
+  \begin{gather*}
+    \pb\pi(a\otimes b)=(1\otimes a\otimes b, s_0\otimes b\otimes a)
+    \in \H^*(S^0\times X^2)=\H^*(X^2)^2
+  \end{gather*}
+  one gets
+  $\delta(a\otimes b)
+  = \tilde\delta\pb\pi(a\otimes b)
+  = s_1\otimes(a\otimes b + b\otimes a)$, giving
+  $\ker\delta=N+D$, $\Im\delta = \ker\pb j = s_1\otimes N$.
+  Hence, analogously to the above procedure, one obtains
+  $\pb j (\ker(\pb\pi\pb j)) \cong c\otimes D$,
+  $c\cdot (1\otimes N) = 0$ and all other relations.
 \end{proof}
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "thesis"
-%%% End:
+
+  \subsection{Indecomposability of Twisted Product Cobordism Classes}
+  \label{sec:twistedprod:indecompcriterion}
+  Now that the cohomology ring and Stiefel-Whitney classes of line
+  bundles of a twisted product are well-known, one can investigate
+  general Stiefel-Whitney numbers of twisted product manifolds.
+  As promised, the following result will be the cornerstone when inductively
+  defining the desired basis for the cobordism ring in the subsequent section.
+  \begin{Thm}\label{thm:twistedprod:indecompcriterion}
+    Let $M^n$ be a manifold and $k\in\Nat_{\geq1}$.
+    Then $\Twistedprod{k}{M}$ represents an indecomposable class of the
+    cobordism ring if and only if $M$ does and $\binom{k+n-1}{n}$ is
+    non-zero modulo two.
+  \end{Thm}
+  Recall Theorem~\ref{thm:indecomposabilitycriterion}, saying
+  a manifold $M^n$ represents an indecomposable element if and only if
+  $\snum{(n)}{M}$ is non-zero,
+  and recall that $\Twistedprod{k}{-}$ preserves injectivity on
+  cohomology by
+  Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}.
+  Then Theorem~\ref{thm:twistedprod:indecompcriterion} is a
+  direct consequence of the following Lemma.
+  \begin{Lem}\label{lem:twistedprod:indecompcriterion}
+    Let $M$, $n$, $k$ be as in
+    Theorem~\ref{thm:twistedprod:indecompcriterion} above.
+    Then there is a map $f\colon X\to M$ of spaces which is injective on
+    cohomology and fulfils
+    \begin{gather*}
+      \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
+      = \binom{k+n-1}{n} \cdot c^k
+      \cdot d\left( \pb f \s{(n)}(M) \right)
+      \in \H^{2n+k}(\Twistedprod{k}{M})
+      \;.
+    \end{gather*}
+  \end{Lem}
+  \begin{proof}[proof of Lemma~\ref{lem:twistedprod:indecompcriterion}]
+    As the Stiefel-Whitney classes of twisted products of line bundles
+    are well-known, take $f$ to be a reduction of $\T M$ to line bundles
+    using the splitting principle.
+    \Idest choose a space $X$ and a map $f\colon X\to M$ which is
+    injective on cohomology and fulfils
+    $\pb f \T M = \xi_1\oplus\dotsb\oplus\xi_n$ for line bundles
+    $\xi_i$ over $X$, each with total Stiefel-Whitney class
+    $\W{\xi_i}=1+\alpha_i$.
+    With the fibre bundle properties from
+    Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}%
+    \ref{item:twistedprod:preservespb}
+    and the tangent space structure from
+    Remark~\itemref{rem:twistedprodproperties}{item:twistedprodmanifold}%
+    \ref{item:twistedprod:tangentspace}
+    this yields on vector bundles:
+    \begin{align*}
+      \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
+      &\cequalsby{\ref{rem:twistedprodproperties}}
+        \Twistedprod{k}{\pb f \T M}
+        = \Twistedprod{k}{\bigoplus_{i\leq n}\xi_i}
+        = \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}
+      \\
+      \pb{\Twistedprod{k}{f}} \T{\Twistedprod{k}{M}}
+      &\cequalsby{\ref{rem:twistedprodproperties}}
+        \pb{\Twistedprod{k}{f}} \left(
+        \T{\RP k} \oplus \Twistedprod{k}{\T M}
+        \right)\\
+      &= \pb{\Twistedprod{k}{f}} \T{\RP k}
+        \oplus
+        \pb{\Twistedprod{k}{f}} \Twistedprod{k}{\T M}
+        = \T{\RP k} \oplus \bigoplus_{i\leq n}\Twistedprod{k}{\xi_i}\\
+      \intertext{And on Stiefel-Whitney classes:}
+      \pb{\Twistedprod{k}{f}} \W{\Twistedprod{k}{\T M}}
+      &= \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}}
+        \cequalsby{\ref{cor:twistedprod:swlinebdl}}
+        \prod_{i\leq n} \left(1 + c + e(\alpha_i) + d(\alpha_i)\right)
+      \\
+      \pb{\Twistedprod{k}{f}} \W{\T\Twistedprod{k}{M}}
+      &= \pb{\Twistedprod{k}{f}}\W{\T{\RP k}}
+        \cdot \prod_{i\leq n} \W{\Twistedprod{k}{\xi_i}} \\
+      &= (c+1)^{k+1}
+        \cdot \prod_{i\leq n} \left(1+c+e(\alpha_i)+d(\alpha_i)\right)
+    \end{align*}
+    In order to work with these Stiefel-Whitney class expressions as
+    symmetric polynomials, introduce variables $u_i, v_i$ of degree
+    one such that
+    \begin{align*}
+      \w1{\xi_i} &= c+e(\alpha_i) = \el 1 2(u_i, v_i) = u_i+v_i \\
+      \w2{\xi_i} &= d(\alpha_i)   = \el 2 2(u_i, v_i) = u_iv_i \\
+      \W{\xi_i}  &= 1+c+e(\alpha_i)+d(\alpha_i)
+                   = 1+\sum_{i\leq2}\el i 2(u_i,v_i) = (1+u_i)(1+v_i)
+                   \;.
+    \end{align*}
+    The key point now qualifying $f$ for the proof, is that both $f$ and
+    thus by
+    Theorem~\itemref{thm:twistedprod:cohomstructure}{item:twistedprod:preservescohominj}
+    also $\Twistedprod{k}{f}$ are injective on cohomology, and fulfil
+    \begin{enumerate}
+    \item with $\W{\pb f\T M} = \prod_{i=1}^n (1+\alpha_i)$ that
+      \begin{gather}\label{eq:lem:twistedprod:indecompcriterion:sM}
+        \pb f \s{(n)}(M)
+        = \s{(n)}(\W{\pb f\T M})
+        = \sum_{i=1}^n \alpha_i^n
+        \;
+      \end{gather}
+    \item and with
+      $\W{\pb f\T{\Twistedprod{k}{M}}}
+      = \prod_{i=1}^{k+1}(1+c) \cdot \prod_{i=1}^n
+      (1+u_i)(1+v_i)$
+      that
+      \begin{align}\notag
+        \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
+        &= \s{(2n+k)}(\W{\pb f\T{\Twistedprod{k}{M}}}) \\
+        \label{eq:lem:twistedprod:indecompcriterion:sDkM}
+        &= (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k})
+          \;.
+      \end{align}
+    \end{enumerate}
+    In order to formulate
+    $\pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})$ 
+    in terms of $c$ and $d(\alpha_i)$,
+    use one of the Newton-Girard formulas saying:
+    \begin{Lem}[Newton-Girard]
+      For integers $l, m\in\Nat$ holds
+      \begin{align*}
+        \symm{l} t^m
+        &= \sum_{\mathclap{r_1+2r_2+\dotsb+mr_=m}}
+          (-1)^m \frac{m\cdot(r_1+\dotsb+r_m-1)!}{(r_1)!\dotsm(r_m)!}
+          \cdot \prod_{i=1}^m (-\el i l)^{r_i}
+          \;.
+      \end{align*}
+      As a special case for $l=2$ this becomes modulo 2
+      \begin{align*}
+        t_1^m + t_2^m
+        &= \sum_{\mathclap{r_1+2r_2=m}}
+          \frac{m\cdot(r_1+r_2-1)!}{(r_1)!(r_2)!}
+          \cdot (\el 1 2)^{r_1} \cdot (\el 2 2)^{r_2}
+          = \sum_{\mathclap{r_1+2r_2=m}}
+          \altbinom{r_1-1}{r_2} (t_1+t_2)^{r_1}(t_1t_2)^{r_2}
+      \end{align*}
+      where $\frac{(r_1+2r_2)(r_1+r_2-1)!}{(r_1)!(r_2)!}
+      = \binom{r_1+r_2-1}{r_2} + 2\binom{r_1+r_2-1}{r_1}$
+      and the notation $\altbinom{p}{q}\coloneqq \binom{p+q}{q}$
+      was used.
+      \begin{proof}
+        A proof of the main Newton-Girard formula can be found in
+        \cite[Theorem~10.12.2]{raymond}. This special case can
+        immediately be obtained by iterated application of the formula.
+      \end{proof}
+    \end{Lem}
+    Before applying this to $t_1=u_i$, $t_2=v_i$, $m=2n+k$, and $l=2$,
+    recall the following special properties from
+    Theorem~\ref{thm:twistedprod:cohomstructure} of the mentioned symbols in
+    $\H^*(\Twistedprod{k}{X})$:
+    \begin{itemize}
+    \item $c^{k+1}=0$,
+    \item $c\cdot e(\alpha_i)=0$, and
+    \item $e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} = 0$ for $r_1+2r_2>2n$,
+      as $\H^{*>2n}(M\times M)=0$.
+    \end{itemize}
+    Then simplify in terms of $c$, $e(\alpha_i)$, $d(\alpha_i)$:
+    \begin{align}\notag
+      u_i^{2n+k} + v_i^{2n+k}
+      &=
+        \sum_{{r_1+2r_2=2n+k}}
+        \altbinom{r_1-1}{r_2} (u_i+v_i)^{r_1}(u_iv_i)^{r_2} \\\notag
+      &\equalsby{Def.}
+        \sum_{{r_1+2r_2=2n+k}}
+        \altbinom{r_1-1}{r_2}
+        (c+e(\alpha_i))^{r_1}d(\alpha_i)^{r_2} \\\notag
+      &\equalsby{$c\cdot e(\alpha_i)=0$}
+        \sum_{{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
+        \left(c^{r_1}d(\alpha_i)^{r_2}+e(\alpha_i)^{r_1}d(\alpha_i)^{r_2}\right) \\\notag
+      &\equalsby{$c^{k+1}=0$, $d(\alpha_i)^{n+s}=0$}
+        \altbinom{k-1}{n} c^k d(\alpha_i)^n
+        + \sum_{\mathclap{r_1+2r_2=2n+k}} \altbinom{r_1-1}{r_2}
+        e(\alpha_i)^{r_1}d(\alpha_i)^{r_2} \\
+      \label{eq:lem:twistedprod:indecompcriterion:1}
+      &= \altbinom{k-1}{n} c^k d(\alpha_i)^n      
+    \end{align}
+    Altogether it turns out that
+    \begin{align*}
+      \pb{\Twistedprod{k}{f}}\s{(2n+k)}(\Twistedprod{k}{M})
+      &\cequalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sDkM}}
+        (k+1)c^{2n+k} + \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
+      &\equalsby{$c^{k+1}=0$}
+        \sum_{i=1}^n (u_i^{2n+k} + v_i^{2n+k}) \\
+      &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:1}}
+        \sum_{i=1}^n \altbinom{k-1}{n} c^k d(\alpha_i)^n \\
+      &= \altbinom{k-1}{n} c^k d(\sum_{i=1}^n \alpha_i^n) \\
+      &\equalsby{\eqref{eq:lem:twistedprod:indecompcriterion:sM}}
+        \altbinom{k-1}{n} c^k d(\pb f \s{(n)}(M))
+    \end{align*}
+    as was stated.
+  \end{proof}
+
+  By Theorem~\ref{thm:twistedprod:indecompcriterion}, one has to
+  both choose
+  \begin{itemize}
+  \item the dimension combination, as well as
+  \item the factor (see later)
+  \end{itemize}
+  of a twisted product correctly, in order to obtain the representative
+  of an indecomposable cobordism class.
+  For the correct dimension choice note, that any integer $m$ with
+  binary expansion
+  \begin{gather*}
+    m=2^{i_1}+\dotsb+2^{i_l}
+    \;,\qquad
+    0 \leq i_1<\dotsb<i_r
+  \end{gather*}
+  can be written as $m=2^{i_1}+2n\eqqcolon k+2n$, where:
+  \begin{itemize}
+  \item $n=0$ for $l=1$, else $n=2^{i_2-1}+\dotsb+2^{i_l-1}$
+  \item $\alpha(m)=\alpha(n)+1$.
+  \item For $m$ not of the form $2^s-1$, $n$ will also not be of the
+    form $2^s-1$.
+  \end{itemize}
+  This is favourable because the binomial coefficient
+  $\binom{k-1}{n}$ will never be zero modulo two by the following Lemma,
+  as is required by the indecomposability criterion for twisted products
+  in Theorem~\ref{thm:twistedprod:indecompcriterion}.
+  \begin{Lem}
+    For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
+    if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
+    \begin{proof}
+      This is a direct consequence of Lucas' well-known theorem
+      which states
+      \begin{gather*}
+        \binom{a+b}{b} \equiv \prod_{i=0}^s \binom{a_i+b_i}{b_i} \mod 2
+      \end{gather*}
+      where $a=\sum_{i=1}^s a_i2^{i}$, $b=\sum_{i=1}^s b_i2^{i}$ are the
+      binary expansions of $a$ and $b$, and $\binom{0}{1}\coloneqq 0$.
+      This expression will be non-zero, if and only if $b_i$ is one for
+      any $i$ where $a_i+b_i$ is one. In other words, if and only if
+      $\alpha(a+b)=\sum_{i=1}^s(a_i+b_i)$.    
+    \end{proof}
+  \end{Lem}
+  This lemma can be applied to the combination $k-1$, $n$ from above, as one
+  simply calculates
+  \begin{align*}
+    \alpha(k-1+n)
+    &= \alpha\left((2^{i_1}-1)+ (2^{i_2-1}+\dotsb+2^{i_l-1})\right) \\
+    &= \alpha\left(1+2^1+\dotsb 2^{i_1-1} + 2^{i_2-1}+\dotsb+2^{i_l-1}\right) \\
+    &\equalsby{$i_1<i_2$}
+      \alpha\left(1+2^1+\dotsb 2^{i_1-1}) + \alpha(2^{i_2-1}+\dotsb+2^{i_l-1}\right)\\
+    &= \alpha(k-1) + \alpha(n)
+  \end{align*}
+
+  Therefore:
+  \begin{Cor}\label{cor:twistedprod:indecompcriterion}
+    For $m=2^{i_1}+2n\in\Nat$ as above, the twisted product
+    $\Twistedprod{2^{i_1}}{M}$ of an indecomposable manifold $M^n$ will be
+    indecomposable.
+  \end{Cor}
+
+
+  \section
+  {Brown's Theorem: Finding a Convenient Generating Set}
+  \label{sec:proofbrown}
+  Remember that the goal of this chapter was to prove R.~L.~Brown's
+  theorem \ref{thm:brown} which states that the immersion conjecture is
+  true up to cobordism.
+
+  Also recall, that if one can show the conjecture's statement is stable
+  under the ring operations of the cobordism ring
+  $\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
+  generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfils the conjecture.
+  Thus, for the proof one needs to construct a set of manifolds
+  $(\G i|i\neq2^r-1)$ that both fulfil the conjecture and represent
+  indecomposable cobordism classes.
+
+  \subsection{Stability Properties of the Conjecture}
+  The stability properties needed are the following.
+  \begin{Lem}\label{lem:brownstableunderringops}
+    Let $M_i^{n_i}$ be a closed manifold immersing into
+    $\R^{2n_i-\alpha(n_i)}$ for $i=1,2$.
+    Then both manifolds
+    \begin{enumerate}
+    \item $M_1\disjointsum M_2$ for $n_1=n_2=n$, and
+    \item $M_1\times M_2$ for $n_1$, $n_2$ arbitrary
+    \end{enumerate}
+    immerse into $\R^{2(n_1+n_2)-\alpha(n_1+n_2)}$.
+    \begin{proof}
+      $M_1\times M_2$ immerses into the real space of dimension
+      \begin{align*}
+        \left( 2n_1-\alpha(n_1) \right)
+        + \left( 2n_2-\alpha(n_2) \right)
+        &= 2(n_1+n_2) - \left(\alpha(n_1)+\alpha(n_2)\right)\\
+        &\leq 2(n_1+n_2) - \left(\alpha(n_1 + n_2)\right)
+      \end{align*}
+      where the inequality is due to the number theoretic fact
+      $\alpha(n_1+n_2) \leq \alpha(n_1)+\alpha(n_2)$.
+
+      For $n_1=n=n_2$ the images of the immersions
+      \begin{gather*}
+        \iota_1\colon M_1\to\R^{2n-\alpha(n)}
+        \qquad \text{and} \qquad
+        \iota_2\colon M_2\to\R^{2n-\alpha(n)}
+      \end{gather*}
+      are compact. So by
+      concatenation with translation they can be assumed to be disjoint,
+      wherefore the disjoint union
+      $\iota_1\disjointsum\iota_2\colon M_1\disjointsum M_2\to\R^{2n-\alpha(n)}$
+      is again an immersion.
+    \end{proof}
+  \end{Lem}
+
+
+  \subsection{Generating Set}
+  Now define the representatives of the generating set's elements as follows.
+  \begin{Thm}\label{thm:brownproof}
+    Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
+    defined by
+    \begin{align*}
+      \G 0 &\coloneqq \pt \;, \\
+      \G m &\coloneqq \Twistedprod{2^{i_1}}{\G n}
+           &\text{
+             where
+             $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
+             with $0\leq i_1<\dotsb<i_l$.
+             }
+    \end{align*}
+    Then:
+    \begin{enumerate}
+    \item\label{item:brownimmersionproperty}
+      $\G m$ immerses into $\R^{2m-\alpha(m)}$.
+    \item\label{item:indecomposabilityproperty}
+      The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
+      indecomposable, and thus
+      \begin{gather*}
+        \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
+        = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
+      \end{gather*}
+    \end{enumerate}
+  \end{Thm}
+  \begin{proof}[proof of
+    Theorem~\itemref{thm:brownproof}{item:indecomposabilityproperty}]
+    By definition, all $\G m$ either are some $\Twistedprod{2^i}{\pt}$
+    or arise from one as iterated twisted product. More precisely, for a binary
+    representation
+    \begin{align*}
+      m &= 2^{i_1}+\dotsb + 2^{i_l} \\
+        &= 2^{i_1}+ 2\cdot\big( 2^{i_2-1} + 2\cdot(\dotsc + 2\cdot 2^{i_l-l+1})\big)
+      \\\intertext{one gets}
+      \G m &\coloneqq
+             \Twistedprod{2^{i_1}}{\G{2^{i_2-1} + 2\cdot(2^{i_3-1}+\dotsb)}}\\
+        &= \Twistedprod{2^{i_1}}{
+          \Twistedprod{2^{i_2-1}}{
+          \dotsc
+          \Twistedprod{2^{i_l-l+1}}{\pt}
+          }}
+          \;.
+    \end{align*}
+    But $\Twistedprod{2^{i}}{\pt}=\RP{2^i}$ represents an indecomposable
+    element of the Cobordism ring by Example~\ref{ex:rpnindecomposable}.
+    Thus, by Corollary~\ref{cor:twistedprod:indecompcriterion} all
+    $\G m$ also represent indecomposable cobordism classes.
+  \end{proof}
+  \begin{proof}[proof of
+    Theorem~\itemref{thm:brownproof}{item:brownimmersionproperty}]
+    \optcite[p.~84, proof Thm.~1.30]{immersionconj}
+    In order to proof the immersion property of the manifolds $\G m$,
+    conduct an induction over $\alpha(m)$.
+    \begin{description}
+    \item[$\alpha(m)=1$:]
+      As an induction start note that in the case of $m=2^i$ one has
+      \begin{gather*}
+        \G m
+        =\Twistedprod{2^i}{\G 0}
+        =\Twistedprod{2^i}{\pt}
+        =\RP{2^i}
+      \end{gather*}
+      which immerses into $\R^{2m-1}=\R^{2m-\alpha(m)}$ by
+      Whitney's immersion theorem~\cite{whitneyimmersiontheorem}.
+    \item[$\alpha(m)\geq2$:]
+      For the induction step write $m=2^{i_1}+2n$ as above, and assume
+      there is an immersion
+      \begin{gather*}
+        \iota\colon\G n \immlongto \R^{2n-\alpha(n)}
+        \;.
+      \end{gather*}
+    \end{description}
+    As described in
+    Remark~\itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
+    this induces an immersion of twisted products
+    \begin{center}
+      \begin{tikzcd}[row sep=small, column sep=large]
+        (\Sphere{2^{i_1}} \times \G n\times \G n/\sim)
+        \ar[d, equals]
+        \ar[r, hookrightarrow, "1\times\iota\times\iota/\sim"]
+        &
+        (\Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim)
+        \;.
+        \ar[d, equals]
+        \\
+        \G m
+        &\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+      \end{tikzcd}
+    \end{center}
+    The latter twisted product however is a fibre bundle over
+    $\RP{2^i_1}$ as in
+    Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
+    More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
+    The needed immersion will be given by the following Lemma.
+    \begin{Lem}\label{lem:immersionvbtotalspaces}
+      \TODO{Ref. for proof?!}
+      \optcite[p.~85]{immersionconj}
+      \optcite[compare Prop. 4.3]{brown}
+      The total space of a vector bundle $E\to M^n$ of rank $k$ over a
+      closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
+    \end{Lem}
+    As a result of the Lemma, $\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}$
+    immerses into real space of dimension
+    \begin{align*}
+      2\cdot 2^{i_1} + \left(4n-2\alpha(n)\right)
+      &= 2\cdot (2^{i_1}+2n) - 2\alpha(n) \\
+      &= 2m - 2\alpha(n) \\
+      &= 2m - 2\alpha(m)+2 \\
+      &\leqby{m\geq 2}
+        2m - \alpha(m)
+        \;,
+    \end{align*}
+    so altogether one gets an immersion
+    \begin{gather*}
+      \G m
+      \immlongto \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+      \immlongto \R^{2m - \alpha(m)}
+      \;.
+    \end{gather*}
+    % \begin{proof}[proof of Lemma~\ref{lem:immersionvbtotalspaces}]
+    % \end{proof}
+  \end{proof}
+
+  %%% Local Variables:
+  %%% mode: latex
+  %%% TeX-master: "thesis"
+  %%% End:
