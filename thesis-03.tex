@@ -531,7 +531,7 @@ For the formulation recall that a sequence or partition is called
   where $\delta$ is the usual Kronecker delta.
   \begin{proof}
     See \cite[Section~IV.5, proof of Theorem~IV.9]{thom}.
-    \TODO{Do proof / construction?} % [Milnor] better source?
+    % [Milnor] better source?
   \end{proof}
 \end{Thm}
 
@@ -861,6 +861,48 @@ manifolds and fibre bundles.
   \end{enumerate}
 \end{Rem}
 
+As a last inside into the definition have a look at the twisted
+product of real spaces.
+\begin{Lem}\label{lem:twistedprodrealspace}
+  Let $k, n\in\Nat$,
+  %and denote by $\N{}$ is the normal line bundle of $\Sphere k$,
+  and by $\gamma_k$ the tautological line bundle over
+  $\RP k$.
+  The fibre bundle $\Twistedprod{k}{\R^n}\to \RP k$ is isomorphic to
+  the vector bundle
+  \begin{gather*}
+    (n\cdot\gamma_k)\oplus\trivbdl^n
+    = (\gamma_k\oplus\dotsb\oplus\gamma_k)\oplus\trivbdl^n
+  \end{gather*}
+  \begin{proof}
+    A well-defined vector bundle isomorphism is for example
+    \optcite[Prop.~4.3,p~1107]{brown}
+    \begin{align*}
+      \Twistedprod{k}{\R^n}
+      &\overset{\sim}\longto
+        (\Twistedprodcovspace{k}{\R^n}/\approx)
+        \cong (\Sphere{k}\times\R^n/\approx)\times\R^n
+        \cong \E{((n\cdot\gamma_k)\oplus\trivbdl^n)}
+      \\
+      [s, v_1, v_2]
+      &\longmapsto
+        [s, v_1+v_2, v_1-v_2]
+    \end{align*}
+    where $\approx$ is the equivalence relation identifying
+    $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$ respectively $(s,v)$ and
+    $(-s,-v)$.
+    Here it was used that $\gamma_k$ is by
+    construction
+    \begin{align*}
+      \E{\gamma_k} = (\Sphere k\times\R/\approx) &\to \RP k
+      &[s,v] &\mapsto [s]
+               \;,
+    \end{align*}
+    and hence
+    $\E{(n\gamma_k)}\cong(\Sphere k \times\R^n/\approx)$.
+  \end{proof}
+\end{Lem}
+
 \subsection{The Cohomology Ring of Twisted Products}
 Besides the above direct properties, there is a fairly easy
 description of the cohomology ring of a twisted product relating it to
@@ -1090,31 +1132,31 @@ calculations involving higher dimensional bundles.
       elements of this form, so this yields the third
       summand of $\W{\Twistedprod{k}{\xi}}$.
     \item[$\pb s_p \W{\Twistedprod{k}{\xi}}$:]
-      The pullback of $\Twistedprod{k}{\xi}$ along this section is
-      \begin{gather*}
-        \Twistedprod{k}{E_p}=\Twistedprod{k}{\R}\to \RP k
-        \;,\quad
-        [s, v_1,v_2] \mapsto [s]
-        \;.
-      \end{gather*}
-      In order to simplify this, use the well-defined vector bundle
-      isomorphism
-      \optcite[Prop.~4.3,p~1107]{brown}
+      Consider a section $s_p\colon [s]\mapsto [s,p,p]$, $p\in X$, of
+      the bundle $\Twistedprod k X\to\RP k$. Since
+      $s_p=\Twistedprod k{(\ast\mapsto p\in X)}$,
+      the pullback of $\Twistedprod{k}{\xi}$ along $s_p$ yields
       \begin{align*}
-        \Twistedprod{k}{\R}
-        &\overset{\sim}\longto
-          (\Twistedprodcovspace{k}{\R}/\approx)
-          \cong \E{(\gamma\oplus\trivbdl)} \\
-        [s, v_1, v_2]
-        &\longmapsto
-          [s, v_1+v_2, v_1-v_2]
+        \pb s_p\Twistedprod{k}{\xi}
+        &= \pb{\Twistedprod{k}{\ast\mapsto p}}
+          \left(\Twistedprod{k}{\xi}\right) \\
+        &= \Twistedprod{k}{\pb{(\ast\mapsto p)}\xi} \\
+        &= \Twistedprod{k}{\trivbdl^1}
+        \cequalsby{\ref{lem:twistedprodrealspace}}
+          \gamma_k\oplus\trivbdl^1
+          \colon
+          \Twistedprod{k}{\R} \to \RP k\;,\quad
+          [s, v_1,v_2] \mapsto [s]
+          \;.
       \end{align*}
-      where $\approx$ is the equivalence relation identifying
-      $(s,v_1,v_2)$ and $(-s,-v_1,v_2)$, and
-      $\gamma$ is the tautological line bundle for $\RP k$.
-      Then $\pb{s_p}\Twistedprod{k}{\xi} \cong
-      \gamma\oplus\trivbdl$ and $\pb{s_p}\W{\xi} =
-      \W{\gamma\oplus\trivbdl} = 1+x$, completing the proof.
+      Then
+      \begin{gather*}
+        \pb{s_p}\W{\Twistedprod{k}{\xi}}
+        = \W{\pb{s_p}\Twistedprod{k}{\xi}}
+        = \W{\gamma\oplus\trivbdl}
+        = 1+x\in\H^*(\RP k)
+      \end{gather*}
+      completing the proof.
       \qedhere
     \end{description}
   \end{proof}
@@ -1132,7 +1174,13 @@ The essential step is to find the relation of a twisted product to
 \end{enumerate}
 in a useful way.
 This can be done using an alternative pushout construction, which is
-explained below. The proofs are omitted since all facts are easy to check.
+explained below. The proofs are omitted since all facts are easy to
+check.
+
+Having constructed a diagram of pairs of spaces with a corresponding
+one of cohomology groups, the more tedious part then is to finalise
+the proof with an inductive diagram chase.
+
 \begin{Fact}
   Let $X$ again be a space and $k\in\Nat_{\geq1}$.
   \begin{enumerate}
@@ -1492,7 +1540,6 @@ Some further immediate results are:
   \item\label{item:twistedprodcohom:prelim:j}
     $\pb j(s_k\otimes f)\cdot u
     = \pb j\left(s_k\otimes(f\cdot \pb\iota\pb\pi(u))\right)$
-    % TODO: other immediate results
   \end{enumerate}
   \begin{proof}
     For \ref{item:twistedprodcohom:prelim:j} first observe that the
@@ -2246,6 +2293,7 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     The latter twisted product however is a fibre bundle over
     $\RP{2^i_1}$ as in
     Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
+    % TODO: It is the total space of some product of line bundles
     More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
     The needed immersion will be given by the following Lemma.
     \begin{Lem}\label{lem:immersionvbtotalspaces}
