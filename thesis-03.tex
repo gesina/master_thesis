@@ -1004,6 +1004,9 @@ Use the following notation.
   For readability skip $1\otimes-$ and $-\otimes d(1)$ in element
   notation wherever it is clear to which part the summand
   belongs.
+  Further note that $D$ is multiplicative, but not additively closed,
+  whereas $(N+D)\subset\H^*(X^2)$ is a subring via
+  $d(a)+d(b) = d(a+b)+(a\otimes b+ b\otimes a)$.
 \end{Thm}
 
 \begin{Cor}
@@ -1179,7 +1182,8 @@ check.
 
 Having constructed a diagram of pairs of spaces with a corresponding
 one of cohomology groups, the more tedious part then is to finalise
-the proof with an inductive diagram chase.
+the proof with an inductive diagram chase, which is given for
+completeness but may be skipped by the reader.
 
 \begin{Fact}
   Let $X$ again be a space and $k\in\Nat_{\geq1}$.
@@ -1593,44 +1597,30 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
   \begin{align*}
     \H^*(\Twistedprod{k}{X})
     &\cong
-      \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+      \bc k\otimes D
+      \oplus \left(\bigoplus_{i=1}^{k-1} \bc i\otimes D\right)
       \oplus (1\otimes(N+D))
       \oplus (s\otimes N)
     \\
     &\cong
-      \left(\bigoplus_{i=1}^k c^i\otimes D\right)
+      \bar c^{(k)}\otimes D
+      \oplus \left(\bigoplus_{i=1}^{k-1} \b c i\otimes D\right)
       \oplus (1\otimes D)
       \oplus (1\otimes N)
       \oplus (s\otimes N)
-    \\
-    &\cong
-      \left(\H^*(\RP k) \otimes D \right)
-      \oplus \left(\H^*(\Sphere k) \otimes N\right)
+    % \\
+    % &\cong
+    %   \left(\H^*(\RP k) \otimes D \right)
+    %   \oplus \left(\H^*(\Sphere k) \otimes N\right)
   \end{align*}
-  with the additive relation $c\otimes d(a)+c\otimes d(b)=c\otimes d(a+b)$ for
-  $a,b\in\H^*(X)$, and which is equipped with a multiplication determined by:
+  with the additive relation
+  $\bc i\otimes d(a) + \bc i\otimes d(b)=\bc i\otimes d(a+b)$ for
+  $a,b\in\H^*(X)$ and $1\leq i\leq k$,
+  which is equipped with a multiplication determined by:
   \begin{enumerate}
-  \item\label{twistedprodcohom:proof:proj}
-    $\pb\proj$ is a ring isomorphism onto its image and looks like
-    \begin{align*}
-      \pb\proj\colon \H^*(\RP k) &\to \H^*(\RP k)\otimes d(1)
-                                   \subset \H^*(\Twistedprod k X),
-      &x^i &\mapsto c^i\otimes d(1)
-    \end{align*}
-    \idest
-    $(c^i\otimes d(1))\cdot(c^j\otimes d(1)) = c^{i+j}\otimes d(1)$
-    for $0\leq i+j\leq k$, and $0$ else.
-  \item
-    $(c^i\otimes d(b)) \cdot (1\otimes d(a)) = c^i\otimes d(ab)$,
-    so
-    $c^i\otimes d(a)
-    \cequalsby{\ref{twistedprodcohom:proof:proj}}
-    (c\otimes d(1))^i\cdot (1\otimes d(a))$.
-  \item 
-    $(c\otimes d(1)) \cdot (1\otimes N) = 0$.
-  \item 
-    $(c\otimes d(1)) \cdot (s\otimes N) = 0$.
-  \item The following restriction of $\pb\pi$ is a ring isomorphism onto
+    % TODO: order labels sensibly
+  \item\label{twistedprodcohom:proof:0}
+    The following restriction of $\pb\pi$ is a ring isomorphism onto
     its image
     \begin{align*}
       \pb\pi\colon
@@ -1639,35 +1629,78 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
         (1\otimes(D+N))\oplus(s_k\otimes N)
         \subset\H^*(\Sphere k\times X^2)
       \\
-      1\otimes d + 1\otimes n_1 + s_k\otimes n_2
+      1\otimes d + 1\otimes n_1 + s\otimes n_2
       &\longmapsto
         1\otimes(d+n_1) + s_k\otimes n_2
         \;.
     \end{align*}
-    % \idest for $f,g\in N+D$, $n,n'\in N$:
-    % \begin{enumerate}
-    % \item $(1\otimes f) \cdot (1\otimes g)= 1\otimes fg$,
-    % \item $(1\otimes f) \cdot (s\otimes g)= s\otimes fg$, and
-    % \item $(s\otimes n)\cdot (s\otimes n')=0$.
-    % \end{enumerate}
+  \item\label{twistedprodcohom:proof:1}
+    $(\bc i\otimes d(a))\cdot (\bc j\otimes d(b))
+    = \bc{i+j}\otimes d(ab)$ for $1\leq i,j,i+j\leq k-1$,
+    so $\bc i\otimes d(1) = (\bc 1\otimes d(1))^i$.
+  \item\label{twistedprodcohom:proof:2}
+    $(\bc i\otimes d(a))\cdot(1\otimes d(b))
+    = \bc i\otimes d(ab)$ for $1\leq i\leq k-1$,
+    so $\bc i\otimes D = (\bc 1\otimes 1)^i\cdot (1\otimes D)$.
+  \item\label{twistedprodcohom:proof:3}
+    % TODO: merge with label 2
+    $(\bc k\otimes d(a))\cdot(1\otimes d(b))
+    = \bc k\otimes d(ab)$,
+    so $\bc k\otimes D = (\bc 1\otimes 1)^i\cdot (1\otimes D)$.
+  \item\label{twistedprodcohom:proof:4}
+    $\pb\proj(x^k) = \bc k\otimes d(1)$ and
+    $\pb\proj(x) = \bc 1\otimes d(1)$,
+    so $(\bc 1\otimes d(1))^k = \bc k\otimes d(1)$ and
+    \begin{gather*}
+      \ker\pb\pi
+      = (\bc k\otimes D)
+      \oplus \left( \bigoplus_{i=1}^{k-1}\bc i\otimes D \right)
+        = \sum_{i=1}^k c^i\cdot (1\otimes D)
+        \;.
+      \end{gather*}
+    \item\label{twistedprodcohom:proof:5}
+      $c\cdot (1\otimes N + s\otimes N) = 0$,
+      so $(\bc i \otimes D)\cdot (1\otimes N + s\otimes N) = 0$
+      for $1\leq i\leq k$.
   \end{enumerate}
-  Note that with $\pb\pi(c\otimes d(1)) = 0$ the above also implies
-  \begin{gather*}
-    \ker(\pb\pi)
-    = (c\otimes d(1))\cdot \H^*(\Twistedprod k X)
-    = \left(\bigoplus_{i=1}^k c^i\otimes D\right)
-    \;.
-  \end{gather*}
 \end{Thm}
+\begin{Rem}
+Note that the demanded multiplication properties of the
+$\Zmod2$-vector space in the theorem do already fully qualify a
+multiplication, as all cases of combinations of components are
+covered ($1\leq i,j\leq k$):
+\begin{description}
+\item[$(1\otimes(D+N)\oplus s\otimes N)\cdot (1\otimes(D+N)\oplus s\otimes N)$:]
+  \ref{twistedprodcohom:proof:0}
+\item[$(\bc i\otimes D)\cdot (\bc j\otimes D)$:]
+  By \ref{twistedprodcohom:proof:1} and \ref{twistedprodcohom:proof:2}
+  $(\bc i\otimes D)=(\bc 1\otimes 1)\cdot (1\otimes D)$,
+  which can be simplified with
+  $(\bc 1\otimes 1)=c_k\coloneqq \pb\proj x_k$
+  from \ref{twistedprodcohom:proof:4}
+  to $(\bc i\otimes D)=c^i\cdot(1\otimes D)$.
+  Analogously with \ref{twistedprodcohom:proof:3}
+  and \ref{twistedprodcohom:proof:4}
+  $(\bc k\otimes D) = c^k\cdot(1\otimes D)$.
+\item[$(\bc i\otimes D)\cdot (1\otimes D)$:]
+  \ref{twistedprodcohom:proof:2} resp. \ref{twistedprodcohom:proof:3}
+  for the case $i=k$
+\item[$(\bc i\otimes D)\cdot (1\otimes N) = 0$:]
+  \ref{twistedprodcohom:proof:5}
+\item[$(\bc i\otimes D)\cdot (s\otimes N) = 0$:]
+  \ref{twistedprodcohom:proof:5}
+\end{description}
+\end{Rem}
 \begin{proof}[proof of
   Theorem~\ref{thm:twistedprod:cohomstructure:alt}
   respectively Theorem~\ref{thm:twistedprod:cohomstructure}]
   This is roughly geared to the proof in \cite[Theorem~7.1]{brown}.
-  The idea of the induction on $k$ is to split up the $\Zmod2$-vector
-  space $\H^*(\Twistedprod k X)$ into direct summands which are either known
-  from the case $k-1$, or calculable,
-  and then check the still needed multiplication and isomorphism
-  properties.
+  With the above reformulation, the proof is a straight forward
+  induction on $k$.
+  \Idest split up the $\Zmod2$-vector space $\H^*(\Twistedprod k X)$
+  into direct summands of the form in the theorem, which are then
+  either known from the case $k-1$, or calculable, and then check the
+  needed multiplication and isomorphism properties.
   The split looks as follows:
   \begin{align*}
     \Im\pb j
@@ -1692,16 +1725,28 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
       \oplus \ker(\tilde\delta|_{\Im\pb\pi_{k-1}})
       \oplus \ker\pb\pi_{k-1}
   \end{align*}
-  In the end this will look like
+  In the end this is supposed to look like
   \begin{align*}
-    \ker\pb\pi_{k-1} &= c_{k-1}\cdot\H^*(\Twistedprod{k-1}X)
-                       \cong \bigoplus_{i=1}^{k-1} c_k^i\otimes D \\
     \pb j(\ker(\pb\pi\pb j))
-    &= c_k^k\cdot(\pb\pi)^{-1}(1\otimes D)\cong c^k\otimes D \\
-    \ker(\tilde\delta|_{\Im\pb\pi_{k-1}}) &= 1\otimes(N+D) \\
-    \Im(\pb\pi\pb j) &\cong s_k\otimes N
+    &= c_k^k\cdot(\pb\pi)^{-1}(1\otimes D)\cong c^k\otimes D
+    \\
+    \ker\pb\pi_{k-1}
+    &= {\textstyle\bigoplus_{i=1}^{k-1}} c_{k-1}^i\otimes D
+    \\
+    \ker(\tilde\delta|_{\Im\pb\pi_{k-1}})
+    &= 1\otimes(N+D)
+    \\
+    \Im(\pb\pi\pb j) &= s_k\otimes N
   \end{align*}
-  Without inductive arguments one can already obtain the following results:
+  so the correspondents to the symbols from the theorem's notation are
+  $\bc i = c_{k-1}^i$ for $i\leq k-1$, $\bc k = c_k^k$, $s=s_k$.
+
+  \minisec{Induction step}
+  We will start with the induction step, so assume for a space $X$ and
+  $k>1$ that Theorem~\ref{thm:twistedprod:cohomstructure:alt} holds in
+  the case $k-1$.
+  Begin with identifying the direct summands of the vector space,
+  carefully tracking where the induction assumption
   \begin{description}
   \item[$\Im(\pb\pi\pb j)=s_k\otimes N$:]
     Recall from
@@ -1718,78 +1763,6 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     Obviously $\pb\pi$ maps this part of $\H^*(\Twistedprod k X)$
     isomorphically to $s_k\otimes N\subset\H^*(\Sphere k\times X^2)$,
     already inducing multiplication.
-  \item[$\pb j(\ker(\pb\pi\pb j))=c^k\cdot((\pb\pi)^{-1}(1\otimes(D+N)))$:]
-    Again recall
-    Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:pij}
-    to directly obtain
-    $\ker(\pb\pi\pb j) = s_k\otimes(N+D)$.
-    So one has in general
-    \begin{align*}
-      \pb j(\ker(\pb\pi\pb j))
-      &= \pb j(s_k\otimes(N+D)) \\
-      &\equalsby{Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:j}}
-        \pb j(s_k\otimes 1\otimes 1) \cdot (\pb\iota\pb\pi)^{-1}(N+D) \\
-      &= c^k \cdot \left( (\pb\pi)^{-1}(1\otimes N)
-        +  (\pb\pi)^{-1}(1\otimes D) \right)
-        \subset \ker\pb\pi 
-    \end{align*}
-  \item[$\pb j(\ker(\pb\pi\pb j))\cdot\Im(\pb\pi\pb j)=0$:]
-    Since for any
-    $c^k\cdot u\in \pb j(\ker(\pb\pi\pb j))$ and
-    $s_k\otimes f\in\Im(\pb\pi\pb j)$
-    \begin{align*}
-      c^k\cdot u \;\cdot\; s_k\otimes f
-      &= \pb j(s_k\otimes 1\otimes 1)\cdot s_k\otimes f \cdot u \\
-      &\equalsby{Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:j}}
-        \pb j(s_k\otimes\pb\iota\pb\pi(s_k\otimes f)) \cdot u \\
-      &\equalsby{$\pb\iota\pb\pi(s_k\otimes f)=\pb\iota(s_k\otimes f)=0$}
-        0
-        \;,
-    \end{align*}
-    one has $\pb j(\ker(\pb\pi\pb j))\cdot\Im(\pb\pi\pb j)=0$.
-  \end{description}
-
-  \minisec{Induction step}
-  We will start with the induction step, so assume for a space $X$ and
-  $k>1$ that Theorem~\ref{thm:twistedprod:cohomstructure:alt} holds in
-  the case $k-1$.
-  First determine the exact structure of the direct summands.
-  \begin{description}
-  \item[$\pb j(\ker(\pb\pi\pb j))\cong c^k\otimes D$:]
-    The induction assumption yields
-    \begin{align*}
-      \ker\pb j
-      = \im\delta
-      &= \im(\tilde\delta\pb\pi_{k-1}) \\
-      &= \tilde\delta(\im\pb\pi_{k-1})
-        = \tilde\delta((1\otimes(N+D)) \oplus (s_{k-1}\otimes N)) \\
-      &= s_k\otimes N
-        \;.
-    \end{align*}
-    Hence the general result from above simplifies as follows: 
-    \begin{gather*}
-      \pb j(\ker(\pb\pi\pb j))
-      = \pb j(s_k\otimes D) + \pb j(s_k\otimes N)
-      = \pb j(s_k\otimes D)
-      = c^k\cdot (1\otimes D)
-    \end{gather*}
-    where for the last equality it was used that
-    $(1\otimes D)\subset\ker\delta$ is mapped bijectively onto $D$ by
-    $\pb\iota\pb\pi$, and that for elements
-    $u,u'\in\H^*(\Twistedprod k X)$ with $\pb\pi(u)=\pb\pi(u')$
-    \begin{gather*}
-      c^k\cdot u
-      =\pb j(s_k\otimes\pb\iota\pb\pi(u))
-      =\pb j(s_k\otimes\pb\iota\pb\pi(u'))
-      =c^k\cdot u'
-      \;.
-    \end{gather*}
-    Furthermore, $\pb j$ is injective on $s_k\otimes D$, giving
-    ring isomorphisms
-    \begin{gather*}
-      c^k\cdot (1\otimes D)\cong s_k\otimes D\cong c^k\otimes D
-      \;.
-    \end{gather*}
   \item[$\ker(\tilde\delta|_{\Im\pb\pi_{k-1}})\cong 1\otimes (D+N)$:]
     By the assumption on $k-1$
     \begin{gather*}
@@ -1805,93 +1778,127 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     the identity on $1\otimes(D+N)\in\H^*(\Sphere k\times X^2)$,
     $\pb\pi_{k}$ and $\pb i$ are both the identity on
     $\ker(\tilde\delta|_{\Im\pb\pi_{k-1}})$, inducing ring structure
-    on this direct summand.
-  \item[$\ker(\pb\pi_{k-1})\cong \bigoplus_{i=1}^{k-1} c_k^i\otimes D$:]
-    By induction assumption
-    \begin{align*}
-      \ker(\pb\pi_{k-1})
-      \cong \bigoplus_{i=1}^{k-1} c_{k-1}^i\otimes D
-      &= \sum_{i=1}^{k-1} c_{k-1}^i\cdot (1\otimes D) \\
-      &=
-        \sum_{i=1}^{k-1} \pb i(c_k)^i\cdot \pb i(1\otimes D) 
-      \cong
-        \sum_{i=1}^{k-1} c_k^i\cdot (1\otimes D)\;.
-    \end{align*}
-    where the last step uses the fact that $\pb i$ maps one
-    bijectively onto the other. Surjectivity is clear since
-    $\ker(\pb\pi_{k-1})\subset\ker\delta=\Im\pb i$.
-    For injectivity, one needs the result from above that $\pb i$ is
-    injective on $1\otimes D$. Then any two elements
-    $c^r\cdot d(a)$, $c^{r'}\cdot d(a')$, with
-    $a,a'\in\H^*(X)$ and $r,r'<k$ such that
+    on this subring.
+  \item[$\ker(\pb\pi_{k-1})\cong \bigoplus_{i=1}^{k-1} c_{k-1}^i\otimes D$:]
+    This holds by the induction assumption.
+    Note that by construction $\pb i$ is injective on this direct
+    summand which is a direct summand of $\Im\pb i$,
+    hence the ring structure is inherited.
+    In order to see that this summand lies in the kernel of
+    $\pb\pi_k$, one has to first see that
+    $c_k=c_{k-1}\otimes d(1)\in\H^*(\Twistedprod k X)$, respectively
+    in the direct sum notation
     \begin{gather*}
-      c_{k-1}^r\cdot d(a)
-      = \pb i(c^r\cdot (1\otimes d(a)))
-      = \pb i(c^{r'}\cdot (1\otimes d(a')))
-      = c_{k-1}^{r'}\cdot d(a')
+      c_k = f + 1\otimes d(a) + 1\otimes n + s\otimes n'
+      + \sum_{i=1}^{k-1} c_{k-1}^i\otimes d(a_i)
     \end{gather*}
-    must fulfil $r=r'$ and $a=a'$, and thus coincide.
-    One can also simplify the expression by
+    all summands are zero except for $c_{k-1}\otimes d(1)$.
+    So check all possible components:
+    \begin{itemize}
+    \item $f\in\pb j(\ker\pb\pi\pb j)$ has degree greater $k$ as will
+      be seen below, so with $k>1$ from the induction assumption has
+      to be zero.
+    \item $\pb i(c_k) = c_{k-1}$, so $1\otimes d(a)+1\otimes n=0$.
+    \item $\pb\pi(c_k)= 0$, so $s\otimes n'=0$.
+    \end{itemize}
+    Thus
+    $\ker(\pb\pi_{k-1})
+    \cong \sum_{k=1}^{k-1}c_k^i\cdot (1\otimes D)
+    \subset\ker\pb\pi$.
+  \item[$\pb j(\ker(\pb\pi\pb j))\cong c_k^k\otimes D$:]
+    Again recall
+    Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:pij}
+    to directly obtain
+    $\ker(\pb\pi\pb j) = s_k\otimes(N+D)$.
+    So one has in general
+    \begin{align*}
+      \pb j(\ker(\pb\pi\pb j))
+      &= \pb j(s_k\otimes(N+D)) \\
+      &\equalsby{Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:j}}
+        \pb j(s_k\otimes 1\otimes 1) \cdot (\pb\iota\pb\pi)^{-1}(N+D) \\
+      &= c^k \cdot \left( (\pb\pi)^{-1}(1\otimes (D+N))\right)
+        \subset \ker\pb\pi
+        \;.
+    \end{align*}
+    Note that this lives, as was used above, in degree greater $k-1$.
+    Since by
+    Corollary~\itemref{cor:twistedprodcohom:prelim}{item:twistedprodcohom:prelim:pij}
+    $c^k\cdot \ker\pb\pi=\pb
+    j(s_k\otimes\pb\iota\pb\pi(\ker\pb\pi))=\pb j(s_k\otimes 0)=0$
+    and the effect of $\pb\pi$ on all direct summands is known:
+    \begin{align*}
+      \pb j(\ker(\pb\pi\pb j))
+      &= c^k \cdot \left( (\pb\pi)^{-1}(1\otimes (D+N))\right) \\
+      &= c^k \cdot \left( \ker\pb\pi + (1\otimes (D+N))\right) \\
+      &= c^k \cdot (1\otimes (D+N))
+    \end{align*}
+    The next step is to use that by induction assumption and the form
+    of $\tilde\delta$ holds
     \begin{gather*}
-      c_k^i\cdot (1\otimes D)
-      \cong c_{k-1}^i\otimes D
-      \cong c_k^i\otimes D
-      \qquad\quad
-      \sum_{i=1}^{k-1}c_k^i\cdot (1\otimes D)
-      \cong \bigoplus_{i=1}^{k-1} c_k^k\otimes D
+      \ker\pb j=\Im\delta=\Im\tilde\delta\pb\pi = s_k\otimes N
+    \end{gather*}
+    hence $c^k\cdot (\pb\pi)^{-1}(1\otimes N) = \pb j(s_k\otimes N)=0$,
+    $c^k\cdot -$ is injective on the set $(1\otimes D)$, and
+    \begin{align*}
+      c^k\cdot(1\otimes d(a)) + c^k \cdot(1\otimes d(b))
+      &= c^k\cdot \left( 1\otimes (d(a)+d(b)) \right) \\
+      &= c^k\cdot \left( 1\otimes
+      (d(a+b) + a\otimes b + b\otimes a)
+      \right) \\
+      &= c^k\cdot (1\otimes d(a+b)) + c^k\cdot(a\otimes b + b\otimes a)\\
+      &= c^k\cdot (1\otimes d(a+b))
+        \;.
+    \end{align*}
+    Altogether, this yields the desired isomorphism
+    \begin{gather*}
+      \pb j(\ker(\pb\pi\pb j))
+      = c_k^k\cdot(\pb\pi)^{-1}(1\otimes D)\cong c^k\otimes D
       \;.
     \end{gather*}
   \end{description}
-  Note that in identifying the direct summands with their ring structure,
-  the claims on $\pb\pi$ and $\pb\proj$ have already been verified.
-  Namely, $\pb\pi$ maps the components $1\otimes(N+D)$ and
-  $s_k\otimes N$ isomorphically onto their images, and the embedding
-  of the direct summand $\H^*(\RP k)$ is given by $\pb\proj(x)=c$
-  by definition.
-
-  It remains to check the multiplication properties.
-  However, by the structure of the isomorphisms it is clear that
-  \begin{gather*}
-    (c^i\otimes d(b))\cdot (1\otimes d(a))
-    = c^i\cdot (1\otimes d(b))\cdot (1\otimes d(a))
-    = c^i\cdot (1\otimes d(ab))
-    = c^i\otimes d(ab)
-    \;,
-  \end{gather*}
-  and it was already shown that
-  $c^k\cdot (1\otimes N + s_k\otimes N)=0$.
-  Taking a closer look at $\ker\delta$, it is clear that
-  \begin{align*}
-    \ker\delta
-    &\cong \ker(\pb\pi_{k-1})
-    + (\pb\pi_{k-1})^{-1}(\ker(\tilde\delta)) \\
-    &= \left(\sum_{i=1}^{k-1} c_{k-1}^i \otimes D \right)
-    + \left(\sum_{i=1}^{k-1} c_{k-1}^i \otimes D
-      + 1\otimes(N+D)
-      \right) \\
-    &= \sum_{i=1}^{k-1} c_{k-1}^i \otimes D
-      + 1\otimes(N+D) \\
-    &= \ker(\pb\pi_{k-1}) + 1\otimes(N+D)
-  \end{align*}
-  which however induces the multiplication of $c^i\otimes D$ with
-  $1\otimes(N+D)$ for $1\leq i\leq k-1$, as $\pb i$ is an isomorphism
-  restricted to the direct summand $\ker\delta$.
-
+  Now it remains to check the multiplication properties:
+  \begin{description}
+  \item[\ref{twistedprodcohom:proof:0}:]
+    Checked during construction.
+  \item[\ref{twistedprodcohom:proof:1}, \ref{twistedprodcohom:proof:2}:]
+    These are the multiplication properties induced by $\pb i$ being
+    injective on the corresponding summands, thus inheriting the
+    multiplication properties from the induction assumption.
+  \item[\ref{twistedprodcohom:proof:3}:]
+    It was shown that $c^k\otimes D\cong c^k\cdot (1\otimes D)$.
+  \item[\ref{twistedprodcohom:proof:4}:]
+    This was shown during the identification of $\ker(\pb\pi_{k-1})$
+    as part of $\ker\pb\pi$.
+  \item[\ref{twistedprodcohom:proof:5}:]
+    $c_k\cdot(1\otimes N)$ is inherited via $\pb i$ from the assumed
+    structure of $\H^*(\Twistedprod{k-1} X)$ using
+    $c_k = c_{k-1}\otimes d(1)$.
+    The fact $c_k\cdot(s_k\otimes N)=0$ follows from
+    \begin{gather*}
+      \ker\pb\pi\pb j\cdot\Im\pb j
+      \subset \pb j(s_k\otimes(\H^*(X)\cdot \pb\iota\pb\pi(\ker\pb\pi)))
+      = \pb j(s_k\otimes 0) = 0
+    \end{gather*}
+    using $c_k\in\ker\pb\pi$, and $(s_k\otimes N)\subset\Im\pb j$.
+  \end{description}
+  
   \minisec{Induction Start}
-  The case $k=0$ is fairly analogous but much simpler as
-  $\Twistedprod 0 X=X^2$. Thus, using the known formula
+  The case $k=0$ is a bit simpler as
+  $\Twistedprod 0 X=X^2$. One still has
+  $\Im\pb\pi\pb j=s_1\otimes N$, and, using the known formula
   \begin{gather*}
     \pb\pi(a\otimes b)=(1\otimes a\otimes b, s_0\otimes b\otimes a)
     \in \H^*(S^0\times X^2)=\H^*(X^2)^2
+    \;,
   \end{gather*}
   one gets
   $\delta(a\otimes b)
   = \tilde\delta\pb\pi(a\otimes b)
   = s_1\otimes(a\otimes b + b\otimes a)$, giving
-  $\ker\delta=N+D$, $\Im\delta = \ker\pb j = s_1\otimes N$.
-  Hence, analogously to the above procedure, one obtains
-  $\pb j (\ker(\pb\pi\pb j)) \cong c\otimes D$,
-  $c\cdot (1\otimes N) = 0$ and all other relations.
+  $\ker\delta=N+D$, and $\Im\delta = \ker\pb j = s_1\otimes N$.
+  Hence, analogously to above, one obtains
+  $\pb j (\ker(\pb\pi\pb j)) \cong c\otimes D$ and
+  $c\cdot (1\otimes N + s_1\otimes N) = 0$.
 \end{proof}
 
 
@@ -2294,15 +2301,23 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     $\RP{2^i_1}$ as in
     Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
     % TODO: It is the total space of some product of line bundles
-    More precisely, it is a vector bundle of dimension $4n-2\alpha(n)$.
-    The needed immersion will be given by the following Lemma.
-    \begin{Lem}\label{lem:immersionvbtotalspaces}
-      \TODO{Ref. for proof?!}
-      \optcite[p.~85]{immersionconj}
+    More precisely, it is the well-known vector bundle
+    $((2n-\alpha(n))\gamma_{2^{i_1}})\oplus\trivbdl^{2n-\alpha(n)}$
+    by Lemma~\ref{lem:twistedprodrealspace} where $\gamma_{2^{i_1}}$
+    is the tautological line bundle.
+    The immersion properties of its total space have been analysed by
+    Mahowald and Milgram in \cite{mahowald} with the following result:
+    \begin{Lem}[{\cite[Theorem~4.1, p.~418]{mahowald}}]
+      \label{lem:immersionuniversalbdl}
+      % Wrong attempt \optcite[p.~85]{immersionconj}:
+      % The total space of a vector bundle $E\to M^n$ of rank $k$ over a
+      % closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
       \optcite[compare Prop. 4.3]{brown}
-      The total space of a vector bundle $E\to M^n$ of rank $k$ over a
-      closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
+      For $p,q\in\Nat$ odd and the total space of $(p+1)\gamma_q$ immerses
+      in Euclidean space of dimension $2q+p+1-\alpha(p+q+1)+alpha(p+1)$.
     \end{Lem}
+    Applying this to $p=2n-1$ and $q=2^{i_1}$
+    % TODO: Does not work, q not odd ... !!!
     As a result of the Lemma, $\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}$
     immerses into real space of dimension
     \begin{align*}
