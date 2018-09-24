@@ -2218,12 +2218,38 @@ The stability properties needed are the following.
 
 \subsection{Generating Set}
 \subsubsection{Even Dimensional Generators}
-Even dimensional generators are either projective spaces or
-submanifolds of codimension one of a product of such.
-These products will look as follows.
+The idea in finding even dimensional generators is to use the
+following immersion properties of real projective spaces, which have
+been investigated in detail throughout the last decades:
+\begin{Lem}\label{lem:immersionrealprojspace}
+  \begin{enumerate}
+  \item
+    $\RP{2^i}$ immerses into Euclidean space of dimension
+    $2\cdot2^i-1$.
+  \item
+    $\RP{k}$ immerses into Euclidean space of dimension
+    $2k-3$ for $k\geq 5$ odd, \idest overfulfils the immersion
+    property in case $\alpha(k)=2$.
+  \end{enumerate}
+  \begin{proof}
+    The first statement is Whitney's immersion
+    theorem~\cite{whitneyimmersiontheorem}.
+    The second one is a collection of results by Sanderson
+    presented in \cite{sanderson}, more precisely it is
+    \cite[Theorem~(5.3)]{sanderson} for the case $k>8$, and
+    \cite[Theorem~(4.1)]{sanderson} yields immersions
+    $\RP 5\immto\R^7$, and $\RP 7\immto\R^8$.
+  \end{proof}
+\end{Lem}
+The trick now will be to utilise the above nice immersion property of
+odd dimensional projective spaces. More precisely, the following odd
+dimensional product of projective spaces overfulfils the immersion
+property by at least three, wherefore all (even-dimensional)
+submanifolds of codimension one fulfil the immersion property.
 \begin{Def}
-  Let $m\in\Nat$ be even with minimal binary expansion
-  $n=2^{i_1}+\dotsb+2^{i_l}$, $k_r\coloneqq 2^{i_r}$.
+  Let $m\in\Nat$ be even and $\alpha(m)>1$ (\idest $m$ is not of the
+  form $2^{i}$) with minimal binary expansion 
+  $m=2^{i_1}+\dotsb+2^{i_l}$, $k_r\coloneqq 2^{i_r}$.
   Define
   \begin{gather*}
     K^{m+1}\coloneqq \left(\prod_{r=1}^{l-1} \RP{k_r}\right) \times \RP{k_l+1}
@@ -2239,10 +2265,31 @@ These products will look as follows.
   \end{align*}
   given by the Künneth isomorphism.
 \end{Def}
+\begin{Lem}
+  For $m$ as above $K^{m+1}$ immerses into $\R^{2m-\alpha(m)}$
+  \begin{proof}
+    Observe that
+    $m=2^{i_1}+\dotsb +2^{i_{\alpha(m)}}$ with $0<i_r< i_{r+1}$ and
+    $k_l=2^{i_{\alpha(m)}}\geq 5$ by assumption, so $\RP{k_l+1}$
+    immerses into Euclidean space of dimension $2(k_l+1)-3=2k_l-1$ by
+    the Lemma.
+    Altogether this yields an immersion of $K^{m+1}$ into Euclidean
+    space of dimension
+  \begin{gather*}
+    \sum_{r=1}^{k-1}(2k_r-1) + 2k_l-1
+    = 2\left(\sum_{r=1}^{k}\right) - l
+    = 2m - \alpha(m)
+    \;.
+    \qedhere
+  \end{gather*}
+  \end{proof}
+\end{Lem}
 
-Recall that the Steenrod problem on realising homology classes by
-submanifolds is solved for homology classes in degree of codimension
-one, \idest:
+
+In order to define submanifolds of the above $K^{m+1}$ which are
+additionally indecomposable in the cobordism ring, recall that the
+Steenrod problem on realising homology classes by submanifolds is
+solved for homology classes in degree of codimension one, \idest:
 \begin{Lem}
   Let $M^n$ be a manifold. Then for every homology class
   $\alpha\in\H_{n-1}(M)$ there is a submanifold $N$ and an embedding
@@ -2251,17 +2298,24 @@ one, \idest:
     See \cite[Theorem~II.26]{thom}.
   \end{proof}
 \end{Lem}
-Thus the following is well-defined.
-\begin{LemDef}\label{lem:evengen}
-  Let $m$ be even. Define
+
+Thus the following candidates for even-dimensional generators are
+well-defined.
+\begin{Def}\label{lem:evengen}
+  Let $m$ be even. Define for
   \begin{description}
-  \item[for $\alpha(m)=1$:] $\G m = \RP m$, and
-  \item[for $\alpha(m)>1$:]
-    $\incl\colon\G m\subset K^{m+1}$ is the submanifold of
+  \item[$\alpha(m)=1$:] $\G m = \RP m$.
+  \item[$\alpha(m)>1$:]
+    $\emb\colon\G m\subset K^{m+1}$ is the submanifold of
     codimension one realising the Poincaré dual of
-    $y=\sum_{r=1}^{l-1}x_{i_r} + x_{i_{l+1}}\in\H^1(K^{m+1})$.
+    $y=\sum_{r=1}^{l-1}x_{i_r} + x_{i_{l+1}}\in\H^1(K^{m+1})$,
+    \idest $\pf\emb\fundcl{\G m}=y\cap\fundcl{K^{m+1}}$.
   \end{description}
-  Then
+\end{Def}
+
+
+\begin{Lem}
+  Let $m=\sum_{r=1}^l k_r$ be even as in the definition above.
   \begin{enumerate}
   \item\label{lem:evengen:immersionprop}
     $\G m$ immerses into $\R^{2m-\alpha(m)}$, and
@@ -2269,60 +2323,41 @@ Thus the following is well-defined.
     $\G m$ represents an indecomposable element of the
     cobordism ring.
   \end{enumerate}
-\end{LemDef}
+\end{Lem}
 \begin{proof}[proof of
-  Lemma~\itemref{lem:evengen}{lem:evengen:immersionprop}
-  (immersion property)]
-  For the immersion property one can use the following known
-  results on immersions of real projective spaces:
-  \begin{Lem}
-    \begin{enumerate}
-    \item
-      $\RP{2^i}$ immerses into Euclidean space of dimension
-      $2\cdot2^i-1$.
-    \item
-      $\RP{k}$ immerses into Euclidean space of dimension
-      $2k-3$ for $k\geq 5$ odd, \idest overfulfils the immersion
-      property in case $\alpha(k)=2$.
-    \end{enumerate}
-    \begin{proof}
-      The first statement is Whitney's immersion
-      theorem~\cite{whitneyimmersiontheorem}.
-      The second one is a collection of results by Sanderson
-      presented in \cite{sanderson}, more precisely it is
-      \cite[Theorem~(5.3)]{sanderson} for the case $k>8$, and
-      \cite[Theorem~(4.1)]{sanderson} yields immersions
-      $\RP 5\immto\R^7$, and $\RP 7\immto\R^8$.
-    \end{proof}
-  \end{Lem}
-  Now the case $\alpha(m)=1$ is clear.
-  In the case $\alpha(m)>1$, observe that
-  $m=2^{i_1}+\dotsb +2^{i_{\alpha(m)}}$ with $0<i_r< i_{r+1}$ and
-  $k_l=2^{i_{\alpha(m)}}\geq 5$, so $\RP{k_l+1}$ immerses into
-  Euclidean space of dimension $2(k_l+1)-3=2k_l-1$ by the Lemma.
-  Altogether this yields an immersion of $\G m$ into $K^{m+1}$ and
-  then into Euclidean space of dimension
-  \begin{gather*}
-    \sum_{r=1}^{k-1}(2k_r-1) + 2k_l-1
-    = 2\left(\sum_{r=1}^{k}\right) - l
-    = 2n - \alpha(n)
-    \;.
-  \end{gather*}
-\end{proof}
-\begin{proof}[proof of
-  Lemma~\itemref{lem:evengen}{lem:evengen:indecomposable}
-  (indecomposability)]
+  Lemma~\ref{lem:evengen}]
+  $\G m$ clearly immerses into $\R^{2m-\alpha(m)}$, either factoring
+  over $K^{n+1}$ in case $\alpha(m)>1$ or by Whitney's immersion
+  theorem in case $\alpha(m)=1$.
+
   For the indecomposability we want to use the criterion from
-  Theorem~\ref{thm:indecomposabilitycriterion}. In the case
-  $\alpha(m)=1$ this is Example~\ref{ex:rpnindecomposable}.
-  In the other case $\alpha(m)>1$ we need to identify the
-  Stiefel-Whitney numbers of $N$. For this denote the normal
-  bundle of the embedding $\emb\G m\subset K^{n+1}$ by $\N{}$.
-  As $\pb\emb\T{K^{n+1}}=\N{\emb}\oplus\T N$ one has the relation
+  Theorem~\ref{thm:indecomposabilitycriterion}, \idest one has to show
+  that $\snum{m}{\G m}\neq 0$.
+  In the case $\alpha(m)=1$ this is Example~\ref{ex:rpnindecomposable}.
+  In the other case $\alpha(m)>1$ we first need to identify the
+  Stiefel-Whitney numbers of $N$ in degrees greater 0 and express them
+  as elementary symmetric polynomials in some variables.
+  As one will see the factor $\RP{k_l+1}$ has no special role here,
+  and the following holds for any product $\prod_{r=1}^{l}\RP{n_r}$ of
+  real projective spaces with
+  \begin{enumerate}
+  \item $m+1=\sum_{r=1}^l n_r$,
+  \item $n_r<m-1$, and
+  \item $\alpha(n_i+n_j)=\alpha(n_i)+\alpha(n_j)$
+    for $1\leq i<j\leq l$,
+    hence $\alpha(n_1+\dotsb+n_r)=\sum_{i=1}^{r}\alpha(n_i)$
+    for $2\leq r\leq l$.
+  \end{enumerate}
+  In our case take $n_l\coloneqq k_l+1$ and 
+  $n_r\coloneqq k_r$ for $1\leq k<l$.
+  Now to determine the Stiefel-Whitney numbers 
+  denote the normal bundle of the embedding
+  $\emb\colon\G m\subset K^{n+1}$ by $\N{}$. 
+  As $\T{\G m}\oplus\N{\emb}=\pb\emb\T{K^{n+1}}$ there is the relation
   of Stiefel-Whitney classes
   \begin{align*}
-    \W{\T N} \cdot \W{\N\emb}
-    &= \pb\emb\W{\T{K^{n+1}}} \\
+    \W{\T{\G m}} \cdot \W{\N\emb}
+    &= \pb\emb\W{\T{K^{m+1}}} \\
     &= \pb\emb\left(
       \W{\RP{k_l+1}}
       \cdot \prod_{r=1}^{l-1}\W{\RP{k_r}}
@@ -2333,8 +2368,10 @@ Thus the following is well-defined.
       \right)
       \;.
   \end{align*}
-  Now one needs the following
-  generalisation of Lemma~\ref{lem:thomisofundcl}.
+  Note that $\N{}$ is a line bundle, so one only has to find out
+  $\w1{\N{}}$. For this one needs the following
+  generalisation of Lemma~\ref{lem:thomisofundcl} which gives the
+  highest Stiefel-Whitney class of normal bundles of such embeddings.
   \begin{Lem}
     Let $N^n, M^m$ be compact manifolds, $\emb\colon M\immto N$
     be an embedding with corresponding normal bundle $\N{\emb}$
@@ -2345,6 +2382,7 @@ Thus the following is well-defined.
       \to N/\left( N\setminus \E{\N{\emb}} \right)
       \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
       \cong \Thomspace{\N{\emb}}
+      \;.
     \end{gather*}
     Then
     $\pf\emb\fundcl N = \pb\collapse\u{\N{\emb}}\cap\fundcl M$,
@@ -2362,16 +2400,22 @@ Thus the following is well-defined.
     \end{gather*}
     So the pushforward of the Poincaré dual of $\pf\emb\fundcl N$
     along the embedding is the highest Stiefel-Whitney class.
-    \TODO{Ref. for proof (without spectra)?}
+    \begin{proof}
+      Skipped.
+      \TODO{Ref. for proof (without spectra)?}
+    \end{proof}
   \end{Lem}
   By the above Lemma
-  \begin{gather*}
+  \begin{align*}
+    \w1{\N{}}
+    &= \pb\emb y \\
     \W{\N{}}
-    = \pb\emb(1+y)
-    = \pb\emb\left((1+y)^{-(2^s-1)}\right)
-    = \left(\pb\emb(1+y)\right)^{-(2^s-1)}
-  \end{gather*}
-  for some $2^s>n+1$ as in that case $y^{2^s}=0$ and
+    &= 1 + \w1{\N{}}
+      = \pb\emb(1+y)
+      \cequalsby{(*)} \pb\emb\left((1+y)^{-(2^s-1)}\right)
+      = \left(\pb\emb(1+y)\right)^{-(2^s-1)}
+  \end{align*}
+  for some $2^s>n+1$, where equality (*) then comes from $y^{2^s}=0$ and
   \begin{gather*}
     (1+y)^{2^s-1} \cdot (1+y)
     = (1+y)^{2^s}
@@ -2384,32 +2428,41 @@ Thus the following is well-defined.
     \W{\T{\G m}}
     &= \pb\emb(1+y)^{2^s-1}
       \cdot \pb\emb\left(
-      (1+x_{k_l+1})^{k_l+1}
-      \cdot \prod_{r=1}^{l-1}(1+x_{k_r})^{k_r}
+      \prod_{r=1}^{l}(1+x_{n_r})^{n_r+1}
       \right) \\
     &= \pb\emb(1 + \el{1}{}(
       \underbrace{y,\dotsc,y}_{2^s-1},
-      \underbrace{x_{k_1},\dotsc,x_{k_1}}_{k_1+1},
+      \underbrace{x_{n_1},\dotsc,x_{n_1}}_{n_1+1},
       \dotsc,
-      \underbrace{x_{k_{l-1}},\dotsc,x_{k_{l-1}}}_{k_{l-1}+1},
-      \underbrace{x_{k_l+1},\dotsc,x_{k_l+1}}_{k_l+2}
+      \underbrace{x_{n_{l}},\dotsc,x_{n_{l}}}_{n_{l}+1}
+      )) \\
+    &= 1 + \el{1}{}(
+      \pb\emb y,\dotsc,\pb\emb y,
+      \pb\emb x_{n_1},\dotsc, \pb\emb x_{n_1},
+      \dotsc,
+      \pb\emb x_{n_l},\dotsc, \pb\emb x_{n_l}
       ))
   \end{align*}
   which is a representation as a pullback of a sum of elementary
   symmetric polynomials in the given one dimensional variables.
-  This yields that $\s{m}(\G m)$ is the pullback along $\emb$ of
-  $\s{m}$ evaluated on the elementary symmetric polynomial found above:
+  This yields
   \begin{align*}
     \s{m}(\G m)
-    &= \pb\emb(
-      (2^s-1)y^m
-      + (k_1+1)x_{k_1}^m
+    &= (2^s-1) \pb\emb y^m
+      + (n_1+1) \pb\emb x_{n_1}^m
       + \dotsb
-      + (k_{l-1}+1)x_{k_{l-1}+1}^m
-      + (k_l+2)x_{k_l+1}^m
-      ) \\
-    &= \pb\emb((2^s-1)y^m)
-      = \pb\emb y^m
+      + (n_l+1)\pb\emb x_{n_l}^m
+    \\
+    &= \pb\emb\left(
+      (2^s-1)y^m
+      + (n_1+1)x_{n_1}^m
+      + \dotsb
+      + (n_l+1)x_{n_l}^m
+      \right) \\
+    &\equalsby{$x_{n_r}^{n_r+1}=0$, $n_r+1<m$}
+      \pb\emb((2^s-1)y^m) \\
+    &\equalsby{$2^s=0$}
+      \pb\emb y^m
   \end{align*}
   So
   \begin{align*}
@@ -2422,14 +2475,17 @@ Thus the following is well-defined.
       \;.
   \end{align*}
   As $\pf\emb$ is injective (it has a section) and capping with
-  $\fundcl{K^{m+1}}$ is the Poincaré isomorphism, it suffices to
-  show that $y^{m+1}$ is non-zero. But by the relations of the
-  $x_r$ and combinatorics give that
+  $\fundcl{K^{m+1}}$ is the Poincaré isomorphism, it suffices for the
+  proof to show that $y^{m+1}$ is non-zero. But by the relations of the
+  $x_r$ combinatorics give that the only non-zero product
+  $\prod_{r=1}^{l}x_{n_r}^{a_r}$ of degree $m+1$ is the one with
+  $a_r=n_r$.
+  With the multinomial theorem $y^{m+1}$ reformulates to
   \begin{gather*}
     y^{m+1}
-    = (x_{k_1}+\dotsb+x_{k_{l-1}}+ x_{k_l +1})^{m+1}
-    = \frac{(k_1+\dotsb+k_l+1)!}{(k_1)!\dotsm(k_{l-1})!(k_l+1)!}
-    x_{k_l+1}\prod_{r=1}^{l-1}x_{k_r}
+    = (x_{n_1}+\dotsb+x_{n_l})^{m+1}
+    = \frac{(n_1 + \dotsb + n_l)!} {(n_1)! \dotsm (n_l)!}
+    \cdot \prod_{r=1}^{l}x_{n_r}^{n_r}
   \end{gather*}
   which is non-zero if and only if the binomial expression is.
   The latter however reduces with descending induction using the
@@ -2441,13 +2497,11 @@ Thus the following is well-defined.
   \end{gather*}
   to
   \begin{gather*}
-    \frac{(k_1+\dotsb+k_l+1)!}{(k_1)!\dotsm(k_{l-1})!(k_l+1)!}
-    = \binom{k_1+\dotsb+k_l+1}{k_l+1}
-    \cdot \prod_{r=2}^{l-1}\binom{k_1+\dotsb+k_r}{k_r}
+    \frac{(n_1+\dotsb+n_l)!}{(n_1)! \dotsm (n_l)!}
+    = \prod_{r=2}^{l}\binom{n_1+\dotsb+n_r}{n_r}
   \end{gather*}
-  all factors of which are non-zero by Lemma~\ref{lem:lucas} for
-  our particular choice of the $k_r$ as distinct powers of two
-  greater one.
+  all factors of which are one by Lemma~\ref{lem:lucas} due to the
+  condition on the $n_r$.
   So altogether $\G m$ represents an indecomposable element of
   the cobordism ring according to the indecomposability criterion
   in Theorem~\ref{thm:indecomposabilitycriterion}.
@@ -2455,20 +2509,43 @@ Thus the following is well-defined.
 \end{proof}
 
 \subsubsection{Odd Dimensional Generators}
-\begin{Thm}\label{thm:brownproof}
-  Consider the manifolds $\G m$ for $m\neq 2^s-1\in\Nat$ that are
-  defined by
-  \TODO{Correct!!}
+For the odd dimensional generators the twisted product construction
+comes into play.
+As already discussed, the twisted product of a manifold which is
+indecomposable in the cobordism ring will be so, too, if the product
+dimension was chosen correctly. So this is the less problematic issue.
+For the immersion property we will again utilise nice immersion
+properties of projective spaces, more precisely the following one for
+the total space of line bundles over such:
+\begin{Lem}[{\cite[Theorem~4.1, p.~418]{mahowald}}]
+  \label{lem:immersionuniversalbdl}
+  % Wrong attempt \optcite[p.~85]{immersionconj}:
+  % The total space of a vector bundle $E\to M^n$ of rank $k$ over a
+  % closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
+  \optcite[compare Prop. 4.3]{brown}
+  For $p,q\in\Nat$ odd and the total space of $(p+1)\gamma_q$ immerses
+  in Euclidean space of dimension $2q+p+1-\alpha(p+q+1)+\alpha(p+1)$.
+\end{Lem}
+The trick now will be to find an immersion of each or our candidates
+into some $\Twistedprod k (\R^n)$, which is the total space of
+$(n\cdot\gamma_k)\oplus\trivbdl^n$. For this, $k$ and $n$ have to be
+chosen correctly to not also make the indecomposability criterion
+applicable, but also Mahowald's lemma from above.
+The following choice will be shown to fulfil this.
+\begin{Def}
+  Let $m$ be odd and not of the form $2^s-1\in\Nat$ define
   \begin{align*}
-    \G 0 &\coloneqq \pt \;, \\
-    \G m &\coloneqq \Twistedprod{2^{i_1}}{\G n}
-         &\text{
-           where
-           $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
-           with $0\leq i_1<\dotsb<i_l$.
-           }
+    \G 0 &\coloneqq \pt \;, \\ % TODO: to even dimensional gens
+    \G m &\coloneqq \Twistedprod{1}{\G {\frac{m-1}{2}}}
+      % &\text{
+      % where
+      % $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
+      % with $0\leq i_1<\dotsb<i_l$.
+      % }
   \end{align*}
-  Then:
+\end{Def}
+\begin{Thm}\label{thm:brownproof}
+  The $\G m$ for $m\neq 2^s-1$ odd fulfil:
   \begin{enumerate}
   \item\label{item:brownimmersionproperty}
     $\G m$ immerses into $\R^{2m-\alpha(m)}$.
@@ -2553,18 +2630,7 @@ Thus the following is well-defined.
   $((2n-\alpha(n))\gamma_{2^{i_1}})\oplus\trivbdl^{2n-\alpha(n)}$
   by Lemma~\ref{lem:twistedprodrealspace} where $\gamma_{2^{i_1}}$
   is the tautological line bundle.
-  The immersion properties of its total space have been analysed by
-  Mahowald and Milgram in \cite{mahowald} with the following result:
-  \begin{Lem}[{\cite[Theorem~4.1, p.~418]{mahowald}}]
-    \label{lem:immersionuniversalbdl}
-    % Wrong attempt \optcite[p.~85]{immersionconj}:
-    % The total space of a vector bundle $E\to M^n$ of rank $k$ over a
-    % closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
-    \optcite[compare Prop. 4.3]{brown}
-    For $p,q\in\Nat$ odd and the total space of $(p+1)\gamma_q$ immerses
-    in Euclidean space of dimension $2q+p+1-\alpha(p+q+1)+alpha(p+1)$.
-  \end{Lem}
-  Applying this to $p=2n-1$ and $q=2^{i_1}$
+  Applying Lemma~\ref{lem:immersionuniversalbdl} to $p=2n-1$ and $q=2^{i_1}$
   % TODO: Does not work, q not odd ... !!!
   As a result of the Lemma, $\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}$
   immerses into real space of dimension
