@@ -30,9 +30,8 @@ As the latter has the form of a polynomial algebra
 $\Zmod2[\sigma_i|i\neq 2^r-1]$, a set of elements
 $([\G i]|i\neq2^r-1)$ will already be a generating set if all of the
 $\G i$ are indecomposable.
-Thus, the candidates generating elements that will be constructed
-in \autoref{sec:proofbrown} need to be tested for (see
-Theorem~\ref{thm:brownproof}):
+Thus, the candidate generating elements that will be constructed
+in \autoref{sec:proofbrown} need to be tested for:
 \begin{enumerate}
 \item indecomposability, which is the more lengthy part as it
   requires the preliminary results from
@@ -2093,34 +2092,47 @@ direct consequence of the following Lemma.
   as was stated.
 \end{proof}
 
-By Theorem~\ref{thm:twistedprod:indecompcriterion}, one has to
-both choose
-\begin{itemize}
-\item the dimension combination, as well as
-\item the factor (see later)
-\end{itemize}
-of a twisted product correctly, in order to obtain the representative
-of an indecomposable cobordism class.
-For the correct dimension choice note, that any integer $m$ with
-binary expansion
-\begin{gather*}
-  m=2^{i_1}+\dotsb+2^{i_l}
-  \;,\qquad
-  0 \leq i_1<\dotsb<i_r
-\end{gather*}
-can be written as $m=2^{i_1}+2n\eqqcolon k+2n$, where:
-\begin{itemize}
-\item $n=0$ for $l=1$, else $n=2^{i_2-1}+\dotsb+2^{i_l-1}$
-\item $\alpha(m)=\alpha(n)+1$.
-\item For $m$ not of the form $2^s-1$, $n$ will also not be of the
-  form $2^s-1$.
-\end{itemize}
-This is favourable because the binomial coefficient
-$\binom{k-1}{n}$ will never be zero modulo two by the following Lemma,
+\begin{Rem}\label{rem:splitdim}
+  By Theorem~\ref{thm:twistedprod:indecompcriterion}, one has to
+  both choose
+  \begin{itemize}
+  \item the dimension combination, as well as
+  \item the factor (see later)
+  \end{itemize}
+  of a twisted product correctly, in order to obtain the representative
+  of an indecomposable cobordism class.
+  For the correct dimension choice note that any integer $m$ with
+  binary expansion
+  \begin{gather*}
+    m=2^{i_0}+\dotsb+2^{i_l}
+    \;,\qquad
+    0 \leq i_1<\dotsb<i_r
+  \end{gather*}
+  can be split at any splitting point $0\leq l_k\leq l$ to
+  \begin{gather*}
+    m = \underbrace{\left(
+        \sum_{r=0}^{l_k} 2^{i_r}
+      \right)}_{\eqqcolon k}
+    + 2\cdot\underbrace{\left(
+        \sum_{r=l_k+1}^l 2^{i_r-1}
+      \right)}_{\eqqcolon n}
+    \eqqcolon k+2n
+    \;,
+  \end{gather*}
+  where:
+  \begin{itemize}
+  \item $\alpha(m)=\alpha(k)+\alpha(n)$.
+  \item For $m$ not of the form $2^s-1$, $n$ will also not be of the
+    form $2^s-1$.
+  \end{itemize}
+\end{Rem}
+Such splits as described above are favourable because the binomial
+coefficient $\binom{k+n-1}{n}$ will never be zero modulo two by the
+following Lemma, 
 as is required by the indecomposability criterion for twisted products
 in Theorem~\ref{thm:twistedprod:indecompcriterion}.
 \begin{Lem}\label{lem:lucas}
-  For $a,b\in\Nat$, $\binom{a}{b}$ will be non-zero modulo 2 if and only
+  For $a,b\in\Nat$, $\binom{a+b}{b}$ will be non-zero modulo 2 if and only
   if $\alpha(a+b)=\alpha(a)+\alpha(b)$.
   \begin{proof}
     This is a direct consequence of Lucas' well-known theorem
@@ -2135,22 +2147,46 @@ in Theorem~\ref{thm:twistedprod:indecompcriterion}.
     $\alpha(a+b)=\sum_{i=1}^s(a_i+b_i)$.    
   \end{proof}
 \end{Lem}
-This lemma can be applied to the combination $k-1$, $n$ from above, as one
-simply calculates
-\begin{align*}
-  \alpha(k-1+n)
-  &= \alpha\left((2^{i_1}-1)+ (2^{i_2-1}+\dotsb+2^{i_l-1})\right) \\
-  &= \alpha\left(1+2^1+\dotsb 2^{i_1-1} + 2^{i_2-1}+\dotsb+2^{i_l-1}\right) \\
-  &\equalsby{$i_1<i_2$}
-    \alpha\left(1+2^1+\dotsb 2^{i_1-1}) + \alpha(2^{i_2-1}+\dotsb+2^{i_l-1}\right)\\
-  &= \alpha(k-1) + \alpha(n)
-\end{align*}
 
 Therefore:
 \begin{Cor}\label{cor:twistedprod:indecompcriterion}
-  For $m=2^{i_1}+2n\in\Nat$ as above, the twisted product
-  $\Twistedprod{2^{i_1}}{M}$ of an indecomposable manifold $M^n$ will be
+  For $m=k+2n\in\Nat$ as above and $M^n$ an indecomposable manifold,
+  the $m$-dimensional twisted product $\Twistedprod{k}{M}$ will be
   indecomposable.
+  \begin{proof}
+    The previous Lemma~\ref{lem:lucas} can be applied to the
+    combination $k-1$, $n$ from above, as one simply calculates
+    \begin{align*}
+      \alpha(k-1+n)
+      &=\textstyle
+        \alpha\left(
+        \left(\sum_{r=0}^{l_k} 2^{i_r}\right)
+        - 1
+        + \left(\sum_{r=l_k+1}^{l} 2^{i_r-1}\right)
+        \right) \\
+      &=\textstyle
+        \alpha\left(
+        (2^{i_0}-1)
+        + \left(\sum_{r=1}^{l_k} 2^{i_r}\right)
+        + \left(\sum_{r=l_k+1}^{l} 2^{i_r-1}\right)
+        \right) \\
+      &=\textstyle
+        \alpha\left(
+        \left(\sum_{r=0}^{i_0-1} 2^r \right)
+        + \left(\sum_{r=1}^{l_k} 2^{i_r}\right)
+        + \left(\sum_{r=l_k+1}^{l} 2^{i_r-1}\right)
+        \right) \\
+      &\textstyle
+        \equalsby{$i_0<i_1$}
+        \alpha\left(
+        \left(\sum_{r=0}^{i_0-1} 2^r \right)
+        + \left(\sum_{r=1}^{l_k} 2^{i_r}\right)
+        \right)
+        + \alpha\left(\sum_{r=l_k+1}^{l} 2^{i_r-1}\right)
+      \\
+      &= \alpha(k-1) + \alpha(n)
+    \end{align*}
+  \end{proof}
 \end{Cor}
 
 
@@ -2160,7 +2196,6 @@ Therefore:
 Remember that the goal of this chapter was to prove R.~L.~Brown's
 theorem \ref{thm:brown} which states that the immersion conjecture is
 true up to cobordism.
-
 Also recall, that if one can show the conjecture's statement is stable
 under the ring operations of the cobordism ring
 $\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
@@ -2169,16 +2204,23 @@ Thus, for the proof one needs to construct a set of manifolds
 $(\G i|i\neq2^r-1)$ that both fulfil the conjecture and represent
 indecomposable cobordism classes.
 
-Such generators can be constructed easily in even dimension as
-submanifolds of codimension one of odd-dimensional products of
-real projective spaces. The immersion property can be checked in
-this case using a theorem of Milgram that proves the immersion
-conjecture for higher odd dimensional real projective spaces%
-\optcite[Theorem~1]{milgram}\optcite{sanderson}.
-For odd dimensional generators the trick will be to take the twisted
+The major work required to check indecomposability of manifolds in the
+cobordism ring has been done in the previous chapters.
+For checking the immersion property of the selected candidates,
+several well-known results on immersions of projective spaces
+will be used.
+
+Such generators in even dimension can easily be constructed as
+codimension-one submanifolds of odd-dimensional products of
+real projective spaces. The immersion property can in this case be
+checked using results of Sanderson~\optcite{sanderson} which say that
+odd dimensional real projective spaces fulfil---and partly
+overfulfil---the immersion conjecture.
+
+For odd dimensional generators the trick will be to take a twisted
 product of an even dimensional one, and use an immersion theorem by
-Mahowald and Milgram on the twisted product of an Euclidean space to
-conclude the immersion property.
+Mahowald and Milgram~\cite{milgram} on the twisted product of an
+Euclidean space to conclude the immersion property.
 
 \subsection{Stability Properties of the Conjecture}
 The stability properties needed are the following.
@@ -2289,7 +2331,8 @@ submanifolds of codimension one fulfil the immersion property.
 In order to define submanifolds of the above $K^{m+1}$ which are
 additionally indecomposable in the cobordism ring, recall that the
 Steenrod problem on realising homology classes by submanifolds is
-solved for homology classes in degree of codimension one, \idest:
+solved for homology classes in degree of codimension one, or more
+precisely:
 \begin{Lem}
   Let $M^n$ be a manifold. Then for every homology class
   $\alpha\in\H_{n-1}(M)$ there is a submanifold $N$ and an embedding
@@ -2301,9 +2344,10 @@ solved for homology classes in degree of codimension one, \idest:
 
 Thus the following candidates for even-dimensional generators are
 well-defined.
-\begin{Def}\label{lem:evengen}
+\begin{Def}
   Let $m$ be even. Define for
   \begin{description}
+  \item[$m=\alpha(m)=0$:] $\G m = \pt$.
   \item[$\alpha(m)=1$:] $\G m = \RP m$.
   \item[$\alpha(m)>1$:]
     $\emb\colon\G m\subset K^{m+1}$ is the submanifold of
@@ -2314,7 +2358,7 @@ well-defined.
 \end{Def}
 
 
-\begin{Lem}
+\begin{Lem}\label{lem:evengen}
   Let $m=\sum_{r=1}^l k_r$ be even as in the definition above.
   \begin{enumerate}
   \item\label{lem:evengen:immersionprop}
@@ -2326,6 +2370,8 @@ well-defined.
 \end{Lem}
 \begin{proof}[proof of
   Lemma~\ref{lem:evengen}]
+  For $m=0$ both claims are trivial.
+  
   $\G m$ clearly immerses into $\R^{2m-\alpha(m)}$, either factoring
   over $K^{n+1}$ in case $\alpha(m)>1$ or by Whitney's immersion
   theorem in case $\alpha(m)=1$.
@@ -2350,10 +2396,10 @@ well-defined.
   \end{enumerate}
   In our case take $n_l\coloneqq k_l+1$ and 
   $n_r\coloneqq k_r$ for $1\leq k<l$.
-  Now to determine the Stiefel-Whitney numbers 
+  Now, to determine the Stiefel-Whitney numbers 
   denote the normal bundle of the embedding
   $\emb\colon\G m\subset K^{n+1}$ by $\N{}$. 
-  As $\T{\G m}\oplus\N{\emb}=\pb\emb\T{K^{n+1}}$ there is the relation
+  As $\T{\G m}\oplus\N{\emb}=\pb\emb\T{K^{m+1}}$ there is the relation
   of Stiefel-Whitney classes
   \begin{align*}
     \W{\T{\G m}} \cdot \W{\N\emb}
@@ -2474,10 +2520,10 @@ well-defined.
       = \capped{y^{m+1}}{\fundcl{K^{m+1}}}
       \;.
   \end{align*}
-  As $\pf\emb$ is injective (it has a section) and capping with
-  $\fundcl{K^{m+1}}$ is the Poincaré isomorphism, it suffices for the
-  proof to show that $y^{m+1}$ is non-zero. But by the relations of the
-  $x_r$ combinatorics give that the only non-zero product
+  As capping with $\fundcl{K^{m+1}}$ is the Poincaré isomorphism, it
+  suffices for the proof to show that $y^{m+1}$, hence the image of
+  $\snum{m}{\G m}$ under $\pf\emb$, is non-zero. But, by the relations
+  of the $x_r$, combinatorics give that the only non-zero product
   $\prod_{r=1}^{l}x_{n_r}^{a_r}$ of degree $m+1$ is the one with
   $a_r=n_r$.
   With the multinomial theorem $y^{m+1}$ reformulates to
@@ -2488,14 +2534,14 @@ well-defined.
     \cdot \prod_{r=1}^{l}x_{n_r}^{n_r}
   \end{gather*}
   which is non-zero if and only if the binomial expression is.
-  The latter however reduces with descending induction using the
-  easy formula for $a_r\in\Nat$
+  The latter however simplifies with descending induction using the
+  easy formula
   \begin{gather*}
     \frac{(a_1+\dotsb+a_j)!}{(a_1)!\dotsm(a_j)!}
     = \binom{a_1+\dotsb+a_j}{a_j}
     \cdot \frac{(a_1+\dotsb+a_{j-1})!}{(a_1)!\dotsm(a_{j-1})!}
   \end{gather*}
-  to
+  for $a_r\in\Nat$ to
   \begin{gather*}
     \frac{(n_1+\dotsb+n_l)!}{(n_1)! \dotsm (n_l)!}
     = \prod_{r=2}^{l}\binom{n_1+\dotsb+n_r}{n_r}
@@ -2513,10 +2559,33 @@ For the odd dimensional generators the twisted product construction
 comes into play.
 As already discussed, the twisted product of a manifold which is
 indecomposable in the cobordism ring will be so, too, if the product
-dimension was chosen correctly. So this is the less problematic issue.
+dimension was chosen correctly. So the selected choice of candidates
+will be twisted products of some $\G n$ for $n$ even, whose
+indecomposability was proven during the previous section.
+The trick here will be to select for a candidate in odd degree $m$ a
+split of $m$ of the form $m=k+2n$ with $n$ even(!).
+\begin{Rem}\label{rem:splitodddimension}
+  The following is a convenient split in the above sense:
+  Let $m$ be odd and write the binary expansion as 
+  \begin{gather*}
+    m
+    = \underbrace{2^{i_0} + \dotsb + 2^{i_{l_k}}}_{\eqqcolon k}
+    + \underbrace{2^{i_{l_k+1}}
+      + \dotsb + 2^{i_{l_k+l_n}}}_{\eqqcolon 2n}
+    = k+2n
+  \end{gather*}
+  such that as usual $i_r<i_{r+1}$, and additionally $i_r=r$ for
+  $0\leq r\leq l_k$ and $i_{l_k+1} > l_k+1$.
+  In other words split the binary expansion of $m$ at the first point
+  where it skips a power of two and $k$ to the first part and $2n$ to
+  the second part. Since $m$ is odd, this trick guarantees that $n$ is
+  even. Also, by Remark~\ref{rem:splitdim},
+  if $m$ is not of the form $2^s-1$, $n$ will not be either.
+\end{Rem}
+
 For the immersion property we will again utilise nice immersion
-properties of projective spaces, more precisely the following one for
-the total space of line bundles over such:
+properties of projective spaces, more precisely the following one by
+Mahowald and Milgram for the total space of line bundles over such:
 \begin{Lem}[{\cite[Theorem~4.1, p.~418]{mahowald}}]
   \label{lem:immersionuniversalbdl}
   % Wrong attempt \optcite[p.~85]{immersionconj}:
@@ -2524,135 +2593,135 @@ the total space of line bundles over such:
   % closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
   \optcite[compare Prop. 4.3]{brown}
   For $p,q\in\Nat$ odd and the total space of $(p+1)\gamma_q$ immerses
-  in Euclidean space of dimension $2q+p+1-\alpha(p+q+1)+\alpha(p+1)$.
+  in Euclidean space of dimension
+  \begin{gather*}
+    2q+p+1-\alpha(p+q+1)+\alpha(p+1)
+    \;.
+  \end{gather*}
 \end{Lem}
-The trick now will be to find an immersion of each or our candidates
-into some $\Twistedprod k (\R^n)$, which is the total space of
-$(n\cdot\gamma_k)\oplus\trivbdl^n$. For this, $k$ and $n$ have to be
-chosen correctly to not also make the indecomposability criterion
-applicable, but also Mahowald's lemma from above.
-The following choice will be shown to fulfil this.
+The trick for odd $m$ now will be to find an immersion of the
+$m$-candidate into some $\Twistedprod{k}{\R^{s}}$, which is
+the total space of $(s\gamma_k)\oplus\trivbdl^s$
+by Corollary~\ref{lem:twistedprodrealspace}, and then apply the above
+lemma to a super-bundle $((s+s')\gamma_k)\oplus\trivbdl^s$ of
+the latter.
+At that point it will be essential that $k$ from the above split of
+$m$ is odd in order to make the lemma applicable in the first
+place.
+
+With these preliminary considerations one can make a choice of
+generator candidates:
 \begin{Def}
-  Let $m$ be odd and not of the form $2^s-1\in\Nat$ define
-  \begin{align*}
-    \G 0 &\coloneqq \pt \;, \\ % TODO: to even dimensional gens
-    \G m &\coloneqq \Twistedprod{1}{\G {\frac{m-1}{2}}}
-      % &\text{
-      % where
-      % $\textstyle m=\sum_{r=1}^l 2^{i_r}=2^{i_1}+2n$
-      % with $0\leq i_1<\dotsb<i_l$.
-      % }
-  \end{align*}
+  Let $m=k+2n$ be odd and not of the form $2^s-1\in\Nat$ with the
+  split from Remark~\ref{rem:splitodddimension} above. Define
+  \begin{gather*}
+    \G m \coloneqq \Twistedprod{k}{\G n}
+  \end{gather*}
 \end{Def}
-\begin{Thm}\label{thm:brownproof}
-  The $\G m$ for $m\neq 2^s-1$ odd fulfil:
+\begin{Lem}\label{lem:oddgen}
+  For $m$ odd as in the above definition, $\G m$ fulfils:
   \begin{enumerate}
   \item\label{item:brownimmersionproperty}
     $\G m$ immerses into $\R^{2m-\alpha(m)}$.
   \item\label{item:indecomposabilityproperty}
     The cobordism classes of the $\G m$, $m\neq 2^s-1$, are
-    indecomposable, and thus
-    \begin{gather*}
-      \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
-      = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
-    \end{gather*}
+    indecomposable.
   \end{enumerate}
-\end{Thm}
+\end{Lem}
 \begin{proof}[proof of
-  Theorem~\itemref{thm:brownproof}{item:indecomposabilityproperty}]
-  By definition, all $\G m$ either are some $\Twistedprod{2^i}{\pt}$
-  or arise from one as iterated twisted product. More precisely, for a binary
-  representation
-  \begin{align*}
-    m &= 2^{i_1}+\dotsb + 2^{i_l} \\
-      &= 2^{i_1}+ 2\cdot\big( 2^{i_2-1} + 2\cdot(\dotsc + 2\cdot 2^{i_l-l+1})\big)
-    \\\intertext{one gets}
-    \G m &\coloneqq
-           \Twistedprod{2^{i_1}}{\G{2^{i_2-1} + 2\cdot(2^{i_3-1}+\dotsb)}}\\
-      &= \Twistedprod{2^{i_1}}{
-        \Twistedprod{2^{i_2-1}}{
-        \dotsc
-        \Twistedprod{2^{i_l-l+1}}{\pt}
-        }}
-        \;.
-  \end{align*}
-  But $\Twistedprod{2^{i}}{\pt}=\RP{2^i}$ represents an indecomposable
-  element of the Cobordism ring by Example~\ref{ex:rpnindecomposable}.
-  Thus, by Corollary~\ref{cor:twistedprod:indecompcriterion} all
-  $\G m$ also represent indecomposable cobordism classes.
+  Lemma~\itemref{lem:oddgen}{item:indecomposabilityproperty}]
+  The used split of $m$ from Remark~\ref{rem:splitodddimension} is a
+  special case of splits described in Remark~\ref{rem:splitdim}, for
+  all of which the twisted product preserves indecomposability by
+  Corollary~\ref{cor:twistedprod:indecompcriterion}.
+  Thus, as $n$ from the split is even and $\G n$ is indecomposable by
+  Lemma~\ref{lem:evengen}, $\G m=\Twistedprod{k}{\G n}$ is also an
+  indecomposable element in the cobordism ring.
 \end{proof}
 \begin{proof}[proof of
-  Theorem~\itemref{thm:brownproof}{item:brownimmersionproperty}]
-  \optcite[p.~84, proof Thm.~1.30]{immersionconj}
-  In order to proof the immersion property of the manifolds $\G m$,
-  conduct an induction over $\alpha(m)$.
-  \begin{description}
-  \item[$\alpha(m)=1$:]
-    As an induction start note that in the case of $m=2^i$ one has
-    \begin{gather*}
-      \G m
-      =\Twistedprod{2^i}{\G 0}
-      =\Twistedprod{2^i}{\pt}
-      =\RP{2^i}
-    \end{gather*}
-    which immerses into $\R^{2m-1}=\R^{2m-\alpha(m)}$ by
-    Whitney's immersion theorem~\cite{whitneyimmersiontheorem}.
-  \item[$\alpha(m)\geq2$:]
-    For the induction step write $m=2^{i_1}+2n$ as above, and assume
-    there is an immersion
-    \begin{gather*}
-      \iota\colon\G n \immlongto \R^{2n-\alpha(n)}
-      \;.
-    \end{gather*}
-  \end{description}
+  Lemma~\itemref{lem:oddgen}{item:brownimmersionproperty}]
+  %\optcite[p.~84, proof Thm.~1.30]{immersionconj}
+  Here one needs that for $m=k+2n$ as above $\G n$ admits by
+  Lemma~\ref{lem:evengen} an immersion
+  \begin{gather*}
+    \iota\colon\G n \immlongto \R^{2n-\alpha(n)}
+    \;.
+  \end{gather*}
   As described in
-  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions}
+  Remark~\itemref{rem:twistedprodproperties}{item:twistedprodpreservesimmersions},
   this induces an immersion of twisted products
   \begin{center}
     \begin{tikzcd}[row sep=small, column sep=large]
-      (\Sphere{2^{i_1}} \times \G n\times \G n/\sim)
+      (\Sphere{2^k} \times \G n\times \G n/\sim)
       \ar[d, equals]
       \ar[r, hookrightarrow, "1\times\iota\times\iota/\sim"]
       &
-      (\Sphere{2^{i_1}} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim)
+      (\Sphere{2^k} \times \R^{2n-\alpha(n)} \times \R^{2n-\alpha(n)}/\sim)
       \;.
       \ar[d, equals]
       \\
       \G m
-      &\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
+      &\Twistedprod{k}{\R^{2n-\alpha(n)}}
     \end{tikzcd}
   \end{center}
   The latter twisted product however is a fibre bundle over
-  $\RP{2^i_1}$ as in
+  $\RP{k}$ as in
   Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
-  % TODO: It is the total space of some product of line bundles
-  More precisely, it is the well-known vector bundle
-  $((2n-\alpha(n))\gamma_{2^{i_1}})\oplus\trivbdl^{2n-\alpha(n)}$
-  by Lemma~\ref{lem:twistedprodrealspace} where $\gamma_{2^{i_1}}$
-  is the tautological line bundle.
-  Applying Lemma~\ref{lem:immersionuniversalbdl} to $p=2n-1$ and $q=2^{i_1}$
-  % TODO: Does not work, q not odd ... !!!
-  As a result of the Lemma, $\Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}$
-  immerses into real space of dimension
+  More precisely, by Lemma~\ref{lem:twistedprodrealspace} it is the
+  well-known vector bundle 
+  $((2n-\alpha(n))\gamma_{k})\oplus\trivbdl^{2n-\alpha(n)}$
+  where $\gamma_{k}$
+  is the tautological line bundle over $\RP k$.
+  As $p=2n-1$ and $q=k$ are both odd, 
+  Lemma~\ref{lem:immersionuniversalbdl} is applicable to $p$ and $q$,
+  and yields an immersion of $(p+1)\gamma_q = 2n\gamma_k$ into
+  Euclidean space of dimension
   \begin{align*}
-    2\cdot 2^{i_1} + \left(4n-2\alpha(n)\right)
-    &= 2\cdot (2^{i_1}+2n) - 2\alpha(n) \\
-    &= 2m - 2\alpha(n) \\
-    &= 2m - 2\alpha(m)+2 \\
-    &\leqby{m\geq 2}
-      2m - \alpha(m)
-      \;,
-  \end{align*}
-  so altogether one gets an immersion
-  \begin{gather*}
-    \G m
-    \immlongto \Twistedprod{2^{i_1}}{\R^{2n-\alpha(n)}}
-    \immlongto \R^{2m - \alpha(m)}
+    2q+p+1-\alpha(q+p+1) + \alpha(p+1)
+    &= 2k + 2n - 1 + 1 - \alpha(k+2n) + \alpha(2n) \\
+    &= k + m - \alpha(m) + \alpha(n)
     \;.
+  \end{align*}
+  Hence, the total space of
+  $(2n\gamma_k)\oplus\trivbdl^{2n-\alpha(n)}$
+  immerses into Euclidean space of codimension
+  \begin{gather*}
+    \left(k + m - \alpha(m) + \alpha(n)\right)
+    + 2n-\alpha(n)
+    = (k+2n) + m - \alpha(m)
+    = 2m - \alpha(m)
+    \;,
   \end{gather*}
-  % \begin{proof}[proof of Lemma~\ref{lem:immersionvbtotalspaces}]
-  % \end{proof}
+  altogether yielding an immersion
+  \begin{align*}
+    \Twistedprod{k}{\G m}
+    &\immto
+    \Twistedprod{k}{\R^{2n-\alpha(n)}}
+    = \E\left(((2n-\alpha(n))\gamma_k)\oplus\trivbdl^{2n-\alpha(n)}\right)
+    \\
+    &\immto 
+    \E\left((2n\gamma_k)\oplus\trivbdl^{2n-\alpha(n)}\right)
+    \\
+    &\immto
+    \R^{2m-\alpha(m)}
+  \end{align*}
+  as was needed.
 \end{proof}
+
+
+This finally gives Brown's theorem:
+\begin{Thm}\label{thm:brown}
+  Lemmata~\ref{lem:evengen} and \ref{lem:oddgen} together yield a
+  complete generating set of the cobodism ring, \idest
+  \begin{gather*}
+    \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
+    = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
+    \;,
+  \end{gather*}
+  each element of which fulfils the immersion property as was
+  desired.
+\end{Thm}
+
 
 %%% Local Variables:
 %%% mode: latex
