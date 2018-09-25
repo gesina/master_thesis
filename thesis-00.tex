@@ -24,62 +24,75 @@
 %\end{description}
 
 
-Immersions are roughly speaking mappings between
-manifolds that at least locally look like embeddings, globally however
-allow self-intersection or, if the domain is not compact,
-self-convergence of the image.
-They first became of interest with Whitney's embedding and immersion
-theorems~\cite{whitneyimmersiontheorem} in 1944, making immersions
-of certain codimension into real space always available for the
-investigation of manifolds.
+Immersions are roughly speaking mappings between smooth
+manifolds that locally look like embeddings, globally however
+allow self-intersection, or worse in case the domain is not compact.
+% TODO: specify worse (better formulation of "self-convergence of the image")
+First cornerstones of modern immersion theory are Whitney's papers on this
+topic, remarkably his embedding and immersion
+theorems~\cite{whitneyimmersiontheorem} published in 1944, making
+immersions of certain codimension into real space always available for the
+investigation of manifolds
+\cite{immersiontheoryhistory,hirsch}.
 
-Attempts to reduce the above codimension of $2n-1$ for $n$ manifolds
-were heated up by new available tools, when a theorem of
-M.~W.~Hirsch~\cite{hirschimmersions} allowed to answer the question
-about the existence of an immersion of certain codimension by the
-existence of a normal-bundle-like vector bundle of certain dimension.
-Amongst others, this brought in a main obstruction by dual
+Attempts to reduce the above codimension of $n-1$ for $n$ manifolds
+were heated up, when a theorem of
+M.~W.~Hirsch~\cite{hirschimmersions} building on important work of
+Smale allowed to answer the question about the existence of an
+immersion of certain codimension by the 
+existence of a vector bundle monomorphism into Euclidean space of
+certain dimension.
+Using the theory of characteristic classes the latter can again be
+reformulated to the existence of a vector bundle of this certain
+dimension which is dual to the tangent bundle, \idest looks
+like the pullback of a normal bundle.
+Amongst other valuable tooling, this brought in a obstructions by
 Stiefel-Whitney classes.
 
 In 1960 then, Massey~\cite{massey} showed with the help of Wu's
-theorem~\cite{wu} from 1950 that this obstruction for compact
-$n$-manifolds is void for exactly all codimensions greater than
+theorem~\cite{wu} from 1950 that these obstructions for compact
+$n$-manifolds vanish for exactly all codimensions greater than
 $n-\alpha(n)$, where $\alpha(n)$ is the number of ones in the binary
 notation of $n$.
 This motivated the conjecture that the answer to the question
 \begin{quote}
-    What is the minimum codimension $k$ such that for every
+    What is the minimum codimension $k$, such that for every
     $n$-dimensional compact manifold there exists an
-    immersion $M\immto\R^{n+k}$ into real space?
+    immersion $M\immto\R^{n+k}$ into Euclidean space?
 \end{quote}
-is $k=n-\alpha(n)$, thereafter commonly called the immersion
-conjecture.
+is $k=n-\alpha(n)$, later known as the immersion conjecture
+\cite{cohen}.
 
 The guess was partly reassured in 1971 by a result of R.~L.~Brown's
 investigations of the cobordism ring~\cite{brown}, proving the
-conjecture up to cobordism. It heavily relies on Thom's results in
-1954 on the structure of the cobordism ring~\cite{thomfrench} from and
-previous work by Dold, and its idea is to provide generators of the
-cobordism ring that fulfil the immersion property. The representatives
-for generators given by Brown can be even more simplified as
-demonstrated in \cite{immersionconj}.
-Nevertheless, the main work lies in finding a criterion for
-indecomposability of cobordism classes, which is given by an indicator
-characteristic class, once more utilising the new tools.
+conjecture up to cobordism. It heavily relies on Thom's results from
+1954 on the structure of the cobordism ring \cite{thomfrench},
+and its idea is to provide generators of the
+cobordism ring that fulfil the immersion property, partly inspired by
+constructions introduced in Dold's work on a complete generating set
+of the cobordism ring published in 1956 \cite{dold}.
+However, the key point prior to the construction of generators is to
+find a criterion for indecomposability of cobordism classes, which is
+given by an indicator characteristic class.
 
-After a long series of steps, notably amongst others by
-E.~H.~Brown~Jr. and F.~P.~Peterson and the above, the conjecture was
-finally proven in 1985 by R.~L.~Cohen, showing that all stable normal
-bundles of $n$-manifolds factor over $\B\Orth(n-\alpha(n))$.
+After a long series of steps, notably by E.~H.~Brown~Jr. and
+F.~P.~Peterson beginning in 1963 (see \cite{cohen}), the proof of the
+conjecture was eventually finalised in 1985 by R.~L.~Cohen, by showing
+that all stable normal bundles of $n$-manifolds factor over
+$\B\Orth(n-\alpha(n))$.
 Its main idea is to refine Steenrod's classification theorem for
-vector bundles and find for each $n$ a classifying space specifically
+vector bundles by finding for each $n$ a classifying space specifically
 for stable normal bundles of $n$-manifolds, over which all classifying
 maps factor. It is then shown that this factorisation admits a lift to
- $\B\Orth(n-\alpha(n))$.
-Important intermediate steps are to prove this up to cobordism and then
-\emph{de-Thom-ifying}, as they called it, the result.
+$\B\Orth(n-\alpha(n))$.
+Important intermediate steps are to prove both, the existence and the
+lift, up to cobordism, and then \emph{de-Thom-ify}, as they called it,
+the results.
+In \cite{brownpeterson} E.~H.~Brown~Jr. and F.~P.~Peterson conducted
+all these steps except for de-Thom-ifying the lift,
+which was done by R.~L.~Cohen in \cite{cohen}.
 
-The attention of this thesis lies on the results by Massey and
+The focus of this thesis is on the results by Massey and
 R.~L.~Brown, especially the role of characteristic classes in tackling
 these problems.
 The needed reformulation using the Hirsch-Smale theorem, as well as
@@ -88,61 +101,60 @@ the obstruction by characteristic classes, is given in
 A detailed proof of Massey's theorem follows in \autoref{chap:massey},
 and a proof of Brown's theorem finalises the efforts in
 \autoref{chap:brown}.
+A final, more detailed outlook on the proof of the immersion
+conjecture can be found in \autoref{chap:outlook}.
 
-%\begin{itemize}
-%\item immersion problem and relation to characteristic classes
-%\item state \& reformulate immersion conjecture
-%\item two steps necessary for proof (not given; due to Cohen)
-%\item (Massey) show that obstructions by characteristic classes vanish for
-%  $n-\alpha(n)$ and that this is possible best result
-%\item (Brown) show that is true up to cobordism and how certain
-%  characteristic classes play a major role (to detect indecomposable
-%  elements of the cobordism ring)
-%\end{itemize}
 The reader is assumed to be familiar with the concepts of Steenrod
 squares, characteristic classes, especially Stiefel-Whitney classes,
-and the cobordism ring. Those theories will merely be recapitulated
-replacing a couple of proofs by references.
+and the unoriented cobordism ring. Those theories will merely be
+recapitulated replacing a couple of proofs by references.
 
 \section*{Notation}
+If not stated otherwise, the following notation is used.
 \begin{itemize}
 \item \enquote{Space} always means topological space, and all maps
-  between spaces are continuous if not stated otherwise.
-\item For $X$, $Y$ spaces $[X,Y]$ denotes the set of homotopy classes
+  between spaces are continuous.
+\item For $X$, $Y$ spaces, $[X,Y]$ denotes the set of homotopy classes
   of base point preserving maps $X\to Y$.
-\item All manifolds are smooth, closed manifolds if not stated otherwise.
-\item All vector bundles are real if not stated otherwise.
-\item $\Zmod2 \coloneqq \Z/2\Z$.
-\item All homology groups have $\Zmod2$ coefficients if not stated
-  otherwise. Singular cohomology in degree $r$ of a pair $(X,A)$ with
-  coefficients in a ring $R$ is denoted by $\H^r(X,A;R)$, with the
-  short form $\H^r(X;R)\coloneqq\H^r(X,\emptyset;R)$. Relative cohomology
-  of a pointed space $(X,\ast)$ is denoted by $\relH^r(X;R)$.
-  Analogously for singular homology.
-\item The following notation for a fibre bundle $\xi\colon E\to B$ is used:
-  $\E\xi\coloneqq E$ denotes the total space,
+\item All manifolds are smooth and closed.
+\item Cobordism always means unoriented cobordism.
+\item All vector bundles are real.
+\item The bundle $\trivbdl^r$ over a space $X$ is the rank-$r$ trivial
+  bundle $X\times\R^r\to X$.
+\item For a fibre bundle $\xi\colon E\to B$ denote by:
+  $\E\xi\coloneqq E$ the total space,
   $\B\xi\coloneqq B$ the base space,
   $p_\xi\coloneqq p$ the underlying surjection,
   $\E_b\coloneqq p^{-1}(b)$ the fibre over a point $b\in \B$,
-  $0_\xi$ denotes the zero section if it exists, and
+  $0_\xi$ the zero section if it is exists, and by
   $\minuszerosec{E}\coloneqq E\setminus\Im\zerosec{\xi}$
-  is the total space without the zero section.
-\item The following notation for cup-~and cap-product will be used,
-  where $(X,A)$, $(X,B)$ are pairs of spaces, $R$ a unital commutative
-  ring, and $i,j\in\Nat$:
+  the total space without the zero section.
+\item $\Zmod2 \coloneqq \Z/2\Z$.
+\item All homology groups have $\Zmod2$ coefficients. Singular
+  cohomology in degree $r$ of a pair $(X,A)$ with 
+  coefficients in a ring $R$ is denoted by $\H^r(X,A;R)$, with the
+  short form $\H^r(X;R)\coloneqq\H^r(X,\emptyset;R)$. Relative cohomology
+  of a pointed space $(X,\pt)$ is denoted by
+  $\relH^r(X;R)\cong\H^r(X,\pt;R)$.
+  Analogously for singular homology.
+\item For pairs of spaces $(X,A)$, $(X,B)$, $R$ a unital commutative
+  ring, and $i,j\in\Nat$ denote
   \begin{itemize}
-  \item The (relative) cup-product is denoted as
+  \item the (relative) cup-product by
     \begin{align*}
       -\cup-\colon
       H^i(X,A;R)\times H^j(X,B;R) &\longto H^{i+j}(X,A\cup B;R)\\
-      (x, y) &\longmapsto x\cup y
+      (x, y) &\longmapsto x\cup y\;,
     \end{align*}
-  \item The (relative) cap-product is denoted as
+  \item and the (relative) cap-product by
     \begin{align*}
       -\cap-\colon
       H^i(X,A;R)\times H_{i+j}(X,A\cup B;R) &\longto H_j(X,B;R)\\
       (x, \alpha) &\longmapsto x\cap \alpha \eqqcolon \capped x \alpha
+                    \;.
     \end{align*}
+  \item For a manifold $M^n$, $\fundcl M\in\H_n(M)$ is the unique
+    fundamental class and generator.
   \end{itemize}
 \end{itemize}
 

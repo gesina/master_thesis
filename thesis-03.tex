@@ -1602,8 +1602,8 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
       \oplus (s\otimes N)
     \\
     &\cong
-      \bar c^{(k)}\otimes D
-      \oplus \left(\bigoplus_{i=1}^{k-1} \b c i\otimes D\right)
+      \bc k\otimes D
+      \oplus \left(\bigoplus_{i=1}^{k-1} \bc i\otimes D\right)
       \oplus (1\otimes D)
       \oplus (1\otimes N)
       \oplus (s\otimes N)
@@ -2419,15 +2419,18 @@ well-defined.
   generalisation of Lemma~\ref{lem:thomisofundcl} which gives the
   highest Stiefel-Whitney class of normal bundles of such embeddings.
   \begin{Lem}
-    Let $N^n, M^m$ be compact manifolds, $\emb\colon M\immto N$
-    be an embedding with corresponding normal bundle $\N{\emb}$
-    and Thom-Pontryagin collapse map
+    Let $N^n, M^m$ be compact manifolds, $n<m$,
+    $\emb\colon M\immto N$ be an embedding with corresponding normal
+    bundle $\N{\emb}$, $\infty\in N\setminus\emb(N)$, and
+    Thom-Pontryagin collapse map on pairs of spaces corresponding to
+    some tubular neighbourhood embedding of $\N{\emb}$
     \begin{gather*}
       \collapse\colon
       N
       \to N/\left( N\setminus \E{\N{\emb}} \right)
       \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
       \cong \Thomspace{\N{\emb}}
+      \xrightarrow{\incl} (\Thomspace{\N\emb},\infty)
       \;.
     \end{gather*}
     Then
@@ -2436,7 +2439,7 @@ well-defined.
     $\pf\emb\fundcl N$.
     With the known fact that the Stiefel-Whitney class
     $\w{\rk\N{\emb}}{\N{\emb}}$ in degree $\rk{\N{\emb}}$ is the
-    Euler class which by definition is
+    Euler class, which by definition is
     $\pb{(\zerosec{\N{\emb}})}(\u{\N{\emb}})$, one also obtains
     \begin{gather*}
       \w{\rk\N{\emb}}{\N{\emb}}
@@ -2445,10 +2448,12 @@ well-defined.
       \;.
     \end{gather*}
     So the pushforward of the Poincaré dual of $\pf\emb\fundcl N$
-    along the embedding is the highest Stiefel-Whitney class.
+    along the embedding is the $\rk\N{}$-Stiefel-Whitney class.
     \begin{proof}
-      Skipped.
-      \TODO{Ref. for proof (without spectra)?}
+      See \forexample
+      % Bredon, p. 371
+      % AT III, Intersection theory
+      \TODO{(Better) Ref. for proof?}
     \end{proof}
   \end{Lem}
   By the above Lemma
@@ -2710,9 +2715,9 @@ generator candidates:
 
 
 This finally gives Brown's theorem:
-\begin{Thm}\label{thm:brown}
+\begin{Thm}
   Lemmata~\ref{lem:evengen} and \ref{lem:oddgen} together yield a
-  complete generating set of the cobodism ring, \idest
+  complete generating set of the cobordism ring, \idest
   \begin{gather*}
     \c_*\cong \left( [\G m] \,\big|\, m\neq 2^s-1 \right)_{\Zmod2}
     = \Zmod2\left[[\G m] \,\big|\, m\neq 2^s-1\right]
