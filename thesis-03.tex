@@ -12,7 +12,7 @@
 % Review the necessary results about the structure of the unoriented
 % cobordism ring and explain R. L. Brown’s proof of the immersion
 % conjecture up to cobordism. [immersionconj], [brown]
-The overall goal of this chapter is to proof the following theorem of
+The overall goal of this chapter is to prove the following theorem of
 R.~L.~Brown following his paper \cite{brown},
 which essentially states that the immersion conjecture is true up to
 the cobordism relation.
@@ -29,7 +29,7 @@ of the cobordism ring.
 As the latter has the form of a polynomial algebra
 $\Zmod2[\sigma_i|i\neq 2^r-1]$, a set of elements
 $([\G i]|i\neq2^r-1)$ will already be a generating set if all of the
-$\G i$ are indecomposable.
+$[\G i]$ are indecomposable.
 Thus, the candidate generating elements that will be constructed
 in \autoref{sec:proofbrown} need to be tested for:
 \begin{enumerate}
@@ -39,8 +39,8 @@ in \autoref{sec:proofbrown} need to be tested for:
   \autoref{sec:twistedprod:indecompcriterion}, and
 \item the property to fulfil the immersion conjecture.
 \end{enumerate}
-The generating set is going to be constructed using so-called twisted
-products.
+The odd generators are going to be constructed using twisted
+products, which are introduced in \autoref{sec:twistedproddef}.
 
 This chapter is structured into some preliminary work on finding a
 criterion to easily detect indecomposable elements of the cobordism
@@ -53,16 +53,18 @@ preliminary work is merged.
 
 For clarity of presentation, both a couple of results from Thom's
 paper \cite{thom} within the review in
-\autoref{sec:cobordismringstructure},
-as well as the concrete calculation of the cohomology ring structure
-of twisted products, will merely be referenced without proof.
+\autoref{sec:cobordismringstructure} will merely be referenced without
+proof.
 The reader is assumed to be familiar with symmetric polynomials.
+
+Call a manifold \emph{indecomposable} if it
+represents an indecomposable element of the cobordism ring.
 
 \section{Detecting Indecomposable Elements of the Cobordism Ring}
 \label{sec:indecomposableelements}
 In order to find representatives for a set of algebraically
-independent generators of the polynomial ring $\c_*$, one needs a way
-to detect indecomposable elements. Indecomposable in this 
+independent generators of the polynomial cobordism ring, one needs a
+way to detect indecomposable elements. Indecomposable in this 
 context means to not be expressible as a sum of products of lower
 degree elements.
 
@@ -71,21 +73,20 @@ This section will follow an approach of Thom
 class serves as indicator. This characteristic class is constructed
 out of Stiefel-Whitney classes using certain functions on symmetric
 polynomials (see \autoref{sec:functions}), and becomes particularly
-handy on tangent bundles of manifolds (see
+useful on tangent bundles of manifolds (see
 \autoref{sec:swnumsofproductmfds}). The final indication lemma is then
 stated and proved in \autoref{sec:indecomposabilitycriterion}.
 
 \subsection{Special Properties of Symmetric Polynomials}\label{sec:functions}
 This subsection examines a special kind of polynomials that
 obey a product rule similar to \ref{tag:cartan} whenever evaluated on
-elements of the form of a total Stiefel-Whitney class
-(see Lemma~\ref{lem:productrule:general}).
+elements of the form of a total Stiefel-Whitney class.
 
 As a consequence, one can express certain combinations of
 Stiefel-Whitney numbers of product manifolds in terms of ones of their
 factors, which will be investigated in detail in
 \autoref{sec:swnumsofproductmfds}.
-From this \autoref{sec:indecomposabilitycriterion} will deduce a
+From this, \autoref{sec:indecomposabilitycriterion} will deduce a
 simple criterion for a manifold to be cobordant to a product of
 manifolds.
 
@@ -149,18 +150,44 @@ and agree on a shorthand for symmetrised monomials.
     \end{gather*}
     where $t^{(i_1,\dotsc,i_n)}\coloneqq t_1^{i_1}\dotsm t_n^{i_n}$.
     \begin{proof}
-      \optcite[footnote~2, p.~154]{thom}
-      Every symmetric polynomial is the sum of homogeneous symmetric
-      polynomials, \idest is of the form $\sum_{I^n\in A}t^I$. This
-      however can be written as a sum of symmetrised monomials by
-      descending induction on the number of monomial summands $\#A$,
-      which makes the symmetrised monomials a generating set of $\Symm{n}_*$.
+      See also \cite[footnote~2, p.~154]{thom}.
       Linear independence is clear as monomials $t^I$ and $t^{I'}$ are
       linearly independent if $I\neq I'$, and sequences belonging to
       different partitions must be unequal.
+      For the generating property note that every symmetric polynomial
+      $p$ is of the form $\sum_{I^n\in A}t^I$. This
+      however can be written as a sum of symmetrised monomials by
+      descending induction:
+      For a symmetric polynomial
+      \begin{gather*}
+        p
+        = \sum_{\Part\in B}\symm{n} t^{\Part}  + \sum_{I^n\in A}t^I
+        \;,
+      \end{gather*}
+      and $I'\in A$, one must have $s(I')\in A$ for
+      $s\in\Permutations{n}$, since
+      $p-\sum_{\Part\in B}\symm{n} t^{\Part} = \sum_{I^n\in A}t^I$
+      is still symmetric.
+      Hence one can write
+      \begin{align*}
+        p
+        &= \sum_{\mathclap{\Part\in B}}\symm{n} t^{\Part}
+          + \sum_{s\in\Permutations{n}}t^{s(I')}
+          + \sum_{\mathrlap{
+          I^n\in A\setminus\{s(I')|s\in\Permutations{n}\}
+          }} t^I
+        \\
+        &= \sum_{\mathclap{\Part\in B\cup\{[I']\}}}\symm{n} t^{\Part}
+          + \sum_{\mathrlap{
+            I^n\in A\setminus\{s(I')|s\in\Permutations{n}\}
+          }} t^I
+        \;,
+      \end{align*}
+      and thus inductively decrease $\# A$ to zero, expressing $p$
+      as a sum of symmetrised polynomials.
     \end{proof}
-  \item $\Symm{n}_*$ is generated by the algebraically independent,
-    elementary symmetric polynomials in $n$ variables
+  \item $\Symm{n}_*$ is generated as algebra by the algebraically
+    independent, elementary symmetric polynomials in $n$ variables
     \begin{gather*}
       \el i n\coloneqq \symm{n} t^{\Part_i}
       \in \Symm{n}_i
@@ -187,40 +214,48 @@ and agree on a shorthand for symmetrised monomials.
 \end{LemDef}
 
 Now the desired polynomials can be defined.
+The following definition is according to \cite[p.~90]{milnorlectures}.
 \begin{Def}
-  \optcite[p.~90]{milnorlectures}
   Let $k\in\Nat$, $\Part\in\PartitionsOf k$, and let
   $\Zmod2[\alpha_1,\dotsc,\alpha_k]$ be the polynomial ring in $k$
   variables where $\alpha_i$ has degree $i$.
-  Define the homogeneous polynomial
-  $\s{\Part}\in\Zmod2[\alpha_1,\dotsc,\alpha_k]$ of degree $k$ by
-  \begin{gather*}
-    \s{\Part}(\el 1 n,\dotsc, \el k n) = \symm{n} t^{\Part} \in \Symm{n}_k
-  \end{gather*}
-  for some $n\geq k$. This means, $\s{\Part}$ gives the representation
-  of $\symm{n}t^\Part$ in terms of the generating set $(\el i n)_i$.
-  Mind, that this
   \begin{enumerate}
-  \item is well-defined, as the elementary symmetric
-    polynomials are algebraically independent, and
-  \item the definition does not depend on $n$ as long as $k\leq n$.
+  \item
+    Define the homogeneous polynomial
+    $\s{\Part}\in\Zmod2[\alpha_1,\dotsc,\alpha_k]$ of degree $k$ by
+    \begin{gather*}
+      \s{\Part}(\el 1 n,\dotsc, \el k n) = \symm{n} t^{\Part} \in \Symm{n}_k
+    \end{gather*}
+    for some $n\geq k$. This means, $\s{\Part}$ gives the representation
+    of $\symm{n}t^\Part$ in terms of the generating set $(\el i n)_i$.
+    Mind, that this
+    \begin{enumerate}
+    \item is well-defined, as the elementary symmetric
+      polynomials are algebraically independent generators, and
+    \item does not depend on $n$ as long as $k\leq n$.
+    \end{enumerate}
+  \item 
+    Further, for a graded, commutative ring $A_*=\bigoplus_{i\geq 0}
+    A_i$ write elements as
+    \begin{gather*}
+      a=\sum_i a_i \coloneqq (a_0,a_1,a_2,\dotsc)
+      \;,
+    \end{gather*}
+    and
+  \item 
+    define the evaluation of $\s{\Part}$ on such an element $a$ as
+    \begin{gather*}
+      \s{\Part}(a) \coloneqq \s{\Part}(a_1,\dotsc,a_k)
+      \in A_k
+      \;,
+    \end{gather*}
+    \idest skip $a_0$ and all higher $a_i$.
   \end{enumerate}
-  Further, for a graded ring $A_*=\bigoplus_{i\geq 0} A_i$ write
-  elements as
-  \begin{gather*}
-    a=\sum_i a_i \coloneqq (a_0,a_1,a_2,\dotsc)
-    \;,
-  \end{gather*}
-  and define the evaluation of $\s{\Part}$ on such an element $a$ as
-  \begin{gather*}
-    \s{\Part}(a) \coloneqq \s{\Part}(a_1,\dotsc,a_k)
-    \;,
-  \end{gather*}
-  \idest skip $a_0$ and all higher $a_i$.
 \end{Def}
 
 \begin{Ex}
   The first such polynomials over $\Zmod2$ are
+  (see \cite[p.~90]{milnorlectures}):
   \begin{align*}
     k&=0:
     &\s{\Emptypart} &= 1
@@ -234,8 +269,32 @@ Now the desired polynomials can be defined.
         &\s{(1,2)} &= \alpha_1\alpha_2 + \alpha_3
              &\s{(1,1,1)} &= \alpha_3
   \end{align*}
-  \cite[p.~90]{milnorlectures}
 \end{Ex}
+
+\begin{Rem}\label{rem:spolyevaluation}
+  If $k\leq r\leq n\in\Nat$ and one is given an element $a=1+\sum_{i\geq 1} a_i$
+  in a graded commutative algebra $A_*$, which can be written as
+  \begin{gather*}
+    a = 1 + \sum_{i=1}^{r}\el{i}{n}(f_1,\dotsc,f_n)
+  \end{gather*}
+  for some degree one elements $f_i\in A_*$,
+  then for any partition $\Part\in\PartitionsOf{k}$ one gets
+  \begin{align*}
+    \s{\Part}(a)
+    &= \s{\Part}\left(
+      \el{1}{n}(f_1,\dotsc,f_n),\dotsc, \el{k}{n}(f_1,\dotsc,f_n)
+      \right) \\
+    &= \left(
+      \s{\Part}
+      \left( \el{1}{n}, \dotsc, \el{k}{n} \right)
+      \right)
+      (f_1,\dotsc,f_n) \\
+    &= \symm{n} f^\Part \in A_k
+      \;.
+  \end{align*}
+  This trick will be very useful when dealing with Stiefel-Whitney
+  classes.
+\end{Rem}
 
 As promised, these translation-polynomials between the basis
 $\symm{n}t^{\Part}$ of $\Symm{n}_k$ and the generators $\el i n$
@@ -243,8 +302,8 @@ fulfil the following interesting property concerning
 multiplication of elements that have the form of a total
 Stiefel-Whitney class.
 \begin{Lem}\label{lem:productrule:general}
-  \optcite[Theorem~33, p.~91f]{milnorlectures}
-  Let $k\in\Nat$, and let $A_*=\bigoplus_{i\geq 0} A_i$ be a graded ring.
+  Let $k\in\Nat$, and let $A_*=\bigoplus_{i\geq 0} A_i$ be a graded
+  commutative ring.
   For $a,b\in A_*$ with $a_0=1=b_0$, and any partition
   $\Part\in\PartitionsOf k$ holds
   \begin{gather*}
@@ -254,48 +313,90 @@ Stiefel-Whitney class.
     \;.
   \end{gather*}
   \begin{proof}
-    Just as for the definition of $\s{\Part}$, it suffices to check
-    the equality on algebraically independent elements. More
-    precisely, it even suffices to take $a=\sum_{i=1}^k a_i$ and
-    $b=\sum_{i=1}^k b_i$ that do not exceed degree $k$, since all higher
-    elements $a_i$ respectively $b_i$ are ignored during evaluation by
-    definition.
-    So, make the following choices:
-    \begin{itemize}
-    \item The result will be independent of $n$, as long as
-      $n$ is large enough, thus choose $n=2k$.
-      Note that this is the smallest choice for $n$ for which there
-      may be a pair of sequences $J_1^k\concat J_2^k\in\Part$
-      where one is all zeros.
-    \item For simplicity of notation write
-      $x_i=t_i$ and $y_i=t_{2i}$ for $1\leq i\leq k$ to split the
-      variables $(t_1,\dotsc,t_{2k})=(x_1,\dotsc,x_k,y_1,\dotsc,y_k)$
-      into two equal parts.
-    \item In order to directly work with the definition of $\s{\Part}$ it is
-      convenient to choose as algebraically independent elements
-      \begin{align*}
-        a &\coloneqq
-            \prod_{\mathclap{r=1}}^k(1+t_r)
-            \cequalsby{\eqref{eq:sumelemsymmpoly}}
-            1 + \sum_{i=1}^k \el i k(x_1,\dotsc,x_k)
-            \;\text{, and}\\
-        b &\coloneqq
-            \prod_{\mathclap{r=k+1}}^n(1+t_r)
-            \cequalsby{\eqref{eq:sumelemsymmpoly}}
-            1 + \sum_{i=1}^k \el i k(y_1,\dotsc,y_k)
-            \;\text{, then}\\
-        a\cdot b
-          &=
-            \prod_{r=1}^n (1+t_r)
-            \cequalsby{\eqref{eq:sumelemsymmpoly}}
-            1 + \sum_{i=1}^n \el i n (t_1,\dotsc,t_n)
-            \;.
-      \end{align*}
-      Consequently, the sets 
-      $(a_1,\dotsc,a_k)$, $(b_1,\dotsc,b_k)$, and
-      $(a\cdot b)_{1\leq i\leq n}$ are algebraically independent as
-      needed.
-    \end{itemize}
+    A proof can also be found in
+    \cite[Theorem~33, p.~91f]{milnorlectures}.
+    We will prove the lemma for a special which generalises to
+    the lemma.
+    Beforehand, recall that for $r\geq 1$ and any
+    element $f=\sum_{i\geq 0}f_i$ in a commutative graded ring $A_*$
+    holds
+    \begin{gather}\label{eq:translationpolycut}
+      \s{\Part}\left( \sum_{i\geq 0}f_i \right)
+      = \s{\Part}\left( \sum_{i=0}^{k+r}f_i \right)
+      \;.
+    \end{gather}
+    Now let $A_*$ be the subring of $\Z[t_1,\dotsc,t_{2k}]$ that is
+    generated by the algebraically independent elements
+    \begin{align*}
+      a_i&\coloneqq \el i k(x_1,\dotsc,x_k)
+      &\text{and}&
+      &b_i&\coloneqq \el i k(y_1,\dotsc,y_k)
+    \end{align*}
+    for $1\leq i\leq k$ and with $x_i=t_i$ and $y_i=t_{2i}$.
+    Then, for any other graded commutative
+    ring $\bar A_*$, and elements
+    $\bar a=1+\sum_{i\geq 1}\bar a_i$,
+    $\bar b=1+\sum_{i\geq 1}\bar b_i\in\bar A_*$, the ring
+    homomorphism defined by
+    \begin{align*}
+      \phi\colon A_*&\longto \bar A_*,
+      &a_i&\mapsto \bar a_i
+      &b_i&\mapsto \bar b_i
+    \end{align*}
+    is both well-defined, since $a_i,b_i$ are algebraically independent
+    generators, and surjective onto the subring of $\bar A_*$
+    generated by $\bar a_i,\bar b_i$ with $1\leq i\leq k$.
+    Hence, if we assume the statement is proven for
+    $a=1+\sum_{i=1}^k a_i$ and $b=1+\sum_{i=1}^k b_i$ in $A_*$, one
+    has
+    \begin{align*}
+      \s{\Part}(\bar a\cdot \bar b)
+      &\cequalsby{\eqref{eq:translationpolycut}}
+      \s{\Part}\left(
+        \left( 1+\sum_{i=1}^{k}\bar a_i \right) \cdot
+        \left( 1+\sum_{i=1}^{k}\bar b_i \right)
+      \right)
+      = \s{\Part}(\phi(a)\cdot \phi(b)) \\
+      &= \phi(\s{\Part}(a\cdot b)) \\
+      &\equalsby{Assumption} \phi\left(
+      \sum_{\mathrlap{\Part_1\concat\Part_2=\Part}}
+      \s{\Part_1}(a) \cdot \s{\Part_2}(b)
+      \right) \\
+      &= \sum_{\mathrlap{\Part_1\concat\Part_2=\Part}}
+        \s{\Part_1}(\phi(a)) \cdot \s{\Part_2}(\phi(b)) 
+      =
+        \sum_{\mathclap{\Part_1\concat\Part_2=\Part}}
+        \s{\Part_1}\left( \sum_{i=1}^{k}\bar a_i \right)
+        \cdot \s{\Part_2}\left( \sum_{i=1}^{k}\bar b_i \right) \\
+      &\equalsby{\eqref{eq:translationpolycut}}
+        \sum_{\mathrlap{\Part_1\concat\Part_2=\Part}}
+        \s{\Part_1}(\bar a) \cdot \s{\Part_2}(\bar b)
+      \;,
+    \end{align*}
+    which is the statement of the lemma for $\bar a, \bar b$.
+    Therefore, it suffices to show the lemma for $a$ and $b$ as
+    above.
+    
+    In order to do so, observe that
+    \begin{align*}
+      a &\coloneqq
+          \prod_{\mathclap{r=1}}^k(1+t_r)
+          \cequalsby{\eqref{eq:sumelemsymmpoly}}
+          1 + \sum_{i=1}^k \el i k(x_1,\dotsc,x_k)
+          \;\text{, and}\\
+      b &\coloneqq
+          \prod_{\mathclap{r=k+1}}^n(1+t_r)
+          \cequalsby{\eqref{eq:sumelemsymmpoly}}
+          1 + \sum_{i=1}^k \el i k(y_1,\dotsc,y_k)
+          \;\text{, then}\\
+      a\cdot b
+        &=
+          \prod_{r=1}^n (1+t_r)
+          \cequalsby{\eqref{eq:sumelemsymmpoly}}
+          1 + \sum_{i=1}^{2k} \el i n (t_1,\dotsc,t_{2k})
+          \;,
+    \end{align*}
+    which nicely fits into the defining relation for $\s{\Part}$.
     Now calculate
     \begin{align*}
       \s{\Part}(a\cdot b)
@@ -361,20 +462,19 @@ noted dimension throughout this section.
 
 Recall that
 \begin{enumerate}
-\item the cohomology ring $\H^*(M)$ of a space respectively
-  manifold is a graded ring,
+\item the cohomology ring $\H^*(M)$ is a graded ring,
 \item the total Stiefel-Whitney number of a manifold is of the form
   $\W{M_i} = 1 + \w 1 {M_i} + \dotsb + \w n {M_i}$, and that
-\item by Künneth holds
+\item by the Künneth isomorphism, we have
   \begin{align*}
     \H^*(M_1)\otimes \H^*(M_2)
     &\overset{\cong}\longto \H^*(M)
     \\
     c_1 \otimes c_2
-    &\longmapsto c_1\cdot c_2
-      \coloneqq \pb\proj_1 c_1 \cdot \pb\proj_2 c_2
+    &\longmapsto c_1\times c_2
+      \coloneqq \pb\proj_1 c_1 \cup \pb\proj_2 c_2
   \end{align*}
-  and $\W{M} = \W{M_1} \cdot \W{M_2}$ by
+  and $\W{M} = \W{M_1} \times \W{M_2}$ by
   \ref{tag:swclassesmultiplicativity} of the Stiefel-Whitney classes.
 \end{enumerate}
 Thus, one can apply the multiplication
@@ -386,22 +486,27 @@ yields:
   \begin{align*}
     \s{\Part}(\W{M})
     =
-    \s{\Part}\left(\W{M_1}\cdot \W{M_2}\right)
+    \s{\Part}\left(\W{M_1}\times \W{M_2}\right)
     &\cequalsby{\ref{lem:productrule:general}}
-      \sum_{\mathclap{\Part_1\concat\Part_2=\Part}}
-      \s{\Part_1}(\W{M_1}) \cdot \s{\Part_2}(\W{M_2})
+      \sum_{\mathrlap{\Part_1\concat\Part_2=\Part}}
+      \s{\Part_1}(\pb\proj_1\W{M_1}) \cdot \s{\Part_2}(\pb\proj_2\W{M_2})
+    \\
+    &=
+      \sum_{\mathrlap{\Part_1\concat\Part_2=\Part}}
+      \s{\Part_1}(\W{M_1}) \times \s{\Part_2}(\W{M_2})
     \\ &=
-         \sum_{\mathclap{\substack{
+         \sum_{\mathrlap{\substack{
          \Part_1\concat\Part_2=\Part\\
     \Part_1\in\PartitionsOf{n_1}\\
     \Part_2\in\PartitionsOf{n_2}\\
     }}}
-    \s{\Part_1}(\W{M_1}) \cdot \s{\Part_2}(\W{M_2})
+    \s{\Part_1}(\W{M_1}) \times \s{\Part_2}(\W{M_2})
   \end{align*}
   \begin{proof}
-    The last equality is due to the following dimension reasons.
-    For any manifold $W$ and partition $\Part$ of $k$,
-    $\s{\Part}(\W{W})$ is of degree $k$ if $k\leq\dim W$ and zero else.
+    For the last equality note that by definition of $\s{\Part}$
+    for any partition $\Part$ of some $k\in\Nat$, 
+    the element $\s{\Part}(\W{W})$ lies in $\H^k(M)$,
+    hence must be zero if $k>\dim W$.
     Therefore, for any combination of partitions
     $\Part_1\in\PartitionsOf{k_1}$,
     $\Part_2\in\PartitionsOf{k_2}$
@@ -482,7 +587,7 @@ whose cobordism class is indecomposable.
 \subsection{Review: The Cobordism Ring Structure}
 \label{sec:cobordismringstructure}
 Recall that two closed manifolds of the same dimension $n$ are
-(unoriented) cobordant if their disjoint union is the border of an
+(unoriented) cobordant if their disjoint union is the boundary of an
 $(n+1)$-dimensional manifold.
 This is an equivalence relation amongst $n$-manifolds, and the
 set of equivalence classes forms an Abelian group $\c_n$ of order two
@@ -492,12 +597,11 @@ $\c_*\coloneqq \bigoplus_{n\geq 0}\c_n$ into an $\Zmod2$-algebra
 called the (unoriented) cobordism ring.
 Denote the cobordism equivalence class of a manifold $M$ by $[M]$.
 
-Most remarkably, the cobordism relation is homotopy invariant, \idest
-homotopic manifolds of the same dimension will be cobordant.
-Further, the structure of this algebra is well-known.
+Most remarkably, the cobordism relation is homotopy invariant, which
+will become clear from the property described in
+Theorem~\ref{thm:cobordantiffswnumscoincide}.
+Further, the structure of this algebra is well-known to be as follows.
 \begin{Thm}[Thom]\label{thm:cobordismringstructure}
-  \optcite[Thm.~1.23]{immersionconj}
-  \optcite[Theorem~IV.9]{thom}
   \begin{gather*}
     \c_*
     % \cong \pi_*(\MO)
@@ -505,10 +609,13 @@ Further, the structure of this algebra is well-known.
   \end{gather*}
   as graded $\Zmod2$-algebras.
   \begin{proof}
-    See \cite[Theorem~IV.12]{thom} or
+    Compare \cite[Thm.~1.23]{immersionconj}, and
+    \cite[Theorem~IV.9]{thom}.
+    See \cite[Theorem~IV.12]{thom}, or
     \autoref{sec:indecomposabilitycriterion},
     \ref{item:generatorscobordimsring}, for a proof using
     Theorem~\ref{thm:basiscobordismring} below.
+    Alternatively see \cite[Chap.~VI]{stong}.
   \end{proof}
 \end{Thm}
 
@@ -553,7 +660,8 @@ the above basis.
     of $M$, where $I=(i_1,\dotsc,i_l)$ with $\d(I)=n$.
     Then this is zero, as one calculates using the long
     exact sequence of cohomology respectively homology of the pair
-    $i\colon M\immto W$ (abbreviated les):
+    $i\colon M\immto W$ (abbreviated les) with boundary map
+    $\partial$:
     \begin{align*}
       \W{M}
       &= \W{\T M}
@@ -576,7 +684,7 @@ the above basis.
 
 \subsection{A Criterion for Indecomposability}
 \label{sec:indecomposabilitycriterion}
-Now, one can focus on the ultimate goal of the current section, which
+Now, we focus on the ultimate goal of the current section, which
 is to deduce the following indecomposability criterion. This
 originates as a corollary from Thom's proof of the multiplicative
 structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
@@ -587,8 +695,8 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     \snum{(n)}{M} \neq 0 \in \Zmod2
     \;.
   \end{gather*}
-  % for non-dyadic decomposition: \optcite[p.~156]{thom};
-  % for summation notation: \optcite[p.154, (4)f]{thom};
+  % for non-dyadic decomposition: [p.~156]{thom};
+  % for summation notation: [p.154, (4)f]{thom};
 \end{Thm}
 
 \begin{proof}[proof of Theorem~\ref{thm:indecomposabilitycriterion}]
@@ -613,7 +721,7 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     \end{gather*}
     of the classes $[V_\Part]$.
     Now the Stiefel-Whitney numbers are determined by the cobordism
-    class according to Theorem~\ref{thm:cobordantiffswnumscoincide}additive with
+    class according to Theorem~\ref{thm:cobordantiffswnumscoincide},
     and are additive with respect to disjoint sums.
     So, one gets for any Stiefel-Whitney number $\wsnum{I}{M}$ of $M$
     \begin{align*}
@@ -634,7 +742,7 @@ structure of the cobordism ring (see \cite[Section~IV.5]{thom}).
     $\snum{\Part}{M}$ is non-zero. In other words, $M$ is cobordant to
     \begin{gather*}
       \coprod_{\mathclap{\substack{
-            \Part\in\PartitionsOf k \text{ non-dyadic}\\
+            \Part\in\PartitionsOf n \text{ non-dyadic}\\
             \s{\Part}(W)\neq 0
           }}} V_\Part
       \;.
@@ -704,12 +812,20 @@ in constructing a candidate generating set of the cobordism ring.
   For $k\in\Nat$ even, the projective space $\RP k$ represents an
   indecomposable element of the cobordism ring.
   \begin{proof}
-    $\W{\RP k} = (1+x)^{k+1}=\prod_{i=1}^{k+1}$ where $x$ is the
+    If one applies Remark~\ref{rem:spolyevaluation} to
+    \begin{gather*}
+      \W{\RP k}
+      = (1+x)^{k+1}
+      = \prod_{i=1}^{k+1}(1+x)
+      = 1+\sum_{j=1}^{k+1} \el{j}{k+1}(x,\dotsc,x)
+    \end{gather*}
+    where $x$ is the
     generator in degree one of $\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$,
-    and thus
+    one gets
     \begin{align*}
       \s{(k)}(\RP k)
-      &\cequalsby{Def.} \sum_{i=1}^{k+1} x^k
+      &\cequalsby{\ref{rem:spolyevaluation}}
+        \sum_{i=1}^{k+1} x^k
         = (k+1)x^k \\
       \snum{(k)}{\RP k}
       &= \capped{(k+1)x^k}{\fundcl{\RP k}}
@@ -734,10 +850,11 @@ chosen correctly
 be the main result of this section, and is discussed in
 \autoref{sec:twistedprod:indecompcriterion}.
 
-\subsection{Definition}
+\subsection{Definition}\label{sec:twistedproddef}
+The following definition is according to
+\cite[p.~83]{immersionconj} respectively 
+\cite[compare~§4, Def./ of $P(m;X)$]{brown}.
 \begin{Def}
-  \optcite[p.~83]{immersionconj}
-  \optcite[compare §4, Def.~of~$P(m;X)$]{brown}
   Let $X$ be a space and $k\in\Nat$ an integer.
   Define the \emph{twisted product of $X$ by $\Sphere k$}, denoted
   $\Twistedprod{k}{X}$, to be the orbit space of the properly
@@ -788,7 +905,7 @@ manifolds and fibre bundles.
       \longto \Twistedprodcovspace{k}{\E\xi}
       \longto \Twistedprodcovspace{k}{X}
     \end{gather*}
-    where all maps are maps of $\Zmod2$-sets.
+    where all maps are maps of $\Zmod2$-spaces.
     As a special case, $\Twistedprod{k}{X}$ admits a fibre bundle
     \begin{gather}\label{eq:twistedprodrpnfibrebdl}
       X\times X
@@ -801,11 +918,6 @@ manifolds and fibre bundles.
     another fibre bundle, and $f\colon X'\to X$ a map.
     One has:
     \begin{enumerate}
-    \item $\Twistedprod{k}{-}$ respects sums of fibre bundles, \idest
-      \begin{gather*}
-        \Twistedprod{k}{\xi\oplus\eta\colon \E\xi\oplus\E\eta\to X}
-        = \Twistedprod{k}{\xi}\oplus\Twistedprod{k}{\eta}
-      \end{gather*}
     \item\label{item:twistedprod:preservespb}
       $\Twistedprod{k}{-}$ respects pullbacks, \idest
       \begin{gather*}
@@ -813,6 +925,36 @@ manifolds and fibre bundles.
         = \pb{\left(\Twistedprod{k}{f}\right)}
         \left(\Twistedprod{k}{\xi}\right)
       \end{gather*}
+    \item $\Twistedprod{k}{-}$ respects Whitney sums of vector
+      bundles, \idest 
+      \begin{gather*}
+        \Twistedprod{k}{\xi\oplus\eta\colon \E{(\xi\oplus\eta)}\to X}
+        = \Twistedprod{k}{\xi}\oplus\Twistedprod{k}{\eta}
+        \;.
+      \end{gather*}
+      To see this, observe that the following is a well-defined
+      commutative pullback diagram of vector bundles:
+      \begin{center}
+        \begin{tikzcd}
+          \Twistedprod{k}{\E{(\xi\oplus\eta)}}
+          \ar[r]
+          \ar[d, "\Twistedprod{k}{\xi\oplus\eta}"]
+          &\Twistedprod{k}{\E{(\xi\times\eta)}}
+          \ar[r]
+          \ar[d, "\Twistedprod{k}{\xi\times\eta}"]
+          &\Twistedprod{k}{\E{\xi}}\times\Twistedprod{k}{\E{\eta}}
+          \ar[d, "\Twistedprod{k}{\xi}\times \Twistedprod{k}{\eta}"]
+          \\
+          \Twistedprod{k}{X}
+          \ar[r, "\Twistedprod{k}{\Delta}"]
+          &\Twistedprod{k}{X\times X}
+          \ar[r, "\widetilde\Delta"]
+          &\Twistedprod{k}{X}\times\Twistedprod{k}{X}
+        \end{tikzcd}
+      \end{center}
+      where
+      $\widetilde\Delta\colon
+      [s,(x_1,y_1),(x_2,y_2)]\mapsto\left([s,x_1,x_2],[s,y_1,y_2]\right)$.
     \end{enumerate}
   \item\label{item:twistedprodmanifold}
     $\Twistedprod{k}{-}$ preserves closed smooth manifolds, \idest
@@ -874,8 +1016,8 @@ product of real spaces.
     = (\gamma_k\oplus\dotsb\oplus\gamma_k)\oplus\trivbdl^n
   \end{gather*}
   \begin{proof}
+    Compare also \cite[Prop.~4.3,p~1107]{brown}.
     A well-defined vector bundle isomorphism is for example
-    \optcite[Prop.~4.3,p~1107]{brown}
     \begin{align*}
       \Twistedprod{k}{\R^n}
       &\overset{\sim}\longto
@@ -916,12 +1058,11 @@ Use the following notation.
   Note that by the Künneth isomorphism
   $\H^*(X^2)\cong\H^*(X)\otimes\H^*(X)$, and recall that all exact
   sequences of $\Zmod2$-vector spaces split.
-  Define
+  Define by
   \begin{itemize}
   \item
     $\pi_k\colon \Sphere k\times X^2\to\Twistedprod k X$
-    to be the quotient map from the definition (index omitted if
-    obvious),
+    to be the quotient map from the definition,
   \item
     $\proj\colon\Twistedprod k X\to \RP k$
     to be the fibre bundle map,
@@ -931,21 +1072,23 @@ Use the following notation.
   \item
     $N\coloneqq
     \ker(x\otimes y\mapsto x\otimes y + y\otimes x)
-    = \left(\left\{
+    = \left(
         a\otimes b + b\otimes a
-        \in \H^*(X\times X)
-      \right\}\right)_{\Zmod2}$,
+        \middle|
+        a,b\in \H^*(X\times X)
+      \right)_{\Zmod2}$,
   \item
     $d\colon \H^*(X)\to\H^*(X\times X)$,
-    $d(a)\coloneqq a\times a$, and
-    $D\coloneqq
-    \left\{ d(a)=a\otimes a \in \H^*(X\times X) \right\}$,
+    $d(a)\coloneqq a\otimes a$, and
+    $D\coloneqq \Im d
+    = \left\{ a\otimes a \in \H^*(X\times X) \right\}$,
   \item
     $s_k\in\H^k(\Sphere k)\cong\Zmod2$ to be the generator, and
   \item
-    $c_k\coloneqq \pb\proj x\in\H^1(\Twistedprod{k}{X})$ to be the
-    pullback of the generator $x\in\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$.
+    $c_k\coloneqq \pb\proj x\in\H^1(\Twistedprod{k}{X})$, where
+    $x\in\H^*(\RP k)\cong\Zmod2[x]/(x^{k+1})$ is the unique generator.
   \end{itemize}
+  The indices $k$ are omitted if they are obvious from the context.
 \end{Def}
 \begin{Rem}
   Note that $N+D$ is closed under multiplication and addition,
@@ -953,18 +1096,20 @@ Use the following notation.
   section  $[s]\mapsto[s,p,p]$ for any point $p\in X$, thus making
   $\H^*(\RP k)$ a direct summand of $\H^*(\Twistedprod k X)$ of the
   form $\Zmod2[c]/(c^{k+1})$.
-  From the factorisation
+  From the commutative diagram factorisation
   \begin{center}
     \begin{tikzcd}
       S^k\times X^2
-      \ar[r, "\pi"]
-      \ar[d, "\proj_{\Sphere k}"]
-      &\Twistedprod k X \ar[r, "\proj"]
-      &\RP k \\
-      S^k \ar[rru, "\pi", bend right=15]
+      \ar[d, "\pi"]
+      \ar[r, "\proj_{\Sphere k}"]
+      & \Sphere k \ar[d, "\pi"]
+      \\
+      \Twistedprod k X
+      \ar[r, "\Twistedprod{k}{X\to\pt}"]
+      &\RP k      
     \end{tikzcd}
   \end{center}
-  it is obvious that $\pb\pi(c)=0$.
+  and with $\pb\pi\colon\RP k\to\Sphere k$ being zero, one gets $\pb\pi(c)=0$.
 \end{Rem}
 \begin{Thm}\label{thm:twistedprod:cohomstructure}
   Let $X$ be a space and $k\in\Nat$.
@@ -1001,16 +1146,16 @@ Use the following notation.
     \end{gather*}
   \end{enumerate}
   For readability skip $1\otimes-$ and $-\otimes d(1)$ in element
-  notation wherever it is clear to which part the summand
-  belongs.
-  Further note that $D$ is multiplicative, but not additively closed,
+  notation wherever it the meaning is clear from the context.
+  Further note that $D$ is multiplicatively, but not additively closed,
   whereas $(N+D)\subset\H^*(X^2)$ is a subring via
   $d(a)+d(b) = d(a+b)+(a\otimes b+ b\otimes a)$.
 \end{Thm}
-
+A proof of Theorem~\ref{thm:twistedprod:cohomstructure} can be found
+at the end of the setion.
+Some immediate consequences are:
 \begin{Cor}
-  Some immediate consequences from
-  Theorem~\ref{thm:twistedprod:cohomstructure} are:
+  Let $X$ again be a space and $k\in\Nat$.
   \begin{enumerate}
   \item
     For any section $s_p\colon\RP k\to\Twistedprod{k}{X}$, $q\mapsto[q,p,p]$,
@@ -1044,7 +1189,7 @@ Use the following notation.
     \end{gather*}
     \begin{description}
     \item[First part:]
-      Since $\Twistedprod k f$ is a morphism of fibre bundles over
+      Since $\Twistedprod k f$ is a morphism of vector bundles over
       $\RP k$,
       \begin{gather*}
         \pb{\Twistedprod k f}(c)
@@ -1067,54 +1212,76 @@ Use the following notation.
   \end{proof}
 \end{Cor}
 
-This then immediately gives a result on the Stiefel-Whitney classes of
+This yields a result on the Stiefel-Whitney classes of
 a twisted product of line bundles that will be used below to simplify
-calculations involving higher dimensional bundles.
+calculations involving higher dimensional bundles (see also
+\cite[Prop.~7.4, p.~1113]{brown}).
 \begin{Cor}\label{cor:twistedprod:swlinebdl}
-  \optcite[Prop.~7.4, p.~1113]{brown}
   Let $\xi\colon E\to X$ be a line bundle with total Stiefel-Whitney
-  class $\W{\xi}=1+\alpha$.
+  class $\W{\xi}=1+\alpha$, and let $k\in\Nat$.
   Define $e\colon\H^*(X)\to N\subset\H^*(X\times X)$,
   $e(a)\coloneqq 1\otimes a+a\otimes 1$.
-  Then
+  Then, along the isomorphism from
+  Theorem~\ref{thm:twistedprod:cohomstructure},
   \begin{gather*}
-    \W{\Twistedprod{k}{\xi}} = 1+ (c\otimes d(1)+1\otimes
+    \W{\Twistedprod{k}{\xi}} = 1+ (c_k\otimes d(1)+1\otimes
     e(\alpha)) + 1\otimes d(\alpha)
-    = 1+c+e(\alpha)+d(\alpha)
+    = 1+c_k+e(\alpha)+d(\alpha)
     \;,
   \end{gather*}
-  respectively $\w1\xi = c+e(\alpha)$, $\w2\xi=d(\alpha)$.
+  respectively $\w1\xi = c_k+e(\alpha)$, $\w2\xi=d(\alpha)$.
   \begin{proof}
     For $k=0$ this is simply the product rule for the total
     Stiefel-Whitney class because $\Twistedprod{0}{\xi}=\xi\times\xi$
     and $c=0$. Thus, assume $k\geq0$.
-    Then, by Theorem~\ref{thm:twistedprod:cohomstructure}, the total
-    Stiefel-Whitney class of the two-dimensional vector bundle
-    $\Twistedprod{k}{\xi}$ must be of the general form
+    With $\deg\w{i}{\Twistedprod{k}{\xi}}\leq\rk\Twistedprod{k}{\xi}=2$,
+    the total Stiefel-Whitney class of the two-dimensional vector bundle
+    $\Twistedprod{k}{\xi}$ must by
+    Theorem~\ref{thm:twistedprod:cohomstructure} be of the general
+    form
     \begin{align*}
       \W{\Twistedprod{k}{\xi}}
-      &=
-        1 &\quad&&&{(=\ws0)} \\
-      &+ \delta_1\cdot c\otimes d(1) + \delta_2\cdot c^2\otimes d(1)
-          &&\delta_1,\delta_2\in\{0,1\}
-                &&{(\text{check section})}\\
-      &+ 1\otimes d(a)
-          &&a \neq 1
-                &&{(\text{check $\pi$})} \\
-      &+ {\textstyle \sum_{r\in I} c^{i_r}\otimes d(a_r)}
-          &&a_r\neq 1,\; i_r>1
-                &&{(=0\text{ by dim.})} \\
-      &+ 1\otimes n_1 + s\otimes n_2
-          &&n_1, n_2\in N
-                &&{(\text{check $\pi$})}
+      &= 1
+        + \sum_{i=1}^k c^i\otimes d(a_i)
+        + s\otimes n'
+        + 1\otimes(n+d(a))
+         \\
+      &\equalsby{}
+        1
+        + \underbrace{
+        c\otimes d(a') + c^2\otimes d(a'')
+        }_{\text{check section}}
+        + \underbrace{
+        s\otimes n'
+        + 1\otimes(n+d(a))
+        }_{\text{check $\pi$}}
+        \;,
+        % 1 &\quad&&&{(=\ws0)} \\
+      % &+ \delta_1\cdot c\otimes d(1) + \delta_2\cdot c^2\otimes d(1)
+      %     &&\delta_1,\delta_2\in\{0,1\}
+      %           &&{(\text{check section})}\\
+      % &+ 1\otimes d(a)
+      %     &&a \neq 1
+      %           &&{(\text{check $\pi$})} \\
+      % &+ {\textstyle \sum_{r\in I} c^{i_r}\otimes d(a_r)}
+      %     &&a_r\neq 1,\; i_r>1
+      %           &&{(=0\text{ by dim.})} \\
+      % &+ 1\otimes n_1 + s\otimes n_2
+      %     &&n_1, n_2\in N
+      %           &&{(\text{check $\pi$})}
     \end{align*}
-    The index set $I$ must be empty as any $c^{i_r}\otimes d(a_r)$
-    would have dimension greater two.
-    So, it remains to check the pullbacks of $\W{\Twistedprod{k}{\xi}}$
-    along a section $s_p\colon\RP k\to\Twistedprod{k}{X}$ and along
-    the projection
-    $\pi\colon\Twistedprodcovspace{k}{X}\to\Twistedprod{k}{X}$
-    in order to identify the other summands.
+    for some $n,n'\in N$ and $a,a',a''\in\H^*(X)$,
+    with $\deg a\leq 0\geq\deg a''$, $\deg n'\leq1\geq\deg a$, and
+    $\deg n\leq 2$.
+    In order to determine the unknown elements,
+    note that by Theorem~\ref{thm:twistedprod:cohomstructure}
+    \begin{itemize}
+    \item $\pb\pi$ is an isomorphism on $s\otimes N+1\otimes(D+N)$, and
+    \item for any point $p\in X$ and section $s_p\colon\RP
+      k\to\Twistedprod{k}{X}$, $\pb s_p$ is an isomorphism on
+      $\{c^i\otimes d(b)|b\in\H^0(X), 1\leq i\leq k\}$.
+    \end{itemize}
+    So the following remains to check:
     \begin{description}
     \item[$\pb\pi\W{\Twistedprod k \xi}$:]
       $\Twistedprod{k}{\xi}$ is the quotient of the bundle
@@ -1130,9 +1297,11 @@ calculations involving higher dimensional bundles.
       $\pb\pi\Twistedprod{k}{\xi}=\trivbdl\times\xi\times\xi$,
       and thus
       $\pb\pi\W{\Twistedprod{k}{\xi}}=\W{\Id\times\xi\times\xi}$.
-      By \itemref{thm:twistedprod:cohomstructure}{item:twistedprodcohom:pi} $\pb\pi$ is the identity on
-      elements of this form, so this yields the third
-      summand of $\W{\Twistedprod{k}{\xi}}$.
+      By
+      \itemref{thm:twistedprod:cohomstructure}{item:twistedprodcohom:pi},
+      $\pb\pi$ is the identity on
+      elements of this form, so this yields
+      $n'=0$, $n=e(\alpha)$, and $a=\alpha$.
     \item[$\pb s_p \W{\Twistedprod{k}{\xi}}$:]
       Consider a section $s_p\colon [s]\mapsto [s,p,p]$, $p\in X$, of
       the bundle $\Twistedprod k X\to\RP k$. Since
@@ -1157,8 +1326,9 @@ calculations involving higher dimensional bundles.
         = \W{\pb{s_p}\Twistedprod{k}{\xi}}
         = \W{\gamma\oplus\trivbdl}
         = 1+x\in\H^*(\RP k)
+        \;,
       \end{gather*}
-      completing the proof.
+      .and thus $a'=1$, $a''=0$.
       \qedhere
     \end{description}
   \end{proof}
@@ -1168,13 +1338,12 @@ The rest of this subsection is dedicated to the proof of
 Theorem~\ref{thm:twistedprod:cohomstructure} on the cohomology
 structure of twisted products.
 
-The essential step is to find the relation of a twisted product to
+The essential step is to relate a twisted product to
 \begin{enumerate}[1.]
-\item its lower dimensional counterpart analogous to the embedding of
-  a projective space into a higher dimensional one, and
-\item well-known sequences of spheres and disks
+\item its lower dimensional counterpart (analogous to the embedding of
+  a projective space into a higher dimensional one), and
+\item well-known sequences of spheres and disks.
 \end{enumerate}
-in a useful way.
 This can be done using an alternative pushout construction, which is
 explained below. The proofs are omitted since all facts are easy to
 check.
@@ -1234,7 +1403,7 @@ completeness but may be skipped by the reader.
     making $(\Twistedprod{k}{X}, \Twistedprod{k-1}{X})$ a neighbourhood
     deformation retract pair using the stability of cofibrations under pushout.
     Furthermore, for a smaller disk $\Disk{k}_+\subsetneq\Disk k$
-    there is an obvious excision
+    there is an induced excision
     \begin{gather*}
       (\Disk k\times X^2, \Sphere{k-1}\times X^2)
       \rightarrowtail
@@ -1409,7 +1578,6 @@ sideways maps are well-known. Some facts are listed below.
     sequences of the pairs $(\Disk{k},\Sphere{k-1})$ and $(\Sphere{k},\Sphere{k-1})$.
     For $k>1$ they are given for $l\in\Nat$:
     \begin{center}
-      \newcommand*{\argument}[1]{{\scriptstyle #1}}
       \begin{tikzcd}[row sep=tiny, column sep=small]
         &\argument{(1\otimes f,s_{k-1}\otimes g)}
         \ar[r, mapsto]
@@ -1589,7 +1757,7 @@ Some further immediate results are:
   \end{proof}
 \end{Cor}
 
-We are going to inductively proof the following reformulation of
+We are going to inductively prove the following reformulation of
 Theorem~\ref{thm:twistedprod:cohomstructure}.
 \begin{Thm}\label{thm:twistedprod:cohomstructure:alt}
   For a space $X$ and $k\in\Nat$, $\H^*(\Twistedprod k X)$ is the group
@@ -1617,7 +1785,6 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
   $a,b\in\H^*(X)$ and $1\leq i\leq k$,
   which is equipped with a multiplication determined by:
   \begin{enumerate}
-    % TODO: order labels sensibly
   \item\label{twistedprodcohom:proof:0}
     The following restriction of $\pb\pi$ is a ring isomorphism onto
     its image
@@ -1642,7 +1809,6 @@ Theorem~\ref{thm:twistedprod:cohomstructure}.
     = \bc i\otimes d(ab)$ for $1\leq i\leq k-1$,
     so $\bc i\otimes D = (\bc 1\otimes 1)^i\cdot (1\otimes D)$.
   \item\label{twistedprodcohom:proof:3}
-    % TODO: merge with label 2
     $(\bc k\otimes d(a))\cdot(1\otimes d(b))
     = \bc k\otimes d(ab)$,
     so $\bc k\otimes D = (\bc 1\otimes 1)^i\cdot (1\otimes D)$.
@@ -1931,7 +2097,7 @@ direct consequence of the following Lemma.
     \pb{\Twistedprod{k}{f}} \s{(2n+k)}(\Twistedprod{k}{M})
     = \binom{k+n-1}{n} \cdot c^k
     \cdot d\left( \pb f \s{(n)}(M) \right)
-    \in \H^{2n+k}(\Twistedprod{k}{M})
+    \in \H^{2n+k}(\Twistedprod{k}{X})
     \;.
   \end{gather*}
 \end{Lem}
@@ -2126,7 +2292,7 @@ direct consequence of the following Lemma.
     form $2^s-1$.
   \end{itemize}
 \end{Rem}
-Such splits as described above are favourable because the binomial
+Such splits as described above are desirable because the binomial
 coefficient $\binom{k+n-1}{n}$ will never be zero modulo two by the
 following Lemma, 
 as is required by the indecomposability criterion for twisted products
@@ -2193,10 +2359,10 @@ Therefore:
 \section
 {Brown's Theorem: Finding a Convenient Generating Set}
 \label{sec:proofbrown}
-Remember that the goal of this chapter was to prove R.~L.~Brown's
+Recall that the goal of this chapter is to prove R.~L.~Brown's
 theorem \ref{thm:brown} which states that the immersion conjecture is
 true up to cobordism.
-Also recall, that if one can show the conjecture's statement is stable
+Also recall, that if one can show that the conjecture is stable
 under the ring operations of the cobordism ring
 $\c_*\cong\Zmod2[\sigma_i|i\neq2^r-1]$, it suffices to find a
 generating set $([\G i]|i\neq2^r-1)$ of $\c_*$ which fulfils the conjecture.
@@ -2213,7 +2379,7 @@ will be used.
 Such generators in even dimension can easily be constructed as
 codimension-one submanifolds of odd-dimensional products of
 real projective spaces. The immersion property can in this case be
-checked using results of Sanderson~\optcite{sanderson} which say that
+checked using results of Sanderson~\cite{sanderson} which say that
 odd dimensional real projective spaces fulfil---and partly
 overfulfil---the immersion conjecture.
 
@@ -2593,10 +2759,11 @@ properties of projective spaces, more precisely the following one by
 Mahowald and Milgram for the total space of line bundles over such:
 \begin{Lem}[{\cite[Theorem~4.1, p.~418]{mahowald}}]
   \label{lem:immersionuniversalbdl}
-  % Wrong attempt \optcite[p.~85]{immersionconj}:
+  % Wrong attempt [p.~85]{immersionconj} (?):
+  % """
   % The total space of a vector bundle $E\to M^n$ of rank $k$ over a
   % closed manifold of dimension $n$ can be immersed into $\R^{2n+k}$.
-  \optcite[compare Prop. 4.3]{brown}
+  % """
   For $p,q\in\Nat$ odd and the total space of $(p+1)\gamma_q$ immerses
   in Euclidean space of dimension
   \begin{gather*}
@@ -2645,7 +2812,6 @@ generator candidates:
 \end{proof}
 \begin{proof}[proof of
   Lemma~\itemref{lem:oddgen}{item:brownimmersionproperty}]
-  %\optcite[p.~84, proof Thm.~1.30]{immersionconj}
   Here one needs that for $m=k+2n$ as above $\G n$ admits by
   Lemma~\ref{lem:evengen} an immersion
   \begin{gather*}
@@ -2669,7 +2835,7 @@ generator candidates:
       &\Twistedprod{k}{\R^{2n-\alpha(n)}}
     \end{tikzcd}
   \end{center}
-  The latter twisted product however is a fibre bundle over
+  The latter twisted product however is a vector bundle over
   $\RP{k}$ as in
   Remark~\itemref{rem:twistedprodproperties}{item:twistedprodfibrebdl}.
   More precisely, by Lemma~\ref{lem:twistedprodrealspace} it is the

@@ -230,6 +230,8 @@ squares.
 Let $B$ be a paracompact space, \forexample a manifold,
 $\xi\colon E\xrightarrow{p} B$ a vector bundle over $B$ of rank $\rkk>0$,
 and let $R$ be a principal ideal domain.
+The following definition can \forexample also be found in
+\cite[p.~441]{hatcher}.
 \begin{Def}
   A \emph{Thom class} of $\xi$ in $R$-coefficients is a
   cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
@@ -240,7 +242,6 @@ and let $R$ be a principal ideal domain.
   \idest a unit
   of the ring
   $\H^{\rkk}(\spherepair{E_b};R)\cong \H^{\rkk}(\spherepair{\R}; R)\cong R$.
-  \optcite[p.~441]{hatcher}
 \end{Def}
 
 The following corollaries will deduce notions of naturality,
@@ -1140,13 +1141,11 @@ follows from the following Lemma:
 \section{Massey's Theorem on the Stiefel-Whitney Classes of Manifolds}
 \label{sec:massey}
 Massey's main theorem on the Stiefel-Whitney classes of manifolds
-gives a concrete statement, in which degrees the dual
-Stiefel-Whitney classes may be non-zero in general.
+\cite[Theorem~I.]{massey} gives a concrete statement, in which degrees
+the dual Stiefel-Whitney classes may be non-zero in general.
 As of Corollary~\ref{cor:obstruction} this is directly related to the
 immersion problem respectively an important obstruction for it.
-
-\begin{Thm}[Massey]\label{thm:massey}
-  \optcite[Theorem~I.]{massey}
+\begin{Thm}[Massey]\label{thm:massey}  
   Let $M$ be a compact, $n$-dimensional manifold.
   Given an integer $q$ with $0<q<n$ such that $\dualw{n-q}{M}\neq0$,
   there is a sequence of integers $h_1\geq\dotsb\geq h_q\geq0$ of
@@ -1307,7 +1306,8 @@ the case $\e(I)<\deg x$.
 \end{proof}
 
 \begin{proof}[proof of Lemma~\ref{lem:serre}]
-  \optcite[Lemma~1, converse part, p.~159]{serre}
+  A version of the following proof can be found in
+  \cite[p.~159, Lemma~1, converse part]{serre}.
   First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
   of excess $\e(I)>0$ can be written as
   \begin{gather*}
