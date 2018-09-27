@@ -428,17 +428,20 @@ bundles.
     
     For the lifting property of the stable normal bundle, consider a
     lift $\N{}\in[M,\BO(r)]$, $r>1$, by \ref{item:vbcharacterisation}
-    representing a vector bundle over $M$ which we will also call
+    classifying a vector bundle over $M$, which we will also call
     $\N{}$. By \ref{item:bomaps} and the definition
     of the stable normal bundle, there is some $s\in\Nat$
     such that $\T M\oplus\N{}\oplus\trivbdl^s\cong\trivbdl^{n+r+s}$.
     Assume $s>0$.
-    In order to show that this implies
-    $\T M\oplus\N{}\cong\trivbdl^{n+r}$, consider the corresponding
-    homotopy commutative diagram of classifying maps:
+    In order to show that this still implies
+    $\T M\oplus\N{}\cong\trivbdl^{n+r}$ (\idest that their
+    classifying maps are homotopic), consider the corresponding
+    homotopy commutative diagram of classifying maps
     \begin{center}
       \begin{tikzcd}
-        M \ar[r, "\T M\oplus\N{}"]
+        M
+        \ar[r, "\T M\oplus\N{}", shift left]
+        \ar[r, "\trivbdl^{n+r}"{below}, shift right]
         \ar[dr, bend right, "\trivbdl^{n+r+s}"{left}]
         & \B\Orth(n+r)
         \ar[d, "\incl"]
@@ -446,17 +449,21 @@ bundles.
         & \B\Orth(n+r+s)
       \end{tikzcd}
     \end{center}
-    The trick now is to use that $M$ has the homotopy type of an
-    $n$-dimensional CW-complex by Morse theory. Because then one can
-    apply obstruction theory, and gets that lifts in $[M,\BO(n+r)]$ of
-    the classifying map $\trivbdl^{n+r+s}$ along $\incl$ are unique up
-    to homotopy, since $\incl\colon\BO(n+r)\to\BO(n+r+s)$ is
-    $(n+r)$-connected, $r>0$, and both $\BO(n+r+s)$ and $\BO(n+r)$ are
-    path-connected. See \forexample \cite[Lemma~4.6]{hatcher}.
-    \TODO{How to conclude uniqueness from ref.?}
-    Thus, the lifts $\trivbdl^{n+r}$ and $\T M\oplus\N{}$ of
-    $\trivbdl^{n+r+s}$ along $\incl$ must be homotopic, proving the
-    claim.
+    This says that $\incl\circ\T M\oplus\N{}$ and
+    $\incl\circ\trivbdl^{n+r}$ must be homotopic via
+    some homotopy
+    \begin{gather*}
+      H\colon M\times I\to\BO(n+r+s) \;.
+    \end{gather*}
+    The trick now is to use that by Morse theory $M$ has the homotopy
+    type of an $n$-dimensional CW-complex, together with $\incl$ being
+    $(n+r)$-connected, $r>0$, and both $\BO(n+r+s)$ and $\BO(n+r)$
+    being path-connected. Because with these assumptions
+    obstruction theory yields that
+    $H$ lifts to a homotopy $M\times I\to\BO(n+r)$ between
+    the classifying maps of $\T M\oplus\N{}$ and $\trivbdl^{n+r}$, as
+    was needed
+    (see \forexample \cite[Lemma~4.6]{hatcher}).
   \end{proof}
 \end{Lem}
 \begin{Not}

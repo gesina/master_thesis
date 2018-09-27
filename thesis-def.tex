@@ -298,7 +298,7 @@ doi=false, url=false
 \newcommand*{\N}[1]{\nu_{#1}} % (stable) normal bundle
 \newcommand*{\Discbdl}[1]{\mathrm{D}#1} % disc bundle of a vector bundle
 \newcommand*{\Spherebdl}[1]{\mathrm{S}#1} % disc bundle of a vector bundle
-\newcommand*{\Thomspace}[1]{\mathrm{T}{#1}} % Thom space of a vector bundle
+\newcommand*{\Thomspace}[1]{\Discbdl{#1}/\Spherebdl{#1}} % Thom space of a vector bundle
 \newcommand*{\MO}{\mathbf{MO}} % unoriented Thom spectrum
 \newcommand*{\collapse}{c} % collapse map from sphere to thom space of normal bundle
 \newcommand*{\zerosec}[1]{0_{#1}} % zero section of a vector bundle
@@ -318,10 +318,6 @@ doi=false, url=false
 \newcommand*{\Twistedprodcovspace}[2]{\Sphere{#1}\times(#2\times #2)} % twisted product of #2 by the #1-sphere
 \newcommand*{\G}[1]{G^{#1}} % #1th constructed generator of the cobordism ring
 
-% TODO: necessary checks
-% use \emph{} in definitions
-% \autoref for thms
-% uniform proof-citing, eliminate \optcite
 
 %%% Local Variables:
 %%% mode: latex

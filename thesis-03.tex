@@ -1564,7 +1564,6 @@ induces a diagram of long exact sequences of cohomology.
   where $\pb\tau\pb\pi$ is the identity.
 \end{Fact}
 
-% TODO: Maybe in Appendix?
 The useful thing about the cohomology diagrams arising from the
 above diagram of pairs of spaces is that most of the columns and
 sideways maps are well-known. Some facts are listed below.
@@ -2585,41 +2584,95 @@ well-defined.
   generalisation of Lemma~\ref{lem:thomisofundcl} which gives the
   highest Stiefel-Whitney class of normal bundles of such embeddings.
   \begin{Lem}
-    Let $N^n, M^m$ be compact manifolds, $n<m$,
-    $\emb\colon M\immto N$ be an embedding with corresponding normal
-    bundle $\N{\emb}$, $\infty\in N\setminus\emb(N)$, and
+    Let $M^n, W^{n+\rkk}$ be compact manifolds, $\rkk>0$,
+    $\emb\colon M\immto W$ be an embedding with corresponding normal
+    bundle $\N{\emb}$, $\infty\in W\setminus\emb(N)$, and
     Thom-Pontryagin collapse map on pairs of spaces corresponding to
     some tubular neighbourhood embedding of $\N{\emb}$
     \begin{gather*}
       \collapse\colon
-      N
-      \to N/\left( N\setminus \E{\N{\emb}} \right)
+      W
+      \to W/\left( W\setminus \E{\N{\emb}} \right)
       \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
       \cong \Thomspace{\N{\emb}}
       \xrightarrow{\incl} (\Thomspace{\N\emb},\infty)
       \;.
     \end{gather*}
     Then
-    $\pf\emb\fundcl N = \pb\collapse\u{\N{\emb}}\cap\fundcl M$,
-    \idest one has a description of the Poincaré dual of
-    $\pf\emb\fundcl N$.
-    With the known fact that the Stiefel-Whitney class
-    $\w{\rk\N{\emb}}{\N{\emb}}$ in degree $\rk{\N{\emb}}$ is the
-    Euler class, which by definition is
-    $\pb{(\zerosec{\N{\emb}})}(\u{\N{\emb}})$, one also obtains
-    \begin{gather*}
-      \w{\rk\N{\emb}}{\N{\emb}}
-      = \pb{(\zerosec{\N{\emb}})}(\u{\N{\emb}})
-      = \pb\emb\pb\collapse\u{\N{\emb}}
-      \;.
-    \end{gather*}
-    So the pushforward of the Poincaré dual of $\pf\emb\fundcl N$
-    along the embedding is the $\rk\N{}$-Stiefel-Whitney class.
+    \begin{enumerate}
+    \item\label{item:fundclsubmfd}
+      $\pf\emb\fundcl M = \pb\collapse\u{\N{\emb}}\cap\fundcl W$,
+      \idest one has a description of the Poincaré dual of
+      $\pf\emb\fundcl M$, and
+    \item\label{item:highestswclasssubmfd}
+      $\w{\rk\N{\emb}}{\N{\emb}}
+      = \pb\emb\pb\collapse\u{\N{\emb}}$, 
+      so the pushforward of the Poincaré dual of $\pf\emb\fundcl N$
+      along the embedding is the $\rk\N{}$-Stiefel-Whitney class.
+    \end{enumerate}
     \begin{proof}
-      See \forexample
-      % Bredon, p. 371
-      % AT III, Intersection theory
-      \TODO{(Better) Ref. for proof?}
+      See also \cite[p.~371]{bredon}.
+      To directly obtain \ref{item:highestswclasssubmfd} directly from
+      \ref{item:fundclsubmfd}, one can use the fact that
+      the Stiefel-Whitney class $\w{\rk\N{\emb}}{\N{\emb}}$ in degree
+      $\rk{\N{\emb}}$ is the Euler class of $\N{\emb}$, which is
+      defined as $\pb{(\zerosec{\N{\emb}})}(\u{\N{\emb}})$
+      (see \forexample \cite[Prop.~17.2]{bredon}), because then
+      one has with $\zerosec{\N{\emb}} = \collapse\emb$ that
+      \begin{gather*}
+        \w{\rk\N{\emb}}{\N{\emb}}
+        = \pb{(\zerosec{\N{\emb}})}(\u{\N{\emb}})
+        = \pb\emb\pb\collapse\u{\N{\emb}}
+        \;.
+      \end{gather*}
+      
+      For \ref{item:fundclsubmfd} recall from
+      Lemma~\ref{lem:thomisofundcl}, that 
+      $\fundcl M = \pf p(\u{\N{\emb}} \cap \pb\collapse\fundcl W)$,
+      so
+      \begin{gather}\label{eq:fundclsubmfd}
+        \pf{\zerosec{\N{\emb}}}\fundcl M
+        = \pf{\zerosec{\N{\emb}}}\pf p
+        (\u{\N{\emb}} \cap \pb\collapse\fundcl W)
+        = \u{\N{\emb}} \cap \pb\collapse\fundcl W
+        \;.
+      \end{gather}
+      Now observe that for the inclusion maps
+      \begin{center}
+        \begin{tikzcd}
+          W
+          \ar[r, "j"]
+          &(W, W\setminus M)
+          &\ar[l,"\text{exc.}"{below}, "i"{above}]
+          (\Discbdl{\N{\emb}},\Discbdl{\N{\emb}}\setminus M)
+        \end{tikzcd}
+      \end{center}
+      $i$ is an excision, and 
+      $\pf c = (\pf i)^{-1} \pf j$, $\pb c= \pb j(\pb i)^{-1}$.
+      Denote $u\coloneqq \u{\gamma_1}$ and the preimage of
+      $\u{\gamma_1}$ under the excision by
+      $u'\coloneqq (\pb i)^{-1}\u{\gamma_1}\in\H^*(M, M\setminus N)$.
+      Then calculate using the cap-product formula from
+      \autoref{eq:capprod2},
+      and $\emb=i\circ\zerosec{\N{\emb}}$:
+      \begin{align*}
+        \pb\collapse u \cap \fundcl W
+        &=\pb j u' \cap \fundcl W
+        \cequalsby{$(*)$}
+          \pf j(\pb j u' \cap \fundcl W) \\
+        &\equalsby{\eqref{eq:capprod2}}
+          u' \cap \pf j\fundcl W 
+          = u' \cap \pf i\pf c\fundcl W \\
+        &\equalsby{\eqref{eq:capprod2}}
+          \pf i(\pb i u' \cap \pf c\fundcl W)
+        \cequalsby{\eqref{eq:fundclsubmfd}}
+          \pf i\pf{\zerosec{\N{\emb}}}\fundcl M
+          = \pf\emb \fundcl M
+          \;,
+      \end{align*}
+      where equality $(*)$ uses, that the map of triple of spaces
+      $j\colon (W, \emptyset, \emptyset)\to(W, W\setminus N, \emptyset)$
+      is the identity when restricted to $(W,\emptyset)\to(W, \emptyset)$.
     \end{proof}
   \end{Lem}
   By the above Lemma

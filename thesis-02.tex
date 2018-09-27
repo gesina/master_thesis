@@ -196,7 +196,7 @@ in a graded $\Zmod2$-algebra will recur for several characteristic
 classes. This particular definition is needed to define the Wu classes
 in \autoref{sec:wuclasses}. 
 \begin{Def}\label{def:antipode}
-  The antipode $\antipode\colon \A\to\A$ of the Steenrod algebra is a
+  The \emph{antipode} $\antipode\colon \A\to\A$ of the Steenrod algebra is a
   graded homomorphism inductively defined by the relation
   \begin{gather*}
     1 = \Sq 0
@@ -507,7 +507,9 @@ first recall the following properties of the cap product.
     \label{eq:capprod2}
     \capped{a}{\pf f \beta} &= \pf f \capped{\pb f a}{\beta}
                               \in \H_0(X,X'')
-                            &&\text{\cite[Chap.~3.3.2, p.\,241]{hatcher}}
+                            &&\text{
+                               %\cite[Chap.~3.3.2, p.\,241]{hatcher}
+                               \cite[Sec.~18.1.1]{tomdieck}}
   \end{align}
 \end{Rem}
 \begin{proof}[proof of Lemma~\ref{lem:thomisoself-adjoint}]
@@ -530,34 +532,33 @@ links the fundamental class of a manifold with that of a submanifold
 using the Thom isomorphism corresponding to the normal bundle of the
 embedding.
 \begin{Lem}\label{lem:thomisofundcl}
-  Let $M$ be an $n$-dimensional compact manifold, and
-  $\emb\colon M\to\R^{n+\rkk}\subset\Sphere{n+\rkk}$ be an embedding with
+  Let $M^n$ and $W^{n+\rkk}$ be manifolds, and
+  $\emb\colon M\to W$ be an embedding with
   normal bundle $\N{\emb}$ of rank $\rkk>0$.
   The normal bundle gives rise to an embedding
-  $e\colon \E{\N{\emb}}\to\Sphere{n+\rkk}$ of its total space
-  as a tubular neighbourhood $e(\E{\N{\emb}})$ of $i(M)$ into the
-  $(n+\rkk)$-sphere.
+  $e\colon \E{\N{\emb}}\to W$ of its total space
+  as a tubular neighbourhood $e(\E{\N{\emb}})$ of $i(M)$ into $W$
+  (see \cite[Sec.~15.6]{tomdieck}).
   The quotient map
   \begin{gather*}
     \collapse\colon
-    \Sphere{n+\rkk}
-    \to \Sphere{n+\rkk}/\left( \Sphere{n+\rkk}\setminus e(\E{\N{\emb}}) \right)
-    \cong \Discbdl{\N{\emb}} / \Spherebdl{\N{\emb}}
+     W
+    \to  W/\left(  W\setminus e(\E{\N{\emb}}) \right)
     \cong \Thomspace{\N{\emb}}
   \end{gather*}
   that collapses every point outside of $e(\E{\N{\emb}})$ to the infinity
   point fulfils
   \begin{center}
     \begin{tikzcd}[row sep=0pt]
-      \H_{n+\rkk}(\Sphere{n+\rkk}) \ar[r, "\pf c"]
+      \H_{n+\rkk}( W) \ar[r, "\pf c"]
       & \H_{n+\rkk}(\Thomspace{\N{\emb}}) \ar [r, "\pf \incl"]
       & \relH_{n+\rkk}(\Thomspace{\N{\emb}})
       %\coloneqq \H_{n+\rkk}(\Thomspace{\N{\emb}}, \infty)
       \ar [r, "\pf t"{above}, "\cong"{below}]
       & \H_{n}(M)% \cong \Zmod2
       \\
-      \fundcl{\Sphere{n+\rkk}} \ar[rrr, mapsto]
-      &&&\thomiso(\pf \incl\pf\collapse\fundcl{\Sphere{n+\rkk}})
+      \fundcl{ W} \ar[rrr, mapsto]
+      &&&\thomiso(\pf \incl\pf\collapse\fundcl{ W})
       = \fundcl M
     \end{tikzcd}
   \end{center}
@@ -565,11 +566,16 @@ embedding.
   $\incl\colon
   (\Thomspace{\N{\emb}},\emptyset)
   \to(\Thomspace{\N{\emb}}, \{\infty\})$
-  is the canonical inclusion of pairs of spaces.
+  is the canonical inclusion of pairs of spaces,
+  and the isomorphism
+  $\relH_{n+\rkk}(\Thomspace{\N{\emb}})
+  \cong \H_{n+\rkk}(\thomspacepair{\E{\N\emb}})$
+  of the neighbourhood deformation retract pair
+  $(\thomspacepair{\E{\N\emb}})$ was used.
   This holds for any choice of embeddings $i$ and $e$.
   \begin{proof}
     First note that by the long exact sequence of the pair 
-    $(\Thomspace{\N{\emb}}, \{\infty\})$ the map
+    $(\Thomspace{\E{\N\emb}}, \{\infty\})$, the map
     $\pf \incl\colon
     \H_r(\Thomspace{\N{\emb}})
     \to \relH_r(\Thomspace{\N{\emb}})$
@@ -587,47 +593,54 @@ embedding.
       \end{gather*}
       by the Thom isomorphism, and since $M$ is connected and closed.
       Thus, one only has to show that
-      $\pf\collapse\fundcl{\Sphere{n+\rkk}}$
+      $\pf\collapse\fundcl{ W}$
       is non-zero.
-      The trick now is to reduce once again to the homology of the
-      sphere:
+      The trick now is to use that manifolds locally look like some
+      Euclidean space, and that this property is mostly preserved by
+      the collapse.
       Restricted to $e(\E{\N{\emb}})$ the collapse map looks like
       \begin{gather*}
         c|_{e(\E{\N{\emb}})}\colon
         e(\E{\N{\emb}})
         \overset{e}{\underset{\sim}\longto} \E{\N{\emb}}
         \cong \Discbdl{\N{\emb}}\setminus\Spherebdl{\N{\iota}}
-        \cong \Thomspace{\N{\emb}}\setminus \{\infty\}
+        \cong (\Thomspace{\N{\emb}})\setminus \{\infty\}
       \end{gather*}
       \idest it is a homeomorphism onto
-      $\Thomspace{\N{\emb}}\setminus\{\infty\}$.
-      Therefore, for any point
-      $p\in\Thomspace{\N{\emb}}\setminus\{\infty\}$
-      on homology there is the following commutative diagram
+      $(\Thomspace{\N{\emb}})\setminus\{\infty\}$.
+      Therefore, by excision there is for any point
+      $p\in(\Thomspace{\N{\emb}})\setminus\{\infty\}$
+      the following commutative diagram on homology
       \begin{center}
         \begin{tikzcd}
-          \fundcl{\Sphere{n+\rkk}}
+          \fundcl{ W}
           \ar[d,mapsto]\ar[r,phantom,"\in"{near start}]
-          &\H_{n+\rkk}(\Sphere{n+\rkk})
+          &\H_{n+\rkk}( W)
           \ar[r, "\pf\incl\pf\collapse"]\ar[d,"\pf\incl"]
           &\relH_{n+\rkk}(\Thomspace{\N{\emb}})
-          \ar[d,"\pf\incl"]\\
-          \left.\fundcl{\Sphere{n+\rkk}}\right|_{\collapse^{-1}(p)}
+          \ar[d,"\pf\incl"]
+          \\
+          \left.\fundcl{ W}\right|_{\collapse^{-1}(p)}
           \ar[r,phantom,"\in"{near start}]
-          &\H_{n+k}(\Sphere{n+\rkk},\Sphere{n+\rkk}\setminus\collapse^{-1}(p))
+          &\H_{n+k}( W, W\setminus\collapse^{-1}(p))
           \ar[r,"\pf\collapse"{above},"\cong"{below}]
-          &\H_{n+\rkk}(\Thomspace{\N{\emb}}, \Thomspace{\N{\emb}}\setminus p)
+          \ar[d,dash, "\cong", "\text{exc.}"{left}]
+          &\H_{n+\rkk}(\Thomspace{\N{\emb}},
+          (\Thomspace{\N{\emb}})\setminus p)
+          \ar[d,dash, "\cong", "\text{exc.}"{left}]
+          \\
+          & \H_{n+\rkk}(\R^{n+\rkk}, \R^{n+\rkk}\setminus\pt)
+          & \H_{n+\rkk}(\R^{n+\rkk}, \R^{n+\rkk}\setminus\pt)
         \end{tikzcd}
       \end{center}
-      By definition of the fundamental class $\fundcl{\Sphere{n+\rkk}}$,
-      the class $\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}$ in the
+      By definition of the fundamental class $\fundcl{ W}$,
+      the class $\fundcl{ W}|_{\collapse^{-1}(p)}$ in the
       diagram is a generator, and thus also is
-      $\pf\collapse\left(\fundcl{\Sphere{n+\rkk}}|_{\collapse^{-1}(p)}\right)
-      = \left(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\right)|_p$.
-      However, then $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}\in
-      \H_{n+\rkk}(\Thomspace{\N{\emb}})$
+      $\pf\collapse\left(\fundcl{ W}|_{\collapse^{-1}(p)}\right)
+      = \left(\pf\incl\pf\collapse\fundcl{ W}\right)|_p$.
+      However, then $\pf\incl\pf\collapse\fundcl{ W}\in
+      \relH_{n+\rkk}(\Thomspace{\N{\emb}})$
       cannot be zero as was to be shown.
-
     \item[General case] In case $M=\coprod_i M_i$ is the disjoint sum of its connected
       components $M_i$, $i\in I$ for some index set $I$, note the following:
       \begin{itemize}
@@ -638,11 +651,11 @@ embedding.
         collapse maps
         \begin{gather*}
           \collapse_i\colon
-          \Sphere{n+\rkk}
+           W
           \overset{\collapse}\longto
-          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb}})\right)
+           W/\left( W\setminus e(\E{\N{\emb}})\right)
           \overset{\proj}\longto
-          \Sphere{n+\rkk}/\left(\Sphere{n+\rkk}\setminus e(\E{\N{\emb_i}})\right)
+           W/\left( W\setminus e(\E{\N{\emb_i}})\right)
         \end{gather*}
         for the disjoint parts,
         and $\collapse=\bigvee_i\collapse_i$.
@@ -656,9 +669,9 @@ embedding.
       \end{itemize}
       With this one sees directly from the definition of the fundamental
       class of a manifold that
-      $\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}} = \fundcl M$
+      $\pf\incl\pf\collapse\fundcl{ W} = \fundcl M$
       if and only if for all connected component manifolds $M_i$ holds
-      $\pf\incl\pf{\collapse_i}\fundcl{\Sphere{n+\rkk}} = \fundcl{M_i}$,
+      $\pf\incl\pf{\collapse_i}\fundcl{ W} = \fundcl{M_i}$,
       which is true by the first case.
       \qedhere
     \end{description}
@@ -692,41 +705,46 @@ Thom classes and Steenrod squares can be presented.
       candidate for a Thom class, $\Sq0(1) = \Id(1) = 1$, and the Thom
       isomorphism sends 1 to 1 in this degree.
     \item[$\W{\gamma_1}=1+x$:]
+      Recall that $\H^*(\RP k)=\Zmod2[x_k]/(x_k^{k+1})$.
       For $\w0{\gamma_1}$ the defining relation
       \begin{gather*}
         \pb p\w{0}{\gamma_1}\cup\u{\gamma_1}
         = \Sq 0(\u{\gamma_1})
-        \cequalsby{\eqref{eq:sqidentity}}\u{\gamma_1} 
+        \cequalsby{\eqref{eq:sqidentity}}\u{\gamma_1} \neq 0
       \end{gather*}
       directly gives
-      $\pb p\w{0}{\gamma_1}=1$, and thus $\w{0}{\gamma_1}=1$.
-      For $\w1{\gamma_1}$ first note that $\H^*(\RP1)=\Zmod2[x]/(x^2)$
-      and that for both $i=0,1$, one has the Thom isomorphism
-      $t\colon\Zmod2\cong\H^i(\RP1)\to\relH^{i+1}(\Thomspace{\gamma_1})$.
-      Hence, 
-      \begin{enumerate}[1.]
-      \item $\relH^1(\Thomspace{\gamma_1})\cong\Zmod2$ has a unique
-        non-zero element,
-      \item $t(x)=\pb p x\cup\u{\gamma_1}$ is non-zero, thus
-        \begin{itemize}
-        \item $\u{\gamma_1}\in\relH^1(\Thomspace{\gamma_1})$
-          is non-zero, and
-        \item $\pb p x\in\relH^1(\Thomspace{\gamma_1})$ is non-zero.
-        \end{itemize}
-      \end{enumerate}
-      So $\pb p x=\u{\gamma_1}\in\relH^1(\Thomspace{\gamma_1})$
-      and the defining relation of $\w1{\gamma_1}$ gives:
+      $\pb p\w{0}{\gamma_1}=1$, and thus
+      $\w{0}{\gamma_1}=1\in\H^0(\RP1)\cong\Zmod2$.
+      For $\w1{\gamma_1}$ the defining relation looks like
       \begin{gather*}
         t(\w{1}{\gamma_1})
-        = \pb p\w{1}{\gamma_1}\cup x
+        = \pb p\w{1}{\gamma_1}\cup \u{\gamma_1}
         = \Sq 1(\u{\gamma_1})
         \cequalsby{\eqref{eq:sqsquared}}\u{\gamma_1}^2
-        = \pb p x \cup \u{\gamma_1}
-        = t(x)
         \;,
       \end{gather*}
-      which is equivalent to $\w{1}{\gamma_1}=x$, since $t$ is an
-      isomorphism.
+      which, if non-zero, directly proves that $\w{1}{\gamma_1}$ is
+      the unique non-zero element of degree 1 in
+      $\H^*(\RP1)=\Zmod2[x]/(x^2)$, which is $x$ as was desired.
+      To see that $\u{\gamma_1}^2$ is non-zero,
+      observe that the tautological line bundle
+      actually is the normal bundle of the embedding of $\RP1$ into
+      $\RP2$ induced by the embedding of the circle as equator into
+      the $2$-sphere. This then yields by excision that
+      \begin{gather*}
+        \H^r(\thomspacepair{\E{\gamma_1}})
+        \cong \H^r(\RP2,\RP2\setminus\RP1)
+        \cong \H^r(\RP2, \pt)
+        = \relH^r(\RP2)
+        \;.
+      \end{gather*}
+      Let $\incl\colon\RP2\to(\RP2,\pt)$ be the inclusion, which is an
+      isomorphism on cohomology groups in degree greater 0.
+      Since
+      $\u{\gamma_1}\in\relH^1(\RP2)$ is the unique non-zero element,
+      $\pb\incl\u{\gamma_1}= x_2$ and
+      $\pb\incl(\u{\gamma_1}^2) = x_2^2\neq0$.
+      So $\u{\gamma_1}^2\neq 0$.
     \item[Multiplicativity:]
       Consider vector bundles $\xi$, $\eta$ over a paracompact space
       $B$. With $\u{\xi\oplus\eta}=\u{\xi}\cup\u{\eta}$ and the fact that
@@ -905,9 +923,10 @@ bundles, as will be clear from the promised equivalence below.
       $\alpha\in \H_{r+\rkk}(\thomspacepair{\E{\N{\emb}}})$.
     \item[By \ref{lem:thomisofundcl}:]
       $\thomiso(\pf\incl\pf\collapse\fundcl{\Sphere{n+\rkk}}) = \fundcl M$
-      where $\collapse\colon \Sphere{n+\rkk}\to \Thomspace{\N{\emb}}$ is
-      the collapse map of a tubular embedding of the normal bundle $\N
-      M$.
+      where $\collapse\colon
+      \Sphere{n+\rkk}\to\Discbdl{\N{\emb}}/\Spherebdl{\N{\emb}}$ is
+      the collapse map of a tubular embedding of the normal bundle
+      $\N M$.
     \item[By \eqref{eq:sqlowerbound} and \eqref{eq:sqidentity}:]
       The total Steenrod square
       $\SQ\colon \H^m(\Sphere m)
@@ -924,8 +943,8 @@ bundles, as will be clear from the promised equivalence below.
     \end{description}
     For the proof fix some $i\leq n$, some arbitrary $x\in
     \H^{n-i}(M)$, as well as a collapse map
-    $\collapse\colon\Sphere{n+k}\to\Thomspace{\N{\emb}}$ as in
-    Lemma~\ref{lem:thomisofundcl}.
+    $\collapse\colon\Sphere{n+k}\to\Discbdl{\N{\emb}}/\Spherebdl{\N{\emb}}$
+    as in Lemma~\ref{lem:thomisofundcl}.
     For simplicity, denote
     $\Vu\coloneqq \V{\N{\emb}}$,
     $\Sph\coloneqq \Sphere{n+\rkk}$,
