@@ -9,14 +9,486 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Outlook}\label{chap:outlook}
-\TODO{How elaborate?}
-This last section is meant to give an overview on how the above
-theorems of Massey and Brown further integrate into the proof of the
-immersion conjecture.
+This chapter means to give an overview of the main steps towards a
+proof of the immersion conjecture, and an outline of the role of
+the theorems of Massey and Brown for the development.
+The proof discussed will be the one finalised by R.~L.~Cohen in
+his dissertation \cite{cohen}, and is geared to his highly
+recommendable lecture notes \cite{immersionconj} on this topic.
+Proofs of the following statements are omitted. For details the reader
+is advised to consult the latter reference if no other is given.
+
+Normal bundle will be considered to arise from immersions into
+Euclidean space if not stated otherwise. 
+Vector bundles will be identified with their classifying maps.
+% TODO: The reader is assumed to have sound knowledge of ....
+
+Recall from \autoref{chap:reformulation} that the statement in
+question is:
+\begin{Thm*}
+  For $n\in\Nat$, every closed smooth $n$-manifold immerses into
+  $\R^{2n-\alpha(n)}$.
+\end{Thm*}
+Furthermore, it was shown that this is equivalent to:
+\begin{Thm*}
+  For $n\in\Nat$, and any closed smooth $n$-manifold,
+  the classifying map $\N M\colon M\to\BO$ factors over the
+  inclusion $\BO(n-\alpha(n))\to\BO$.
+\end{Thm*}
+This theorem essentially says that universal $\O(n-\alpha(n))$ vector
+bundle is the better choice for classifying normal bundles of
+$n$-manifolds, rather than that of $\BO$. Here better is meant in
+terms of partial order by factorisation.
+This is not astonishing, as $\BO$ is a 
+universal space of \emph{all} vector bundles up to stable
+equivalence over \emph{all} (sufficiently nice) spaces.
+Due to Whitney's immersion theorem, a first improvement of $\BO$ is
+the universal bundle over $\BO(n-1)$.
+The trick of the proof of the immersion conjecture now is to
+find a universal vector bundle $\BOmodI n\to\BO$ for normal
+bundles of $n$-manifolds, that is even better than
+$\BO(n-\alpha(n))$. In other words a space and a map
+\begin{gather*}
+  \BOmodI n\longto\BO(n-\alpha(n))\longto\BO
+\end{gather*}
+over which  all classifying maps of stable normal bundles factor.
+
+More precisely, for a fixed $n\in\Nat$ the proof
+encompasses the following main steps:
+\begin{enumerate}[1.]
+\item
+  Get an idea of the statement on cohomology, and determine up to a
+  Thom isomorphism the ideal $\I n\subset\H^*(\BO)$ of characteristic
+  classes that vanish on all normal bundles of $n$-manifolds.
+  This turns out to be a generalisation of Massey's theorem on
+  characteristic classes of normal bundles.
+\item
+  Find a spectrum $\MOmodI n$ with a map
+  $\MOmodI n\to\MOspec$ which acts as a universal
+  spectrum for Thom spectra of normal bundles of $n$-manifolds,
+  \idest all maps $\Tspec{\N{M^n}}\to \MOspec$ of a Thom spectrum of a
+  normal bundle factor over the above map.
+  Furthermore, the map $\MOmodI n\to\MOspec$ should factor
+  over $\MOspec(n-\alpha(n))\to\MOspec$, where $\MOspec(n-\alpha(n))$
+  is the Thom spectrum of the universal vector bundle
+  over $\BO(n-\alpha(n))$.
+\item
+  Find a sufficient criterion when a map of a spectrum into the Thom
+  spectrum of a bundle \emph{de-Thom-ifies}, \idest sort of
+  comes from a map of Thom spectra which is induced by a map
+  of vector bundles.
+\item
+  Construct a space $\BOmodI n$ by de-Thom-ifying a suitable resolution
+  of the map $\MOmodI n\to\MOspec$, and taking the
+  $n$-skeleton of the inverse limit of the resulting resolution.
+  This can then be shown to act as a universal space for normal
+  bundles of manifolds together with the map $\BOmodI n\to\BO$ from its
+  definition.
+\item
+  Show that there is a space $X^n$ and a map
+  $X^n\to\BO(n-\alpha(n))\to\BO$,
+  which factors over $\BOmodI n$, and admits some nice splitting and
+  commutativity properties on the Thom spectra corresponding to the
+  classifying maps.
+\item
+  Show that the latter implies that
+  the map $\BOmodI n\to\BO$ factors over the universal bundle
+  $\BO(n-\alpha(n))\to\BO$.
+\end{enumerate}
+In the end, one has a the space $\BOmodI n$ which admits for
+any $n$-manifold a commutative diagram
+\begin{center}
+  \begin{tikzcd}[column sep=small]
+    M \ar[r]
+    \ar[drr, "\N M", bend right=15]
+    &\BOmodI n
+    \ar[r]
+    &\BO(n-\alpha(n))
+    \ar[d, "\incl"]\\
+    &&\BO
+  \end{tikzcd}
+\end{center}
+as was to be shown for the immersion conjecture.
+
+The last two steps turn out to be quite tricky and are the topic of
+Cohen's dissertation \cite{cohen}. This is also the point where the
+R.~L.~Brown's theorem from \autoref{chap:brown} comes in, saying
+that the immersion conjecture is true up to cobordism.
+It is needed for some choices in the construction of $X^n$.
+The other results were investigated and found by E.~H.~Brown~Jr. and
+F.~P.~Peterson.
+
+In the following a couple of aspects of the above steps are filled
+with more details.
+For this fix some $n\in\Nat$.
+
+\section*{A Generalisation of Massey's Theorem}
+In search of properties of such a universal bundle
+$\rho\colon X\to\BO$ for stable normal bundles of $n$-manifolds,
+one idea is that the \enquote{best} such one should fulfil
+\begin{gather*}
+  \ker(\pb\rho)
+  = \bigcap_{\text{$M$ mfd.}}
+  \ker(\pb{\N M}\colon\H^*(\BO)\to \H^*(M)
+  \eqqcolon \I n
+  \;,
+\end{gather*}
+\idest all characteristic classes from $\H^*(\BO)$ that vanish along
+normal bundle pullbacks, already vanish along $\pb\rho$.
+Note that by Massey's theorem the ideal
+$\left(\ws{i}|i>n-\alpha(n)\right)$ lies within $\I n$.
+
+\begin{Not*}
+  For $k\in\Nat$ let
+  \begin{itemize}
+  \item $\univbdl{k}$ be the universal bundle of $\Orth(k)$, 
+  \item $\MO(k)\cong\Thomspace{\univbdl{}}$ the corresponding Thom space,
+  \item $\MOspec\coloneqq\{\MO(k)|k\in\Nat\}$ be the universal Thom spectrum.
+  \end{itemize}
+\end{Not*}
+
+\begin{Rem*}
+Recall that the Thom isomorphism extends to an isomorphism
+\begin{gather*}
+  \thomiso\colon \H^*(\BO) \to \H^*(\MOspec)
+\end{gather*}
+(see \forexample \cite{milnor}).
+Furthermore, note that $\H^*(\MOspec)$ is known to be a free module
+over the Steenrod algebra $\A$ of the form
+\begin{gather*}
+  \H^*(\MOspec)
+  = (\sigma_i| i\neq 2^s-1)_{\A}
+  \cong \A\otimes \Zmod2[\sigma_i|i\neq 2^s-1]
+  \cong \bigoplus_{\mathclap{\deg(I)\neq 2^s-1}}
+  \A_{(*+\deg(I))}\sigma^I
+\end{gather*}
+where the $\sigma_i$ are algebraically independent elements,
+$\deg(\sigma_i)=i$, and $\deg(I)\coloneqq\deg(\sigma^I)$.
+Furthermore, the last isomorphism is one of $\A$-modules, and the sum
+is over arbitrary sequences $I$ of positive integers
+(see \cite[p.~82]{immersionconj}). % TODO
+\end{Rem*}
+
+Brown and Peterson investigated the image of $\I n$ under the Thom
+isomorphism.
+The meaning of this ideal is the following:
+Consider an $n$-manifold $M$, and the map
+\begin{gather*}
+  \T{\N M}\colon\Tspec{\N M}\to\MOspec
+\end{gather*}
+induced by the pullback of $\N M$ along the classifying map.
+Then $\ker\pb{(\T{\N M})} = \thomiso(\I n)$.
+Their result was the following.
+\begin{Thm*}[{\cite[Theorem~2.3]{immersionconj}}]
+  Define
+  \begin{gather*}
+    \J r
+    \coloneqq \bigcap_{\text{$M^n$ mfd.}}
+    \left\{ a\in\A \middle| a(\u{\N M}) = 0 \right\}
+    \subset \A
+    \;.
+  \end{gather*}
+  Then
+  \begin{align*}
+    \J r
+    &= \A \cdot \left\{\antipode(\Sq i) \middle| 2i>r\right\}
+    &\text{and}&
+    &\H^*(\MOspec)/\thomiso(\I n)
+    &\cong \bigoplus_{\mathclap{n\geq\deg(I)\neq 2^s-1}}
+      \left( \A / \J{n-\deg(I)} \right)_{*+\deg(I)}
+      \;.
+  \end{align*}
+  Or in other words
+  \begin{gather*}
+    \thomiso(\I n)
+    = \H^{*>n}(\MOspec)
+    + \A\cdot \left\{
+      \antipode(\Sq i)(\sigma^I) \middle| 2i>n-\deg(\sigma^I)
+    \right\}
+  \end{gather*}
+\end{Thm*}
+
+For now note that Massey's theorem~\ref{thm:massey} is a corollary of
+the above statement:
+\begin{Rem*}
+  Note that the projection of
+  \begin{gather*}
+    \left\{
+      \antipode(\Sq I) \middle|
+      I=(i_1,\dotsc,i_l) \text{admissible, } 2i_1\leq r
+    \right\}
+  \end{gather*}
+  is a $\Zmod2$-vector space basis of $\A/\J r$.
+  Taking a closer look at these elements, one notes that the
+  largest dimension of elements occurring is $r-\alpha(r)$.
+  Therefore, for $i>r-\alpha(r)$, $\Sq i$ is sent to zero under the
+  projection of $\A/\J r$, respectively lies in $\J r$.
+  Thus, $\Sq i\in\thomiso(\I n)$ for
+  $i>n-\alpha(n)=\max_k\{(n-k)-\alpha(n-k)\}$.
+  This yields the statement of Massey's theorem, since for an
+  $n$-manifold $M$
+  \begin{gather*}
+    \thomiso(\w{i}{\N M})
+    = \Sq i(\u{\N M})
+    \in \Sq i(\Im\pb{(\T{\N M})})
+    = \pb{(\T{\N M})} (\Sq i\cdot \H^*(\MOspec))
+    = 0
+    \;.
+  \end{gather*}
+\end{Rem*}
+
+\section*{The Construction of $\MOmodI n$}
+The summands in $\H^*(\MOspec)/\thomiso(\I n)$ are isomorphic to the
+cohomology rings of the Brown-Gitler spectra.
+Thus, the form of $\H^*(\MOspec)/\thomiso(\I n)$ gives a good hint on how
+to proceed in the search of some universal spectrum for Thom spaces of
+normal bundles.
+
+\begin{Not*}
+  % Let $\Braid k$ be the $k$th braid group and
+  % $f\colon\Braid k\to\Orth(k)$ the map representing elements in
+  % $\Braid k$ as permutation matrices (see
+  % \cite[§2]{immersionconj} for a detailed construction).
+  In the following denote by $\BrownGitler k$ the $k$th Brown-Gitler
+  spectrum, thus especially $\H^*(\BrownGitler k) \cong \A/\J k$
+  (see \cite{browngitler} or \cite[p.~101]{immersionconj} for
+  definition and a construction).
+  Further, let $\EMspec$ be the Eilenberg-MacLane spectrum for
+  $\Zmod2$.
+\end{Not*}
+
+\begin{Rem*}
+  Recall that Thom calculated
+  \begin{gather*}
+    \MOspec
+    \cong \bigvee_{\mathclap{\deg(I)\neq 2^s-1}}
+    \susp^{\deg(I)} \EMspec
+  \end{gather*}
+  (see \cite[p.~81f]{immersionconj} for a good summary of the arguments).
+\end{Rem*}
+
+\begin{Def*}
+  For $k\in\Nat$ let $y_k$ be the generator of
+  $\H^*(\BrownGitler k)\cong \A/\J k$ as $\A$-module,
+  \idest $\H^*(\BrownGitler)=\A\cdot y_k$.
+  Define
+  \begin{gather*}
+    \bm{\rho}_n\colon
+    \MOmodI n
+    \coloneqq \bigvee_{\mathclap{n\geq\deg(I)\neq 2^s-1}}
+    \susp^{\deg(I)} \BrownGitler{n-\deg{I}}
+    \to \MOspec
+  \end{gather*}
+  where the map is the wedge product given by the cohomology elements
+  \begin{gather*}
+    y_k\colon\BrownGitler k \to \EMspec
+    \;.
+  \end{gather*}
+\end{Def*}
+
+\begin{Thm*}
+  $\bm{\rho}_n\colon\MOmodI n\to\MOspec$ fulfils 
+  \begin{enumerate}
+  \item\label{item:momodinprop:1}
+    $\pb{\bm{\rho}}_n=\proj\colon
+    \H^*(\MOspec)
+    \to \H^*(\MOspec)/\thomiso(\I n)\cong\H^*(\MOmodI n)$
+  \item\label{item:momodinprop:2}
+    $\MOmodI n$ together with $\bm{\rho}$ is a universal Thom space
+    for Thom spaces of normal bundles of $n$-manifolds.
+    \Idest for every $n$-manifold there exists a lift $\bm{f}_M$ of
+    $\thommap{\N M}$ 
+    such that the following diagram commutes up to homotopy
+    \begin{center}
+      \begin{tikzcd}
+        \Tspec{\N M} \ar[r, "\bm{f}_M"]
+        \ar[dr, bend right=20, "\thommap{\N M}"{below}]
+        &\MOmodI n
+        \ar[d, "\bm{\rho}"]\\
+        &\MOspec
+      \end{tikzcd}
+    \end{center}
+  \item\label{item:momodinprop:3}
+    $\bm{\rho}$ factors up to homotopy over
+    $\MOspec(n-\alpha(n))\to\MOspec$.
+  \end{enumerate}
+  \begin{proof}[Outline of the proof]
+    For a proof see \cite[Lemma~2.28, Theorem~2.29]{immersionconj}.
+    Statement \ref{item:momodinprop:1} requires mainly the
+    considerations from above, thus follows rather directly from the
+    definition.
+    For \ref{item:momodinprop:2} one constructs a lift piece-wise by
+    finding lifts on the wedge-product factors, \idest for any
+    sequence $I$ with $n\geq\deg(I)\neq2^s-1$:
+    \begin{center}
+      % \begin{tikzcd}
+      %   &&\susp^{\deg(I)}\BrownGitler{n-\deg(I)}
+      %   %\ar[d, "\susp^{\deg(I)}y_k"]
+      %   \\
+      %   %\ar[urr, bend left=20, dashed]
+      %   \Tspec{\N M} \ar[r, "f_M"]
+      %   %\ar[r, "\thommap{\N M}"{below}]
+      %   &\MOspec
+      %   %\ar[r, "\proj"]
+      %   &\susp^{\deg(I)}\EMspec}
+      % \end{tikzcd}
+    \end{center}
+    Lastly, \ref{item:momodinprop:3} uses that $\BrownGitler k$ has
+    the homotopy type of a CW complex of dimension $k-\alpha(k)$,
+    which makes it possible to apply an obstruction argument to find
+    the required lift.
+  \end{proof}
+\end{Thm*}
+
+This gives the desired intermediate result.
+
+
+\section*{A Construction of $\BOmodI n$}
+Now that a nice universal spectrum for Thom spaces of normal bundles
+of $n$-manifolds is found, one has to somehow \emph{de-Thom-ify} this
+result to a universal space of normal bundles with the desired
+properties.
+
+Let us first specify de-Thom-ification.
+\begin{Def}
+  For a bundle $\xi\colon X\to\BO$, a map of spectra
+  $\bm{\tau}\colon\spectrum{Z}\to\Tspec{\xi}$ is said to
+  \emph{de-Thom-ify} through dimension $k$ if there is
+  \begin{itemize}
+  \item a map of spaces $g\colon Y\to X$, and
+  \item a $k$-connected map of spectra
+    $\bm{\kappa}\colon\Tspec{(\pb g\xi)}\to\spectrum{Z}$,
+  \end{itemize}
+  such that the following diagram homotopy commutes
+  \begin{center}
+    \begin{tikzcd}
+      \spectrum{Z} \ar[r, "\bm{\tau}"]
+      \ar[d, "\bm{\kappa}"]
+      &\Tspec{\xi}\\
+      \ar[ur, bend right=20, "\thommap{g}"{below}]
+      \Tspec{(\pb g\xi)}
+    \end{tikzcd}
+  \end{center}
+  .
+\end{Def}
+
+
+It is a key de-Thom-ification obstruction
+that a map on Thom spectra induced by a map on vector bundles does
+admit linearity with respect to an additional module structure
+(see \cite[p.~107ff]{immersionconj}).
+\begin{Lem*}
+  \begin{enumerate}
+  \item On the tensor product $\A\otimes\H^*(\BO)$ define the multiplication
+    \begin{gather*}
+      (a\otimes x) \cdot (b\otimes y)
+      \coloneqq \sum_{i\in A}
+      \left(a\circ b_i'\right) \otimes \left(\antipode(b_i'')(x)\cdot y\right)
+    \end{gather*}
+    where $b_i', b_i''$ is such that $\sum_{i\in A}b_i'\otimes b_i''$ is
+    the image of $b$ under the diagonal map of $\A$.
+    This turns $\A\otimes\H^*(\BO)$ into a ring.
+  \item For any classifying map $\xi\colon X\to\BO$, the
+    corresponding $\H^*(\BO)$-module structure on $\H^*(X)$
+    induces the $(\A\otimes\H^*(\BO))$-structure on $\H^*(\Tspec{\xi})$
+    \begin{gather*}
+      (a\otimes x)\cdot \thomiso(y) = a\left( \thomiso(\pb\xi x\cup y \right)
+    \end{gather*}
+    via the Thom isomorphism.
+  \item For any map of vector bundles, the induced map on Thom spaces
+    is $(\A\otimes\H^*(\BO))$-linear on cohomology.
+  \end{enumerate}
+\end{Lem*}
+
+In the spirit of the above observation, one gets even more additional
+structure around Thom maps induced by pullbacks of vector bundles.
+An essential result is the following de-Thom-ification criterion:
+\begin{Thm*}
+  Let $k\in\Nat$ and $\xi\colon X\to\BO$ be $k$-connected.
+  Assume there is a map of spectra
+  $\bm{\tau}\colon\spectrum{Z}\to\Tspec{\xi}$.
+  Then $\bm{\tau}$ de-Thom-ifies through dimension $2k$ if and only if
+  in dimensions lower or equals $2k$ the cohomology ring
+  $\H^*(\spectrum{C}_{\bm{\tau}})$ of the mapping cone of $\bm{\tau}$ is
+  a free module over $\A\otimes\H^*(\BO)$.  
+  \begin{proof}[Outline of the proof]
+    See \cite[Theorem~3.5]{immersionconj}.
+    For the necessity one should observe that a pullback $g\colon Y\to X$ of
+    vector bundles can be modified to a certain 2-stage Postnikov tower
+    \begin{gather*}
+      Y'\longto X\overset{\xi}\longto\BO
+    \end{gather*}
+    without changing the homotopy type of $\Tspec{(\pb g\xi)}$ up to
+    dimension $2k$.
+    Then one can use a theorem by Brown and Peterson, which yields the
+    needed result for the cohomology of the modified Thom mapping cone
+    (see \cite[Theorem~3.3]{immersionconj}).
+    For the other direction, a construction that rebuilds a system as
+    the above one using the Thom isomorphism can be applied.
+  \end{proof}
+\end{Thm*}
+
+
+Brown and Peterson found a nice Adams resolution of spectra
+\begin{gather*}
+  \MOmodI n \to\dotsc \to \spectrum{Z}_1 \to \spectrum{Z}_0 = \MOspec
+\end{gather*}
+which in each stage de-Thom-ifies through dimension $n$ according to
+the above criterion.
+This finally gives:
+\begin{Def}
+  Let
+  \begin{gather*}
+    \dotsc \to Y_1 \to Y_0 = \BO
+  \end{gather*}
+  be the result of the de-Thom-ification of the above resolution.
+  Define $\BOmodI n$ as the $n$-skeleton of the inverse limit of the
+  $Y_i$, and the map $\rho\colon\BOmodI n\to\BO$ by
+  \begin{gather*}
+    \rho\colon\BOmodI n\to\dotsc\to Y_1\to Y_0=\BO
+    \;.
+  \end{gather*}
+\end{Def}
+
+\begin{Thm*}
+  The special choice of the chosen resolution equips
+  $\rho\colon\BOmodI n\to\BO$ with the following properties:
+  \begin{enumerate}
+  \item
+    $\thommap{\rho} = \bm{\rho}\colon \Tspec{\rho}\simeq\MOmodI n\to\MOspec$.
+  \item
+    $\pb\rho=\proj\colon
+    \H^*(\BOmodI n) \to \H^*(\BO)/\I n\cong\H^*(\BOmodI n)$
+    (this comes from the choice as de-Thom-ification of
+    $\bm{\rho}\colon\MOmodI n\to\MOspec$ and application of the Thom
+    isomorphism).
+  \item
+    $\rho$ acts as universal bundle for stable normal bundles of
+    $n$-manifolds.
+    \Idest for every $n$-manifold there exists a lift $f_M$ of
+    $\N M$ 
+    such that the following diagram commutes up to homotopy
+    \begin{center}
+      \begin{tikzcd}
+        M \ar[r, "f_M"]
+        \ar[dr, bend right=20, "\N M"{below}]
+        &\BOmodI n
+        \ar[d, "\rho"]\\
+        &\BO
+      \end{tikzcd}
+    \end{center}
+  \end{enumerate}
+\end{Thm*}
+
+% TODO: say that lift is missing
+
+\section*{A Construction of the Lift $\BOmodI n\to\BO(n-\alpha(n))$}
+% TODO
 
 %\optcite[Theorem~3.34]{The Topology of Fiber Bundles Lecture Notes, Cohen}
 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
+%%% ispell-local-dictionary: "en_GB"
 %%% End:

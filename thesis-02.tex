@@ -482,7 +482,7 @@ space of a vector bundle.
   For $r\in\Nat$, $x\in \H^r(B)$,
   and $\alpha\in \H_{r+\rkk}(\thomspacepair{E})$  holds 
   \begin{gather*}
-    \pf p\capped{t(x)}{\alpha} = \capped{x}{t(\alpha)}
+    \pf p\capped{\thomiso(x)}{\alpha} = \capped{x}{\thomiso(\alpha)}
     \in\H_0(B)\cong \Zmod2
   \end{gather*}
 \end{Lem}
@@ -515,7 +515,7 @@ first recall the following properties of the cap product.
 \begin{proof}[proof of Lemma~\ref{lem:thomisoself-adjoint}]
   With $\U\coloneqq\u{\xi}$ one calculates
   \begin{align*}
-    \pf p\capped{t(x)}{\alpha}
+    \pf p\capped{\thomiso(x)}{\alpha}
     &= \pf p\capped{\pb p x \cup \U}{\alpha} \\
     &\equalsby{\eqref{eq:capprod1}}
       \pf p\capped{\pb p x}{\U\cap\alpha} \\
@@ -717,7 +717,7 @@ Thom classes and Steenrod squares can be presented.
       $\w{0}{\gamma_1}=1\in\H^0(\RP1)\cong\Zmod2$.
       For $\w1{\gamma_1}$ the defining relation looks like
       \begin{gather*}
-        t(\w{1}{\gamma_1})
+        \thomiso(\w{1}{\gamma_1})
         = \pb p\w{1}{\gamma_1}\cup \u{\gamma_1}
         = \Sq 1(\u{\gamma_1})
         \cequalsby{\eqref{eq:sqsquared}}\u{\gamma_1}^2
@@ -879,7 +879,7 @@ For the formulation recall the antipode of the Steenrod algebra
   \end{gather*}
   The \emph{total Wu class} of $\xi$ is defined as usual as
   $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$ and satisfies accordingly 
-  $\antipode(\SQ)(\u{\xi})=t(\V{\xi})$.
+  $\antipode(\SQ)(\u{\xi})=\thomiso(\V{\xi})$.
 \end{Def}
 \begin{Rem}
   Compare this to the possible definition of the Stiefel-Whitney
@@ -1609,5 +1609,6 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
+%%% ispell-local-dictionary: "en_GB"
 %%% End:
 

@@ -55,7 +55,7 @@ doi=false, url=false
 
 
 % MATHS PACKAGES
-\usepackage{mathtools,amsthm,amssymb,dsfont,mathrsfs}
+\usepackage{mathtools,amsthm,amssymb,dsfont,mathrsfs,bm}
 % \usepackage{amsfonts}
 \usepackage{tikz-cd}
 \usetikzlibrary{babel}
@@ -114,18 +114,23 @@ doi=false, url=false
 
 % THEOREMS
 \newtheorem{Thm}{Theorem}
+\newtheorem*{Thm*}{Theorem}
 \newtheorem{Prop}[Thm]{Proposition}
 \newtheorem{Lem}[Thm]{Lemma}
+\newtheorem*{Lem*}{Lemma}
 \newtheorem{Cor}[Thm]{Corollary}
 \newtheorem{Fact}[Thm]{Facts}
 \theoremstyle{definition}
 \newtheorem{Def}[Thm]{Definition}
+\newtheorem*{Def*}{Definition}
 \newtheorem{LemDef}[Thm]{Lemma/Definition}
 \theoremstyle{remark}
 \newtheorem{Ex}[Thm]{Example}
 \newtheorem{Rem}[Thm]{Remark}
+\newtheorem*{Rem*}{Remark}
 \newtheorem*{claim}{claim}
 \newtheorem{Not}[Thm]{Notation}
+\newtheorem*{Not*}{Notation}
 
 
 \setlist[enumerate,1]{label=\roman*)}
@@ -235,9 +240,21 @@ doi=false, url=false
 \newcommand*{\GL}[1]{\mathrm{GL}_{#1}(\R)} % general linear group over \R
 \newcommand*{\Orth}{O} % orthogonal matrices
 \newcommand*{\BO}{\B\Orth} % classifying space of O-bundles
+\newcommand*{\MO}{M\Orth} % universal Thom space
+\newcommand*{\Braid}[1]{\beta_{#1}} % #1th braid group
+
 \newcommand*{\pt}{*} % single point space
 \newcommand*{\zeroset}{\{0\}} % set containing only 0
 \newcommand*{\Boundary}[1]{\partial{#1}} % boundary of a space
+\newcommand*{\BOmodI}[1]{\BO/\I{#1}} % universal space of normal bundles of #1-mfds (see \MOmodI)
+
+% spectra
+\newcommand*{\spectrum}[1]{\bm{\mathrm{#1}}} % spectrum version of #1
+\newcommand*{\EMspec}{\spectrum{K}(\Zmod2)} % \Zmod2 Eilenberg-MacLane spectrum
+\newcommand*{\MOspec}{\spectrum{\MO}} % universal Thom spectrum
+\newcommand*{\Tspec}[1]{\spectrum{T}{#1}} % Thom spectrum of the bundle #1
+\newcommand*{\MOmodI}[1]{\MOspec/\I{#1}} % universal spectrum of Thom spaces of normal bdls of #1-mfds
+\newcommand*{\BrownGitler}[1]{\Tspec{}_{#1}} % #1th Brown-Gitler spectrum
 
 % category stuff
 \newcommand*{\Top}{\mathrm{Top}} % category of topological spaces
@@ -282,10 +299,13 @@ doi=false, url=false
 
 \newcommand*{\bc}[1]{\bar c^{(#1)}} % formal sign for c^{#1}
 
+\newcommand*{\I}[1]{I_{#1}} % ideal of charcls that vanish for all normal bdls of #1-mfds
+\newcommand*{\J}[1]{J_{#1}} % ideal needed to describe image of \I n under Thom iso
+
 % Steenrod algebra stuff
 \newcommand*{\SQ}{\mathrm{Sq}} % total Steenrod Square
 \newcommand*{\Sq}[1]{\SQ^{#1}}  % Steenrod Squares
-\newcommand*{\A}{\mathcal{A}_2} % Steenrod algebra
+\newcommand*{\A}{\mathcal{A}} % Steenrod algebra
 \newcommand*{\Sqcup}{\circ} % multiplication of the Steenrod algebra
 \newcommand*{\antipode}{\chi} % antipode of the Steenrod algebra
 \renewcommand*{\l}{l} % length of a sequence (overrides l with stroke)
@@ -296,10 +316,11 @@ doi=false, url=false
 \newcommand*{\trivbdl}{\epsilon} % trivial rank ? vector bundle
 \newcommand*{\T}[1]{\mathrm{T}#1} % tangent bundle
 \newcommand*{\N}[1]{\nu_{#1}} % (stable) normal bundle
+\newcommand*{\univbdl}[1]{\gamma_{#1}} % universal (vector) bundle of the topological group #1
 \newcommand*{\Discbdl}[1]{\mathrm{D}#1} % disc bundle of a vector bundle
 \newcommand*{\Spherebdl}[1]{\mathrm{S}#1} % disc bundle of a vector bundle
 \newcommand*{\Thomspace}[1]{\Discbdl{#1}/\Spherebdl{#1}} % Thom space of a vector bundle
-\newcommand*{\MO}{\mathbf{MO}} % unoriented Thom spectrum
+\newcommand*{\thommap}[1]{T{#1}} % map on Thom space of a vector bundle induced by pullback
 \newcommand*{\collapse}{c} % collapse map from sphere to thom space of normal bundle
 \newcommand*{\zerosec}[1]{0_{#1}} % zero section of a vector bundle
 \newcommand*{\minuszerosec}[1]{{#1}^0} % total space minus zero section
