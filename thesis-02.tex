@@ -8,7 +8,7 @@
 % University of Regensburg 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\chapter{Vanishing Obstructions by Characteristic Classes} % TODO: nicer title
+\chapter{Results on the Stiefel-Whitney Classes of Manifolds}
 \label{chap:massey}
 % Review the theory of Stiefel-Whitney classes and the properties of the
 % Steenrod algebra (as needed). Give a careful and detailed exposition of
@@ -29,9 +29,11 @@ The preliminary work for Massey's theorem encompasses a review on
 Steenrod squares in \autoref{sec:steenrodsquares}, and the
 investigation of Wu characteristic classes in
 \autoref{sec:wuclassesmain}.
-The latter especially involves relating the Wu classes to
-Stiefel-Whitney classes using a formula by Wu, which is proven in
-\autoref{sec:wutheorem}.
+In the course of this a couple of other important results on
+Stiefel-Whitney classes of manifolds are discussed.
+Most notably, Wu's formula on their relation to the Wu
+characteristic classes is proven in \autoref{sec:wutheorem}
+
 
 \section{Steenrod Squares}\label{sec:steenrodsquares}
 Similar to the cup and cap product Steenrod squares add further
@@ -1157,7 +1159,7 @@ follows from the following Lemma:
 \end{proof}
 
 
-\section{Massey's Theorem on the Stiefel-Whitney Classes of Manifolds}
+\section{Massey's Theorem}
 \label{sec:massey}
 Massey's main theorem on the Stiefel-Whitney classes of manifolds
 \cite[Theorem~I.]{massey} gives a concrete statement, in which degrees
@@ -1193,10 +1195,13 @@ The latter consists of several steps:
     \deg \left(\Sq I(x)\right)
     = 2^k\cdot
     \left( 2^{k_1}+\dotsb+2^{k_{q-1}} + 1 \right)
+    \;.
   \end{gather*}
-  (all used results in during step hold for any space $X$).
+  (All results during this step hold for any space $X$.)
 \item\label{tag:masseystep2}
-  Find some iterated Steenrod square which is non-trivial in degree
+  Find some iterated Steenrod square candidate to which the above
+  degree formula is applicable, \idest which is non-trivial in
+  degree
   \begin{gather*}
     \Sq I\colon\H^q(M)\to\H^n(M)
     \;.
@@ -1204,15 +1209,15 @@ The latter consists of several steps:
 \end{steps}
 Applying \ref{tag:masseystep1} to the Steenrod square $\Sq I$ from
 \ref{tag:masseystep2} and some $x\in\H^q(M)$ with $\Sq I(x)\neq 0$
-immediately yields the result as
+immediately yields the result because
 \begin{gather*}
   n = \deg\left(\Sq I(x)\right) = \underbrace
   {2^{k_1+k}+\dotsb+2^{k_{q-1}+k} + 2^{k}}_{\text{$q$ summands}}
   \;.
 \end{gather*}
 
-\subsection[Degree Dissection for Steenrod Squares]
-{Step 1: A Degree Dissection for Steenrod Squares}
+\subsection[A Degree Formula for Iterated Steenrod Squares]
+{Step 1: A Degree Formula for Iterated Steenrod Squares}
 For this step $M$ may be any space.
 \ref{tag:masseystep1} requires to proof the following claim.
 \begin{Lem}[\ref{tag:masseystep1}]\label{lem:masseystep1}
@@ -1376,14 +1381,14 @@ the case $\e(I)<\deg x$.
   \end{gather*}
 \end{proof}
 
-% TODO: better title
-\subsection[Non-trivial Iterated Steenrod Squares for Manifolds]
-{Step 2: Existence of Non-trivial Iterated Steenrod Squares for Manifolds}
+
+\subsection[Candidates for the Degree Formula]
+{Step 2: Candidates for the Degree Formula}
 
 This section is dedicated to the search of an iterated Steenrod square
 $\Sq I$ of degree $n-q$ that is non-trivial in degree
 $\Sq I\colon\H^q(M)\to\H^n(M)$ in order to complete
-\ref{tag:masseystep2} of the prove of Theorem~\ref{thm:massey}.
+\ref{tag:masseystep2} of the proof of Theorem~\ref{thm:massey}.
 
 The candidate is the multiplication map
 \begin{gather*}
