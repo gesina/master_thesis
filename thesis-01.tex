@@ -46,7 +46,7 @@ From a different point of view, immersions are merely a special case
 of monomorphisms of vector bundles. So, recall that a morphism
 $(\xi_1\colon\E_1\to X_1)\to(\xi_2\colon E_2\to X_2)$ 
 of vector bundles over different spaces is a map $F\colon E_1\to E_2$
-which is linear on fibres, and that covers its restriction to the zero
+which is linear on fibers, and that covers its restriction to the zero
 section, \idest it makes the following diagram commute
 \begin{center}
   \begin{tikzcd}
@@ -59,7 +59,7 @@ section, \idest it makes the following diagram commute
 \end{center}
 Further, remember the fact that such a morphism is a monomorphism in
 the category of vector bundles if and only if its restriction to each
-fibre is injective.
+fiber is injective.
 \begin{Def}
   A smooth map $f\colon M\to N$ of smooth manifolds is called
   an \emph{immersion}, written $M\immto N$, if its differential
@@ -74,7 +74,7 @@ fibre is injective.
   \item
     Immersions are local embeddings of manifolds, \idest for an
     immersion $f\colon M\immto N$, around every point in $M$
-    there is an open neighbourhood on which $f$ is a diffeomorphism
+    there is an open neighborhood on which $f$ is a diffeomorphism
     onto its image.
     More descriptive, immersions are mappings that do not allow creases,
     respectively sharp bends, or puncturing
@@ -287,7 +287,7 @@ classification theorem (compare \cite[Chapter~14.4]{tomdieck}).
     For construction and uniqueness see \cite[Example~1B.7~ff.]{hatcher},
     respectively note that universal coverings are unique up to homotopy.
   \item\label{item:classificationthm}
-    $\gamma^G$ fulfils the following universal property:
+    $\gamma^G$ fulfills the following universal property:
     For any space $X$ admitting the homotopy type of a CW-complex
     there is a bijection between $[X,\BG]$, which denotes the homotopy
     classes of maps from $X$ to $\BG$, and the isomorphism classes of
@@ -322,6 +322,7 @@ Stiefel-Whitney classes, will be discussed in detail in
   \end{itemize}
   is a natural transformation
   \begin{gather*}
+    \SwapAboveDisplaySkip
     \Cl\colon [-, \BG] \Longrightarrow \H^i(-; R)\;.
   \end{gather*}
   of contravariant functors from the category of spaces with the
@@ -416,13 +417,13 @@ bundles.
         \Sphere{r}
       \end{tikzcd}
     \end{center}
-    commutes, where the rows are the defining fibre bundles for the
+    commutes, where the rows are the defining fiber bundles for the
     classifying spaces, and $\Orth(r)\to\Orth(r+1)\to\Sphere r$
-    is the well-known fibre bundle of the inclusion of orthogonal groups.
+    is the well-known fiber bundle of the inclusion of orthogonal groups.
     Since $\E\Orth(s)$ is contractible for any $s\in\Nat$, 
-    the long exact sequences of homotopy for the horizontal fibre bundles yield
+    the long exact sequences of homotopy for the horizontal fiber bundles yield
     $\pi_i(\Orth(r))\cong\pi_{i+1}(\BO(r))$ for $i\in\Nat$, analogously for $r+1$.
-    The sequence for the vertical fibre bundle yields that
+    The sequence for the vertical fiber bundle yields that
     $\Orth(r)\to\Orth(r+1)$ is $r$-connected, and commutativity gives
     the same for $\incl\colon\BO(r)\to\BO(r+1)$.
     
@@ -527,7 +528,7 @@ characteristic class. However, given only the above axioms:
   properties. Furthermore, they generate the ring
   $\H^*(\BO;\Zmod2)$, which is isomorphic to $\Zmod2[\ws{i}|i\geq1]$.
   \begin{proof}[proof]
-      A possible concrete construction utilises the Euler
+      A possible concrete construction utilizes the Euler
       class. For a definition via Steenrod squares can be 
       found in Theorem~\ref{thm:altdefswclasses}.
       For uniqueness see \cite[Uniqueness Theorem~7.3]{milnor}.
@@ -540,7 +541,7 @@ As already mentioned, the above generating property means that every
 characteristic class of vector bundles of a fixed dimension can be
 represented as a certain combination of Stiefel-Whitney classes.
 Moreover, they---and hence all characteristic classes---behave
-extremely well with respect to vector bundle operations as emphasised
+extremely well with respect to vector bundle operations as emphasized
 below.
 \begin{Rem}
   \label{rem:propswclasses}
@@ -626,7 +627,7 @@ especially handy in the context relevant for the immersion conjecture.
 The immersion problem can finally be clearly stated with the
 definitions from \autoref{sec:immersions}.
 The goal of this section is to reformulate the immersion conjecture to
-a statement that can be analysed with means of homotopy theory of
+a statement that can be analyzed with means of homotopy theory of
 vector bundles, and show how characteristic classes relate to this by
 finding a powerful obstruction.
 The latter will be followed up in the subsequent chapter.
@@ -723,11 +724,11 @@ immersion problem.
     % $\pb f\T{\R^{n+k}}$ for $f=F|_{\zerosec{\T M}}$ is 
     % trivial, and that $F\colon \T M\to \pb f\T{\R^{n+k}}$ is not only
     %% Wrong according to George??
-    % fibre-wise, but globally injective of constant rank
+    % fiber-wise, but globally injective of constant rank
     % $\dim M$.
     % Thus, as in the definition of normal bundles,
     % $\N{}\coloneqq\pb f\T{\R^{n+k}}/\T M$ is a vector bundle over $M$
-    % that obviously fulfils the required property of
+    % that obviously fulfills the required property of
     % \ref{item:immersionconj:3}.
     %
     When given some rank $k$ vector bundle $\N{}$
@@ -753,7 +754,7 @@ immersion problem.
         & \R^{n+k}
       \end{tikzcd}
     \end{center}
-    is fibre-wise injective in each stage, and hence a monomorphism as
+    is fiber-wise injective in each stage, and hence a monomorphism as
     was needed.
   \item[\ref{item:immersionconj:1}$\Leftrightarrow$\ref{item:immersionconj:2}:]
     The tricky part is to relate \ref{item:immersionconj:1} and
@@ -807,5 +808,5 @@ with the value $k=n-\alpha(n)$ in the first place.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
-%%% ispell-local-dictionary: "en_GB"
+%%% ispell-local-dictionary: "en_US"
 %%% End:
