@@ -102,7 +102,7 @@ doi=false, url=false
 % PROTOTYPING
 \newcommand*{\optcite}[2][]{{\color{red}\cite[][#1]{#2}}}
 \newcommand*{\TODO}[1]{\marginpar{\color{red}#1}}
-\hypersetup{colorlinks=true, linkcolor=blue}
+\hypersetup{colorlinks=true, linkcolor=blue} % TODO: make ready for print
 
 % LANGUAGE
 % Shorthands with correct spacing
@@ -179,6 +179,7 @@ doi=false, url=false
 \newcommand*{\Emptypart}{()} % empty partition, i.e. partition of 0
 \newcommand*{\PartitionsOf}[1]{\Pi({#1})} % set of partitions of the integer #1
 \newcommand*{\concat}{\oplus} % concatenation of sequences/partitions
+\newcommand*{\Deg}[1]{\left|#1\right|} % degree of \Ws^{#1}
 
 \newcommand*{\Symm}[1]{\mathcal{S}^{#1}} % ring of symmetric polynomials in #1 variables
 \newcommand*{\Permutations}[1]{\Sigma_{#1}} % group of permutations of #1 elements
@@ -242,11 +243,15 @@ doi=false, url=false
 \newcommand*{\BO}{\B\Orth} % classifying space of O-bundles
 \newcommand*{\MO}{M\Orth} % universal Thom space
 \newcommand*{\Braid}[1]{\beta_{#1}} % #1th braid group
+\newcommand*{\BraidSpace}[1]{B_{#1}} % K(\Braid{#1}, 1) Eilenberg-MacLane space
 
 \newcommand*{\pt}{*} % single point space
 \newcommand*{\zeroset}{\{0\}} % set containing only 0
 \newcommand*{\Boundary}[1]{\partial{#1}} % boundary of a space
+\newcommand*{\smashprod}{\wedge} % smash of spaces/spectra
+
 \newcommand*{\BOmodI}[1]{\BO/\I{#1}} % universal space of normal bundles of #1-mfds (see \MOmodI)
+\newcommand*{\subcxBOmodI}[1]{C_{#1}} % some nice subcomplex of \BOmodI{#1}
 
 % spectra
 \newcommand*{\spectrum}[1]{\bm{\mathrm{#1}}} % spectrum version of #1
@@ -255,6 +260,7 @@ doi=false, url=false
 \newcommand*{\Tspec}[1]{\spectrum{T}{#1}} % Thom spectrum of the bundle #1
 \newcommand*{\MOmodI}[1]{\MOspec/\I{#1}} % universal spectrum of Thom spaces of normal bdls of #1-mfds
 \newcommand*{\BrownGitler}[1]{\Tspec{}_{#1}} % #1th Brown-Gitler spectrum
+\newcommand*{\Spherespec}[1]{\spectrum{\Sph}^{#1}} % sphere spectrum
 
 % category stuff
 \newcommand*{\Top}{\mathrm{Top}} % category of topological spaces
