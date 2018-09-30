@@ -44,7 +44,7 @@ characteristic classes, the Stiefel-Whitney and the Wu classes, and
 are a key ingredient for the proof of Massey's theorem on obstructions
 for normal bundles of manifolds.
 
-The following definition of the Steenrod squares is due to
+The following definition is due to
 Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
 \begin{Def}\label{def:sq}
   The \emph{Steenrod squares} $\Sq i$ for $i\in\Nat$ are each a family
@@ -53,7 +53,7 @@ Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
   \begin{gather*}
     \left(
       \Sq i\colon \H^n(X, A;\Zmod2) \to \H^{n+i}(X, A;\Zmod2)
-      \;\middle|\;
+      \middlemid
       n\in\Nat
     \right)
   \end{gather*}
@@ -108,14 +108,19 @@ Steenrod and Epstein \cite[Chap.~I.1, p.~1]{steenrodepstein}.
       \Sq{\alpha+\beta+j}\Sq{j}
     \end{gather}
   \end{description}
-  $\SQ\coloneqq \sum_{j\in\Nat}\Sq j$ is the formal sum of all
-  Steenrod squares called the \emph{the total Steenrod square}.
+  The formal sum of all Steenrod squares
+  $\SQ\coloneqq\sum_{j\in\Nat}\Sq j$ is called the \emph{total Steenrod square}.
   Note that for any degree $n\in\Nat$ the total Steenrod square
   $\SQ\colon \H^n(X)\to \H^*(X)$ is well-defined since the sum is
   finite by \eqref{eq:sqlowerbound}.
   Also \ref{tag:cartan} can be reformulated to
-  $\SQ(x\cup y) = \SQ(x)\cup\SQ(y)$, \idest $\SQ$ is a group
-  homomorphism with respect to the cup-product.
+  \begin{gather*}
+    \SwapAboveDisplaySkip
+    \SQ(x\cup y) = \SQ(x)\cup\SQ(y)
+    \;,
+  \end{gather*}
+  \idest $\SQ$ is a group
+  homomorphism with respect to the cup\nbd{}product.
 \end{Def}
 
 \begin{Thm}
@@ -136,13 +141,20 @@ form a ring, which was proven by Steenrod. The following notation and
 facts are according to \cite[Chap.~6]{mosher}.
 \begin{Def}\label{def:steenrodalgebra}
   The \emph{Steenrod algebra} $\A$ is the quotient
-  of the graded $\Zmod2$-polynomial algebra
-  $\Zmod2[\Sq i|i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
+  of the graded $\Zmod2$\nbd{}polynomial algebra
+  $\Zmod2[\Sq i\mid i\in\Nat]$ with grading $\deg \Sq i\coloneqq i$
   by the two-sided relations of both \ref{tag:adem} and $\Sq 0=1$.
   With the induced grading, multiplication, and the diagonal defined
-  by $\Sq i\mapsto\sum_{r+s=i}\Sq r\otimes\Sq s$, it is an
-  associative, connected, non-commutative graded Hopf algebra over
-  $\Zmod2$.
+  by
+  \begin{gather*}
+    \SwapAboveDisplaySkip
+    \A\longto \A\otimes\A
+    \;,\qquad
+    \Sq i\longmapsto\sum_{r+s=i}\Sq r\otimes\Sq s
+    \;,
+  \end{gather*}
+  it is an associative, connected, non-commutative graded Hopf algebra
+  over $\Zmod2$.
 \end{Def}
 \begin{Not}
   In the following, iterated Steenrod squares
@@ -153,48 +165,50 @@ facts are according to \cite[Chap.~6]{mosher}.
   properties from Definition~\ref{def:sq}.
   Furthermore, for a sequence $I=(i_1,\dotsc,i_l)$,
   respectively $\Sq I$, denote by
-  \begin{description}[labelindent=1em]
+  \begin{compactdescription}[labelindent=1em]
   \item[$\l(I)\coloneqq l$] the \emph{length} of $I$,
   \item[$\d(I)\coloneqq \sum_{j=1}^{l} i_j$] the \emph{degree} of $I$,
     and by
   \item[$\e(I)\coloneqq 2i_1-\d(I)=\sum_{j=1}^{l-1}(i_j-2i_{j+1})$]
     the \emph{excess} of $I$.
-  \end{description}
+  \end{compactdescription}
   The sequence $I$, respectively $\Sq I$, is called \emph{admissible},
   if $\l(I)=1$ or $i_j\geq 2i_{j+1}$ for $0\leq j<\l(I)$.
 \end{Not}
-
 \begin{Rem}\label{rem:sq}
   The following properties will be needed for Massey's Theorem:
   \begin{enumerate}
   \item The set of iterated Steenrod squares $\Sq I$ of admissible
-    sequences $I$ forms a basis for $\A$ as $\Zmod2$-vector space
+    sequences $I$ forms a basis for $\A$ as $\Zmod2$\nbd{}vector space
     \cite[Chap.~6, Theorem~1]{mosher}.
   \end{enumerate}
   Let $I=(i_1,\dotsc,i_l)$ be a sequence in $\Nat$.
   \begin{enumerate}[resume]
   \item $\deg(\Sq I(x)) = \deg(x) + \d(\Sq I)$.
-  \item\label{item:squpperboundgeneral} $\Sq I(x) = 0$ for  $\deg(x)<\e(I)$ if $I$ is admissible.
-    \begin{proof}
-      This follows by induction over $\l(I)$ using
-      \eqref{eq:sqlowerbound}. The case $\l(I)=1$ follows directly 
-      from \eqref{eq:sqlowerbound}.
-      For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_l)$, the condition
-      $\deg(x) < \e(I)=i_1-\d(J)$
-      implies
-      \begin{gather*}
-        \deg(\Sq J(x))
-        = \deg(x)+\d(J) < \e(J)+\d(J) = 2i_2
-        \overset{\text{adm.}}\leq i_1
-      \end{gather*}
-      So,
-      $\Sq I(x)=\Sq{i_1}(\Sq J(x)) \cequalsby{\eqref{eq:sqlowerbound}} 0$.
-    \end{proof}
+  \item\label{item:squpperboundgeneral}
+    $\Sq I(x) = 0$ for $\deg(x)<\e(I)$ if $I$ is admissible.
   \end{enumerate}
+  \begin{proof}
+    The non-obvious part~\ref{item:squpperboundgeneral} follows by
+    induction over $\l(I)$ using \eqref{eq:sqlowerbound}:
+    The case $\l(I)=1$ is \eqref{eq:sqlowerbound}.
+    For $\l(I)>1$ and $J\coloneqq(i_2,\dotsc,i_l)$, the condition
+    $\deg(x) < \e(I)=i_1-\d(J)$
+    implies
+    \begin{gather*}
+      \SwapAboveDisplaySkip
+      \deg(\Sq J(x))
+      = \deg(x)+\d(J) < \e(J)+\d(J) = 2i_2
+      \overset{\text{adm.}}\leq i_1
+    \end{gather*}
+    So,
+    $\Sq I(x)=\Sq{i_1}(\Sq J(x))=0$ by \eqref{eq:sqlowerbound}.
+  \end{proof}
+
 \end{Rem}
 
 The subsequent concept of formally inverting a formal sum of elements
-in a graded $\Zmod2$-algebra will recur for several characteristic
+in a graded $\Zmod2$\nbd{}algebra will recur for several characteristic
 classes. This particular definition is needed to define the Wu classes
 in \autoref{sec:wuclasses}. 
 \begin{Def}\label{def:antipode}
@@ -235,12 +249,14 @@ and let $R$ be a principal ideal domain.
 The following definition can \forexample also be found in
 \cite[p.~441]{hatcher}.
 \begin{Def}
-  A \emph{Thom class} of $\xi$ in $R$-coefficients is a
-  cohomology class $\u{\xi}\in \H^{\rkk}(\spherepair{E}; R)$,
+  A \emph{Thom class} of $\xi$ in $R$\nbd{}coefficients is a
+  cohomology class $\u{\xi}$ in $\H^{\rkk}(\spherepair{E}; R)$,
   such that for all points $b\in B$ and fiber inclusions
-  $i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})$
+  \begin{gather*}
+    i_b\colon (\spherepair{E_b}) \to (\thomspacepair{E})
+  \end{gather*}
   the restriction $\u{\xi}|_{E_b} = \pb i_b (\u{\xi})$ is a
-  free generator of the $R$-module $\H^{\rkk}(\spherepair{E_b}; R)$,
+  free generator of the $R$\nbd{}module $\H^{\rkk}(\spherepair{E_b}; R)$,
   \idest a unit
   of the ring
   $\H^{\rkk}(\spherepair{E_b};R)\cong \H^{\rkk}(\spherepair{\R}; R)\cong R$.
@@ -354,12 +370,12 @@ their above definition.
       &= (\spherepair{\E{\xi}_b})\times(\spherepair{\E{\eta}_b}
     \end{align*}
     which makes the relative Künneth isomorphism theorem applicable.
-    See \forexample \cite[Theorem~3.18]{hatcher}.
+    For the latter see \forexample \cite[Theorem~3.18]{hatcher}.
     By the naturality of that isomorphism there is the
     following commutative diagram that translates this problem to one
     on the cohomology of spheres (all cohomology rings with
-    $R$-coefficients),
-    similar to \cite[proof of Theorem~3.19, p.~221]{hatcher}:
+    $R$\nbd{}coefficients),
+    similar to \cite[proof of 3.19, p.~221]{hatcher}:
     \begin{center}
       \begin{tikzcd}
         \H^*(\spherepair{\E\xi_b})
@@ -402,10 +418,9 @@ their above definition.
         \H^{\rkk}(\Sphere{\rkk};R)\otimes \H^{\rkl}(\Sphere{\rkl};R)
     \end{align*}
     by leaving out zero-summands for the last equality.
-    Thus, a generator of
+    Thus, a generator $\iota_{\rkk}\otimes\iota_{\rkl}$ of
     $\H^{\rkk}(\Sphere{\rkk}; R)\otimes \H^{\rkl}(\Sphere{\rkl}; R)$,
-    which is the tensor product $\iota_{\rkk}\otimes\iota_{\rkl}$ of a generator
-    in each factor,
+    which is the tensor product of two generators,
     is mapped to a generator $\iota_{\rkk+\rkl}=\iota_{\rkk}\times\iota_{\rkl}$ of
     $\H^{\rkk+\rkl}(\Sphere{\rkl+\rkl}; R)$.
     Using the isomorphisms above proves the claim.
@@ -421,10 +436,10 @@ their above definition.
 
 \begin{Cor}
   Every vector bundle $\xi$ has a unique Thom class $\u{\xi}$ in
-  $\Zmod2$-coefficients.
+  $\Zmod2$\nbd{}coefficients.
   Furthermore, for any map of paracompact spaces $f\colon A\to B$ and
   vector bundle $\xi\colon E\to B$ holds $\u{\pb f \xi} = \pb f \u{\xi}$.
-  \begin{proof}[proof (sketch)]
+  \begin{proof}[Proof (sketch)]
     \begin{description}
     \item[Existence:] See \cite[Theorem~4D.10]{hatcher} or use
       \cite[Prop.~17.9.3]{tomdieck}.
@@ -434,10 +449,10 @@ their above definition.
       Any two classes in $\H^{\rkk}(\thomspacepair{E};R)$ whose
       restrictions coincide on all fibers will coincide.
       However, for $R=\Zmod2$ there is exactly one possible choice for
-      a unit $\u{\xi}|_{E_b}\in
-      \H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
+      a unit $\u{\xi}|_{E_b}$ of the group
+      $\H^{\rkk}(\spherepair{E_b})^\times\cong\Zmod2^\times=\{1\}$
       over each point $b$.
-      Compare \forexample \cite[Theorem~(17.9.4)]{tomdieck}.
+      For details see \forexample \cite[Theorem~(17.9.4)]{tomdieck}.
     \item[Naturality:]
       Clear from uniqueness and the naturality of Thom classes.
     \end{description}
@@ -514,7 +529,7 @@ first recall the following properties of the cap product.
                                \cite[Sec.~18.1.1]{tomdieck}}
   \end{align}
 \end{Rem}
-\begin{proof}[proof of Lemma~\ref{lem:thomisoself-adjoint}]
+\begin{proof}[Proof of Lemma~\ref{lem:thomisoself-adjoint}]
   With $\U\coloneqq\u{\xi}$ one calculates
   \begin{align*}
     \pf p\capped{\thomiso(x)}{\alpha}
@@ -574,7 +589,7 @@ embedding.
   \cong \H_{n+\rkk}(\thomspacepair{\E{\N\emb}})$
   of the neighborhood deformation retract pair
   $(\thomspacepair{\E{\N\emb}})$ was used.
-  This holds for any choice of embeddings $i$ and $e$.
+  This holds for any choice of $i$ and $e$.
   \begin{proof}
     First note that by the long exact sequence of the pair 
     $(\Thomspace{\E{\N\emb}}, \{\infty\})$, the map
@@ -719,6 +734,7 @@ Thom classes and Steenrod squares can be presented.
       $\w{0}{\gamma_1}=1\in\H^0(\RP1)\cong\Zmod2$.
       For $\w1{\gamma_1}$ the defining relation looks like
       \begin{gather*}
+        \SwapAboveDisplaySkip
         \thomiso(\w{1}{\gamma_1})
         = \pb p\w{1}{\gamma_1}\cup \u{\gamma_1}
         = \Sq 1(\u{\gamma_1})
@@ -732,7 +748,7 @@ Thom classes and Steenrod squares can be presented.
       observe that the tautological line bundle
       actually is the normal bundle of the embedding of $\RP1$ into
       $\RP2$ induced by the embedding of the circle as equator into
-      the $2$-sphere. This then yields by excision that
+      the $2$\nbd{}sphere. This then yields by excision that
       \begin{gather*}
         \H^r(\thomspacepair{\E{\gamma_1}})
         \cong \H^r(\RP2,\RP2\setminus\RP1)
@@ -804,7 +820,7 @@ Thom classes and Steenrod squares can be presented.
 
 
 \subsection{Equivalent Definitions of Wu Classes}\label{sec:wuclasses}
-Let $M$ be a compact, $n$-dimensional manifold.
+Let $M$ be a compact, $n$\nbd{}dimensional manifold.
 In the following, two approaches to define the Wu characteristic
 classes are pursued: an explicit one specially for normal bundles of
 manifolds using Poincaré duality, and a more general one, which makes
@@ -858,11 +874,14 @@ As for the Stiefel-Whitney classes, one has a notion of a total class.
     \V{M} \cup \dualV{M} = 1
   \end{gather*}
   or equivalently
-  \begin{align*}
-    1 &= \dualv{0}{M} \cup \v{0}{M} = \dualv{0}{M} \\
+  \begin{alignat*}{4}
+    \SwapAboveDisplaySkip
+    1 &= \dualv{0}{M} \cup \v{0}{M} = \dualv{0}{M}
+    \;,\quad
+    &&\text{and}\\
     0 &= \sum_{r+s=i}\v{r}{M}\cup\dualv{s}{M}
-      &&\text{in degree $0\leq i\leq n$}
-  \end{align*}
+    &&\text{in degree $0\leq i\leq n$.}
+  \end{alignat*}
 \end{Def}
 
 The following more general definition of Wu classes
@@ -880,7 +899,7 @@ For the formulation recall the antipode of the Steenrod algebra
     \antipode(\Sq i)(\u{\xi}) = \thomiso(\v{i}{\xi}) = \pb p \v{i}{\xi} \cup \u{\xi}
   \end{gather*}
   The \emph{total Wu class} of $\xi$ is defined as usual as
-  $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$ and satisfies accordingly 
+  $\V{\xi}\coloneqq\sum_{i\geq0}\v{i}{\xi}$, and satisfies accordingly 
   $\antipode(\SQ)(\u{\xi})=\thomiso(\V{\xi})$.
 \end{Def}
 \begin{Rem}
@@ -955,13 +974,12 @@ bundles, as will be clear from the promised equivalence below.
     respectively
     $\pb\collapse\coloneqq \pb{(\incl\circ\collapse)}$.
     
-    
-    In a first calculation reformulate
+    First reformulate
     $\capped{x\cup \V{\N{\emb}}}{\fundcl M}$ using the cohomology of the
-    $(n+k)$-sphere:
+    $(n+k)$\nbd{}sphere:
     \begin{align}\notag
       \capped{x\cup \Vu}{\fundcl M}
-      &\equalsby{\ref{lem:thomisofundcl}}
+      &\clapequalsby{\ref{lem:thomisofundcl}}
         \capped
         {x\cup\Vu}
         {\thomiso\left(\pf\collapse\fundcl{\Sph}\right)}
@@ -1021,8 +1039,9 @@ bundles, as will be clear from the promised equivalence below.
     \eqref{eq:proofaltdefwuclasses:eq1} from above easily yields the
     claim in \eqref{eq:proofaltdefwuclasses:claim} that proves the theorem:
     \begin{align*}
+      \SwapAboveDisplaySkip
       \capped{x\cup \Vu}{\fundcl M}
-      &\cequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
+      &\clapequalsby{\eqref{eq:proofaltdefwuclasses:eq1}}
         \pf p\capped
         {\SQ\left(\thomiso\left(x\cup\Vu\right)\right)}
         {\pf\collapse\fundcl{\Sph}}
@@ -1097,8 +1116,8 @@ The proof uses the alternative characterization
 \begin{gather*}
   \antipode(\SQ)(\u{\N{\emb}}) = \thomiso(\V{\N{\emb}})
 \end{gather*}
-of the Wu classes from Theorem~\ref{thm:altdefwuclasses}, and quite directly
-follows from the following Lemma:
+of the Wu classes from Theorem~\ref{thm:altdefwuclasses}, and directly
+follows from the following Lemma.
 \begin{Lem}\label{lem:wu}
   For a vector bundle $\xi\colon \E\xi\xrightarrow{p}\B\xi$ over a
   paracompact space holds
@@ -1107,10 +1126,11 @@ follows from the following Lemma:
     \;.
   \end{gather*}
 \end{Lem}
-\begin{proof}[proof of \ref{tag:wuformula}]
+\begin{proof}[Proof of \ref{tag:wuformula}]
   Lemma~\ref{lem:wu} states for a closed manifold $M^n$ and any
   embedding $\emb\colon M\to\R^{n+k}$ that
   \begin{gather*}
+    \SwapAboveDisplaySkip
     \SQ(\V{M}) \cup \dualW{M}
     = \SQ(\V{\N M}) \cup \W{\N{\emb}}
     \cequalsby{\ref{lem:wu}} 1
@@ -1120,13 +1140,14 @@ follows from the following Lemma:
   as $\W{\T M} \cup \W{\N{\emb}} = 1$ by
   Remark~\itemref{rem:propswclasses}{item:wuclassmfdinverse}.
 \end{proof}
-\begin{proof}[proof of Lemma~\ref{lem:wu}]
+\begin{proof}[Proof of Lemma~\ref{lem:wu}]
   For simplicity use the shortenings
   $\U\coloneqq \u{\xi}$,
   $\Vu\coloneqq \V{\xi}$, and
   $\Ws\coloneqq \W{\xi}$.
   Then calculate
   \begin{align*}
+    \SwapAboveDisplaySkip
     \thomiso(1)
     &= \U
     \\
@@ -1167,11 +1188,12 @@ the dual Stiefel-Whitney classes may be non-zero in general.
 As of Corollary~\ref{cor:obstruction} this is directly related to the
 immersion problem respectively an important obstruction for it.
 \begin{Thm}[Massey]\label{thm:massey}  
-  Let $M$ be a compact, $n$-dimensional manifold.
+  Let $M$ be a compact, $n$\nbd{}dimensional manifold.
   Given an integer $q$ with $0<q<n$ such that $\dualw{n-q}{M}\neq0$,
   there is a sequence of integers $h_1\geq\dotsb\geq h_q\geq0$ of
   length $q$ that fulfills
   \begin{gather*}
+    \SwapAboveDisplaySkip
     n = \sum_{i=1}^{q} 2^{h_i}
   \end{gather*}
 \end{Thm}
@@ -1184,7 +1206,7 @@ As an immediate consequence:
 \end{Cor}
 
 The following subsections are dedicated to the proof of Massey's Theorem.
-Let $M$ be a compact, $n$-dimensional manifold throughout the proof.
+Let $M$ be a compact, $n$\nbd{}dimensional manifold throughout the proof.
 The latter consists of several steps:
 \begin{steps}
 \item\label{tag:masseystep1} 
@@ -1254,17 +1276,19 @@ proof of Lemma~\ref{lem:masseystep1} to the first case where $\e(I)<q$.
     \Sq I(x) = \left(\Sq J(x)\right) ^{2^k}
     \qquad\text{respectively}\qquad
     \deg\left(\Sq I(x)\right) = 2^k\cdot \deg\left(\Sq J(x)\right)
+    \;.
   \end{gather*}
 \end{Lem}
 
 Before proving Lemma~\ref{lem:serre} one can finish the argumentation for
 the case $\e(I)<\deg x$.
-\begin{proof}[proof of Lemma~\ref{lem:masseystep1}]
+\begin{proof}[Proof of Lemma~\ref{lem:masseystep1}]
   Let $q\in\Nat$ and $I=(i_1,\dotsc,i_l)$ be an admissible sequence such that
   $\e(I)<q$.
   Assume there is a cohomology class $x\in\H^q(M)$ such that $\Sq I(x)\neq0$.
   Set
   \begin{alignat*}{4}
+    \SwapAboveDisplaySkip
     \alpha_0 &= q-1-\e(I)\geq 0 &\qquad&\text{which is positive as $\e(I)<q$,} \\
     \alpha_r &= i_{r}-2i_{r+1}  &&\text{for $1\leq r< \l(I)$, and} \\ 
     \alpha_{\l(I)} &= i_{\l(I)}
@@ -1277,15 +1301,19 @@ the case $\e(I)<\deg x$.
     \;.
   \end{gather}
   Just as easily one sees
-  \begin{align}\label{eq:proofmassey:eq1}
+  \begin{align}
+    \SwapAboveDisplaySkip
+    \label{eq:proofmassey:eq1}
     i_s
     &= \sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
   \end{align}
   The above definitions then directly imply the following reformulation
   of $\d(I)$ in terms of $\alpha_i$:
-  \begin{align}\notag
+  \begin{align}
+    \SwapAboveDisplaySkip
+    \notag
     \d(I)
-    &\coloneqq \sum_{s=1}^{\l(I)}i_s  \\
+    &\coloneqq \sum_{s=1}^{\l(I)}i_s  \\\notag
     &\equalsby{\eqref{eq:proofmassey:eq1}}
       \sum_{s=1}^{\l(I)}\sum_{r=0}^{s}2^r\alpha_{s+r}\\\notag
     &\equalsby{Reorder} \sum_{j=1}^{\l(I)}
@@ -1319,6 +1347,7 @@ the case $\e(I)<\deg x$.
   powers of two as was to be shown.
   The $k_j$ are in this case
   \begin{gather*}
+    \SwapAboveDisplaySkip
     k_j = \begin{cases}
       0 & 0< j\leq \alpha_0\\
       1 & \alpha_0< j\leq \alpha_1\\
@@ -1329,7 +1358,7 @@ the case $\e(I)<\deg x$.
   \end{gather*}
 \end{proof}
 
-\begin{proof}[proof of Lemma~\ref{lem:serre}]
+\begin{proof}[Proof of Lemma~\ref{lem:serre}]
   A version of the following proof can be found in
   \cite[p.~159, Lemma~1, converse part]{serre}.
   First note that any admissible sequence $I\coloneqq(i_1,\dotsc,i_l)\in\Nat^l$
@@ -1415,10 +1444,11 @@ the Wu classes.
 \end{Lem}
 Again, before proving the above lemma, let us see how this contributes
 to the final result.
-\begin{proof}[proof of Theorem~\ref{thm:massey}]
+\begin{proof}[Proof of Theorem~\ref{thm:massey}]
   The trick to complete \ref{tag:masseystep1} is to show that
   for $\dualw{n-q}{M}\neq 0$, and $k$, $x$ as in the Lemma above
   \begin{gather*}
+    \SwapAboveDisplaySkip
     x\cdot \dualw{n-q}{M} = \sum_{I\in A}\Sq I(x)
     \;,
   \end{gather*}
@@ -1432,6 +1462,7 @@ to the final result.
   the sum describing $x\cdot\dualw{n-q}{M}$.
   More precisely, assume that
   \begin{gather*}
+    \SwapAboveDisplaySkip
     x\cdot \dualw{n-q}{M}
     = \sum_{I\in A}\Sq I(x)
     + \sum_{j=r}^{n-q-1}\Sq{I_j}(x)\cdot\dualw{n-q-j}{M}
@@ -1470,7 +1501,7 @@ to the final result.
   evaluated on $x$ as was to be shown.
 \end{proof}
 
-\begin{proof}[proof of Lemma~\ref{lem:masseystep2}]
+\begin{proof}[Proof of Lemma~\ref{lem:masseystep2}]
   As above let $0<k<n$ and $x\in\H^k(M)$.
   For simplicity write
   $\ws i\coloneqq\w i M$, $\dualws i\coloneqq\dualw i M$,
@@ -1489,8 +1520,9 @@ to the final result.
   \end{description}
   The full calculation is then
   \begin{align*}
+    \qquad
     x\cdot \dualws{n-k}
-    &\cequalsby{\ref{thm:wu}}
+    &\clapequalsby{\ref{thm:wu}}
       x\cdot \sum_{i=0}^{n-k} \Sq i(\dualvu{n-k-i}) \\
     &\equalsby{Def. $\Sq 0$}
       x\cdot\left(
@@ -1511,7 +1543,7 @@ to the final result.
       \Sq i (x\cdot \dualvu{n-k-i})
       + x\cdot \Sq i(\dualvu{n-k-i})
       \right) \\
-    &\equalsby{\ref{tag:cartan}, Def. $\Sq 0$}
+    &\equalsby{\ref{tag:cartan}, Def.}
       \sum_{i=1}^{n-k} \left(
       \left( \sum_{r=0}^{i} \Sq r(x)\cdot \Sq{i-r}(\dualvu{n-k-i}) \right)
       + \Sq 0(x)\cdot \Sq i(\dualvu{n-k-i})
@@ -1532,7 +1564,7 @@ This finished the proof of Massey's theorem.
 
 
 \section{Best Possible Result}\label{sec:bestpossibleresult}
-Recall that a closed $n$-manifold can only immerse into
+Recall that a closed $n$\nbd{}manifold can only immerse into
 $\R^{n+k}$ if all Stiefel-Whitney classes $\dualw{i}{\N M}$ of its
 normal bundle are zero in degrees greater than $k$.
 Massey's Theorem now states that this condition is met for
@@ -1542,7 +1574,7 @@ idea for the immersion conjecture.
 
 Naturally, there occurs the question whether Massey's $n-\alpha(n)$ is
 the best possible (\idest smallest) result for arbitrary closed
-$n$-manifolds, making the immersion conjecture the best
+$n$\nbd{}manifolds, making the immersion conjecture the best
 guess of a general possible immersion codimension.
 The answer is yes, proved by the following counterexamples of manifolds
 not immersing into $\R^{2n-(\alpha(n)+1)}$.
@@ -1561,6 +1593,7 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
     The total Stiefel-Whitney class of $\RP{n}$ for arbitrary
     $n\in\Nat$ is
     \begin{gather*}
+      \SwapAboveDisplaySkip
       \W{\RP n} = (1+x_n)^{n+1}\in\H^*(\RP n)\cong \Zmod2[x_n]/(x_n^{n+1})
     \end{gather*}
     (see \forexample \cite[Example~(19.4.1)]{tomdieck}).
@@ -1568,13 +1601,14 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
     \begin{align*}
       \W{\RP{2^i}}
       &= (x+1)^{2^i+1}
-      = 1 + x + x^{2^i}\;,
-        &&\text{thus} \\
+      = 1 + x + x^{2^i}
+        \;,\quad\text{thus} \\
       \dualW{\RP{2^i}}
-      &= \sum_{r=0}^{2^i-1} x^r\;
-        &&\text{especially with $\alpha(2^i)=1$} \\
+      &= \sum_{r=0}^{2^i-1} x^r
+        \;,\quad\text{especially} \\
       \dualw{n-\alpha(n)}{\RP{2^i}}
       &= x^{2^i-1}\neq 0
+        \;,\quad\text{since $\alpha(2^i)=1$,}
       %   \quad\text{, as} \\
       % \W{\RP{2^i}}\cdot\dualW{\RP{2^i}}
       % &= \sum_{r=0}^{2^i-1}x^r
@@ -1587,7 +1621,9 @@ not immersing into $\R^{2n-(\alpha(n)+1)}$.
     \end{align*}
     which proves the first statement.
     For the second statement where $n=\sum_{r=1}^q 2^{i_r}$ note that
-    \begin{gather}\label{eq:bestresultproof1}
+    \begin{gather}
+      \SwapAboveDisplaySkip
+      \label{eq:bestresultproof1}
       n-\alpha(n)
       = \left( \sum_{r=1}^q 2^{i_r} \right) - q
       = \sum_{r=1}^q \left( 2^{i_r} - 1 \right)

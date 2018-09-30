@@ -47,14 +47,14 @@ knowledge should suffice to follow the outlines below. See
   $\thommap{f}\colon\Tspec{(\pb f\xi)}\to\Tspec{\xi}$.
   Denote by $\EMspec$ the Eilenberg-MacLane spectrum for $\Zmod2$.
   For $k\in\Nat$ let
-  \begin{itemize}
+  \begin{compactitemize}
   \item $\univbdl{k}$ be the universal bundle of $\Orth(k)$, 
   \item $\MO(k)\cong\Thomspace{\univbdl{}}$ the corresponding Thom space,
   \item $\MOspec(k)$ the corresponding Thom spectrum,
-  \item $\MOspec\coloneqq\{\MO(k)|k\in\Nat\}$ be the universal Thom
+  \item $\MOspec\coloneqq\{\MO(k)\mid k\in\Nat\}$ be the universal Thom
     spectrum, and
   \item $\Spherespec{k}$ be the $k$th suspension of the sphere spectrum.
-  \end{itemize}
+  \end{compactitemize}
   For a sequence $I=(i_1,\dotsc,i_l)$ of positive integers, denote by
   $\Deg{I}\coloneqq\deg(\sigma^I)$ the degree of the monomial
   $\sigma^{i_1}\dotsm\sigma^{i_l}$ in variables $\sigma_i$ with
@@ -66,18 +66,18 @@ knowledge should suffice to follow the outlines below. See
 Recall from \autoref{chap:reformulation} that the statement in
 question is:
 \begin{Thm*}
-  Every closed smooth $n$-manifold immerses into
+  Every closed smooth $n$\nbd{}manifold immerses into
   $\R^{2n-\alpha(n)}$.
 \end{Thm*}
 Furthermore, it was shown that this is equivalent to:
 \begin{Thm*}
-  For any closed smooth $n$-manifold,
+  For any closed smooth $n$\nbd{}manifold,
   the classifying map $\N M\colon M\to\BO$ factors over the
   inclusion $\BO(n-\alpha(n))\to\BO$.
 \end{Thm*}
 This theorem essentially says that the universal
-$\Orth(n-\alpha(n))$-vector bundle is a better choice for
-classifying normal bundles of $n$-manifolds than
+$\Orth(n-\alpha(n))$\nbd{}vector bundle is a better choice for
+classifying normal bundles of $n$\nbd{}manifolds than
 $\BO$.
 % This is not astonishing, as $\BO$ is a 
 % universal space of \emph{all} vector bundles up to stable
@@ -88,7 +88,7 @@ The idea for the proof of the immersion conjecture is to
 find a vector bundle $\BOmodI n\to\BO$ which
 \begin{enumerate}[1.]
 \item
-  acts as universal bundle for normal bundles of $n$-manifolds, in
+  acts as universal bundle for normal bundles of $n$\nbd{}manifolds, in
   the sense that all normal bundle maps factor over it, and which
 \item
   is even better than $\BO(n-\alpha(n))$ in classifying normal
@@ -106,13 +106,13 @@ encompasses the following main steps:
 \item
   Get an idea of the statement on cohomology, and determine up to a
   Thom isomorphism the ideal $\I n\subset\H^*(\BO)$ of characteristic
-  classes that vanish on all normal bundles of $n$-manifolds.
+  classes that vanish on all normal bundles of $n$\nbd{}manifolds.
   This turns out to be a generalization of Massey's theorem on
   characteristic classes of normal bundles (Theorem~\ref{thm:massey}).
 \item
   Find a spectrum $\MOmodI n$ with a map
   $\bm{\rho}_n\colon \MOmodI n\to\MOspec$ which acts as a universal
-  spectrum for Thom spectra of normal bundles of $n$-manifolds,
+  spectrum for Thom spectra of normal bundles of $n$\nbd{}manifolds,
   \idest all maps $\Tspec{\N{M^n}}\to \MOspec$ of a Thom spectrum of a
   normal bundle factor over the above map.
   Furthermore, $\bm{\rho}_n$ should factor
@@ -137,7 +137,7 @@ encompasses the following main steps:
   over the universal bundle $\BO(n-\alpha(n))\to\BO$.
 \end{steps}
 In the end, one has a space $\BOmodI n$ which admits for
-any $n$-manifold a commutative diagram
+any $n$\nbd{}manifold a commutative diagram
 \begin{center}
   \begin{tikzcd}[column sep=small]
     M \ar[r]
@@ -163,7 +163,7 @@ with more details.
 
 \section*{A Generalization of Massey's Theorem}
 In search of properties of such a universal bundle
-$\rho_n\colon X_n\to\BO$ for stable normal bundles of $n$-manifolds,
+$\rho_n\colon X_n\to\BO$ for stable normal bundles of $n$\nbd{}manifolds,
 one idea is that the \enquote{best} such one should fulfill
 \begin{gather*}
   \ker(\pb\rho_n)
@@ -175,7 +175,7 @@ one idea is that the \enquote{best} such one should fulfill
 \idest all characteristic classes from $\H^*(\BO)$ that vanish for
 normal bundles, already vanish for the bundle $\rho_n$.
 Note that by Massey's theorem the ideal
-$\left(\ws{i}\,\middle|\,i>n-\alpha(n)\right)$ lies within $\I n$.
+$\left(\ws{i}\middlemid i>n-\alpha(n)\right)$ lies within $\I n$.
 
 \begin{Rem*}
 Recall that the Thom isomorphism extends to an isomorphism
@@ -187,14 +187,14 @@ Furthermore, note that $\H^*(\MOspec)$ is known to be a free module
 over the Steenrod algebra $\A$ of the form
 \begin{gather*}
   \H^*(\MOspec)
-  = (\sigma_i| i\neq 2^s-1)_{\A}
-  \cong \A\otimes \Zmod2[\sigma_i|i\neq 2^s-1]
+  = (\sigma_i\mid i\neq 2^s-1)_{\A}
+  \cong \A\otimes \Zmod2[\sigma_i\mid i\neq 2^s-1]
   \cong \bigoplus_{\mathclap{\Deg{I}\neq 2^s-1}}
   \A_{(*+\Deg{I})}\sigma^I
 \end{gather*}
 where the $\sigma_i$ are algebraically independent elements,
 $\deg(\sigma_i)=i$.
-Furthermore, the last isomorphism is one of $\A$-modules, and the sum
+Furthermore, the last isomorphism is one of $\A$\nbd{}modules, and the sum
 is over arbitrary sequences $I$ of positive integers
 (see \forexample \cite[p.~82]{immersionconj} or
 \cite[Chap.~20]{switzer}).
@@ -202,15 +202,15 @@ is over arbitrary sequences $I$ of positive integers
 
 Brown and Peterson investigated the image of $\I n$ under the Thom
 isomorphism, which is characterized by the property that for any
-$n$-manifold $M$, $\thomiso(\I n)=\ker(\pb{\thommap{\N M}})$.
+$n$\nbd{}manifold $M$, $\thomiso(\I n)=\ker(\pb{\thommap{\N M}})$.
 Their result was the following.
 \begin{Thm*}[{\cite[Theorem~2.3]{immersionconj}}]
   One has the following equality of left-ideals of $\A$:
   \begin{gather*}
     \J r
     \coloneqq \bigcap_{\text{$M^n$ mfd.}}
-    \left\{ a\in\A \middle| a(\u{\N M}) = 0 \right\}
-    = \A \cdot \left\{\antipode(\Sq i) \middle| 2i>r\right\}
+    \left\{ a\in\A \middlemid a(\u{\N M}) = 0 \right\}
+    = \A \cdot \left\{\antipode(\Sq i) \middlemid 2i>r\right\}
     \subset \A
     \;.
   \end{gather*}
@@ -223,7 +223,7 @@ Their result was the following.
     \thomiso(\I n)
     &= \H^{*>n}(\MOspec)
     + \A\cdot \left\{
-      \antipode(\Sq i)(\sigma^I) \middle| 2i>n-\deg(\sigma^I)
+      \antipode(\Sq i)(\sigma^I) \middlemid 2i>n-\deg(\sigma^I)
     \right\}
       \;.
   \end{align*}
@@ -235,11 +235,11 @@ from the above statement as follows:
   Note that the projection of
   \begin{gather*}
     \left\{
-      \antipode(\Sq I) \middle|
+      \antipode(\Sq I) \middlemid
       I=(i_1,\dotsc,i_l) \text{ admissible, } 2i_1\leq r
     \right\}
   \end{gather*}
-  is a $\Zmod2$-vector space basis of $\A/\J r$.
+  is a $\Zmod2$\nbd{}vector space basis of $\A/\J r$.
   Taking a closer look at these elements, one notes that the
   largest dimension occurring is $r-\alpha(r)$.
   Therefore, for $i>r-\alpha(r)$, $\Sq i$ is sent to zero under the
@@ -247,7 +247,7 @@ from the above statement as follows:
   Thus, $\Sq i$ lies in $\thomiso(\I n)$ for
   $i>n-\alpha(n)=\max_k\{(n-k)-\alpha(n-k)\}$.
   This yields the statement of Massey's theorem, since for an
-  $n$-manifold $M$ one gets
+  $n$\nbd{}manifold $M$ one gets
   \begin{gather*}
     \thomiso(\w{i}{\N M})
     \cequalsby{\ref{thm:altdefswclasses}} \Sq i(\u{\N M})
@@ -283,10 +283,11 @@ normal bundles.
   (see \cite{browngitler} or \cite[p.~101]{immersionconj} for
   definition and a construction).
   For $k\in\Nat$ let $y_k$ be the generator of
-  $\H^*(\BrownGitler k)\cong \A/\J k$ as $\A$-module,
+  $\H^*(\BrownGitler k)\cong \A/\J k$ as $\A$\nbd{}module,
   \idest $\H^*(\BrownGitler k)=\A\cdot y_k$.
   Define
   \begin{gather*}
+    \SwapAboveDisplaySkip
     \bm{\rho}_n\colon
     \MOmodI n
     \coloneqq \bigvee_{\mathrlap{n\geq\Deg{I}\neq 2^s-1}}
@@ -312,8 +313,8 @@ normal bundles.
     \to \H^*(\MOspec)/\thomiso(\I n)\cong\H^*(\MOmodI n)$
   \item\label{item:momodinprop:2}
     $\MOmodI n$ together with $\bm{\rho}_n$ is a universal Thom spectrum
-    for Thom spectra of normal bundles of $n$-manifolds.
-    \Idest for every $n$-manifold there exists a lift $\bm{f}_M$ of
+    for Thom spectra of normal bundles of $n$\nbd{}manifolds.
+    \Idest for every $n$\nbd{}manifold there exists a lift $\bm{f}_M$ of
     $\thommap{\N M}$ 
     such that the following diagram commutes up to homotopy
     \begin{center}
@@ -363,20 +364,19 @@ This gives the desired intermediate result.
 
 \section*{The Construction of $\BOmodI n$}
 Now that a nice universal spectrum for Thom spaces of normal bundles
-of $n$-manifolds is found, one has to somehow \emph{de-Thom-ify} this
+of $n$\nbd{}manifolds is found, one has to somehow \emph{de-Thom-ify} this
 result to a universal space of normal bundles with the desired
 properties.
-
 Let us first specify the meaning of de-Thom-ification.
 \begin{Def*}
   For a classifying map $\xi\colon X\to\BO$, a map of spectra
   $\bm{\tau}\colon\spectrum{Z}\to\Tspec{\xi}$ is said to
   \emph{de-Thom-ify} through dimension $k$ if there is
-  \begin{itemize}
+  \begin{compactitemize}
   \item a map of spaces $g\colon Y\to X$, and
-  \item a $k$-connected map of spectra
+  \item a $k$\nbd{}connected map of spectra
     $\bm{\kappa}\colon\Tspec{(\pb g\xi)}\to\spectrum{Z}$,
-  \end{itemize}
+  \end{compactitemize}
   such that the following diagram homotopy commutes
   \begin{center}
     \begin{tikzcd}
@@ -396,9 +396,8 @@ is necessary to observe what additional structure a
 map of Thom spectra has if it is induced by a map on vector bundles.
 Indeed, such maps are linear with respect to an additional module structure
 (see \cite[p.~107ff]{immersionconj}).
-\begin{Lem*}
-  \begin{enumerate}
-  \item On the tensor product $\A\otimes\H^*(\BO)$ define the multiplication
+\begin{Def*}
+  On the tensor product $\A\otimes\H^*(\BO)$ define the multiplication
     \begin{gather*}
       (a\otimes x) \cdot (b\otimes y)
       \coloneqq \sum_{i\in A}
@@ -407,16 +406,21 @@ Indeed, such maps are linear with respect to an additional module structure
     where $b_i', b_i''$ is such that $\sum_{i\in A}b_i'\otimes b_i''$ is
     the image of $b$ under the diagonal map of $\A$
     (see Definition~\ref{def:steenrodalgebra}).
-    This turns $\A\otimes\H^*(\BO)$ into a ring.
+\end{Def*}
+
+\begin{Lem*}
+  Note that the multiplication defined above turns
+  $\A\otimes\H^*(\BO)$ into a ring. Then:
+  \begin{enumerate}
   \item For any classifying map $\xi\colon X\to\BO$, the
-    corresponding $\H^*(\BO)$-module structure on $\H^*(X)$
-    induces the $(\A\otimes\H^*(\BO))$-structure on $\H^*(\Tspec{\xi})$
+    corresponding $\H^*(\BO)$\nbd{}module structure on $\H^*(X)$
+    induces the $(\A\otimes\H^*(\BO))$\nbd{}structure on $\H^*(\Tspec{\xi})$
     \begin{gather*}
       (a\otimes x)\cdot \thomiso(y) = a\left( \thomiso(\pb\xi x\cup y \right)
     \end{gather*}
     via the Thom isomorphism.
   \item For any map of vector bundles, the induced map on Thom spaces
-    is $(\A\otimes\H^*(\BO))$-linear on cohomology.
+    is $(\A\otimes\H^*(\BO))$\nbd{}linear on cohomology.
   \end{enumerate}
 \end{Lem*}
 
@@ -424,7 +428,7 @@ In the spirit of the above observation, one gets even more additional
 structure around Thom maps induced by pullbacks of vector bundles.
 An essential result is the following de-Thom-ification criterion:
 \begin{Thm*}
-  Let $k\in\Nat$ and $\xi\colon X\to\BO$ be $k$-connected.
+  Let $k\in\Nat$ and $\xi\colon X\to\BO$ be $k$\nbd{}connected.
   Assume there is a map of spectra
   $\bm{\tau}\colon\spectrum{Z}\to\Tspec{\xi}$.
   Then $\bm{\tau}$ de-Thom-ifies through dimension $2k$ if and only if
@@ -436,6 +440,7 @@ An essential result is the following de-Thom-ification criterion:
     For the necessity one should observe that a pullback $g\colon Y\to X$ of
     vector bundles can be modified to a certain 2-stage Postnikov tower
     \begin{gather*}
+      \SwapAboveDisplaySkip
       Y'\longto X\overset{\xi}\longto\BO
     \end{gather*}
     without changing the homotopy type of $\Tspec{(\pb g\xi)}$ up to
@@ -459,10 +464,11 @@ This finally gives:
 \begin{Def}
   Let
   \begin{gather*}
+    \SwapAboveDisplaySkip
     \dotsc \to Y_1 \to Y_0 = \BO
  \end{gather*}
   be the result of the de-Thom-ification of the above resolution.
-  Define $\BOmodI n$ as the $n$-skeleton of the inverse limit of the
+  Define $\BOmodI n$ as the $n$\nbd{}skeleton of the inverse limit of the
   $Y_i$, and the map $\rho_n\colon\BOmodI n\to\BO$ by
   \begin{gather*}
     \rho_n\colon\BOmodI n\to\dotsc\to Y_1\to Y_0=\BO
@@ -481,8 +487,8 @@ This finally gives:
     \H^*(\BOmodI n) \to \H^*(\BO)/\I n\cong\H^*(\BOmodI n)$.
   \item\label{item:bomodinprop:3}
     $\rho_n$ acts as universal bundle for stable normal bundles of
-    $n$-manifolds.
-    \Idest for every $n$-manifold there exists a lift $f_M$ of
+    $n$\nbd{}manifolds.
+    \Idest for every $n$\nbd{}manifold there exists a lift $f_M$ of
     $\N M$ 
     such that the following diagram commutes up to homotopy
     \begin{center}
@@ -501,7 +507,7 @@ This finally gives:
     $\bm{\rho}_n\colon\MOmodI n\to\MOspec$, and application of the Thom
     isomorphism.
     For \ref{item:bomodinprop:3}, consider the classifying map $\N M$
-    of a stable normal bundle of an $n$-manifold. This can inductively
+    of a stable normal bundle of an $n$\nbd{}manifold. This can inductively
     be lifted to the spaces $Y_i$, again
     using obstruction theory,
     which in this case only needs to be checked on the Thom spectrum
@@ -521,11 +527,11 @@ This still required quite a lot of work done by Cohen.
 Cohen's approach to finding the factorization of
 $\rho_n\colon\BOmodI n\to\BO$ over $\BO(n-\alpha(n))$ is split into two
 main parts:
-\begin{itemize}
+\begin{compactitemize}
 \item Show an indirect version of the statement using a carefully
   constructed helper space $X_n$ (\cite[Lemma~B]{cohen}), and
 \item prove that this already implies the factorization.
-\end{itemize}
+\end{compactitemize}
 
 \begin{Def*}
   Let $P_n\coloneqq \BOmodI n \times_{\BO}\BO(n-\alpha(n))$
@@ -546,7 +552,7 @@ main parts:
     \coloneqq \left\{
       (x, y, \gamma)
       \in \BOmodI n\times \BO(n-\alpha(n))\times \BO^I
-      \;\middle|\;
+      \middlemid
       \gamma(0) = \rho_n(x), \gamma(1) = \incl(y)
     \right\}
     \;.
@@ -558,7 +564,7 @@ Cohen's Lemma~B is as follows.
   respectively maps $f_n$, $g_n$ fitting into the resulting
   homotopy commutative diagram
   \begin{center}
-    \begin{tikzcd}[column sep=small]
+    \begin{tikzcd}[column sep=small, row sep=small]
       X_n \ar[dr, "p_n"]
       \ar[drr, bend left=20,  "f_n"]
       \ar[ddr, bend right=20, "g_n"{left}]\\
@@ -590,15 +596,15 @@ Cohen's Lemma~B is as follows.
     identity in the sense that the following diagram of spectra
     commutes up to homotopy
     \begin{center}
-      \begin{tikzcd}
+      \begin{tikzcd}[column sep=huge, row sep=small]
         \Tspec{\xi_n}
         \ar[r, "\thommap{p_n}"]
-        \ar[d, "\thommap{g_n}"{left}]
+        \ar[d, "{\scriptstyle\thommap{g_n}}"{left, near start}]
         & \Tspec{\xi_n} \\
         \MOmodI n
-        \ar[d, "\bm{s}_n"{left}] \\
+        \ar[d, "{\scriptstyle\bm{s}_n}"{left, near start}] \\
         \Tspec{\xi_n}
-        \ar[uur, bend right=15, "\thommap{p_n}"{right, near end}]
+        \ar[uur, bend right=15, "~\thommap{p_n}"{right}]
       \end{tikzcd}
     \end{center}
   \end{enumerate}
@@ -609,7 +615,7 @@ constructing lifts along a slightly modified Postnikov tower of
 the map $\incl\colon\BO(n-\alpha(n))\to\BO$.
 The induction step uses that the obstruction to such a lift is
 a map from a Thom spectrum to a spectrum which again admits a
-free $(\A\otimes\H^*(\BO))$-module structure in lower dimensions.
+free $(\A\otimes\H^*(\BO))$\nbd{}module structure in lower dimensions.
 The latter is then used to get rid of the obstruction
 (compare \cite[p.~118f]{immersionconj}).
 
@@ -676,11 +682,12 @@ The latter is then used to get rid of the obstruction
     \end{center}
     where $\bm{c}$ is the stable version of a collapse map.
     Furthermore, due to Theorem~\ref{thm:brown}, one can always choose
-    a representative $M^k$ for which the stable normal bundle
+    a representative $M^k$ for which 
     $\N M\colon M\to\BO$ factors over $\BO(n-\alpha(n))$.
   \end{description}
   The map $\xi_n\colon X_n\to\BO$ will look like
   \begin{gather*}
+    \SwapAboveDisplaySkip
     \coprod_{\mathclap{n\geq\Deg{I}\neq 2^s-1}}
     M_{\Deg{I}} \times \BraidSpace{n-\Deg{I}}
     \xrightarrow{\coprod \N{M_{\Deg{I}}} \times \tilde y_{n-\Deg{I}}}
@@ -693,13 +700,13 @@ The latter is then used to get rid of the obstruction
   $\incl\colon\BO(n-\alpha(n))\to\BO$ as explained above.
   And a factorization over $\rho_n\colon\BOmodI n\to\BO$ is directly
   given if one observes that
-  \begin{itemize}
+  \begin{compactitemize}
   \item $\rho_i\times\rho_j\colon\BOmodI i\times\BOmodI j\to\BO$ factors
     over $\rho_{i+j}$,
   \item $\tilde y_k$ factors over $\rho_k$, and that
-  \item all stable normal bundles of $k$-manifolds factor over
+  \item all stable normal bundles of $k$\nbd{}manifolds factor over
     $\rho_k$ by its universality property.
-  \end{itemize}
+  \end{compactitemize}
   So, bundles of the form described above are candidates
   for $\xi_n$.
   They can also be shown to fulfill the splitting
@@ -713,7 +720,11 @@ The latter is then used to get rid of the obstruction
   However, if one wants to obtain a vector bundle satisfying
   condition~\ref{item:bomodinfactorisation:2} using the above
   construction, one has to be careful when choosing the
-  set of representatives $\{M_{\Deg{I}}\,|\, n\geq\Deg{I}\neq 2^s-1\}$.
+  set of representatives
+  \begin{gather*}
+    \left\{ M_{\Deg{I}}\mid n\geq\Deg{I}\neq 2^s-1 \right\}
+    \;.
+  \end{gather*}
   Cohen's approach here is an induction on $n$:
   For $\Deg{I}=n$,
   \begin{itemize}
@@ -722,6 +733,7 @@ The latter is then used to get rid of the obstruction
   \item the (unique) indecomposable class $\Spherespec{n}\to\MO$ of degree
     $n$ is shown to originate from a split
     \begin{gather*}
+      \SwapAboveDisplaySkip
       \bm{j}\colon
       \Tspec{(\rho_n|_{\subcxBOmodI n})} \vee \Spherespec{n}
       \overset{\cong}\longrightarrow \MOmodI n

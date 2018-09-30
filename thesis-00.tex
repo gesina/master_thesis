@@ -51,13 +51,13 @@ Stiefel-Whitney classes.
 
 In 1960, Massey~\cite{massey} showed with the help of Wu's
 theorem~\cite{wu} from 1950 that these obstructions for compact
-$n$-manifolds vanish for exactly all codimensions greater than
+$n$\nbd{}manifolds vanish for exactly all codimensions greater than
 $n-\alpha(n)$, where $\alpha(n)$ is the number of ones in the binary
 notation of $n$.
 This motivated the conjecture that the answer to the question
 \begin{quote}
     What is the minimum codimension $k$, such that for every
-    $n$-dimensional compact manifold there exists an
+    $n$\nbd{}dimensional compact manifold there exists an
     immersion $M\immto\R^{n+k}$ into Euclidean space?
 \end{quote}
 is $k=n-\alpha(n)$, later known as the immersion conjecture
@@ -78,11 +78,11 @@ given by an indicator characteristic class.
 After a long series of steps, notably by E.~H.~Brown~Jr. and
 F.~P.~Peterson beginning in 1963 (see \cite{cohen}), the proof of the
 conjecture was eventually finalized in 1985 by R.~L.~Cohen, by showing
-that all stable normal bundles of $n$-manifolds factor over
+that all stable normal bundles of $n$\nbd{}manifolds factor over
 $\B\Orth(n-\alpha(n))$.
 Its main idea is to refine Steenrod's classification theorem for
 vector bundles by finding for each $n$ a classifying space specifically
-for stable normal bundles of $n$-manifolds, over which all classifying
+for stable normal bundles of $n$\nbd{}manifolds, over which all classifying
 maps factor. It is then shown that this factorization admits a lift to
 $\B\Orth(n-\alpha(n))$.
 Important intermediate steps are to prove both, the existence and the
@@ -111,7 +111,7 @@ recapitulated replacing a couple of proofs by references.
 
 \section*{Notation}
 If not stated otherwise, the following notation is used.
-\begin{itemize}
+\begin{compactitemize}[leftmargin=*]
 \item \enquote{Space} always means topological space, and all maps
   between spaces are continuous.
 \item For $X$, $Y$ spaces, $[X,Y]$ denotes the set of homotopy classes
@@ -130,7 +130,10 @@ If not stated otherwise, the following notation is used.
   $0_\xi$ the zero section if it is exists, and by
   $\minuszerosec{E}\coloneqq E\setminus\Im\zerosec{\xi}$
   the total space without the zero section.
-\item $\Zmod2 \coloneqq \Z/2\Z$.
+\item $\Zmod2 \coloneqq \Z/2\Z$,
+  $\Orth(n)$ is the $n$\nbd{}dimensional real orthogonal group, and
+  $\Orth$ their limit, \idest the group of all orthogonal matrices
+  over $\R$.
 \item All homology groups have $\Zmod2$ coefficients. Singular
   cohomology in degree $r$ of a pair $(X,A)$ with 
   coefficients in a ring $R$ is denoted by $\H^r(X,A;R)$, with the
@@ -140,7 +143,7 @@ If not stated otherwise, the following notation is used.
   Analogously for singular homology.
 \item For pairs of spaces $(X,A)$, $(X,B)$, $R$ a unital commutative
   ring, and $i,j\in\Nat$ denote
-  \begin{itemize}
+  \begin{compactitemize}
   \item the (relative) cup-product by
     \begin{align*}
       -\cup-\colon
@@ -156,8 +159,8 @@ If not stated otherwise, the following notation is used.
     \end{align*}
   \item For a manifold $M^n$, $\fundcl M\in\H_n(M)$ is the unique
     fundamental class and generator.
-  \end{itemize}
-\end{itemize}
+  \end{compactitemize}
+\end{compactitemize}
 
 
 
@@ -165,8 +168,8 @@ If not stated otherwise, the following notation is used.
 %\nomenclature{$H^i(-; R)$}{Singular cohomology of degree $i$ with coefficients
 %  in $R$}
 %\nomenclature{$K(i,G)$}{$ith$ Eilenberg-MacLane space over group $G$}
-%\nomenclature{$\GL n$}{Group of $n$-dimensional matrices over $\R$}
-%\nomenclature{$\Orth(n)$}{Group of $n$-dimensional orthogonal matrices over $\R$}
+%\nomenclature{$\GL n$}{Group of $n$\nbd{}dimensional matrices over $\R$}
+%\nomenclature{$\Orth(n)$}{Group of $n$\nbd{}dimensional orthogonal matrices over $\R$}
 %\nomenclature{$\Orth$}{Group of orthogonal matrices over $\R$}
 %\nomenclature{$\Sigma$}{Suspension of a space $X$,
 %  respectively suspension isomorphism on co-/homology

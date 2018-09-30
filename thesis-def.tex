@@ -30,10 +30,24 @@
 }
 \setcounter{tocdepth}{\subsubsectiontocdepth}
 \setcounter{secnumdepth}{\subsubsectionnumdepth}
+%\raggedbottom
+
+% FONT
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+%
+% \setmainfont{Charis SIL}
+%\setsansfont{Source Sans Pro}
+%
+%\setsansfont{Fira Sans}
+%\setsansfont{Bitstream Vera Sans} % too wide
+
 
 % LANGUAGE
 \usepackage[ngerman, main=english]{babel}
 \hyphenation{Mas-sey Mas-sey's Ei-len-berg=Mac-Lane}
+\newcommand*{\nbd}{\babelhyphen{nobreak}} % non-breaking dash for $..$-.. words
 \usepackage[autostyle=try]{csquotes}
 
 % INDICES
@@ -62,6 +76,7 @@ doi=false, url=false
 
 % MATHS PACKAGES
 \usepackage{mathtools,amsthm,amssymb,dsfont,mathrsfs,bm}
+\allowdisplaybreaks[1]
 % \usepackage{amsfonts}
 \usepackage{tikz-cd}
 \usetikzlibrary{babel}
@@ -78,17 +93,6 @@ doi=false, url=false
 % Fix the \logmapsto for this font
 %\renewcommand*{\longmapsto}{%
 %  \kern-.35pt\mapstochar\kern0.35pt\longrightarrow}
-
-% FONT
-\usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
-\setsansfont{Latin Modern Sans}
-%
-% \setmainfont{Charis SIL}
-%\setsansfont{Source Sans Pro}
-%
-%\setsansfont{Fira Sans}
-%\setsansfont{Bitstream Vera Sans} % too wide
 
 % OTHER PACKAGES
 \usepackage[shortlabels]{enumitem}
@@ -108,7 +112,7 @@ doi=false, url=false
 % PROTOTYPING
 \newcommand*{\optcite}[2][]{{\color{red}\cite[][#1]{#2}}}
 \newcommand*{\TODO}[1]{\marginpar{\color{red}#1}}
-\hypersetup{colorlinks=true, linkcolor=blue} % TODO: make ready for print
+%\hypersetup{colorlinks=true, linkcolor=blue}
 
 % LANGUAGE
 % Shorthands with correct spacing
@@ -119,7 +123,7 @@ doi=false, url=false
 \newcommand*{\itemref}[2]{\ref{#1}.\ref{#2}} % ref to item in thm
 
 % THEOREMS
-\newtheorem{Thm}{Theorem}
+\newtheorem{Thm}{Theorem}[chapter] % number theorems, lemmata, etc. by chapter
 \newtheorem*{Thm*}{Theorem}
 \newtheorem{Prop}[Thm]{Proposition}
 \newtheorem{Lem}[Thm]{Lemma}
@@ -143,7 +147,16 @@ doi=false, url=false
 \setlist[enumerate,2]{label=\alph*)}
 \setlist[enumerate,3]{label=\roman*.}
 
-%
+\newlist{compactitemize}{itemize}{3}
+\setlist*[compactitemize]{
+  label=\textbullet,
+  parsep={0.4\baselineskip}
+}
+\newlist{compactdescription}{description}{3}
+\setlist*[compactdescription]{
+  parsep={0.4\baselineskip}
+}
+
 \newlist{steps}{enumerate}{1}
 \setlist*[steps]{
   font={\normalfont\bfseries},
@@ -207,10 +220,13 @@ doi=false, url=false
 \newcommand*{\oversetcenter}[2]{\overset{\mathclap{#1}}{#2}} % overset with center lap
 \newcommand*{\equalsby}[1]{\oversetleft{\text{#1}}=}
 \newcommand*{\isomorphicby}[1]{\oversetleft{\text{#1}}\cong}
-\newcommand*{\cequalsby}[1]{\oversetcenter{\text{#1}}=}
+\newcommand*{\clapequalsby}[1]{\oversetcenter{\text{#1}}=}
+\newcommand*{\cequalsby}[1]{\overset{\text{#1}}=}
 \newcommand*{\leqby}[1]{\oversetleft{\text{#1}}\leq}
 \newcommand*{\cleqby}[1]{\oversetcenter{\text{#1}}\leq}
 \newcommand*{\argument}[1]{{\scriptstyle #1}}
+\newcommand*{\middlemid}{\;\middle|\;}
+
 
 % maps
 \renewcommand*{\Im}{\mathrm{im}} % image
@@ -355,4 +371,5 @@ doi=false, url=false
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "thesis"
+%%% ispell-local-dictionary: "en_US"
 %%% End:
