@@ -23,7 +23,13 @@
 % rem: remark,     ""
 % ---------------------------------------------
 
-\KOMAoptions{parskip=half}
+\KOMAoptions{
+  paper=a4, twoside, BCOR=1.5mm,
+  bibliography=totoc, abstract=true,
+  parskip=half
+}
+\setcounter{tocdepth}{\subsubsectiontocdepth}
+\setcounter{secnumdepth}{\subsubsectionnumdepth}
 
 % LANGUAGE
 \usepackage[ngerman, main=english]{babel}

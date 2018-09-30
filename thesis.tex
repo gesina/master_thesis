@@ -8,10 +8,7 @@
 % University of Regensburg 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[
-a4paper, english, oneside, BCOR=3mm,
-bibliography=totoc, abstract=true,
-]{scrreprt}
+\documentclass[english]{scrreprt}
 \input{thesis-def.tex}
 
 % TITLE
@@ -34,22 +31,25 @@ bibliography=totoc, abstract=true,
 \title{Immersions and Stiefel-Whitney Classes\\of Manifolds}
 \author{Gesina Schwalbe}
 \publishers{Supervisor: Dr.~Georgios Raptis}
-\newcommand{\handindate}{}  % TODO: Hand-In date
+\newcommand{\handindate}{October~4, 2018}
 \date{\handindate}
 
 %\includeonly{thesis-04}
 \begin{document}
-
+\pagenumbering{roman}
 \maketitle
 
 % Abstract
 \include{thesis-abstract}
 
 \tableofcontents
+\cleardoubleoddpage
+\pagenumbering{arabic}
 
 
 % Introduction
 \include{thesis-00}
+
 
 % (Re)formulation of the Immersion Conjecture
 \include{thesis-01}
