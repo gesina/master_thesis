@@ -1153,7 +1153,14 @@ Use the following notation.
 \end{Thm}
 A proof of Theorem~\ref{thm:twistedprod:cohomstructure} can be found
 at the end of the section.
-Some immediate consequences are:
+
+\subsubsection[Stiefel-Whitney Classes]
+{Stiefel-Whitney Classes of Twisted Products of Vector Bundles}
+The results of this section will yield a splitting principle
+applicable to Stiefel-Whitney classes of twisted products of vector
+bundles.
+
+Some immediate consequences of the above structure theorem are:
 \begin{Cor}
   Let $X$ again be a space and $k\in\Nat$.
   \begin{enumerate}
@@ -1212,10 +1219,23 @@ Some immediate consequences are:
   \end{proof}
 \end{Cor}
 
-This yields a result on the Stiefel-Whitney classes of
-a twisted product of line bundles that will be used below to simplify
-calculations involving higher dimensional bundles (see also
-\cite[Prop.~7.4, p.~1113]{brown}).
+\begin{Rem}
+  Let $\xi$ be a vector bundle over a space $X$.
+  Recall that by the splitting
+  principle~\cite[Theorem~(19.3.9)]{tomdieck}, $\W{\xi}$ is
+  pulled back to the product $\prod_i\W{\xi_i}$ of total
+  Stiefel-Whitney classes of some line bundles $\xi_i$,
+  along a map $f\colon Y\to X$ which is injective on cohomology.
+  Since $\Twistedprod{k}{-}$ preserves Whitney sums and injectivity on
+  cohomology, $\W{\Twistedprod{k}{\xi}}$ will injectively pull
+  back along $\Twistedprod{k}{f}$ to the product
+  $\prod_i\W{\Twistedprod{k}{\xi_i}}$.
+\end{Rem}
+
+Thus, to get from the Stiefel-Whitney classes of a vector bundle to
+the ones of its $k$th twisted product, a good approach is to
+investigate how $\Twistedprod{k}{-}$ acts on the Stiefel-Whitney
+classes of line bundles.
 \begin{Cor}\label{cor:twistedprod:swlinebdl}
   Let $\xi\colon E\to X$ be a line bundle with total Stiefel-Whitney
   class $\W{\xi}=1+\alpha$, and let $k\in\Nat$.
@@ -1231,6 +1251,7 @@ calculations involving higher dimensional bundles (see also
   \end{gather*}
   respectively $\w1\xi = c_k+e(\alpha)$, $\w2\xi=d(\alpha)$.
   \begin{proof}
+    See also \cite[Prop.~7.4, p.~1113]{brown}.
     For $k=0$ this is simply the product rule for the total
     Stiefel-Whitney class because $\Twistedprod{0}{\xi}=\xi\times\xi$
     and $c=0$. Thus, assume $k\geq0$.
@@ -1334,7 +1355,9 @@ calculations involving higher dimensional bundles (see also
   \end{proof}
 \end{Cor}
 
-The rest of this subsection is dedicated to the proof of
+
+\subsubsection{A Proof of the Structure Theorem}
+The rest of this section is dedicated to the proof of
 Theorem~\ref{thm:twistedprod:cohomstructure} on the cohomology
 structure of twisted products.
 
@@ -2101,9 +2124,8 @@ direct consequence of the following Lemma.
   \end{gather*}
 \end{Lem}
 \begin{proof}[proof of Lemma~\ref{lem:twistedprod:indecompcriterion}]
-  As the Stiefel-Whitney classes of twisted products of line bundles
-  are well-known, take $f$ to be a reduction of $\T M$ to line bundles
-  using the splitting principle.
+  Take $f$ to be a reduction of $\T M$ to line bundles
+  using the splitting principle~\cite[Theorem~(19.3.9)]{tomdieck}.
   \Idest choose a space $X$ and a map $f\colon X\to M$ which is
   injective on cohomology and fulfills
   $\pb f \T M = \xi_1\oplus\dotsb\oplus\xi_n$ for line bundles
