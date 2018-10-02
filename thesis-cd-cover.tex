@@ -1,0 +1,50 @@
+\documentclass[a4paper, aligncenter]{cd}
+\usepackage{fontspec}
+\pagestyle{empty}
+\usepackage[left=1cm, top=1cm, right=2cm, bottom=1cm]{geometry}
+\usepackage{simplecd}
+\begin{document}
+
+
+
+\newcommand{\titletext}{Immersions and Stiefel-Whitney Classes\\of Manifolds}
+\newcommand*{\authortext}{Gesina Schwalbe}
+\newcommand*{\supervisortext}{Dr.~Georgios Raptis}
+\newcommand*{\datetext}{2018-10-04}
+
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\newfontfamily\fontfamilyfrutiger{Frutiger Next LT W1G} % UR font
+\newlength{\urlogowidth}\setlength{\urlogowidth}{7.5cm}
+\newcommand{\urlogo}{%
+  \parbox{1.3333\urlogowidth}{%
+    \includegraphics[width=.98\urlogowidth]{UniLogo_Text.jpg}\\%
+    \hspace*{0.3333\urlogowidth}%
+    {\fontfamilyfrutiger%
+      \bfseries\scshape%
+      \fontsize{0.041667\urlogowidth}{0.041667\urlogowidth}\selectfont%
+      Fakultät für Mathematik}\\[2em]
+  }%
+}
+
+\covertext{%
+  \centering
+  \urlogo\\%
+  {\small Master Thesis}%
+  \\[0.5\baselineskip]
+  \Large\titletext%
+  \\[\baselineskip]%
+  \normalsize\authortext%
+  \\%
+  {\small\datetext}%
+  \\[0.5\baselineskip]%
+  Supervisor:~\supervisortext%
+}
+\backtext{\vspace*{3\baselineskip}\centering {\small Master Thesis}\\[0.5\baselineskip]\bigskip\Large\titletext}
+
+\centerspine{\small Immersions and Stiefel-Whitney Classes of Manifolds}
+
+\makecover\par
+\makeback\par
+
+\end{document}
